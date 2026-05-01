@@ -162,4 +162,22 @@ void main() {
     await tester.pump();
     expect(value, true);
   });
+
+  testWidgets('AppTextField renders and accepts text', (
+    WidgetTester tester,
+  ) async {
+    final controller = TextEditingController();
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          body: AppTextField(controller: controller, hintText: 'Enter text'),
+        ),
+      ),
+    );
+
+    expect(find.byType(TextField), findsOneWidget);
+    await tester.enterText(find.byType(AppTextField), 'Hello');
+    expect(controller.text, 'Hello');
+  });
 }

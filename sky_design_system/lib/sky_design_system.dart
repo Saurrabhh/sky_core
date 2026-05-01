@@ -13,3 +13,4 @@ export 'src/components/atoms/app_icon.dart';
 export 'src/components/atoms/app_checkbox.dart';
 export 'src/components/atoms/app_radio_button.dart';
 export 'src/components/atoms/app_switch.dart';
+export 'src/components/atoms/app_text_field.dart';
