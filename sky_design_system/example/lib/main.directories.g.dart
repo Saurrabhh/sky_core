@@ -10,6 +10,8 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:example/components/atoms/app_button_use_case.dart'
+    as _example_components_atoms_app_button_use_case;
 import 'package:example/components/atoms/app_text_use_case.dart'
     as _example_components_atoms_app_text_use_case;
 import 'package:example/foundations/colors_use_case.dart'
@@ -29,6 +31,16 @@ final directories = <_widgetbook.WidgetbookNode>[
       _widgetbook.WidgetbookFolder(
         name: 'atoms',
         children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'AppButton',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Variants',
+                builder: _example_components_atoms_app_button_use_case
+                    .appButtonVariantsUseCase,
+              ),
+            ],
+          ),
           _widgetbook.WidgetbookComponent(
             name: 'AppText',
             useCases: [

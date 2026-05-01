@@ -135,6 +135,16 @@ class AppTheme {
           return null;
         }),
       ),
+
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: colorScheme.primary,
+          shape: const RoundedRectangleBorder(
+            borderRadius: AppBorderRadius.full,
+          ),
+          textStyle: textTheme.labelLarge,
+        ),
+      ),
     );
   }
 }
