@@ -111,4 +111,31 @@ void main() {
     await tester.pump();
     expect(value, true);
   });
+
+  testWidgets('AppRadioButton renders and responds', (
+    WidgetTester tester,
+  ) async {
+    int groupValue = 1;
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          body: StatefulBuilder(
+            builder: (context, setState) {
+              return AppRadioButton<int>(
+                value: 2,
+                groupValue: groupValue,
+                onChanged: (v) => setState(() => groupValue = v!),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(Radio<int>), findsOneWidget);
+    await tester.tap(find.byType(AppRadioButton<int>));
+    await tester.pump();
+    expect(groupValue, 2);
+  });
 }
