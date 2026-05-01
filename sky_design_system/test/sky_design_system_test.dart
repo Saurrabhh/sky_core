@@ -87,4 +87,28 @@ void main() {
     expect(icons[0].size, 18.0);
     expect(icons[1].size, 24.0);
   });
+
+  testWidgets('AppCheckbox renders and responds', (WidgetTester tester) async {
+    bool? value = false;
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          body: StatefulBuilder(
+            builder: (context, setState) {
+              return AppCheckbox(
+                value: value,
+                onChanged: (v) => setState(() => value = v),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(Checkbox), findsOneWidget);
+    await tester.tap(find.byType(AppCheckbox));
+    await tester.pump();
+    expect(value, true);
+  });
 }
