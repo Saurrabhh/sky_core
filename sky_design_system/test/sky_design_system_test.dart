@@ -180,4 +180,25 @@ void main() {
     await tester.enterText(find.byType(AppTextField), 'Hello');
     expect(controller.text, 'Hello');
   });
+
+  testWidgets('AppProgressIndicator renders both variants', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          body: Column(
+            children: [
+              AppProgressIndicator.circular(),
+              AppProgressIndicator.linear(value: 0.5),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
+    expect(find.byType(LinearProgressIndicator), findsOneWidget);
+  });
 }
