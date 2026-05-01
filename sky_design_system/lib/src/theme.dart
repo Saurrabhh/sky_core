@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'colors.dart';
-import 'typography.dart';
-import 'border_radius.dart';
-import 'spacing.dart';
+import 'foundations/colors.dart';
+import 'foundations/typography.dart';
+import 'foundations/border_radius.dart';
+import 'foundations/spacing.dart';
 
 /// The main theme factory for the Core Logic Visual Language.
 class CoreTheme {
