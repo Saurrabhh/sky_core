@@ -201,4 +201,25 @@ void main() {
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
     expect(find.byType(LinearProgressIndicator), findsOneWidget);
   });
+
+  testWidgets('AppDivider renders both variants', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          body: Row(
+            children: [
+              Expanded(
+                child: Column(children: [const AppDivider.horizontal()]),
+              ),
+              const AppDivider.vertical(),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(Divider), findsOneWidget);
+    expect(find.byType(VerticalDivider), findsOneWidget);
+  });
 }
