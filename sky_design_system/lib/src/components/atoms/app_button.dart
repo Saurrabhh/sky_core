@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../sky_design_system.dart';
 
-enum _AppButtonVariant {
-  primary,
-  secondary,
-  outlined,
-  text,
-}
+enum _AppButtonVariant { primary, secondary, tonal, outlined, text, fab }
 
 /// A unified button component following the design system's specifications.
 class AppButton extends StatelessWidget {
@@ -15,45 +10,82 @@ class AppButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onPressed,
-    this.icon,
+    IconData? icon,
     this.isLoading = false,
-  }) : _variant = _AppButtonVariant.primary;
+  }) : _variant = _AppButtonVariant.primary,
+       iconData = icon;
 
   /// Creates a secondary button with tonal background.
   const AppButton.secondary({
     super.key,
     required this.text,
     required this.onPressed,
-    this.icon,
+    IconData? icon,
     this.isLoading = false,
-  }) : _variant = _AppButtonVariant.secondary;
+  }) : _variant = _AppButtonVariant.secondary,
+       iconData = icon;
+
+  /// Creates a tonal button with tonal background.
+  const AppButton.tonal({
+    super.key,
+    required this.text,
+    required this.onPressed,
+    IconData? icon,
+    this.isLoading = false,
+  }) : _variant = _AppButtonVariant.tonal,
+       iconData = icon;
 
   /// Creates an outlined button with a border.
   const AppButton.outlined({
     super.key,
     required this.text,
     required this.onPressed,
-    this.icon,
+    IconData? icon,
     this.isLoading = false,
-  }) : _variant = _AppButtonVariant.outlined;
+  }) : _variant = _AppButtonVariant.outlined,
+       iconData = icon;
 
   /// Creates a text button with transparent background.
   const AppButton.text({
     super.key,
     required this.text,
     required this.onPressed,
-    this.icon,
+    IconData? icon,
     this.isLoading = false,
-  }) : _variant = _AppButtonVariant.text;
+  }) : _variant = _AppButtonVariant.text,
+       iconData = icon;
+
+  /// Creates a floating action button.
+  const AppButton.fab({
+    super.key,
+    required IconData icon,
+    required this.onPressed,
+    this.isLoading = false,
+  }) : _variant = _AppButtonVariant.fab,
+       text = '',
+       iconData = icon;
 
   final String text;
   final VoidCallback? onPressed;
-  final IconData? icon;
+  final IconData? iconData;
   final bool isLoading;
   final _AppButtonVariant _variant;
 
   @override
   Widget build(BuildContext context) {
+    if (_variant == _AppButtonVariant.fab) {
+      return FloatingActionButton(
+        onPressed: isLoading ? null : onPressed,
+        child: isLoading
+            ? const SizedBox(
+                width: 18,
+                height: 18,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              )
+            : Icon(iconData),
+      );
+    }
+
     final Widget label = _LoadingOverlay(
       isLoading: isLoading,
       child: Row(
@@ -61,9 +93,7 @@ class AppButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: AppSpacing.sm,
         children: [
-          if (icon != null) ...[
-            Icon(icon, size: 18),
-          ],
+          if (iconData != null) ...[Icon(iconData, size: 18)],
           Text(text),
         ],
       ),
@@ -71,34 +101,36 @@ class AppButton extends StatelessWidget {
 
     return switch (_variant) {
       _AppButtonVariant.primary => ElevatedButton(
-          onPressed: isLoading ? null : onPressed,
-          child: label,
-        ),
+        onPressed: isLoading ? null : onPressed,
+        child: label,
+      ),
       _AppButtonVariant.secondary => ElevatedButton(
-          onPressed: isLoading ? null : onPressed,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: context.colorScheme.secondaryContainer,
-            foregroundColor: context.colorScheme.onSecondaryContainer,
-          ),
-          child: label,
+        onPressed: isLoading ? null : onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: context.colorScheme.secondaryContainer,
+          foregroundColor: context.colorScheme.onSecondaryContainer,
         ),
+        child: label,
+      ),
+      _AppButtonVariant.tonal => FilledButton.tonal(
+        onPressed: isLoading ? null : onPressed,
+        child: label,
+      ),
       _AppButtonVariant.outlined => OutlinedButton(
-          onPressed: isLoading ? null : onPressed,
-          child: label,
-        ),
+        onPressed: isLoading ? null : onPressed,
+        child: label,
+      ),
       _AppButtonVariant.text => TextButton(
-          onPressed: isLoading ? null : onPressed,
-          child: label,
-        ),
+        onPressed: isLoading ? null : onPressed,
+        child: label,
+      ),
+      _AppButtonVariant.fab => throw UnimplementedError(), // Handled above
     };
   }
 }
 
 class _LoadingOverlay extends StatelessWidget {
-  const _LoadingOverlay({
-    required this.isLoading,
-    required this.child,
-  });
+  const _LoadingOverlay({required this.isLoading, required this.child});
 
   final bool isLoading;
   final Widget child;
@@ -108,17 +140,12 @@ class _LoadingOverlay extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Opacity(
-          opacity: isLoading ? 0 : 1,
-          child: child,
-        ),
+        Opacity(opacity: isLoading ? 0 : 1, child: child),
         if (isLoading)
           const SizedBox(
             width: 18,
             height: 18,
-            child: CircularProgressIndicator(
-              strokeWidth: 2,
-            ),
+            child: CircularProgressIndicator(strokeWidth: 2),
           ),
       ],
     );
