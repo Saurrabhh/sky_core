@@ -261,4 +261,25 @@ void main() {
     expect(badge.smallSize, 8.0);
     expect(find.byIcon(Icons.notifications), findsOneWidget);
   });
+
+  testWidgets('AppSlider renders', (WidgetTester tester) async {
+    double value = 0.5;
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          body: StatefulBuilder(
+            builder: (context, setState) {
+              return AppSlider(
+                value: value,
+                onChanged: (v) => setState(() => value = v),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(Slider), findsOneWidget);
+  });
 }

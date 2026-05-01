@@ -6,6 +6,7 @@ export 'app_divider.dart';
 export 'app_icon.dart';
 export 'app_progress_indicator.dart';
 export 'app_radio_button.dart';
+export 'app_slider.dart';
 export 'app_switch.dart';
 export 'app_text.dart';
 export 'app_text_field.dart';
