@@ -9,9 +9,34 @@ class CoreTheme {
   CoreTheme._();
 
   /// Generates the Light [ThemeData] for the design system.
-  static ThemeData light([ColorScheme? customColorScheme]) {
-    final colorScheme = customColorScheme ?? CoreColors.lightColorScheme;
-    final textTheme = CoreTypography.textTheme;
+  static ThemeData light({
+    ColorScheme? customColorScheme,
+    bool useGoogleFonts = true,
+  }) {
+    return _buildTheme(
+      customColorScheme ?? CoreColors.lightColorScheme,
+      useGoogleFonts: useGoogleFonts,
+    );
+  }
+
+  /// Generates the Dark [ThemeData] for the design system.
+  static ThemeData dark({
+    ColorScheme? customColorScheme,
+    bool useGoogleFonts = true,
+  }) {
+    return _buildTheme(
+      customColorScheme ?? CoreColors.darkColorScheme,
+      useGoogleFonts: useGoogleFonts,
+    );
+  }
+
+  static ThemeData _buildTheme(
+    ColorScheme colorScheme, {
+    required bool useGoogleFonts,
+  }) {
+    final textTheme = useGoogleFonts
+        ? CoreTypography.textTheme
+        : ThemeData.light().textTheme;
 
     return ThemeData(
       useMaterial3: true,
