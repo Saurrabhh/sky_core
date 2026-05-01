@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../foundations/spacing.dart';
+import '../../../sky_design_system.dart';
 
 enum _AppButtonVariant {
   primary,
@@ -59,10 +59,10 @@ class AppButton extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
+        spacing: AppSpacing.sm,
         children: [
           if (icon != null) ...[
             Icon(icon, size: 18),
-            const SizedBox(width: AppSpacing.sm),
           ],
           Text(text),
         ],
@@ -77,8 +77,8 @@ class AppButton extends StatelessWidget {
       _AppButtonVariant.secondary => ElevatedButton(
           onPressed: isLoading ? null : onPressed,
           style: ElevatedButton.styleFrom(
-            backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
-            foregroundColor: Theme.of(context).colorScheme.onSecondaryContainer,
+            backgroundColor: context.colorScheme.secondaryContainer,
+            foregroundColor: context.colorScheme.onSecondaryContainer,
           ),
           child: label,
         ),
