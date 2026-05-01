@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:sky_design_system/sky_design_system.dart';
 
-@widgetbook.UseCase(name: 'Radius', type: CoreRadius)
+@widgetbook.UseCase(name: 'Radius', type: AppRadius)
 Widget radiusUseCase(BuildContext context) {
   return Padding(
-    padding: const EdgeInsets.all(CoreSpacing.md),
+    padding: const EdgeInsets.all(AppSpacing.md),
     child: ListView(
       children: [
         Text(
@@ -15,18 +15,18 @@ Widget radiusUseCase(BuildContext context) {
 // ...
 // (rest of build method)
 
-        const SizedBox(height: CoreSpacing.md),
+        const SizedBox(height: AppSpacing.md),
         Wrap(
-          spacing: CoreSpacing.md,
-          runSpacing: CoreSpacing.md,
+          spacing: AppSpacing.md,
+          runSpacing: AppSpacing.md,
           children: [
-            _RadiusItem(name: 'xs', value: CoreRadius.xs, borderRadius: CoreBorderRadius.sm), // Using sm as proxy if xs not in BorderRadius
-            _RadiusItem(name: 'sm', value: CoreRadius.sm, borderRadius: CoreBorderRadius.sm),
-            _RadiusItem(name: 'base', value: CoreRadius.base, borderRadius: CoreBorderRadius.base),
-            _RadiusItem(name: 'md', value: CoreRadius.md, borderRadius: CoreBorderRadius.md),
-            _RadiusItem(name: 'lg', value: CoreRadius.lg, borderRadius: CoreBorderRadius.lg),
-            _RadiusItem(name: 'xl', value: CoreRadius.xl, borderRadius: CoreBorderRadius.xl),
-            _RadiusItem(name: 'full', value: CoreRadius.full, borderRadius: CoreBorderRadius.full),
+            _RadiusItem(name: 'xs', value: AppRadius.xs, borderRadius: AppBorderRadius.sm), // Using sm as proxy if xs not in BorderRadius
+            _RadiusItem(name: 'sm', value: AppRadius.sm, borderRadius: AppBorderRadius.sm),
+            _RadiusItem(name: 'base', value: AppRadius.base, borderRadius: AppBorderRadius.base),
+            _RadiusItem(name: 'md', value: AppRadius.md, borderRadius: AppBorderRadius.md),
+            _RadiusItem(name: 'lg', value: AppRadius.lg, borderRadius: AppBorderRadius.lg),
+            _RadiusItem(name: 'xl', value: AppRadius.xl, borderRadius: AppBorderRadius.xl),
+            _RadiusItem(name: 'full', value: AppRadius.full, borderRadius: AppBorderRadius.full),
           ],
         ),
       ],
@@ -66,7 +66,7 @@ class _RadiusItem extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: CoreSpacing.xs),
+        const SizedBox(height: AppSpacing.xs),
         Text(
           name,
           style: context.textTheme.labelMedium,

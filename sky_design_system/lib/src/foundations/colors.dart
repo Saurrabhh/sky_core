@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 /// Default color tokens for the Core Logic Visual Language.
-class CoreColors {
-  CoreColors._();
+class AppColors {
+  AppColors._();
 
   // Light Mode Tokens
   static const Color surfaceLight = Color(0xFFFAF8FD);

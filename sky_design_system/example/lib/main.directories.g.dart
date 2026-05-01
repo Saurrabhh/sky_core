@@ -10,6 +10,8 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:example/components/atoms/app_text_use_case.dart'
+    as _example_components_atoms_app_text_use_case;
 import 'package:example/foundations/colors_use_case.dart'
     as _example_foundations_colors_use_case;
 import 'package:example/foundations/radius_use_case.dart'
@@ -22,10 +24,35 @@ import 'package:widgetbook/widgetbook.dart' as _widgetbook;
 
 final directories = <_widgetbook.WidgetbookNode>[
   _widgetbook.WidgetbookFolder(
+    name: 'components',
+    children: [
+      _widgetbook.WidgetbookFolder(
+        name: 'atoms',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'AppText',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Overrides',
+                builder: _example_components_atoms_app_text_use_case
+                    .appTextOverridesUseCase,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Scale',
+                builder: _example_components_atoms_app_text_use_case
+                    .appTextScaleUseCase,
+              ),
+            ],
+          ),
+        ],
+      ),
+    ],
+  ),
+  _widgetbook.WidgetbookFolder(
     name: 'foundations',
     children: [
       _widgetbook.WidgetbookComponent(
-        name: 'CoreColors',
+        name: 'AppColors',
         useCases: [
           _widgetbook.WidgetbookUseCase(
             name: 'Colors',
@@ -34,7 +61,7 @@ final directories = <_widgetbook.WidgetbookNode>[
         ],
       ),
       _widgetbook.WidgetbookComponent(
-        name: 'CoreRadius',
+        name: 'AppRadius',
         useCases: [
           _widgetbook.WidgetbookUseCase(
             name: 'Radius',
@@ -43,7 +70,7 @@ final directories = <_widgetbook.WidgetbookNode>[
         ],
       ),
       _widgetbook.WidgetbookComponent(
-        name: 'CoreSpacing',
+        name: 'AppSpacing',
         useCases: [
           _widgetbook.WidgetbookUseCase(
             name: 'Spacing',
@@ -52,7 +79,7 @@ final directories = <_widgetbook.WidgetbookNode>[
         ],
       ),
       _widgetbook.WidgetbookComponent(
-        name: 'CoreTypography',
+        name: 'AppTypography',
         useCases: [
           _widgetbook.WidgetbookUseCase(
             name: 'Typography',

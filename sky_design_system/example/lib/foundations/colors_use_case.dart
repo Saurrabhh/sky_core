@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:sky_design_system/sky_design_system.dart';
 
-@widgetbook.UseCase(name: 'Colors', type: CoreColors)
+@widgetbook.UseCase(name: 'Colors', type: AppColors)
 Widget colorsUseCase(BuildContext context) {
   final colorScheme = context.colorScheme;
 
   return Padding(
-    padding: const EdgeInsets.all(CoreSpacing.md),
+    padding: const EdgeInsets.all(AppSpacing.md),
     child: ListView(
       children: [
         _ColorSection(
@@ -80,7 +80,7 @@ class _ColorSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: CoreSpacing.md),
+          padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
           child: Text(
             title,
             style: context.textTheme.headlineSmall,
@@ -93,8 +93,8 @@ class _ColorSection extends StatelessWidget {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           crossAxisCount: MediaQuery.of(context).size.width > 600 ? 4 : 2,
-          mainAxisSpacing: CoreSpacing.sm,
-          crossAxisSpacing: CoreSpacing.sm,
+          mainAxisSpacing: AppSpacing.sm,
+          crossAxisSpacing: AppSpacing.sm,
           childAspectRatio: 2.5,
           children: items,
         ),
@@ -117,10 +117,10 @@ class _ColorItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(CoreSpacing.sm),
+      padding: const EdgeInsets.all(AppSpacing.sm),
       decoration: BoxDecoration(
         color: color,
-        borderRadius: CoreBorderRadius.md,
+        borderRadius: AppBorderRadius.md,
         border: Border.all(color: context.colorScheme.outlineVariant),
       ),
       child: Column(

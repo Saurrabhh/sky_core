@@ -1,6 +1,6 @@
 /// Radius tokens for the Core Logic Visual Language.
-class CoreRadius {
-  CoreRadius._();
+class AppRadius {
+  AppRadius._();
 
   /// Extra small radius (2.0) - used for tooltips and checkboxes.
   static const double xs = 2;

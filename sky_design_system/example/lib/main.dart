@@ -23,8 +23,8 @@ class WidgetbookApp extends StatelessWidget {
       addons: [
         MaterialThemeAddon(
           themes: [
-            WidgetbookTheme(name: 'Light', data: CoreTheme.light()),
-            WidgetbookTheme(name: 'Dark', data: CoreTheme.dark()),
+            WidgetbookTheme(name: 'Light', data: AppTheme.light()),
+            WidgetbookTheme(name: 'Dark', data: AppTheme.dark()),
           ],
         ),
         ViewportAddon([

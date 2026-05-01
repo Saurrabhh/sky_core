@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:sky_design_system/sky_design_system.dart';
 
-@widgetbook.UseCase(name: 'Spacing', type: CoreSpacing)
+@widgetbook.UseCase(name: 'Spacing', type: AppSpacing)
 Widget spacingUseCase(BuildContext context) {
   return Padding(
-    padding: const EdgeInsets.all(CoreSpacing.md),
+    padding: const EdgeInsets.all(AppSpacing.md),
     child: ListView(
       children: [
         Text(
@@ -15,24 +15,24 @@ Widget spacingUseCase(BuildContext context) {
 // ...
 // (rest of build method)
 
-        const SizedBox(height: CoreSpacing.md),
-        _SpacingItem(name: 'none', value: CoreSpacing.none),
-        _SpacingItem(name: 'xs', value: CoreSpacing.xs),
-        _SpacingItem(name: 'sm', value: CoreSpacing.sm),
-        _SpacingItem(name: 'md', value: CoreSpacing.md),
-        _SpacingItem(name: 'lg', value: CoreSpacing.lg),
-        _SpacingItem(name: 'xl', value: CoreSpacing.xl),
-        _SpacingItem(name: 'xxl', value: CoreSpacing.xxl),
-        const Divider(height: CoreSpacing.xxl),
+        const SizedBox(height: AppSpacing.md),
+        _SpacingItem(name: 'none', value: AppSpacing.none),
+        _SpacingItem(name: 'xs', value: AppSpacing.xs),
+        _SpacingItem(name: 'sm', value: AppSpacing.sm),
+        _SpacingItem(name: 'md', value: AppSpacing.md),
+        _SpacingItem(name: 'lg', value: AppSpacing.lg),
+        _SpacingItem(name: 'xl', value: AppSpacing.xl),
+        _SpacingItem(name: 'xxl', value: AppSpacing.xxl),
+        const Divider(height: AppSpacing.xxl),
         Text(
           'Layout Tokens',
           style: context.textTheme.headlineSmall,
         ),
-        const SizedBox(height: CoreSpacing.md),
-        _SpacingItem(name: 'gutter', value: CoreSpacing.gutter),
-        _SpacingItem(name: 'marginMobile', value: CoreSpacing.marginMobile),
-        _SpacingItem(name: 'marginTablet', value: CoreSpacing.marginTablet),
-        _SpacingItem(name: 'marginDesktop', value: CoreSpacing.marginDesktop),
+        const SizedBox(height: AppSpacing.md),
+        _SpacingItem(name: 'gutter', value: AppSpacing.gutter),
+        _SpacingItem(name: 'marginMobile', value: AppSpacing.marginMobile),
+        _SpacingItem(name: 'marginTablet', value: AppSpacing.marginTablet),
+        _SpacingItem(name: 'marginDesktop', value: AppSpacing.marginDesktop),
       ],
     ),
   );
@@ -47,7 +47,7 @@ class _SpacingItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: CoreSpacing.xs),
+      padding: const EdgeInsets.symmetric(vertical: AppSpacing.xs),
       child: Row(
         children: [
           SizedBox(

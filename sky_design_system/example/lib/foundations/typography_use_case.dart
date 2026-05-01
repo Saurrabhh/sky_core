@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:sky_design_system/sky_design_system.dart';
 
-@widgetbook.UseCase(name: 'Typography', type: CoreTypography)
+@widgetbook.UseCase(name: 'Typography', type: AppTypography)
 Widget typographyUseCase(BuildContext context) {
   final textTheme = context.textTheme;
 
   return Padding(
-    padding: const EdgeInsets.all(CoreSpacing.md),
+    padding: const EdgeInsets.all(AppSpacing.md),
     child: ListView(
       children: [
         _TypeItem(name: 'Display Large', style: textTheme.displayLarge!),
@@ -34,7 +34,7 @@ Widget typographyUseCase(BuildContext context) {
         _TypeItem(name: 'Label Small', style: textTheme.labelSmall!),
         const Divider(),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: CoreSpacing.md),
+          padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -42,12 +42,12 @@ Widget typographyUseCase(BuildContext context) {
                 'Tabular Figures (tnum)',
                 style: textTheme.headlineSmall,
               ),
-              const SizedBox(height: CoreSpacing.sm),
+              const SizedBox(height: AppSpacing.sm),
               Text(
                 '111111\n999999',
                 style: textTheme.bodyLarge,
               ),
-              const SizedBox(height: CoreSpacing.sm),
+              const SizedBox(height: AppSpacing.sm),
               Text(
                 'Numerical alignment check for Body and Label styles.',
                 style: textTheme.bodySmall,
@@ -69,7 +69,7 @@ class _TypeItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: CoreSpacing.sm),
+      padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

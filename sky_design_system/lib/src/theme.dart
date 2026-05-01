@@ -5,8 +5,8 @@ import 'foundations/border_radius.dart';
 import 'foundations/spacing.dart';
 
 /// The main theme factory for the Core Logic Visual Language.
-class CoreTheme {
-  CoreTheme._();
+class AppTheme {
+  AppTheme._();
 
   /// Generates the Light [ThemeData] for the design system.
   static ThemeData light({
@@ -14,7 +14,7 @@ class CoreTheme {
     bool useGoogleFonts = true,
   }) {
     return _buildTheme(
-      customColorScheme ?? CoreColors.lightColorScheme,
+      customColorScheme ?? AppColors.lightColorScheme,
       useGoogleFonts: useGoogleFonts,
     );
   }
@@ -25,7 +25,7 @@ class CoreTheme {
     bool useGoogleFonts = true,
   }) {
     return _buildTheme(
-      customColorScheme ?? CoreColors.darkColorScheme,
+      customColorScheme ?? AppColors.darkColorScheme,
       useGoogleFonts: useGoogleFonts,
     );
   }
@@ -35,7 +35,7 @@ class CoreTheme {
     required bool useGoogleFonts,
   }) {
     final textTheme = useGoogleFonts
-        ? CoreTypography.textTheme
+        ? AppTypography.textTheme
         : ThemeData.light().textTheme;
 
     return ThemeData(
@@ -48,7 +48,7 @@ class CoreTheme {
           backgroundColor: colorScheme.primaryContainer,
           foregroundColor: colorScheme.onPrimaryContainer,
           shape: const RoundedRectangleBorder(
-            borderRadius: CoreBorderRadius.full,
+            borderRadius: AppBorderRadius.full,
           ),
           textStyle: textTheme.labelLarge,
           elevation: 0,
@@ -60,7 +60,7 @@ class CoreTheme {
           foregroundColor: colorScheme.primary,
           side: BorderSide(color: colorScheme.outline, width: 1),
           shape: const RoundedRectangleBorder(
-            borderRadius: CoreBorderRadius.full,
+            borderRadius: AppBorderRadius.full,
           ),
           textStyle: textTheme.labelLarge,
         ),
@@ -69,56 +69,56 @@ class CoreTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: false,
         border: OutlineInputBorder(
-          borderRadius: CoreBorderRadius.sm,
+          borderRadius: AppBorderRadius.sm,
           borderSide: BorderSide(color: colorScheme.outline, width: 1),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: CoreBorderRadius.sm,
+          borderRadius: AppBorderRadius.sm,
           borderSide: BorderSide(color: colorScheme.outline, width: 1),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: CoreBorderRadius.sm,
+          borderRadius: AppBorderRadius.sm,
           borderSide: BorderSide(color: colorScheme.primary, width: 2),
         ),
         labelStyle: textTheme.labelMedium,
         floatingLabelStyle: textTheme.labelSmall,
         helperStyle: textTheme.labelSmall,
         contentPadding: const EdgeInsets.symmetric(
-          horizontal: CoreSpacing.md,
-          vertical: CoreSpacing.sm,
+          horizontal: AppSpacing.md,
+          vertical: AppSpacing.sm,
         ),
       ),
 
       chipTheme: ChipThemeData(
-        shape: const RoundedRectangleBorder(borderRadius: CoreBorderRadius.sm),
+        shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.sm),
         labelStyle: textTheme.labelMedium,
         backgroundColor: colorScheme.surfaceContainerLow,
         side: BorderSide(color: colorScheme.outlineVariant, width: 1),
         padding: const EdgeInsets.symmetric(
-          horizontal: CoreSpacing.sm,
-          vertical: CoreSpacing.xs,
+          horizontal: AppSpacing.sm,
+          vertical: AppSpacing.xs,
         ),
       ),
 
       listTileTheme: ListTileThemeData(
         titleTextStyle: textTheme.titleMedium,
         subtitleTextStyle: textTheme.bodySmall,
-        contentPadding: const EdgeInsets.symmetric(horizontal: CoreSpacing.md),
+        contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
         shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       ),
 
       cardTheme: CardThemeData(
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: CoreBorderRadius.md,
+          borderRadius: AppBorderRadius.md,
           side: BorderSide(color: colorScheme.outlineVariant, width: 1),
         ),
         color: colorScheme.surface,
-        margin: const EdgeInsets.all(CoreSpacing.sm),
+        margin: const EdgeInsets.all(AppSpacing.sm),
       ),
 
       checkboxTheme: CheckboxThemeData(
-        shape: const RoundedRectangleBorder(borderRadius: CoreBorderRadius.sm),
+        shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.sm),
         fillColor: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.selected)) {
             return colorScheme.primary;
