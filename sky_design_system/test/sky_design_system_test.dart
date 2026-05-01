@@ -138,4 +138,28 @@ void main() {
     await tester.pump();
     expect(groupValue, 2);
   });
+
+  testWidgets('AppSwitch renders and responds', (WidgetTester tester) async {
+    bool value = false;
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          body: StatefulBuilder(
+            builder: (context, setState) {
+              return AppSwitch(
+                value: value,
+                onChanged: (v) => setState(() => value = v),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(Switch), findsOneWidget);
+    await tester.tap(find.byType(AppSwitch));
+    await tester.pump();
+    expect(value, true);
+  });
 }
