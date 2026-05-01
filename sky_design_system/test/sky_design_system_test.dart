@@ -222,4 +222,16 @@ void main() {
     expect(find.byType(Divider), findsOneWidget);
     expect(find.byType(VerticalDivider), findsOneWidget);
   });
+
+  testWidgets('AppAvatar renders initials', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: const Scaffold(body: AppAvatar(initials: 'JD')),
+      ),
+    );
+
+    expect(find.byType(CircleAvatar), findsOneWidget);
+    expect(find.text('JD'), findsOneWidget);
+  });
 }

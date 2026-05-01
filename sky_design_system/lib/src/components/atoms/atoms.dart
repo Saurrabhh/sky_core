@@ -1,3 +1,4 @@
+export 'app_avatar.dart';
 export 'app_button.dart';
 export 'app_checkbox.dart';
 export 'app_divider.dart';
