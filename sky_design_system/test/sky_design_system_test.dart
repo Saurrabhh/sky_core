@@ -234,4 +234,31 @@ void main() {
     expect(find.byType(CircleAvatar), findsOneWidget);
     expect(find.text('JD'), findsOneWidget);
   });
+
+  testWidgets('AppBadge renders count', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(body: AppBadge(count: 3, child: const Icon(Icons.mail))),
+      ),
+    );
+
+    expect(find.byType(Badge), findsOneWidget);
+    expect(find.text('3'), findsOneWidget);
+  });
+
+  testWidgets('AppBadge renders dot', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: const Scaffold(
+          body: AppBadge(isDot: true, child: Icon(Icons.notifications)),
+        ),
+      ),
+    );
+
+    final badge = tester.widget<Badge>(find.byType(Badge));
+    expect(badge.smallSize, 8.0);
+    expect(find.byIcon(Icons.notifications), findsOneWidget);
+  });
 }
