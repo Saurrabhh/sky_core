@@ -39,6 +39,7 @@ class CoreColors {
   static const Color onErrorContainerLight = Color(0xFF93000A);
   static const Color backgroundLight = Color(0xFFFAF8FD);
   static const Color onBackgroundLight = Color(0xFF1B1B1F);
+  static const Color surfaceVariantLight = Color(0xFFE3E2E6);
 
   // Dark Mode Tokens
   static const Color surfaceDark = Color(0xFF121316);
@@ -75,6 +76,21 @@ class CoreColors {
   static const Color onErrorContainerDark = Color(0xFFFFDAD6);
   static const Color backgroundDark = Color(0xFF121316);
   static const Color onBackgroundDark = Color(0xFFE3E2E6);
+  static const Color surfaceVariantDark = Color(0xFF343438);
+
+  // Common Fixed Tokens (Consistent across themes)
+  static const Color primaryFixed = Color(0xFFD4E3FF);
+  static const Color primaryFixedDim = Color(0xFFA5C8FF);
+  static const Color onPrimaryFixed = Color(0xFF001C3A);
+  static const Color onPrimaryFixedVariant = Color(0xFF004786);
+  static const Color secondaryFixed = Color(0xFFD6E4F8);
+  static const Color secondaryFixedDim = Color(0xFFBAC8DB);
+  static const Color onSecondaryFixed = Color(0xFF0F1C2B);
+  static const Color onSecondaryFixedVariant = Color(0xFF3B4858);
+  static const Color tertiaryFixed = Color(0xFFF3DAFF);
+  static const Color tertiaryFixedDim = Color(0xFFD6BEE4);
+  static const Color onTertiaryFixed = Color(0xFF251431);
+  static const Color onTertiaryFixedVariant = Color(0xFF523F5F);
 
   /// Default Light ColorScheme for Core Logic Visual Language.
   static const ColorScheme lightColorScheme = ColorScheme(
@@ -111,6 +127,20 @@ class CoreColors {
     onInverseSurface: inverseOnSurfaceLight,
     inversePrimary: inversePrimaryLight,
     surfaceTint: surfaceTintLight,
+    primaryFixed: primaryFixed,
+    primaryFixedDim: primaryFixedDim,
+    onPrimaryFixed: onPrimaryFixed,
+    onPrimaryFixedVariant: onPrimaryFixedVariant,
+    secondaryFixed: secondaryFixed,
+    secondaryFixedDim: secondaryFixedDim,
+    onSecondaryFixed: onSecondaryFixed,
+    onSecondaryFixedVariant: onSecondaryFixedVariant,
+    tertiaryFixed: tertiaryFixed,
+    tertiaryFixedDim: tertiaryFixedDim,
+    onTertiaryFixed: onTertiaryFixed,
+    onTertiaryFixedVariant: onTertiaryFixedVariant,
+    surfaceDim: surfaceDimLight,
+    surfaceBright: surfaceBrightLight,
   );
 
   /// Default Dark ColorScheme for Core Logic Visual Language.
@@ -148,5 +178,19 @@ class CoreColors {
     onInverseSurface: inverseOnSurfaceDark,
     inversePrimary: inversePrimaryDark,
     surfaceTint: surfaceTintDark,
+    primaryFixed: primaryFixed,
+    primaryFixedDim: primaryFixedDim,
+    onPrimaryFixed: onPrimaryFixed,
+    onPrimaryFixedVariant: onPrimaryFixedVariant,
+    secondaryFixed: secondaryFixed,
+    secondaryFixedDim: secondaryFixedDim,
+    onSecondaryFixed: onSecondaryFixed,
+    onSecondaryFixedVariant: onSecondaryFixedVariant,
+    tertiaryFixed: tertiaryFixed,
+    tertiaryFixedDim: tertiaryFixedDim,
+    onTertiaryFixed: onTertiaryFixed,
+    onTertiaryFixedVariant: onTertiaryFixedVariant,
+    surfaceDim: surfaceDimDark,
+    surfaceBright: surfaceBrightDark,
   );
 }
