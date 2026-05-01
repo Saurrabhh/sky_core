@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'colors.dart';
 import 'typography.dart';
-import 'shapes.dart';
+import 'border_radius.dart';
 import 'spacing.dart';
 
 /// The main theme factory for the Core Logic Visual Language.
@@ -9,9 +9,6 @@ class CoreTheme {
   CoreTheme._();
 
   /// Generates the Light [ThemeData] for the design system.
-  ///
-  /// Optionally accepts a [customColorScheme] to allow for palette swapping
-  /// while maintaining the same structural design language (typography, shapes, etc.).
   static ThemeData light([ColorScheme? customColorScheme]) {
     final colorScheme = customColorScheme ?? CoreColors.lightColorScheme;
     final textTheme = CoreTypography.textTheme;
@@ -20,23 +17,26 @@ class CoreTheme {
       useMaterial3: true,
       colorScheme: colorScheme,
       textTheme: textTheme,
-      
-      // Component Themes
+
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: colorScheme.primaryContainer,
           foregroundColor: colorScheme.onPrimaryContainer,
-          shape: const RoundedRectangleBorder(borderRadius: CoreShapes.full),
+          shape: const RoundedRectangleBorder(
+            borderRadius: CoreBorderRadius.full,
+          ),
           textStyle: textTheme.labelLarge,
           elevation: 0,
         ),
       ),
-      
+
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: colorScheme.primary,
           side: BorderSide(color: colorScheme.outline, width: 1),
-          shape: const RoundedRectangleBorder(borderRadius: CoreShapes.full),
+          shape: const RoundedRectangleBorder(
+            borderRadius: CoreBorderRadius.full,
+          ),
           textStyle: textTheme.labelLarge,
         ),
       ),
@@ -44,15 +44,15 @@ class CoreTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: false,
         border: OutlineInputBorder(
-          borderRadius: CoreShapes.sm,
+          borderRadius: CoreBorderRadius.sm,
           borderSide: BorderSide(color: colorScheme.outline, width: 1),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: CoreShapes.sm,
+          borderRadius: CoreBorderRadius.sm,
           borderSide: BorderSide(color: colorScheme.outline, width: 1),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: CoreShapes.sm,
+          borderRadius: CoreBorderRadius.sm,
           borderSide: BorderSide(color: colorScheme.primary, width: 2),
         ),
         labelStyle: textTheme.labelMedium,
@@ -65,7 +65,7 @@ class CoreTheme {
       ),
 
       chipTheme: ChipThemeData(
-        shape: const RoundedRectangleBorder(borderRadius: CoreShapes.sm),
+        shape: const RoundedRectangleBorder(borderRadius: CoreBorderRadius.sm),
         labelStyle: textTheme.labelMedium,
         backgroundColor: colorScheme.surfaceContainerLow,
         side: BorderSide(color: colorScheme.outlineVariant, width: 1),
@@ -85,7 +85,7 @@ class CoreTheme {
       cardTheme: CardThemeData(
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: CoreShapes.md,
+          borderRadius: CoreBorderRadius.md,
           side: BorderSide(color: colorScheme.outlineVariant, width: 1),
         ),
         color: colorScheme.surface,
@@ -93,7 +93,7 @@ class CoreTheme {
       ),
 
       checkboxTheme: CheckboxThemeData(
-        shape: const RoundedRectangleBorder(borderRadius: CoreShapes.sm),
+        shape: const RoundedRectangleBorder(borderRadius: CoreBorderRadius.sm),
         fillColor: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.selected)) {
             return colorScheme.primary;
