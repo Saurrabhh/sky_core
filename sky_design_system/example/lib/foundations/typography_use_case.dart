@@ -11,9 +11,9 @@ Widget typographyUseCase(BuildContext context) {
     child: ListView(
       children: [
         _TypeItem(name: 'Display Large', style: textTheme.displayLarge!),
-// ...
-// (rest of typographyUseCase)
 
+        // ...
+        // (rest of typographyUseCase)
         _TypeItem(name: 'Display Medium', style: textTheme.displayMedium!),
         _TypeItem(name: 'Display Small', style: textTheme.displaySmall!),
         const Divider(),
@@ -38,15 +38,9 @@ Widget typographyUseCase(BuildContext context) {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Tabular Figures (tnum)',
-                style: textTheme.headlineSmall,
-              ),
+              Text('Tabular Figures (tnum)', style: textTheme.headlineSmall),
               const SizedBox(height: AppSpacing.sm),
-              Text(
-                '111111\n999999',
-                style: textTheme.bodyLarge,
-              ),
+              Text('111111\n999999', style: textTheme.bodyLarge),
               const SizedBox(height: AppSpacing.sm),
               Text(
                 'Numerical alignment check for Body and Label styles.',
@@ -76,8 +70,8 @@ class _TypeItem extends StatelessWidget {
           Text(
             name,
             style: context.textTheme.labelSmall?.copyWith(
-                  color: context.colorScheme.outline,
-                ),
+              color: context.colorScheme.outline,
+            ),
           ),
           const SizedBox(height: 4),
           Text(
@@ -88,8 +82,8 @@ class _TypeItem extends StatelessWidget {
           Text(
             'Size: ${style.fontSize} | Weight: ${style.fontWeight} | Height: ${style.height?.toStringAsFixed(2)}',
             style: context.textTheme.labelSmall?.copyWith(
-                  color: context.colorScheme.outline,
-                ),
+              color: context.colorScheme.outline,
+            ),
           ),
         ],
       ),

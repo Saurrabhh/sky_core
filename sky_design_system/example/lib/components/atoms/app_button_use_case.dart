@@ -16,22 +16,10 @@ Widget appButtonVariantsUseCase(BuildContext context) {
             spacing: AppSpacing.md,
             runSpacing: AppSpacing.md,
             children: [
-              AppButton.primary(
-                text: 'Primary',
-                onPressed: () {},
-              ),
-              AppButton.secondary(
-                text: 'Secondary',
-                onPressed: () {},
-              ),
-              AppButton.outlined(
-                text: 'Outlined',
-                onPressed: () {},
-              ),
-              AppButton.text(
-                text: 'Text',
-                onPressed: () {},
-              ),
+              AppButton.primary(text: 'Primary', onPressed: () {}),
+              AppButton.secondary(text: 'Secondary', onPressed: () {}),
+              AppButton.outlined(text: 'Outlined', onPressed: () {}),
+              AppButton.text(text: 'Text', onPressed: () {}),
             ],
           ),
           const SizedBox(height: AppSpacing.xl),
@@ -56,11 +44,7 @@ Widget appButtonVariantsUseCase(BuildContext context) {
                 icon: Icons.settings,
                 onPressed: () {},
               ),
-              AppButton.text(
-                text: 'Edit',
-                icon: Icons.edit,
-                onPressed: () {},
-              ),
+              AppButton.text(text: 'Edit', icon: Icons.edit, onPressed: () {}),
             ],
           ),
           const SizedBox(height: AppSpacing.xl),
@@ -85,11 +69,7 @@ Widget appButtonVariantsUseCase(BuildContext context) {
                 isLoading: true,
                 onPressed: () {},
               ),
-              AppButton.text(
-                text: 'Text',
-                isLoading: true,
-                onPressed: () {},
-              ),
+              AppButton.text(text: 'Text', isLoading: true, onPressed: () {}),
             ],
           ),
           const SizedBox(height: AppSpacing.xl),
@@ -99,22 +79,10 @@ Widget appButtonVariantsUseCase(BuildContext context) {
             spacing: AppSpacing.md,
             runSpacing: AppSpacing.md,
             children: [
-              const AppButton.primary(
-                text: 'Primary',
-                onPressed: null,
-              ),
-              const AppButton.secondary(
-                text: 'Secondary',
-                onPressed: null,
-              ),
-              const AppButton.outlined(
-                text: 'Outlined',
-                onPressed: null,
-              ),
-              const AppButton.text(
-                text: 'Text',
-                onPressed: null,
-              ),
+              const AppButton.primary(text: 'Primary', onPressed: null),
+              const AppButton.secondary(text: 'Secondary', onPressed: null),
+              const AppButton.outlined(text: 'Outlined', onPressed: null),
+              const AppButton.text(text: 'Text', onPressed: null),
             ],
           ),
         ],

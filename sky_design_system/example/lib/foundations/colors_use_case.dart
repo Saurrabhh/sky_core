@@ -13,54 +13,134 @@ Widget colorsUseCase(BuildContext context) {
         _ColorSection(
           title: 'Primary',
           items: [
-            _ColorItem(name: 'Primary', color: colorScheme.primary, onColor: colorScheme.onPrimary),
-            _ColorItem(name: 'Primary Container', color: colorScheme.primaryContainer, onColor: colorScheme.onPrimaryContainer),
-            _ColorItem(name: 'Inverse Primary', color: colorScheme.inversePrimary, onColor: colorScheme.primary),
+            _ColorItem(
+              name: 'Primary',
+              color: colorScheme.primary,
+              onColor: colorScheme.onPrimary,
+            ),
+            _ColorItem(
+              name: 'Primary Container',
+              color: colorScheme.primaryContainer,
+              onColor: colorScheme.onPrimaryContainer,
+            ),
+            _ColorItem(
+              name: 'Inverse Primary',
+              color: colorScheme.inversePrimary,
+              onColor: colorScheme.primary,
+            ),
           ],
         ),
-// ...
-// (skipping some lines for brevity in instruction, but will provide full context in old/new strings)
 
+        // ...
+        // (skipping some lines for brevity in instruction, but will provide full context in old/new strings)
         _ColorSection(
           title: 'Secondary',
           items: [
-            _ColorItem(name: 'Secondary', color: colorScheme.secondary, onColor: colorScheme.onSecondary),
-            _ColorItem(name: 'Secondary Container', color: colorScheme.secondaryContainer, onColor: colorScheme.onSecondaryContainer),
+            _ColorItem(
+              name: 'Secondary',
+              color: colorScheme.secondary,
+              onColor: colorScheme.onSecondary,
+            ),
+            _ColorItem(
+              name: 'Secondary Container',
+              color: colorScheme.secondaryContainer,
+              onColor: colorScheme.onSecondaryContainer,
+            ),
           ],
         ),
         _ColorSection(
           title: 'Tertiary',
           items: [
-            _ColorItem(name: 'Tertiary', color: colorScheme.tertiary, onColor: colorScheme.onTertiary),
-            _ColorItem(name: 'Tertiary Container', color: colorScheme.tertiaryContainer, onColor: colorScheme.onTertiaryContainer),
+            _ColorItem(
+              name: 'Tertiary',
+              color: colorScheme.tertiary,
+              onColor: colorScheme.onTertiary,
+            ),
+            _ColorItem(
+              name: 'Tertiary Container',
+              color: colorScheme.tertiaryContainer,
+              onColor: colorScheme.onTertiaryContainer,
+            ),
           ],
         ),
         _ColorSection(
           title: 'Surface',
           items: [
-            _ColorItem(name: 'Surface', color: colorScheme.surface, onColor: colorScheme.onSurface),
-            _ColorItem(name: 'Surface Dim', color: colorScheme.surfaceDim, onColor: colorScheme.onSurface),
-            _ColorItem(name: 'Surface Bright', color: colorScheme.surfaceBright, onColor: colorScheme.onSurface),
-            _ColorItem(name: 'Surface Container Lowest', color: colorScheme.surfaceContainerLowest, onColor: colorScheme.onSurface),
-            _ColorItem(name: 'Surface Container Low', color: colorScheme.surfaceContainerLow, onColor: colorScheme.onSurface),
-            _ColorItem(name: 'Surface Container', color: colorScheme.surfaceContainer, onColor: colorScheme.onSurface),
-            _ColorItem(name: 'Surface Container High', color: colorScheme.surfaceContainerHigh, onColor: colorScheme.onSurface),
-            _ColorItem(name: 'Surface Container Highest', color: colorScheme.surfaceContainerHighest, onColor: colorScheme.onSurface),
-            _ColorItem(name: 'Inverse Surface', color: colorScheme.inverseSurface, onColor: colorScheme.onInverseSurface),
+            _ColorItem(
+              name: 'Surface',
+              color: colorScheme.surface,
+              onColor: colorScheme.onSurface,
+            ),
+            _ColorItem(
+              name: 'Surface Dim',
+              color: colorScheme.surfaceDim,
+              onColor: colorScheme.onSurface,
+            ),
+            _ColorItem(
+              name: 'Surface Bright',
+              color: colorScheme.surfaceBright,
+              onColor: colorScheme.onSurface,
+            ),
+            _ColorItem(
+              name: 'Surface Container Lowest',
+              color: colorScheme.surfaceContainerLowest,
+              onColor: colorScheme.onSurface,
+            ),
+            _ColorItem(
+              name: 'Surface Container Low',
+              color: colorScheme.surfaceContainerLow,
+              onColor: colorScheme.onSurface,
+            ),
+            _ColorItem(
+              name: 'Surface Container',
+              color: colorScheme.surfaceContainer,
+              onColor: colorScheme.onSurface,
+            ),
+            _ColorItem(
+              name: 'Surface Container High',
+              color: colorScheme.surfaceContainerHigh,
+              onColor: colorScheme.onSurface,
+            ),
+            _ColorItem(
+              name: 'Surface Container Highest',
+              color: colorScheme.surfaceContainerHighest,
+              onColor: colorScheme.onSurface,
+            ),
+            _ColorItem(
+              name: 'Inverse Surface',
+              color: colorScheme.inverseSurface,
+              onColor: colorScheme.onInverseSurface,
+            ),
           ],
         ),
         _ColorSection(
           title: 'Outline',
           items: [
-            _ColorItem(name: 'Outline', color: colorScheme.outline, onColor: colorScheme.surface),
-            _ColorItem(name: 'Outline Variant', color: colorScheme.outlineVariant, onColor: colorScheme.onSurface),
+            _ColorItem(
+              name: 'Outline',
+              color: colorScheme.outline,
+              onColor: colorScheme.surface,
+            ),
+            _ColorItem(
+              name: 'Outline Variant',
+              color: colorScheme.outlineVariant,
+              onColor: colorScheme.onSurface,
+            ),
           ],
         ),
         _ColorSection(
           title: 'Error',
           items: [
-            _ColorItem(name: 'Error', color: colorScheme.error, onColor: colorScheme.onError),
-            _ColorItem(name: 'Error Container', color: colorScheme.errorContainer, onColor: colorScheme.onErrorContainer),
+            _ColorItem(
+              name: 'Error',
+              color: colorScheme.error,
+              onColor: colorScheme.onError,
+            ),
+            _ColorItem(
+              name: 'Error Container',
+              color: colorScheme.errorContainer,
+              onColor: colorScheme.onErrorContainer,
+            ),
           ],
         ),
       ],
@@ -81,14 +161,11 @@ class _ColorSection extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
-          child: Text(
-            title,
-            style: context.textTheme.headlineSmall,
-          ),
+          child: Text(title, style: context.textTheme.headlineSmall),
         ),
-// ...
-// (rest of build method)
 
+        // ...
+        // (rest of build method)
         GridView.count(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -135,9 +212,9 @@ class _ColorItem extends StatelessWidget {
           Text(
             '#${color.toARGB32().toRadixString(16).toUpperCase().padLeft(8, '0').substring(2)}',
             style: context.textTheme.labelSmall?.copyWith(
-                  color: onColor.withValues(alpha: 0.7),
-                  fontFeatures: const [FontFeature.tabularFigures()],
-                ),
+              color: onColor.withValues(alpha: 0.7),
+              fontFeatures: const [FontFeature.tabularFigures()],
+            ),
           ),
         ],
       ),

@@ -67,4 +67,24 @@ void main() {
     // FAB icon should NOT be present (it's conditionally rendered)
     expect(find.byIcon(Icons.add), findsNothing);
   });
+
+  testWidgets('AppIcon renders at expected sizes', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: Column(
+            children: [
+              AppIcon(Icons.star, size: AppIconSize.small),
+              AppIcon(Icons.star, size: AppIconSize.medium),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    final icons = tester.widgetList<Icon>(find.byType(Icon)).toList();
+    expect(icons.length, 2);
+    expect(icons[0].size, 18.0);
+    expect(icons[1].size, 24.0);
+  });
 }

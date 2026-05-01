@@ -12,9 +12,9 @@ Widget spacingUseCase(BuildContext context) {
           'Spacing Scale (8px rhythm)',
           style: context.textTheme.headlineSmall,
         ),
-// ...
-// (rest of build method)
 
+        // ...
+        // (rest of build method)
         const SizedBox(height: AppSpacing.md),
         _SpacingItem(name: 'none', value: AppSpacing.none),
         _SpacingItem(name: 'xs', value: AppSpacing.xs),
@@ -24,10 +24,7 @@ Widget spacingUseCase(BuildContext context) {
         _SpacingItem(name: 'xl', value: AppSpacing.xl),
         _SpacingItem(name: 'xxl', value: AppSpacing.xxl),
         const Divider(height: AppSpacing.xxl),
-        Text(
-          'Layout Tokens',
-          style: context.textTheme.headlineSmall,
-        ),
+        Text('Layout Tokens', style: context.textTheme.headlineSmall),
         const SizedBox(height: AppSpacing.md),
         _SpacingItem(name: 'gutter', value: AppSpacing.gutter),
         _SpacingItem(name: 'marginMobile', value: AppSpacing.marginMobile),
@@ -52,10 +49,7 @@ class _SpacingItem extends StatelessWidget {
         children: [
           SizedBox(
             width: 120,
-            child: Text(
-              '$name ($value)',
-              style: context.textTheme.bodyMedium,
-            ),
+            child: Text('$name ($value)', style: context.textTheme.bodyMedium),
           ),
           Container(
             height: 24,
