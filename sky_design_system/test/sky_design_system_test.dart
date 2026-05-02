@@ -400,4 +400,26 @@ void main() {
     expect(find.byIcon(Icons.settings), findsOneWidget);
     expect(find.byType(AppBar), findsOneWidget);
   });
+
+  testWidgets('AppDialog renders title, content, and actions', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          body: AppDialog(
+            title: 'Dialog Title',
+            content: const Text('Dialog Content'),
+            actions: [AppButton.text(text: 'OK', onPressed: () {})],
+          ),
+        ),
+      ),
+    );
+
+    expect(find.text('Dialog Title'), findsOneWidget);
+    expect(find.text('Dialog Content'), findsOneWidget);
+    expect(find.text('OK'), findsOneWidget);
+    expect(find.byType(AlertDialog), findsOneWidget);
+  });
 }
