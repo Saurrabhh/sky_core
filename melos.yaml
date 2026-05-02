@@ -1,4 +1,4 @@
-name: sky_core_workspace
+name: sky_core
 packages:
   - packages/**
 
