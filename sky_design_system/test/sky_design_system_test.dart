@@ -495,4 +495,41 @@ void main() {
 
     expect(find.byType(Tooltip), findsOneWidget);
   });
+
+  testWidgets('AppNavigationBar renders destinations and handles selection', (
+    WidgetTester tester,
+  ) async {
+    int selectedIndex = 0;
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          bottomNavigationBar: StatefulBuilder(
+            builder: (context, setState) {
+              return AppNavigationBar(
+                selectedIndex: selectedIndex,
+                onDestinationSelected: (index) =>
+                    setState(() => selectedIndex = index),
+                destinations: const [
+                  NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+                  NavigationDestination(
+                    icon: Icon(Icons.settings),
+                    label: 'Settings',
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(NavigationBar), findsOneWidget);
+    expect(find.text('Home'), findsOneWidget);
+    expect(find.text('Settings'), findsOneWidget);
+
+    await tester.tap(find.text('Settings'));
+    await tester.pumpAndSettle();
+    expect(selectedIndex, 1);
+  });
 }

@@ -9,3 +9,4 @@ export 'src/theme.dart';
 export 'src/extensions.dart';
 export 'src/components/atoms/atoms.dart';
 export 'src/components/molecules/molecules.dart';
+export 'src/components/organisms/organisms.dart';
