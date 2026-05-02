@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'app_text.dart';
 
 /// A wrapper around Material Badge for numerical or status indicators.
 class AppBadge extends StatelessWidget {
@@ -20,7 +21,7 @@ class AppBadge extends StatelessWidget {
     }
 
     return Badge(
-      label: count != null ? Text(count.toString()) : null,
+      label: count != null ? AppText.labelSmall(count.toString(), color: Colors.white) : null,
       isLabelVisible: count != null && count! > 0,
       child: child,
     );

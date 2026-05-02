@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../extensions.dart';
+import 'app_text.dart';
 
 /// A circular container for user images or initials.
 class AppAvatar extends StatelessWidget {
@@ -22,11 +23,9 @@ class AppAvatar extends StatelessWidget {
       foregroundColor: context.colorScheme.onPrimaryContainer,
       backgroundImage: backgroundImage,
       child: backgroundImage == null && initials != null
-          ? Text(
+          ? AppText.titleMedium(
               initials!,
-              style: context.textTheme.titleMedium?.copyWith(
-                color: context.colorScheme.onPrimaryContainer,
-              ),
+              color: context.colorScheme.onPrimaryContainer,
             )
           : null,
     );
