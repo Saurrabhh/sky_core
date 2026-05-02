@@ -571,4 +571,73 @@ void main() {
     await tester.pumpAndSettle();
     expect(selectedIndex, 1);
   });
+
+  testWidgets('AppNavigationDrawer renders children', (
+    WidgetTester tester,
+  ) async {
+    int selectedIndex = 0;
+    final scaffoldKey = GlobalKey<ScaffoldState>();
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          key: scaffoldKey,
+          drawer: StatefulBuilder(
+            builder: (context, setState) {
+              return AppNavigationDrawer(
+                selectedIndex: selectedIndex,
+                onDestinationSelected: (index) =>
+                    setState(() => selectedIndex = index),
+                children: const [
+                  Padding(padding: EdgeInsets.all(16.0), child: Text('Header')),
+                  NavigationDrawerDestination(
+                    icon: Icon(Icons.home),
+                    label: Text('Home'),
+                  ),
+                  NavigationDrawerDestination(
+                    icon: Icon(Icons.settings),
+                    label: Text('Settings'),
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+      ),
+    );
+
+    // Open drawer
+    scaffoldKey.currentState!.openDrawer();
+    await tester.pumpAndSettle();
+
+    expect(find.byType(NavigationDrawer), findsOneWidget);
+    expect(find.text('Header'), findsOneWidget);
+    expect(find.text('Home'), findsOneWidget);
+  });
+
+  testWidgets('AppTabBar renders tabs', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: const DefaultTabController(
+          length: 2,
+          child: Scaffold(
+            appBar: AppTopBar(
+              title: 'Tabs',
+              bottom: AppTabBar(
+                tabs: [
+                  Tab(text: 'Tab 1'),
+                  Tab(text: 'Tab 2'),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(TabBar), findsOneWidget);
+    expect(find.text('Tab 1'), findsOneWidget);
+    expect(find.text('Tab 2'), findsOneWidget);
+  });
 }
