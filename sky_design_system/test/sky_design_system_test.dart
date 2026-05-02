@@ -422,4 +422,38 @@ void main() {
     expect(find.text('OK'), findsOneWidget);
     expect(find.byType(AlertDialog), findsOneWidget);
   });
+
+  testWidgets('AppSnackbar creation logic', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          body: Builder(
+            builder: (context) {
+              return Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    final snackbar = AppSnackbar.create(
+                      context: context,
+                      message: 'Test Message',
+                      actionText: 'Undo',
+                      onAction: () {},
+                    );
+                    // We'll just verify the properties of the created object
+                    expect(snackbar.content, isA<Text>());
+                    expect((snackbar.content as Text).data, 'Test Message');
+                    expect(snackbar.action?.label, 'Undo');
+                  },
+                  child: const Text('Show'),
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+
+    await tester.tap(find.text('Show'));
+    await tester.pump();
+  });
 }
