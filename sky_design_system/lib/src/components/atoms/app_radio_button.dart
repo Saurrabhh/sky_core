@@ -17,7 +17,9 @@ class AppRadioButton<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return Radio<T>(
       value: value,
+      // ignore: deprecated_member_use
       groupValue: groupValue,
+      // ignore: deprecated_member_use
       onChanged: onChanged,
       materialTapTargetSize: MaterialTapTargetSize.padded,
     );
