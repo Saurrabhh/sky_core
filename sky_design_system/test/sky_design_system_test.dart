@@ -329,4 +329,24 @@ void main() {
     expect(find.byIcon(Icons.star), findsOneWidget);
     expect(find.byIcon(Icons.chevron_right), findsOneWidget);
   });
+
+  testWidgets('AppSectionHeader renders title and action', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          body: AppSectionHeader(
+            title: 'Section Title',
+            actionText: 'View All',
+            onActionTap: () {},
+          ),
+        ),
+      ),
+    );
+
+    expect(find.text('Section Title'), findsOneWidget);
+    expect(find.text('View All'), findsOneWidget);
+  });
 }
