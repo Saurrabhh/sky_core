@@ -4,6 +4,7 @@ export 'app_button.dart';
 export 'app_checkbox.dart';
 export 'app_divider.dart';
 export 'app_icon.dart';
+export 'app_icon_button.dart';
 export 'app_progress_indicator.dart';
 export 'app_radio_button.dart';
 export 'app_slider.dart';
