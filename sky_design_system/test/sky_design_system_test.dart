@@ -480,4 +480,19 @@ void main() {
     expect(find.text('You have no items in your inbox.'), findsOneWidget);
     expect(find.text('Refresh'), findsOneWidget);
   });
+
+  testWidgets('AppTooltip wraps child with Tooltip', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: const Scaffold(
+          body: AppTooltip(message: 'Help text', child: Icon(Icons.info)),
+        ),
+      ),
+    );
+
+    expect(find.byType(Tooltip), findsOneWidget);
+  });
 }
