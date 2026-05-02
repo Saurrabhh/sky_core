@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../extensions.dart';
 import '../../foundations/border_radius.dart';
+import '../atoms/app_text.dart';
 
 /// Utility class for creating and displaying standardized Snackbars.
 class AppSnackbar {
@@ -18,11 +19,9 @@ class AppSnackbar {
     final textTheme = context.textTheme;
 
     return SnackBar(
-      content: Text(
+      content: AppText.bodyMedium(
         message,
-        style: textTheme.bodyMedium?.copyWith(
-          color: isError ? colorScheme.onError : colorScheme.onInverseSurface,
-        ),
+        color: isError ? colorScheme.onError : colorScheme.onInverseSurface,
       ),
       backgroundColor: isError ? colorScheme.error : colorScheme.inverseSurface,
       behavior: SnackBarBehavior.floating,

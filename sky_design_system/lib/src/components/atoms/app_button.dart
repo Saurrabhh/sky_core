@@ -80,7 +80,7 @@ class AppButton extends StatelessWidget {
             ? const SizedBox(
                 width: 18,
                 height: 18,
-                child: CircularProgressIndicator(strokeWidth: 2),
+                child: AppProgressIndicator.circular(),
               )
             : Icon(iconData),
       );
@@ -94,7 +94,7 @@ class AppButton extends StatelessWidget {
         spacing: AppSpacing.sm,
         children: [
           if (iconData != null) ...[Icon(iconData, size: 18)],
-          Text(text),
+          AppText.labelLarge(text),
         ],
       ),
     );
@@ -145,7 +145,7 @@ class _LoadingOverlay extends StatelessWidget {
           const SizedBox(
             width: 18,
             height: 18,
-            child: CircularProgressIndicator(strokeWidth: 2),
+            child: AppProgressIndicator.circular(),
           ),
       ],
     );

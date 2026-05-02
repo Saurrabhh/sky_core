@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../atoms/app_icon.dart';
+import '../atoms/app_text.dart';
 
 /// The backbone list item for the design system.
 class AppListItem extends StatelessWidget {
@@ -23,8 +24,8 @@ class AppListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(title),
-      subtitle: subtitle != null ? Text(subtitle!) : null,
+      title: AppText.titleMedium(title),
+      subtitle: subtitle != null ? AppText.bodySmall(subtitle!) : null,
       leading: leadingIcon != null ? AppIcon(leadingIcon!) : null,
       trailing:
           trailingWidget ??

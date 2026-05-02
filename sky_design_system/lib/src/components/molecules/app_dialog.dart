@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../extensions.dart';
 import '../../foundations/border_radius.dart';
+import '../atoms/app_text.dart';
 
 /// A standard modal surface for Alerts and Confirmations.
 class AppDialog extends StatelessWidget {
@@ -18,11 +19,9 @@ class AppDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(
+      title: AppText.headlineSmall(
         title,
-        style: context.textTheme.headlineSmall?.copyWith(
-          color: context.colorScheme.onSurface,
-        ),
+        color: context.colorScheme.onSurface,
       ),
       content: content,
       actions: actions,

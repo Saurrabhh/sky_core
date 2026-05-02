@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../extensions.dart';
+import '../atoms/app_text.dart';
 
 /// A standardized app bar for the design system.
 class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
@@ -21,11 +22,9 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(
+      title: AppText.titleLarge(
         title,
-        style: context.textTheme.titleLarge?.copyWith(
-          color: context.colorScheme.onSurface,
-        ),
+        color: context.colorScheme.onSurface,
       ),
       centerTitle: centerTitle,
       leading: leading,
