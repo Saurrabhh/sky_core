@@ -532,4 +532,43 @@ void main() {
     await tester.pumpAndSettle();
     expect(selectedIndex, 1);
   });
+
+  testWidgets('AppNavigationRail renders destinations and handles selection', (
+    WidgetTester tester,
+  ) async {
+    int selectedIndex = 0;
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          body: StatefulBuilder(
+            builder: (context, setState) {
+              return AppNavigationRail(
+                selectedIndex: selectedIndex,
+                onDestinationSelected: (index) =>
+                    setState(() => selectedIndex = index),
+                destinations: const [
+                  NavigationRailDestination(
+                    icon: Icon(Icons.home),
+                    label: Text('Home'),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.settings),
+                    label: Text('Settings'),
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(NavigationRail), findsOneWidget);
+    expect(find.text('Home'), findsOneWidget);
+
+    await tester.tap(find.text('Settings'));
+    await tester.pumpAndSettle();
+    expect(selectedIndex, 1);
+  });
 }
