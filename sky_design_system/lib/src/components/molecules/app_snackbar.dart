@@ -16,7 +16,6 @@ class AppSnackbar {
     bool isError = false,
   }) {
     final colorScheme = context.colorScheme;
-    final textTheme = context.textTheme;
 
     return SnackBar(
       content: AppText.bodyMedium(
