@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../atoms/app_text_field.dart';
 import '../atoms/app_icon.dart';
+import '../atoms/app_icon_button.dart';
 
 /// A composite input atom specifically for search fields.
 class AppSearchBar extends StatefulWidget {
@@ -50,12 +51,18 @@ class _AppSearchBarState extends State<AppSearchBar> {
       onChanged: widget.onChanged,
       prefixIcon: const AppIcon(Icons.search),
       suffixIcon: _controller.text.isNotEmpty
-          ? IconButton(
-              icon: const AppIcon(Icons.close),
+          ? AppIconButton(
+              icon: Icons.close,
               onPressed: () {
                 _controller.clear();
                 widget.onChanged?.call('');
               },
+            )
+          : null,
+    );
+  }
+}
+,
             )
           : null,
     );
