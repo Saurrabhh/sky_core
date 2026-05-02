@@ -456,4 +456,28 @@ void main() {
     await tester.tap(find.text('Show'));
     await tester.pump();
   });
+
+  testWidgets('AppEmptyState renders icon, title, description, and action', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          body: AppEmptyState(
+            icon: Icons.inbox,
+            title: 'No items',
+            description: 'You have no items in your inbox.',
+            actionText: 'Refresh',
+            onAction: () {},
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byIcon(Icons.inbox), findsOneWidget);
+    expect(find.text('No items'), findsOneWidget);
+    expect(find.text('You have no items in your inbox.'), findsOneWidget);
+    expect(find.text('Refresh'), findsOneWidget);
+  });
 }
