@@ -349,4 +349,33 @@ void main() {
     expect(find.text('Section Title'), findsOneWidget);
     expect(find.text('View All'), findsOneWidget);
   });
+
+  testWidgets('AppSearchBar renders with search icon and clears text', (
+    WidgetTester tester,
+  ) async {
+    final controller = TextEditingController();
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          body: AppSearchBar(controller: controller, hintText: 'Search...'),
+        ),
+      ),
+    );
+
+    expect(find.byType(AppTextField), findsOneWidget);
+    expect(find.byIcon(Icons.search), findsOneWidget);
+
+    await tester.enterText(find.byType(AppTextField), 'Query');
+    await tester.pumpAndSettle();
+
+    // Clear icon should now be visible
+    expect(find.byIcon(Icons.close), findsOneWidget);
+
+    // Tap clear
+    await tester.tap(find.byIcon(Icons.close));
+    await tester.pumpAndSettle();
+
+    expect(controller.text, isEmpty);
+  });
 }
