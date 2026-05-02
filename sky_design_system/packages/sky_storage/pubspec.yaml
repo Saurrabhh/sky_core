@@ -1,0 +1,12 @@
+name: sky_storage
+description: Abstract storage interfaces for Sky Core.
+publish_to: none
+version: 0.0.1
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+dependencies:
+  sky_error:
+    path: ../sky_error
+dev_dependencies:
+  sky_lints:
+    path: ../sky_lints
