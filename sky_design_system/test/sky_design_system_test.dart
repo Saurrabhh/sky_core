@@ -378,4 +378,26 @@ void main() {
 
     expect(controller.text, isEmpty);
   });
+
+  testWidgets('AppTopBar renders title and actions', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          appBar: AppTopBar(
+            title: 'Page Title',
+            actions: [
+              IconButton(icon: const Icon(Icons.settings), onPressed: () {}),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    expect(find.text('Page Title'), findsOneWidget);
+    expect(find.byIcon(Icons.settings), findsOneWidget);
+    expect(find.byType(AppBar), findsOneWidget);
+  });
 }
