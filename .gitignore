@@ -1,4 +1,6 @@
-﻿.idea/
 .dart_tool/
-*.iml
-.metadata
+.packages
+.pub/
+build/
+.melos/
+melos_sky_core.iml
