@@ -282,4 +282,51 @@ void main() {
 
     expect(find.byType(Slider), findsOneWidget);
   });
+
+  testWidgets('AppCard renders outlined and filled variants', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          body: Column(
+            children: [
+              AppCard.outlined(child: const Text('Outlined Card')),
+              AppCard.filled(child: const Text('Filled Card')),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    expect(find.text('Outlined Card'), findsOneWidget);
+    expect(find.text('Filled Card'), findsOneWidget);
+    expect(find.byType(Card), findsNWidgets(2));
+  });
+
+  testWidgets('AppListItem renders title, subtitle, and icons', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          body: AppListItem(
+            title: 'Item Title',
+            subtitle: 'Item Subtitle',
+            leadingIcon: Icons.star,
+            trailingIcon: Icons.chevron_right,
+            onTap: () {},
+          ),
+        ),
+      ),
+    );
+
+    expect(find.text('Item Title'), findsOneWidget);
+    expect(find.text('Item Subtitle'), findsOneWidget);
+    expect(find.byType(ListTile), findsOneWidget);
+    expect(find.byIcon(Icons.star), findsOneWidget);
+    expect(find.byIcon(Icons.chevron_right), findsOneWidget);
+  });
 }
