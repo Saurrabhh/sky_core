@@ -1,0 +1,58 @@
+{
+  "configVersion": 2,
+  "packages": [
+    {
+      "name": "collection",
+      "rootUri": "file:///C:/Users/Saurabh/AppData/Local/Pub/Cache/hosted/pub.dev/collection-1.19.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "equatable",
+      "rootUri": "file:///C:/Users/Saurabh/AppData/Local/Pub/Cache/hosted/pub.dev/equatable-2.0.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "fpdart",
+      "rootUri": "file:///C:/Users/Saurabh/AppData/Local/Pub/Cache/hosted/pub.dev/fpdart-0.6.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "meta",
+      "rootUri": "file:///C:/Users/Saurabh/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.18.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
+      "name": "sky_error",
+      "rootUri": "../../sky_error",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "sky_lints",
+      "rootUri": "../../sky_lints",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "very_good_analysis",
+      "rootUri": "file:///C:/Users/Saurabh/AppData/Local/Pub/Cache/hosted/pub.dev/very_good_analysis-6.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "sky_storage",
+      "rootUri": "../",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    }
+  ],
+  "generator": "pub",
+  "generatorVersion": "3.11.5",
+  "flutterRoot": "file:///C:/Users/Saurabh/flutter",
+  "flutterVersion": "3.41.7",
+  "pubCache": "file:///C:/Users/Saurabh/AppData/Local/Pub/Cache"
+}

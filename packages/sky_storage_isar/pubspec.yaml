@@ -1,0 +1,18 @@
+name: sky_storage_isar
+description: Isar implementation for sky_storage.
+version: 0.0.1
+publish_to: none
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+dependencies:
+  isar: ^3.1.0+1
+  isar_flutter_libs: ^3.1.0+1
+  sky_error:
+    path: ../sky_error
+  sky_storage:
+    path: ../sky_storage
+dev_dependencies:
+  build_runner: ^2.4.8
+  isar_generator: ^3.1.0+1
+  sky_lints:
+    path: ../sky_lints
