@@ -563,7 +563,7 @@ packages:
   sky_design_system:
     dependency: "direct main"
     description:
-      path: "../packages/sky_design_system"
+      path: ".."
       relative: true
     source: path
     version: "0.0.1"

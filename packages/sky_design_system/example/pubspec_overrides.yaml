@@ -1,0 +1,4 @@
+# melos_managed_dependency_overrides: sky_design_system
+dependency_overrides:
+  sky_design_system:
+    path: ..
