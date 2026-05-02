@@ -1,0 +1,16 @@
+name: sky_network
+description: Network layer for Sky Core.
+version: 0.0.1
+publish_to: none
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+dependencies:
+  dio: ^5.4.0
+  retrofit: ^4.1.0
+  sky_error:
+    path: ../sky_error
+dev_dependencies:
+  build_runner: ^2.4.8
+  retrofit_generator: ^8.1.0
+  sky_lints:
+    path: ../sky_lints
