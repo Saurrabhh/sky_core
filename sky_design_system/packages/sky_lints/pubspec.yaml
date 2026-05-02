@@ -1,0 +1,7 @@
+name: sky_lints
+description: Shared lint rules for Sky Core.
+version: 0.0.1
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+dependencies:
+  very_good_analysis: ^6.0.0

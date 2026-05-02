@@ -1,0 +1,11 @@
+name: sky_error
+description: Result and Failure types for Sky Core.
+version: 0.0.1
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+dependencies:
+  fpdart: ^0.6.0
+  equatable: ^2.0.5
+dev_dependencies:
+  sky_lints:
+    path: ../sky_lints

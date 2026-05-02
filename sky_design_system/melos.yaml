@@ -1,0 +1,8 @@
+name: sky_core_workspace
+packages:
+  - packages/**
+
+scripts:
+  analyze:
+    run: melos exec -c 1 -- "dart analyze"
+    description: Run dart analyze in all packages.
