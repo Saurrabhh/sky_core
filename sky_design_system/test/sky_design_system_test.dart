@@ -640,4 +640,48 @@ void main() {
     expect(find.text('Tab 1'), findsOneWidget);
     expect(find.text('Tab 2'), findsOneWidget);
   });
+
+  testWidgets('AppIconButton variants render correctly', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          body: Column(
+            children: [
+              AppIconButton(icon: Icons.add, onPressed: () {}),
+              AppIconButton.filled(icon: Icons.remove, onPressed: () {}),
+              AppIconButton.tonal(icon: Icons.edit, onPressed: () {}),
+              AppIconButton.outlined(icon: Icons.delete, onPressed: () {}),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byIcon(Icons.add), findsOneWidget);
+    expect(find.byIcon(Icons.remove), findsOneWidget);
+    expect(find.byIcon(Icons.edit), findsOneWidget);
+    expect(find.byIcon(Icons.delete), findsOneWidget);
+
+    // Verify standard IconButton
+    expect(find.byType(IconButton), findsNWidgets(4));
+  });
+
+  testWidgets('AppIconButton shows loading indicator', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          body: AppIconButton(icon: Icons.add, onPressed: () {}, isLoading: true),
+        ),
+      ),
+    );
+
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
+    expect(find.byIcon(Icons.add), findsNothing);
+  });
 }
