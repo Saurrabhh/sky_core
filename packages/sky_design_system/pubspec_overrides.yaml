@@ -1,4 +1,0 @@
-# melos_managed_dependency_overrides: sky_lints
-dependency_overrides:
-  sky_lints:
-    path: ..\\sky_lints
