@@ -27,7 +27,7 @@
     </leaf>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {}
@@ -72,19 +72,31 @@
     &quot;io.flutter.project.isFirstOpen&quot;: &quot;true&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Saurabh/AndroidStudioProjects/sky_core/sky_design_system&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Saurabh/AndroidStudioProjects/sky_core&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Saurabh\AndroidStudioProjects\sky_core" />
       <recent name="C:\Users\Saurabh\AndroidStudioProjects\sky_core\sky_design_system" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Flutter.main.dart">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter" temporary="true" nameIsGenerated="true">
       <option name="filePath" value="$PROJECT_DIR$/example/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="sky_design_system" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="sky_design_system" />
+      <option name="filePath" />
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -153,6 +165,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
     <MESSAGE value="update" />
     <MESSAGE value="update row" />
     <option name="LAST_COMMIT_MESSAGE" value="update row" />
