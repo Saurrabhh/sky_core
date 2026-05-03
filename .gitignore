@@ -7,12 +7,19 @@ build/
 
 # Melos
 .melos/
+pubspec_overrides.yaml
+
+# Flutter/Dart
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
 
 # IDE files
 .idea/
 *.iml
 *.iws
 *.ipr
+.vscode/
 
 # Logs
 *.log
