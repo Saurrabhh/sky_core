@@ -1,6 +1,21 @@
+# https://dart.dev/guides/libraries/private-files
 .dart_tool/
 .packages
 .pub/
+.pub-cache/
 build/
+
+# Melos
 .melos/
-melos_sky_core.iml
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Logs
+*.log
+
+# OS files
+.DS_Store

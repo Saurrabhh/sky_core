@@ -1,5 +1,9 @@
 name: sky_core
+description: Monorepo for Sky Core architecture and design system.
+publish_to: none
+
 environment:
   sdk: ^3.11.5
+
 dev_dependencies:
   melos: ^6.0.0
