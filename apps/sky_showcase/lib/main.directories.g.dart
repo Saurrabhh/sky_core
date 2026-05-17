@@ -14,6 +14,8 @@ import 'package:sky_showcase/components/atoms/app_button_use_case.dart'
     as _sky_showcase_components_atoms_app_button_use_case;
 import 'package:sky_showcase/components/atoms/app_text_use_case.dart'
     as _sky_showcase_components_atoms_app_text_use_case;
+import 'package:sky_showcase/components/atoms/foundation_use_cases.dart'
+    as _sky_showcase_components_atoms_foundation_use_cases;
 import 'package:sky_showcase/components/atoms/indicators_use_cases.dart'
     as _sky_showcase_components_atoms_indicators_use_cases;
 import 'package:sky_showcase/components/atoms/inputs_use_cases.dart'
@@ -49,6 +51,11 @@ final directories = <_widgetbook.WidgetbookNode>[
                 builder: _sky_showcase_components_atoms_indicators_use_cases
                     .appAvatarUseCase,
               ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_indicators_use_cases
+                    .appAvatarInteractiveUseCase,
+              ),
             ],
           ),
           _widgetbook.WidgetbookComponent(
@@ -59,11 +66,21 @@ final directories = <_widgetbook.WidgetbookNode>[
                 builder: _sky_showcase_components_atoms_indicators_use_cases
                     .appBadgeUseCase,
               ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_indicators_use_cases
+                    .appBadgeInteractiveUseCase,
+              ),
             ],
           ),
           _widgetbook.WidgetbookComponent(
             name: 'AppButton',
             useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_app_button_use_case
+                    .appButtonInteractiveUseCase,
+              ),
               _widgetbook.WidgetbookUseCase(
                 name: 'Variants',
                 builder: _sky_showcase_components_atoms_app_button_use_case
@@ -82,6 +99,36 @@ final directories = <_widgetbook.WidgetbookNode>[
             ],
           ),
           _widgetbook.WidgetbookComponent(
+            name: 'AppDivider',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Default',
+                builder: _sky_showcase_components_atoms_foundation_use_cases
+                    .appDividerUseCase,
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookComponent(
+            name: 'AppIcon',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_foundation_use_cases
+                    .appIconUseCase,
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookComponent(
+            name: 'AppIconButton',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_app_button_use_case
+                    .appIconButtonUseCase,
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookComponent(
             name: 'AppProgressIndicator',
             useCases: [
               _widgetbook.WidgetbookUseCase(
@@ -89,15 +136,20 @@ final directories = <_widgetbook.WidgetbookNode>[
                 builder: _sky_showcase_components_atoms_indicators_use_cases
                     .appProgressIndicatorUseCase,
               ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_indicators_use_cases
+                    .appProgressIndicatorInteractiveUseCase,
+              ),
             ],
           ),
           _widgetbook.WidgetbookComponent(
             name: 'AppRadioButton',
             useCases: [
               _widgetbook.WidgetbookUseCase(
-                name: 'Default',
+                name: 'Interactive',
                 builder: _sky_showcase_components_atoms_inputs_use_cases
-                    .appRadioButtonUseCase,
+                    .appRadioButtonInteractiveUseCase,
               ),
             ],
           ),
@@ -125,6 +177,11 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'AppText',
             useCases: [
               _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_app_text_use_case
+                    .appTextInteractiveUseCase,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Overrides',
                 builder: _sky_showcase_components_atoms_app_text_use_case
                     .appTextOverridesUseCase,
@@ -140,9 +197,9 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'AppTextField',
             useCases: [
               _widgetbook.WidgetbookUseCase(
-                name: 'Default',
+                name: 'Interactive',
                 builder: _sky_showcase_components_atoms_inputs_use_cases
-                    .appTextFieldUseCase,
+                    .appTextFieldInteractiveUseCase,
               ),
             ],
           ),
@@ -155,10 +212,21 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'AppCard',
             useCases: [
               _widgetbook.WidgetbookUseCase(
-                name: 'Outlined & Filled',
+                name: 'Interactive',
                 builder:
                     _sky_showcase_components_molecules_layout_molecules_use_cases
-                        .appCardUseCase,
+                        .appCardInteractiveUseCase,
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookComponent(
+            name: 'AppDialog',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Dialog',
+                builder:
+                    _sky_showcase_components_molecules_feedback_molecules_use_cases
+                        .appDialogUseCase,
               ),
             ],
           ),
@@ -166,10 +234,10 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'AppEmptyState',
             useCases: [
               _widgetbook.WidgetbookUseCase(
-                name: 'Default',
+                name: 'Interactive',
                 builder:
                     _sky_showcase_components_molecules_feedback_molecules_use_cases
-                        .appEmptyStateUseCase,
+                        .appEmptyStateInteractiveUseCase,
               ),
             ],
           ),
@@ -177,10 +245,10 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'AppListItem',
             useCases: [
               _widgetbook.WidgetbookUseCase(
-                name: 'Default',
+                name: 'Interactive',
                 builder:
                     _sky_showcase_components_molecules_layout_molecules_use_cases
-                        .appListItemUseCase,
+                        .appListItemInteractiveUseCase,
               ),
             ],
           ),
@@ -196,13 +264,35 @@ final directories = <_widgetbook.WidgetbookNode>[
             ],
           ),
           _widgetbook.WidgetbookComponent(
-            name: 'AppTooltip',
+            name: 'AppSectionHeader',
             useCases: [
               _widgetbook.WidgetbookUseCase(
                 name: 'Default',
                 builder:
+                    _sky_showcase_components_molecules_layout_molecules_use_cases
+                        .appSectionHeaderUseCase,
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookComponent(
+            name: 'AppSnackbar',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Snackbar',
+                builder:
                     _sky_showcase_components_molecules_feedback_molecules_use_cases
-                        .appTooltipUseCase,
+                        .appSnackbarUseCase,
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookComponent(
+            name: 'AppTooltip',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder:
+                    _sky_showcase_components_molecules_feedback_molecules_use_cases
+                        .appTooltipInteractiveUseCase,
               ),
             ],
           ),
@@ -215,9 +305,29 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'AppNavigationBar',
             useCases: [
               _widgetbook.WidgetbookUseCase(
-                name: 'Default',
+                name: 'Interactive',
                 builder: _sky_showcase_components_organisms_navigation_use_cases
-                    .appNavigationBarUseCase,
+                    .appNavigationBarInteractiveUseCase,
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookComponent(
+            name: 'AppNavigationDrawer',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Drawer',
+                builder: _sky_showcase_components_organisms_navigation_use_cases
+                    .appNavigationDrawerUseCase,
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookComponent(
+            name: 'AppNavigationRail',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Rail',
+                builder: _sky_showcase_components_organisms_navigation_use_cases
+                    .appNavigationRailUseCase,
               ),
             ],
           ),

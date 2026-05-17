@@ -1,36 +1,71 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/sky_design_system.dart';
+import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 @widgetbook.UseCase(name: 'Default', type: AppCheckbox)
 Widget appCheckboxUseCase(BuildContext context) {
-  return const Center(child: AppCheckbox(value: true, onChanged: null));
+  final value = context.knobs.boolean(label: 'Checked', initialValue: true);
+  return Center(child: AppCheckbox(value: value, onChanged: (v) {}));
 }
 
-@widgetbook.UseCase(name: 'Default', type: AppRadioButton)
-Widget appRadioButtonUseCase(BuildContext context) {
-  return const Center(
-    child: AppRadioButton<int>(value: 1, groupValue: 1, onChanged: null),
+@widgetbook.UseCase(name: 'Interactive', type: AppRadioButton)
+Widget appRadioButtonInteractiveUseCase(BuildContext context) {
+  final selectedValue = context.knobs.list(
+    label: 'Selected',
+    options: [1, 2, 3],
+    initialOption: 1,
+  );
+
+  return Center(
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [1, 2, 3]
+          .map((i) => AppRadioButton<int>(
+                value: i,
+                groupValue: selectedValue,
+                onChanged: (v) {},
+              ))
+          .toList(),
+    ),
   );
 }
 
 @widgetbook.UseCase(name: 'Default', type: AppSwitch)
 Widget appSwitchUseCase(BuildContext context) {
-  return const Center(child: AppSwitch(value: true, onChanged: null));
+  final value = context.knobs.boolean(label: 'On', initialValue: true);
+  return Center(child: AppSwitch(value: value, onChanged: (v) {}));
 }
 
-@widgetbook.UseCase(name: 'Default', type: AppTextField)
-Widget appTextFieldUseCase(BuildContext context) {
-  return const Padding(
-    padding: EdgeInsets.all(AppSpacing.lg),
-    child: AppTextField(hintText: 'Enter text here...'),
+@widgetbook.UseCase(name: 'Interactive', type: AppTextField)
+Widget appTextFieldInteractiveUseCase(BuildContext context) {
+  final label = context.knobs.string(label: 'Label', initialValue: 'Username');
+  final hint = context.knobs.string(
+    label: 'Hint',
+    initialValue: 'Enter your username',
+  );
+  final error = context.knobs.string(label: 'Error', initialValue: '');
+
+  return Padding(
+    padding: const EdgeInsets.all(AppSpacing.lg),
+    child: AppTextField(
+      labelText: label.isNotEmpty ? label : null,
+      hintText: hint.isNotEmpty ? hint : null,
+      errorText: error.isNotEmpty ? error : null,
+    ),
   );
 }
 
 @widgetbook.UseCase(name: 'Default', type: AppSlider)
 Widget appSliderUseCase(BuildContext context) {
-  return const Padding(
-    padding: EdgeInsets.all(AppSpacing.lg),
-    child: AppSlider(value: 0.5, onChanged: null),
+  final value = context.knobs.double.slider(
+    label: 'Value',
+    initialValue: 0.5,
+    min: 0,
+    max: 1,
+  );
+  return Padding(
+    padding: const EdgeInsets.all(AppSpacing.lg),
+    child: AppSlider(value: value, onChanged: (v) {}),
   );
 }

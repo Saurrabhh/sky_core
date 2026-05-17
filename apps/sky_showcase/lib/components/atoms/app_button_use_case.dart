@@ -1,6 +1,117 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/sky_design_system.dart';
+import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
+
+@widgetbook.UseCase(name: 'Interactive', type: AppButton)
+Widget appButtonInteractiveUseCase(BuildContext context) {
+  final text = context.knobs.string(label: 'Text', initialValue: 'Click Me');
+  final isLoading = context.knobs.boolean(label: 'Loading', initialValue: false);
+  final isEnabled = context.knobs.boolean(label: 'Enabled', initialValue: true);
+  final variant = context.knobs.list(
+    label: 'Variant',
+    options: ['Primary', 'Secondary', 'Tonal', 'Outlined', 'Text', 'FAB'],
+    initialOption: 'Primary',
+  );
+
+  final icon = context.knobs.listOrNull<IconData>(
+    label: 'Icon',
+    options: [Icons.add, Icons.search, Icons.settings, Icons.edit],
+  );
+
+  final onPressed = isEnabled ? () {} : null;
+
+  return Center(
+    child: switch (variant) {
+      'Primary' => AppButton.primary(
+          text: text,
+          icon: icon,
+          isLoading: isLoading,
+          onPressed: onPressed,
+        ),
+      'Secondary' => AppButton.secondary(
+          text: text,
+          icon: icon,
+          isLoading: isLoading,
+          onPressed: onPressed,
+        ),
+      'Tonal' => AppButton.tonal(
+          text: text,
+          icon: icon,
+          isLoading: isLoading,
+          onPressed: onPressed,
+        ),
+      'Outlined' => AppButton.outlined(
+          text: text,
+          icon: icon,
+          isLoading: isLoading,
+          onPressed: onPressed,
+        ),
+      'Text' => AppButton.text(
+          text: text,
+          icon: icon,
+          isLoading: isLoading,
+          onPressed: onPressed,
+        ),
+      'FAB' => AppButton.fab(
+          icon: icon ?? Icons.add,
+          isLoading: isLoading,
+          onPressed: onPressed,
+        ),
+      _ => const SizedBox.shrink(),
+    },
+  );
+}
+
+@widgetbook.UseCase(name: 'Interactive', type: AppIconButton)
+Widget appIconButtonUseCase(BuildContext context) {
+  final isLoading = context.knobs.boolean(label: 'Loading', initialValue: false);
+  final isEnabled = context.knobs.boolean(label: 'Enabled', initialValue: true);
+  final variant = context.knobs.list(
+    label: 'Variant',
+    options: ['Standard', 'Filled', 'Tonal', 'Outlined'],
+    initialOption: 'Standard',
+  );
+  final icon = context.knobs.list<IconData>(
+    label: 'Icon',
+    options: [
+      Icons.add,
+      Icons.search,
+      Icons.settings,
+      Icons.edit,
+      Icons.delete,
+    ],
+    initialOption: Icons.add,
+  );
+
+  final onPressed = isEnabled ? () {} : null;
+
+  return Center(
+    child: switch (variant) {
+      'Standard' => AppIconButton(
+          icon: icon,
+          isLoading: isLoading,
+          onPressed: onPressed,
+        ),
+      'Filled' => AppIconButton.filled(
+          icon: icon,
+          isLoading: isLoading,
+          onPressed: onPressed,
+        ),
+      'Tonal' => AppIconButton.tonal(
+          icon: icon,
+          isLoading: isLoading,
+          onPressed: onPressed,
+        ),
+      'Outlined' => AppIconButton.outlined(
+          icon: icon,
+          isLoading: isLoading,
+          onPressed: onPressed,
+        ),
+      _ => const SizedBox.shrink(),
+    },
+  );
+}
 
 @widgetbook.UseCase(name: 'Variants', type: AppButton)
 Widget appButtonVariantsUseCase(BuildContext context) {
