@@ -11,9 +11,10 @@ dev_dependencies:
 
 workspace:
   - packages/*
+  - apps/*
 
 melos:
   scripts:
     analyze:
-      run: melos exec -c 1 -- "dart analyze"
+      run: melos exec -- "dart analyze"
       description: Run dart analyze in all packages.

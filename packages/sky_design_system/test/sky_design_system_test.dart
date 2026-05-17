@@ -18,7 +18,7 @@ void main() {
   });
 
   testWidgets('AppButton variants render correctly', (
-    WidgetTester tester,
+    tester,
   ) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -41,7 +41,7 @@ void main() {
   });
 
   testWidgets('AppButton variants show loading indicator', (
-    WidgetTester tester,
+    tester,
   ) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -68,7 +68,7 @@ void main() {
     expect(find.byIcon(Icons.add), findsNothing);
   });
 
-  testWidgets('AppIcon renders at expected sizes', (WidgetTester tester) async {
+  testWidgets('AppIcon renders at expected sizes', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
         home: Scaffold(
@@ -88,7 +88,7 @@ void main() {
     expect(icons[1].size, 24.0);
   });
 
-  testWidgets('AppCheckbox renders and responds', (WidgetTester tester) async {
+  testWidgets('AppCheckbox renders and responds', (tester) async {
     bool? value = false;
     await tester.pumpWidget(
       MaterialApp(
@@ -113,7 +113,7 @@ void main() {
   });
 
   testWidgets('AppRadioButton renders and responds', (
-    WidgetTester tester,
+    tester,
   ) async {
     var groupValue = 1;
     await tester.pumpWidget(
@@ -139,7 +139,7 @@ void main() {
     expect(groupValue, 2);
   });
 
-  testWidgets('AppSwitch renders and responds', (WidgetTester tester) async {
+  testWidgets('AppSwitch renders and responds', (tester) async {
     var value = false;
     await tester.pumpWidget(
       MaterialApp(
@@ -164,7 +164,7 @@ void main() {
   });
 
   testWidgets('AppTextField renders and accepts text', (
-    WidgetTester tester,
+    tester,
   ) async {
     final controller = TextEditingController();
     await tester.pumpWidget(
@@ -182,7 +182,7 @@ void main() {
   });
 
   testWidgets('AppProgressIndicator renders both variants', (
-    WidgetTester tester,
+    tester,
   ) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -202,7 +202,7 @@ void main() {
     expect(find.byType(LinearProgressIndicator), findsOneWidget);
   });
 
-  testWidgets('AppDivider renders both variants', (WidgetTester tester) async {
+  testWidgets('AppDivider renders both variants', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
         theme: AppTheme.light(useGoogleFonts: false),
@@ -221,7 +221,7 @@ void main() {
     expect(find.byType(VerticalDivider), findsOneWidget);
   });
 
-  testWidgets('AppAvatar renders initials', (WidgetTester tester) async {
+  testWidgets('AppAvatar renders initials', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
         theme: AppTheme.light(useGoogleFonts: false),
@@ -233,7 +233,7 @@ void main() {
     expect(find.text('JD'), findsOneWidget);
   });
 
-  testWidgets('AppBadge renders count', (WidgetTester tester) async {
+  testWidgets('AppBadge renders count', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
         theme: AppTheme.light(useGoogleFonts: false),
@@ -245,7 +245,7 @@ void main() {
     expect(find.text('3'), findsOneWidget);
   });
 
-  testWidgets('AppBadge renders dot', (WidgetTester tester) async {
+  testWidgets('AppBadge renders dot', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
         theme: AppTheme.light(useGoogleFonts: false),
@@ -260,7 +260,7 @@ void main() {
     expect(find.byIcon(Icons.notifications), findsOneWidget);
   });
 
-  testWidgets('AppSlider renders', (WidgetTester tester) async {
+  testWidgets('AppSlider renders', (tester) async {
     var value = 0.5;
     await tester.pumpWidget(
       MaterialApp(
@@ -282,7 +282,7 @@ void main() {
   });
 
   testWidgets('AppCard renders outlined and filled variants', (
-    WidgetTester tester,
+    tester,
   ) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -304,7 +304,7 @@ void main() {
   });
 
   testWidgets('AppListItem renders title, subtitle, and icons', (
-    WidgetTester tester,
+    tester,
   ) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -329,7 +329,7 @@ void main() {
   });
 
   testWidgets('AppSectionHeader renders title and action', (
-    WidgetTester tester,
+    tester,
   ) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -349,7 +349,7 @@ void main() {
   });
 
   testWidgets('AppSearchBar renders with search icon and clears text', (
-    WidgetTester tester,
+    tester,
   ) async {
     final controller = TextEditingController();
     await tester.pumpWidget(
@@ -378,7 +378,7 @@ void main() {
   });
 
   testWidgets('AppTopBar renders title and actions', (
-    WidgetTester tester,
+    tester,
   ) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -400,7 +400,7 @@ void main() {
   });
 
   testWidgets('AppDialog renders title, content, and actions', (
-    WidgetTester tester,
+    tester,
   ) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -421,7 +421,7 @@ void main() {
     expect(find.byType(AlertDialog), findsOneWidget);
   });
 
-  testWidgets('AppSnackbar creation logic', (WidgetTester tester) async {
+  testWidgets('AppSnackbar creation logic', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
         theme: AppTheme.light(useGoogleFonts: false),
@@ -456,7 +456,7 @@ void main() {
   });
 
   testWidgets('AppEmptyState renders icon, title, description, and action', (
-    WidgetTester tester,
+    tester,
   ) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -480,7 +480,7 @@ void main() {
   });
 
   testWidgets('AppTooltip wraps child with Tooltip', (
-    WidgetTester tester,
+    tester,
   ) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -495,7 +495,7 @@ void main() {
   });
 
   testWidgets('AppNavigationBar renders destinations and handles selection', (
-    WidgetTester tester,
+    tester,
   ) async {
     var selectedIndex = 0;
     await tester.pumpWidget(
@@ -532,7 +532,7 @@ void main() {
   });
 
   testWidgets('AppNavigationRail renders destinations and handles selection', (
-    WidgetTester tester,
+    tester,
   ) async {
     var selectedIndex = 0;
     await tester.pumpWidget(
@@ -571,7 +571,7 @@ void main() {
   });
 
   testWidgets('AppNavigationDrawer renders children', (
-    WidgetTester tester,
+    tester,
   ) async {
     var selectedIndex = 0;
     final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -613,7 +613,7 @@ void main() {
     expect(find.text('Home'), findsOneWidget);
   });
 
-  testWidgets('AppTabBar renders tabs', (WidgetTester tester) async {
+  testWidgets('AppTabBar renders tabs', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
         theme: AppTheme.light(useGoogleFonts: false),
@@ -640,7 +640,7 @@ void main() {
   });
 
   testWidgets('AppIconButton variants render correctly', (
-    WidgetTester tester,
+    tester,
   ) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -668,7 +668,7 @@ void main() {
   });
 
   testWidgets('AppIconButton shows loading indicator', (
-    WidgetTester tester,
+    tester,
   ) async {
     await tester.pumpWidget(
       MaterialApp(

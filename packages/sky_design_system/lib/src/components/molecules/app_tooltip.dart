@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sky_design_system/src/extensions.dart';
 import 'package:sky_design_system/src/foundations/border_radius.dart';
 
-/// Small Extra-Small rounded surfaces for providing context on long-press or hover.
+/// Small Extra-Small rounded surfaces for providing context on long-press or
+/// hover.
 class AppTooltip extends StatelessWidget {
   const AppTooltip({required this.message, required this.child, super.key});
 

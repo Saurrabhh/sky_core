@@ -1,0 +1,33 @@
+name: sky_showcase
+description: "A new Flutter project."
+publish_to: 'none'
+version: 1.0.0+1
+resolution: workspace
+
+environment:
+  sdk: '^3.11.5'
+  flutter: '3.41.9'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  sky_design_system:
+    path: ../../packages/sky_design_system
+
+  widgetbook: ^3.23.0
+  widgetbook_annotation: ^3.11.0
+
+dev_dependencies:
+  build_runner: ^2.15.0
+
+  flutter_test:
+    sdk: flutter
+
+  sky_lints:
+    path: ../../packages/sky_lints
+
+  widgetbook_generator: ^3.23.0
+
+flutter:
+  uses-material-design: true

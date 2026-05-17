@@ -4,7 +4,8 @@ import 'package:sky_design_system/src/components/atoms/app_progress_indicator.da
 
 enum _AppIconButtonVariant { standard, filled, tonal, outlined }
 
-/// A unified icon button component following the design system's specifications.
+/// A unified icon button component following the design system's
+/// specifications.
 class AppIconButton extends StatelessWidget {
   /// Creates a standard icon button.
   const AppIconButton({

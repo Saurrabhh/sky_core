@@ -1,6 +1,0 @@
-include: package:sky_lints/analysis_options.yaml
-analyzer:
-  errors:
-    public_member_api_docs: ignore
-    experimental_member_use: ignore
-    cascade_invocations: ignore

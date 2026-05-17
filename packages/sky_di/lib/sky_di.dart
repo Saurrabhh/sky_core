@@ -5,10 +5,10 @@ import 'package:sky_di/sky_di.config.dart';
 export 'package:get_it/get_it.dart';
 
 /// Global [GetIt] instance for the ecosystem.
-final getIt = GetIt.instance;
+final GetIt getIt = GetIt.instance;
 
 /// Global [GetIt] shortcut for brevity.
-final di = getIt;
+final GetIt di = getIt;
 
 /// Initializes the dependency injection for the ecosystem.
 ///

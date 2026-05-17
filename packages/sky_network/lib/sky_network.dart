@@ -70,7 +70,7 @@ FutureResult<T> safeNetworkCall<T>(Future<T> Function() call) async {
     return right(response);
   } on DioException catch (e) {
     return left(e.toFailure());
-  } catch (e) {
+  } on Exception catch (e) {
     return left(UnexpectedFailure(e.toString()));
   }
 }

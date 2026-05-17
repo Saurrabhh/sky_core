@@ -8,8 +8,8 @@ environment:
   flutter: '3.41.9'
 
 dependencies:
-  equatable: ^2.0.5
-  fpdart: ^0.6.0
+  equatable: ^2.0.8
+  fpdart: ^1.2.0
 dev_dependencies:
   sky_lints:
     path: ../sky_lints

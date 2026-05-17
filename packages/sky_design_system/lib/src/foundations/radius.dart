@@ -17,7 +17,8 @@ class AppRadius {
   /// Large radius (16.0) - used for primary container elements.
   static const double lg = 16;
 
-  /// Extra large radius (24.0) - used for bottom sheets and large modal surfaces.
+  /// Extra large radius (24.0) - used for bottom sheets and large modal
+  /// surfaces.
   static const double xl = 24;
 
   /// Full radius (9999.0) - reserved for buttons and status indicators.
