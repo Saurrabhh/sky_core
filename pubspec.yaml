@@ -3,7 +3,17 @@ description: Monorepo for Sky Core architecture and design system.
 publish_to: none
 
 environment:
-  sdk: ^3.11.5
+  sdk: '^3.11.5'
+  flutter: '3.41.9'
 
 dev_dependencies:
-  melos: ^6.0.0
+  melos: ^7.7.0
+
+workspace:
+  - packages/*
+
+melos:
+  scripts:
+    analyze:
+      run: melos exec -c 1 -- "dart analyze"
+      description: Run dart analyze in all packages.

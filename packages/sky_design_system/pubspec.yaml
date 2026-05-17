@@ -1,11 +1,11 @@
 name: sky_design_system
 description: Atomic design system for Sky Core applications.
 version: 0.0.1
-homepage:
+resolution: workspace
 
 environment:
-  sdk: ^3.11.5
-  flutter: ">=1.17.0"
+  sdk: '^3.11.5'
+  flutter: '3.41.9'
 
 dependencies:
   flutter:

@@ -26,3 +26,7 @@ pubspec_overrides.yaml
 
 # OS files
 .DS_Store
+
+# FVM Version Cache
+.fvm/
+.fvmrc

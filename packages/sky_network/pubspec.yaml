@@ -2,8 +2,12 @@ name: sky_network
 description: Network layer for Sky Core.
 version: 0.0.1
 publish_to: none
+resolution: workspace
+
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: '^3.11.5'
+  flutter: '3.41.9'
+
 dependencies:
   dio: ^5.4.0
   retrofit: ^4.1.0
