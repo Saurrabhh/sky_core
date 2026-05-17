@@ -82,7 +82,7 @@ class AppButton extends StatelessWidget {
                 height: 18,
                 child: AppProgressIndicator.circular(),
               )
-            : Icon(iconData),
+            : AppIcon(iconData!),
       );
     }
 
@@ -93,7 +93,7 @@ class AppButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: AppSpacing.sm,
         children: [
-          if (iconData != null) ...[Icon(iconData, size: 18)],
+          if (iconData != null) ...[AppIcon(iconData!, size: AppIconSize.small)],
           AppText.labelLarge(text),
         ],
       ),

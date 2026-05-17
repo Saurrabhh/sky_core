@@ -18,7 +18,7 @@ Widget appTooltipUseCase(BuildContext context) {
   return const Center(
     child: AppTooltip(
       message: 'This is a tooltip',
-      child: Icon(Icons.info, size: 32),
+      child: AppIcon(Icons.info, size: AppIconSize.large),
     ),
   );
 }

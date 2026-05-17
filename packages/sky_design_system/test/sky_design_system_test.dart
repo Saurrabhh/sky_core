@@ -237,7 +237,7 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         theme: AppTheme.light(useGoogleFonts: false),
-        home: const Scaffold(body: AppBadge(count: 3, child: Icon(Icons.mail))),
+        home: const Scaffold(body: AppBadge(count: 3, child: AppIcon(Icons.mail))),
       ),
     );
 
@@ -250,7 +250,7 @@ void main() {
       MaterialApp(
         theme: AppTheme.light(useGoogleFonts: false),
         home: const Scaffold(
-          body: AppBadge(isDot: true, child: Icon(Icons.notifications)),
+          body: AppBadge(isDot: true, child: AppIcon(Icons.notifications)),
         ),
       ),
     );
@@ -387,7 +387,7 @@ void main() {
           appBar: AppTopBar(
             title: 'Page Title',
             actions: [
-              IconButton(icon: const Icon(Icons.settings), onPressed: () {}),
+              IconButton(icon: const AppIcon(Icons.settings), onPressed: () {}),
             ],
           ),
         ),
@@ -486,7 +486,7 @@ void main() {
       MaterialApp(
         theme: AppTheme.light(useGoogleFonts: false),
         home: const Scaffold(
-          body: AppTooltip(message: 'Help text', child: Icon(Icons.info)),
+          body: AppTooltip(message: 'Help text', child: AppIcon(Icons.info)),
         ),
       ),
     );
@@ -509,9 +509,9 @@ void main() {
                 onDestinationSelected: (index) =>
                     setState(() => selectedIndex = index),
                 destinations: const [
-                  NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+                  NavigationDestination(icon: AppIcon(Icons.home), label: 'Home'),
                   NavigationDestination(
-                    icon: Icon(Icons.settings),
+                    icon: AppIcon(Icons.settings),
                     label: 'Settings',
                   ),
                 ],
@@ -547,11 +547,11 @@ void main() {
                     setState(() => selectedIndex = index),
                 destinations: const [
                   NavigationRailDestination(
-                    icon: Icon(Icons.home),
+                    icon: AppIcon(Icons.home),
                     label: Text('Home'),
                   ),
                   NavigationRailDestination(
-                    icon: Icon(Icons.settings),
+                    icon: AppIcon(Icons.settings),
                     label: Text('Settings'),
                   ),
                 ],
@@ -589,11 +589,11 @@ void main() {
                 children: const [
                   Padding(padding: EdgeInsets.all(16), child: Text('Header')),
                   NavigationDrawerDestination(
-                    icon: Icon(Icons.home),
+                    icon: AppIcon(Icons.home),
                     label: Text('Home'),
                   ),
                   NavigationDrawerDestination(
-                    icon: Icon(Icons.settings),
+                    icon: AppIcon(Icons.settings),
                     label: Text('Settings'),
                   ),
                 ],

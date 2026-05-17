@@ -25,6 +25,6 @@ Widget appAvatarUseCase(BuildContext context) {
 @widgetbook.UseCase(name: 'Default', type: AppBadge)
 Widget appBadgeUseCase(BuildContext context) {
   return const Center(
-    child: AppBadge(count: 3, child: Icon(Icons.notifications, size: 32)),
+    child: AppBadge(count: 3, child: AppIcon(Icons.notifications, size: AppIconSize.large)),
   );
 }

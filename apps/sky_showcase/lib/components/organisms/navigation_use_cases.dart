@@ -10,9 +10,9 @@ Widget appNavigationBarUseCase(BuildContext context) {
       selectedIndex: 0,
       onDestinationSelected: (i) {},
       destinations: const [
-        NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-        NavigationDestination(icon: Icon(Icons.search), label: 'Search'),
-        NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
+        NavigationDestination(icon: AppIcon(Icons.home), label: 'Home'),
+        NavigationDestination(icon: AppIcon(Icons.search), label: 'Search'),
+        NavigationDestination(icon: AppIcon(Icons.person), label: 'Profile'),
       ],
     ),
   );

@@ -6,7 +6,10 @@ enum AppIconSize {
   small(18),
 
   /// 24px icon size
-  medium(24);
+  medium(24),
+
+  /// 32px icon size
+  large(32);
 
   const AppIconSize(this.value);
   final double value;
