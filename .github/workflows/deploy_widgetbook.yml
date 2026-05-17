@@ -2,11 +2,6 @@ name: Deploy Widgetbook to GitHub Pages
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
-    paths:
-      - 'apps/sky_showcase/**'
 
 # Grant permissions to write to the GitHub Pages branch
 permissions:
