@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sky_design_system/src/extensions.dart';
-import 'package:sky_design_system/src/foundations/border_radius.dart';
+import 'package:sky_design_system/sky_design_system.dart';
 
 /// Utility class for creating and displaying standardized Snackbars.
 class AppSnackbar {
@@ -18,11 +17,11 @@ class AppSnackbar {
 
     return SnackBar(
       content: isError
-          ? Text(
+          ? AppText.bodyMedium(
               message,
-              style: TextStyle(color: colorScheme.onError),
+              color: colorScheme.onError,
             )
-          : Text(message),
+          : AppText.bodyMedium(message),
       backgroundColor: isError ? colorScheme.error : null,
       behavior: SnackBarBehavior.floating,
       shape: isError

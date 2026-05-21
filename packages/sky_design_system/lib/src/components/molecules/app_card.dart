@@ -21,7 +21,14 @@ class AppCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isOutlined = _variant == _AppCardVariant.outlined;
-    final themeShape = CardTheme.of(context).shape as RoundedRectangleBorder?;
+    final themeShape = CardTheme.of(context).shape;
+    final borderRadius = themeShape is RoundedRectangleBorder
+        ? themeShape.borderRadius
+        : AppBorderRadius.md;
+
+    final childWidget = (padding == null || padding == EdgeInsets.zero)
+        ? child
+        : Padding(padding: padding!, child: child);
 
     return Card(
       elevation: isOutlined ? null : 0,
@@ -31,10 +38,10 @@ class AppCard extends StatelessWidget {
       shape: isOutlined
           ? null
           : RoundedRectangleBorder(
-              borderRadius: themeShape?.borderRadius ?? AppBorderRadius.md,
+              borderRadius: borderRadius,
               side: BorderSide.none,
             ),
-      child: Padding(padding: padding ?? EdgeInsets.zero, child: child),
+      child: childWidget,
     );
   }
 }

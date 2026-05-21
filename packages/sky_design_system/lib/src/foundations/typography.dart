@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTypography {
   const AppTypography._();
 
-  static TextTheme get textTheme => TextTheme(
+  static final TextTheme textTheme = TextTheme(
     displayLarge: GoogleFonts.inter(
       fontSize: 57,
       fontWeight: FontWeight.w400,

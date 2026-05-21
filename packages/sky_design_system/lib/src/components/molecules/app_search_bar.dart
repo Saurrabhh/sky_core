@@ -21,26 +21,31 @@ class AppSearchBar extends StatefulWidget {
 }
 
 class _AppSearchBarState extends State<AppSearchBar> {
-  late final TextEditingController _controller;
+  late TextEditingController _controller;
 
   @override
   void initState() {
     super.initState();
     _controller = widget.controller ?? TextEditingController();
-    _controller.addListener(_onTextChanged);
+  }
+
+  @override
+  void didUpdateWidget(AppSearchBar oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.controller != oldWidget.controller) {
+      if (oldWidget.controller == null) {
+        _controller.dispose();
+      }
+      _controller = widget.controller ?? TextEditingController();
+    }
   }
 
   @override
   void dispose() {
-    _controller.removeListener(_onTextChanged);
     if (widget.controller == null) {
       _controller.dispose();
     }
     super.dispose();
-  }
-
-  void _onTextChanged() {
-    setState(() {}); // Rebuild to show/hide clear icon
   }
 
   @override
@@ -50,15 +55,21 @@ class _AppSearchBarState extends State<AppSearchBar> {
       hintText: widget.hintText,
       onChanged: widget.onChanged,
       prefixIcon: const AppIcon(Icons.search),
-      suffixIcon: _controller.text.isNotEmpty
-          ? AppIconButton(
-              icon: Icons.close,
-              onPressed: () {
-                _controller.clear();
-                widget.onChanged?.call('');
-              },
-            )
-          : null,
+      suffixIcon: ValueListenableBuilder<TextEditingValue>(
+        valueListenable: _controller,
+        builder: (context, value, child) {
+          if (value.text.isEmpty) {
+            return const SizedBox.shrink();
+          }
+          return AppIconButton(
+            icon: Icons.close,
+            onPressed: () {
+              _controller.clear();
+              widget.onChanged?.call('');
+            },
+          );
+        },
+      ),
     );
   }
 }

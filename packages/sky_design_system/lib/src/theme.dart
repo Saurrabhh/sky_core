@@ -36,7 +36,9 @@ class AppTheme {
   }) {
     final textTheme = useGoogleFonts
         ? AppTypography.textTheme
-        : ThemeData.light().textTheme;
+        : (colorScheme.brightness == Brightness.dark
+            ? ThemeData.dark().textTheme
+            : ThemeData.light().textTheme);
 
     return ThemeData(
       useMaterial3: true,
