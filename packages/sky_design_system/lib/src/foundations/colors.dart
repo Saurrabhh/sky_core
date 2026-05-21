@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/src/foundations/app_color_scheme.dart';
 
-/// Default color tokens for the Core Logic Visual Language.
 class AppColors {
   const AppColors._();
 
-  // ==========================================
-  // Private Light Mode Colors (from design.md)
-  // ==========================================
   static const Color _surfaceLight = Color(0xFFF8F9FF);
   static const Color _surfaceDimLight = Color(0xFFD8DAE0);
   static const Color _surfaceBrightLight = Color(0xFFF8F9FF);
@@ -56,9 +52,6 @@ class AppColors {
   static const Color _onBackgroundLight = Color(0xFF191C20);
   static const Color _surfaceVariantLight = Color(0xFFE1E2E8);
 
-  // ==========================================
-  // Private Dark Mode Colors (from design_dark.md)
-  // ==========================================
   static const Color _surfaceDark = Color(0xFF111418);
   static const Color _surfaceDimDark = Color(0xFF111418);
   static const Color _surfaceBrightDark = Color(0xFF36393E);
@@ -107,7 +100,6 @@ class AppColors {
   static const Color _onBackgroundDark = Color(0xFFE1E2E8);
   static const Color _surfaceVariantDark = Color(0xFF32353A);
 
-  /// Standard light mode scheme from design.md
   static const AppColorScheme light = AppColorScheme(
     surface: _surfaceLight,
     surfaceDim: _surfaceDimLight,
@@ -158,7 +150,6 @@ class AppColors {
     surfaceVariant: _surfaceVariantLight,
   );
 
-  /// Standard dark mode scheme from design_dark.md
   static const AppColorScheme dark = AppColorScheme(
     surface: _surfaceDark,
     surfaceDim: _surfaceDimDark,

@@ -99,8 +99,6 @@ class AppColorScheme {
   final Color onBackground;
   final Color surfaceVariant;
 
-  /// Creates a copy of this [AppColorScheme] with the given fields replaced
-  /// with the new values.
   AppColorScheme copyWith({
     Color? surface,
     Color? surfaceDim,
@@ -154,11 +152,13 @@ class AppColorScheme {
       surface: surface ?? this.surface,
       surfaceDim: surfaceDim ?? this.surfaceDim,
       surfaceBright: surfaceBright ?? this.surfaceBright,
-      surfaceContainerLowest: surfaceContainerLowest ?? this.surfaceContainerLowest,
+      surfaceContainerLowest:
+          surfaceContainerLowest ?? this.surfaceContainerLowest,
       surfaceContainerLow: surfaceContainerLow ?? this.surfaceContainerLow,
       surfaceContainer: surfaceContainer ?? this.surfaceContainer,
       surfaceContainerHigh: surfaceContainerHigh ?? this.surfaceContainerHigh,
-      surfaceContainerHighest: surfaceContainerHighest ?? this.surfaceContainerHighest,
+      surfaceContainerHighest:
+          surfaceContainerHighest ?? this.surfaceContainerHighest,
       onSurface: onSurface ?? this.onSurface,
       onSurfaceVariant: onSurfaceVariant ?? this.onSurfaceVariant,
       inverseSurface: inverseSurface ?? this.inverseSurface,
@@ -186,28 +186,29 @@ class AppColorScheme {
       primaryFixed: primaryFixed ?? this.primaryFixed,
       primaryFixedDim: primaryFixedDim ?? this.primaryFixedDim,
       onPrimaryFixed: onPrimaryFixed ?? this.onPrimaryFixed,
-      onPrimaryFixedVariant: onPrimaryFixedVariant ?? this.onPrimaryFixedVariant,
+      onPrimaryFixedVariant:
+          onPrimaryFixedVariant ?? this.onPrimaryFixedVariant,
       secondaryFixed: secondaryFixed ?? this.secondaryFixed,
       secondaryFixedDim: secondaryFixedDim ?? this.secondaryFixedDim,
       onSecondaryFixed: onSecondaryFixed ?? this.onSecondaryFixed,
-      onSecondaryFixedVariant: onSecondaryFixedVariant ?? this.onSecondaryFixedVariant,
+      onSecondaryFixedVariant:
+          onSecondaryFixedVariant ?? this.onSecondaryFixedVariant,
       tertiaryFixed: tertiaryFixed ?? this.tertiaryFixed,
       tertiaryFixedDim: tertiaryFixedDim ?? this.tertiaryFixedDim,
       onTertiaryFixed: onTertiaryFixed ?? this.onTertiaryFixed,
-      onTertiaryFixedVariant: onTertiaryFixedVariant ?? this.onTertiaryFixedVariant,
+      onTertiaryFixedVariant:
+          onTertiaryFixedVariant ?? this.onTertiaryFixedVariant,
       background: background ?? this.background,
       onBackground: onBackground ?? this.onBackground,
       surfaceVariant: surfaceVariant ?? this.surfaceVariant,
     );
   }
 
-  /// Merges another optional [AppColorScheme] into this one.
   AppColorScheme merge(AppColorScheme? other) {
     if (other == null) return this;
     return other;
   }
 
-  /// Converts this [AppColorScheme] to a Flutter [ColorScheme] for a given [Brightness].
   ColorScheme toColorScheme(Brightness brightness) {
     return ColorScheme(
       brightness: brightness,

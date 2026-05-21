@@ -5,11 +5,9 @@ import 'package:sky_design_system/src/foundations/colors.dart';
 import 'package:sky_design_system/src/foundations/spacing.dart';
 import 'package:sky_design_system/src/foundations/typography.dart';
 
-/// The main theme factory for the Core Logic Visual Language.
 class AppTheme {
-  AppTheme._();
+  const AppTheme._();
 
-  /// Generates the Light [ThemeData] for the design system.
   static ThemeData light({
     AppColorScheme? customColorScheme,
     bool useGoogleFonts = true,
@@ -21,7 +19,6 @@ class AppTheme {
     );
   }
 
-  /// Generates the Dark [ThemeData] for the design system.
   static ThemeData dark({
     AppColorScheme? customColorScheme,
     bool useGoogleFonts = true,
@@ -45,7 +42,6 @@ class AppTheme {
       useMaterial3: true,
       colorScheme: colorScheme,
       textTheme: textTheme,
-
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: colorScheme.primaryContainer,
@@ -57,7 +53,6 @@ class AppTheme {
           elevation: 0,
         ),
       ),
-
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: colorScheme.primary,
@@ -68,7 +63,6 @@ class AppTheme {
           textStyle: textTheme.labelLarge,
         ),
       ),
-
       inputDecorationTheme: InputDecorationTheme(
         filled: false,
         border: OutlineInputBorder(
@@ -88,7 +82,6 @@ class AppTheme {
           vertical: AppSpacing.sm,
         ),
       ),
-
       chipTheme: ChipThemeData(
         shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.sm),
         labelStyle: textTheme.labelMedium,
@@ -99,14 +92,12 @@ class AppTheme {
           vertical: AppSpacing.xs,
         ),
       ),
-
       listTileTheme: ListTileThemeData(
         titleTextStyle: textTheme.titleMedium,
         subtitleTextStyle: textTheme.bodySmall,
         contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
         shape: const RoundedRectangleBorder(),
       ),
-
       cardTheme: CardThemeData(
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -116,7 +107,6 @@ class AppTheme {
         color: colorScheme.surface,
         margin: const EdgeInsets.all(AppSpacing.sm),
       ),
-
       checkboxTheme: CheckboxThemeData(
         shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.sm),
         fillColor: WidgetStateProperty.resolveWith((states) {
@@ -126,7 +116,6 @@ class AppTheme {
           return null;
         }),
       ),
-
       radioTheme: RadioThemeData(
         fillColor: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.selected)) {
@@ -135,7 +124,6 @@ class AppTheme {
           return null;
         }),
       ),
-
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: colorScheme.primary,

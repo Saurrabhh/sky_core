@@ -30,11 +30,11 @@ Widget radiusUseCase(BuildContext context) {
               value: AppRadius.sm,
               borderRadius: AppBorderRadius.sm,
             ),
-            _RadiusItem(
-              name: 'base',
-              value: AppRadius.base,
-              borderRadius: AppBorderRadius.base,
-            ),
+            // _RadiusItem(
+            //   name: 'base',
+            //   value: AppRadius.base,
+            //   borderRadius: AppBorderRadius.base,
+            // ),
             _RadiusItem(
               name: 'md',
               value: AppRadius.md,

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-/// Typography tokens for the Core Logic Visual Language.
 class AppTypography {
-  AppTypography._();
+  const AppTypography._();
 
-  /// Default TextTheme for Core Logic Visual Language.
   static TextTheme get textTheme => TextTheme(
     displayLarge: GoogleFonts.inter(
       fontSize: 57,

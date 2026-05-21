@@ -1,6 +1,5 @@
-/// Spacing and layout tokens for the Core Logic Visual Language.
 class AppSpacing {
-  AppSpacing._();
+  const AppSpacing._();
 
   static const double none = 0;
   static const double xs = 4;

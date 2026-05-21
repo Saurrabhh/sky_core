@@ -42,7 +42,7 @@ Widget appAvatarInteractiveUseCase(BuildContext context) {
   return Center(
     child: AppAvatar(
       initials: initials,
-      imageUrl: hasImage ? 'https://i.pravatar.cc/150?u=sky' : null,
+      // backgroundImage: hasImage ? 'https://i.pravatar.cc/150?u=sky' : null,
     ),
   );
 }
