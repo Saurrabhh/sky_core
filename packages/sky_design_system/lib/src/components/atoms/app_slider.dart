@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sky_design_system/src/extensions.dart';
 
 /// A wrapper for the Material Slider.
 class AppSlider extends StatelessWidget {
@@ -29,7 +28,6 @@ class AppSlider extends StatelessWidget {
       max: max,
       divisions: divisions,
       label: label,
-      activeColor: context.colorScheme.primary,
     );
   }
 }

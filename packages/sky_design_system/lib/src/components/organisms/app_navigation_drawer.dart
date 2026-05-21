@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sky_design_system/src/extensions.dart';
 
 /// A standardized navigation drawer for responsive layouts.
 class AppNavigationDrawer extends StatelessWidget {
@@ -19,8 +18,6 @@ class AppNavigationDrawer extends StatelessWidget {
     return NavigationDrawer(
       selectedIndex: selectedIndex,
       onDestinationSelected: onDestinationSelected,
-      backgroundColor: context.colorScheme.surfaceContainerLow,
-      indicatorColor: context.colorScheme.secondaryContainer,
       children: children,
     );
   }

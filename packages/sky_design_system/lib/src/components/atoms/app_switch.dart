@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sky_design_system/src/extensions.dart';
 
 /// A standard toggle for binary states.
 class AppSwitch extends StatelessWidget {
@@ -13,7 +12,6 @@ class AppSwitch extends StatelessWidget {
     return Switch(
       value: value,
       onChanged: onChanged,
-      activeThumbColor: context.colorScheme.primary,
     );
   }
 }

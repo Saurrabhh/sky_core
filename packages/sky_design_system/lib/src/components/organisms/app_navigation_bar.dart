@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sky_design_system/src/extensions.dart';
 
 /// A standardized bottom navigation bar for mobile layouts.
 class AppNavigationBar extends StatelessWidget {
@@ -20,8 +19,6 @@ class AppNavigationBar extends StatelessWidget {
       selectedIndex: selectedIndex,
       onDestinationSelected: onDestinationSelected,
       destinations: destinations,
-      backgroundColor: context.colorScheme.surfaceContainer,
-      indicatorColor: context.colorScheme.secondaryContainer,
       labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
     );
   }

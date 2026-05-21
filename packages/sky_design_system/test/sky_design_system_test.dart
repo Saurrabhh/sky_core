@@ -36,7 +36,7 @@ void main() {
 
     expect(find.text('Inverted'), findsOneWidget);
     expect(find.byIcon(Icons.add), findsOneWidget);
-    expect(find.byType(FilledButton), findsOneWidget);
+    expect(find.byType(ElevatedButton), findsOneWidget);
     expect(find.byType(FloatingActionButton), findsOneWidget);
   });
 
@@ -438,8 +438,8 @@ void main() {
                       onAction: () {},
                     );
                     // We'll just verify the properties of the created object
-                    expect(snackbar.content, isA<AppText>());
-                    expect((snackbar.content as AppText).data, 'Test Message');
+                     expect(snackbar.content, isA<Text>());
+                     expect((snackbar.content as Text).data, 'Test Message');
                     expect(snackbar.action?.label, 'Undo');
                   },
                   child: const Text('Show'),

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sky_design_system/src/components/atoms/app_text.dart';
-import 'package:sky_design_system/src/extensions.dart';
 
 /// A standardized app bar for the design system.
 class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
@@ -22,15 +20,11 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: AppText.titleLarge(title, color: context.colorScheme.onSurface),
+      title: Text(title),
       centerTitle: centerTitle,
       leading: leading,
       actions: actions,
       bottom: bottom,
-      backgroundColor: context.colorScheme.surface,
-      surfaceTintColor: Colors.transparent,
-      elevation: 0,
-      iconTheme: IconThemeData(color: context.colorScheme.onSurface),
     );
   }
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sky_design_system/src/components/atoms/app_text.dart';
 import 'package:sky_design_system/src/extensions.dart';
 import 'package:sky_design_system/src/foundations/radius.dart';
 
@@ -22,10 +21,7 @@ class AppAvatar extends StatelessWidget {
       radius: radius,
       backgroundImage: backgroundImage,
       child: backgroundImage == null && initials != null
-          ? AppText.titleMedium(
-              initials ?? '',
-              color: context.colorScheme.onPrimaryContainer,
-            )
+          ? Text(initials ?? '')
           : null,
     );
   }

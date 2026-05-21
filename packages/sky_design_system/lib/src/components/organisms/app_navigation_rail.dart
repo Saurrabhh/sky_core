@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sky_design_system/src/extensions.dart';
 
 /// A standardized navigation rail for tablet and desktop layouts.
 class AppNavigationRail extends StatelessWidget {
@@ -29,8 +28,6 @@ class AppNavigationRail extends StatelessWidget {
       leading: leading,
       trailing: trailing,
       extended: extended,
-      backgroundColor: context.colorScheme.surface,
-      indicatorColor: context.colorScheme.secondaryContainer,
       labelType: extended
           ? NavigationRailLabelType.none
           : NavigationRailLabelType.all,

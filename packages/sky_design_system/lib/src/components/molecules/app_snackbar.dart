@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sky_design_system/src/components/atoms/app_text.dart';
 import 'package:sky_design_system/src/extensions.dart';
 import 'package:sky_design_system/src/foundations/border_radius.dart';
 
@@ -18,19 +17,21 @@ class AppSnackbar {
     final colorScheme = context.colorScheme;
 
     return SnackBar(
-      content: AppText.bodyMedium(
-        message,
-        color: isError ? colorScheme.onError : colorScheme.onInverseSurface,
-      ),
-      backgroundColor: isError ? colorScheme.error : colorScheme.inverseSurface,
+      content: isError
+          ? Text(
+              message,
+              style: TextStyle(color: colorScheme.onError),
+            )
+          : Text(message),
+      backgroundColor: isError ? colorScheme.error : null,
       behavior: SnackBarBehavior.floating,
-      shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.sm),
+      shape: isError
+          ? const RoundedRectangleBorder(borderRadius: AppBorderRadius.sm)
+          : null,
       action: actionText != null && onAction != null
           ? SnackBarAction(
               label: actionText,
-              textColor: isError
-                  ? colorScheme.onError
-                  : colorScheme.inversePrimary,
+              textColor: isError ? colorScheme.onError : null,
               onPressed: onAction,
             )
           : null,
