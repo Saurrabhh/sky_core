@@ -44,23 +44,12 @@ class AppTheme {
       textTheme: textTheme,
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: colorScheme.primaryContainer,
-          foregroundColor: colorScheme.onPrimaryContainer,
-          shape: const RoundedRectangleBorder(
-            borderRadius: AppBorderRadius.full,
-          ),
-          textStyle: textTheme.labelLarge,
-          elevation: 0,
+          shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.md),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          foregroundColor: colorScheme.primary,
-          side: BorderSide(color: colorScheme.outline),
-          shape: const RoundedRectangleBorder(
-            borderRadius: AppBorderRadius.full,
-          ),
-          textStyle: textTheme.labelLarge,
+          shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.md),
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
@@ -126,11 +115,7 @@ class AppTheme {
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          foregroundColor: colorScheme.primary,
-          shape: const RoundedRectangleBorder(
-            borderRadius: AppBorderRadius.full,
-          ),
-          textStyle: textTheme.labelLarge,
+          shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.md),
         ),
       ),
     );

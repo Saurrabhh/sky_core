@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/src/extensions.dart';
 
-/// A wrapper for the Material TextField ensuring design system compliance.
 class AppTextField extends StatelessWidget {
   const AppTextField({
     super.key,

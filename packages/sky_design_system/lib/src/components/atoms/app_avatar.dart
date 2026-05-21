@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/src/components/atoms/app_text.dart';
 import 'package:sky_design_system/src/extensions.dart';
+import 'package:sky_design_system/src/foundations/radius.dart';
 
 /// A circular container for user images or initials.
 class AppAvatar extends StatelessWidget {
@@ -8,7 +9,7 @@ class AppAvatar extends StatelessWidget {
     super.key,
     this.initials,
     this.backgroundImage,
-    this.radius = 20.0,
+    this.radius = AppRadius.lgIncreased,
   });
 
   final String? initials;
@@ -19,12 +20,10 @@ class AppAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: radius,
-      backgroundColor: context.colorScheme.primaryContainer,
-      foregroundColor: context.colorScheme.onPrimaryContainer,
       backgroundImage: backgroundImage,
       child: backgroundImage == null && initials != null
           ? AppText.titleMedium(
-              initials!,
+              initials ?? '',
               color: context.colorScheme.onPrimaryContainer,
             )
           : null,

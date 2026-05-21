@@ -19,7 +19,6 @@ enum _AppTextVariant {
   labelSmall,
 }
 
-/// A dedicated text widget that enforces the design system's typography scale.
 class AppText extends StatelessWidget {
   const AppText.displayLarge(
     this.data, {
