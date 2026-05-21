@@ -7,14 +7,14 @@ void main() {
     final theme = AppTheme.light(useGoogleFonts: false);
     expect(theme.useMaterial3, isTrue);
     expect(theme.brightness, Brightness.light);
-    expect(theme.colorScheme.primary, AppColors.primaryLight);
+    expect(theme.colorScheme.primary, AppColors.light.primary);
   });
 
   test('AppTheme.dark() creates a valid Material 3 theme', () {
     final theme = AppTheme.dark(useGoogleFonts: false);
     expect(theme.useMaterial3, isTrue);
     expect(theme.brightness, Brightness.dark);
-    expect(theme.colorScheme.primary, AppColors.primaryDark);
+    expect(theme.colorScheme.primary, AppColors.dark.primary);
   });
 
   testWidgets('AppButton variants render correctly', (

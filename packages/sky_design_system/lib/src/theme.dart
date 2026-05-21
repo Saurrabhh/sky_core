@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sky_design_system/src/foundations/app_color_scheme.dart';
 import 'package:sky_design_system/src/foundations/border_radius.dart';
 import 'package:sky_design_system/src/foundations/colors.dart';
 import 'package:sky_design_system/src/foundations/spacing.dart';
@@ -10,22 +11,24 @@ class AppTheme {
 
   /// Generates the Light [ThemeData] for the design system.
   static ThemeData light({
-    ColorScheme? customColorScheme,
+    AppColorScheme? customColorScheme,
     bool useGoogleFonts = true,
   }) {
+    final activeScheme = AppColors.light.merge(customColorScheme);
     return _buildTheme(
-      customColorScheme ?? AppColors.lightColorScheme,
+      activeScheme.toColorScheme(Brightness.light),
       useGoogleFonts: useGoogleFonts,
     );
   }
 
   /// Generates the Dark [ThemeData] for the design system.
   static ThemeData dark({
-    ColorScheme? customColorScheme,
+    AppColorScheme? customColorScheme,
     bool useGoogleFonts = true,
   }) {
+    final activeScheme = AppColors.dark.merge(customColorScheme);
     return _buildTheme(
-      customColorScheme ?? AppColors.darkColorScheme,
+      activeScheme.toColorScheme(Brightness.dark),
       useGoogleFonts: useGoogleFonts,
     );
   }
