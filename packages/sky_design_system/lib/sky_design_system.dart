@@ -2,6 +2,7 @@ export 'src/components/atoms/atoms.dart';
 export 'src/components/molecules/molecules.dart';
 export 'src/components/organisms/organisms.dart';
 export 'src/extensions.dart';
+export 'src/foundations/app_color_scheme.dart';
 export 'src/foundations/border_radius.dart';
 export 'src/foundations/colors.dart';
 export 'src/foundations/radius.dart';
