@@ -26,7 +26,7 @@ void main() {
         home: Scaffold(
           body: Column(
             children: [
-              AppButton.tonal(text: 'Tonal', onPressed: () {}),
+              AppButton.inverse(text: 'Inverted', onPressed: () {}),
               AppButton.fab(icon: Icons.add, onPressed: () {}),
             ],
           ),
@@ -34,7 +34,7 @@ void main() {
       ),
     );
 
-    expect(find.text('Tonal'), findsOneWidget);
+    expect(find.text('Inverted'), findsOneWidget);
     expect(find.byIcon(Icons.add), findsOneWidget);
     expect(find.byType(FilledButton), findsOneWidget);
     expect(find.byType(FloatingActionButton), findsOneWidget);
@@ -49,7 +49,7 @@ void main() {
         home: Scaffold(
           body: Column(
             children: [
-              AppButton.tonal(text: 'Tonal', onPressed: () {}, isLoading: true),
+              AppButton.inverse(text: 'Inverted', onPressed: () {}, isLoading: true),
               AppButton.fab(icon: Icons.add, onPressed: () {}, isLoading: true),
             ],
           ),
@@ -60,7 +60,7 @@ void main() {
     expect(find.byType(CircularProgressIndicator), findsNWidgets(2));
     // Tonal button text should be invisible but present
     final tonalText = tester.widget<Opacity>(
-      find.ancestor(of: find.text('Tonal'), matching: find.byType(Opacity)),
+      find.ancestor(of: find.text('Inverted'), matching: find.byType(Opacity)),
     );
     expect(tonalText.opacity, 0.0);
 

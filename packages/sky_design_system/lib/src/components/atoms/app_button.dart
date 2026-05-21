@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/sky_design_system.dart';
 
-enum _AppButtonVariant { primary, secondary, tonal, outlined, text, fab }
+enum _AppButtonVariant { primary, secondary, outlined, inverse, text, fab }
 
 /// A unified button component following the design system's specifications.
 class AppButton extends StatelessWidget {
@@ -25,16 +25,6 @@ class AppButton extends StatelessWidget {
   }) : _variant = _AppButtonVariant.secondary,
        iconData = icon;
 
-  /// Creates a tonal button with tonal background.
-  const AppButton.tonal({
-    required this.text,
-    required this.onPressed,
-    super.key,
-    IconData? icon,
-    this.isLoading = false,
-  }) : _variant = _AppButtonVariant.tonal,
-       iconData = icon;
-
   /// Creates an outlined button with a border.
   const AppButton.outlined({
     required this.text,
@@ -43,6 +33,16 @@ class AppButton extends StatelessWidget {
     IconData? icon,
     this.isLoading = false,
   }) : _variant = _AppButtonVariant.outlined,
+       iconData = icon;
+
+  /// Creates an inverse button with a border.
+  const AppButton.inverse({
+    required this.text,
+    required this.onPressed,
+    super.key,
+    IconData? icon,
+    this.isLoading = false,
+  }) : _variant = _AppButtonVariant.inverse,
        iconData = icon;
 
   /// Creates a text button with transparent background.
@@ -94,7 +94,7 @@ class AppButton extends StatelessWidget {
         spacing: AppSpacing.sm,
         children: [
           if (iconData != null) ...[AppIcon(iconData!, size: AppIconSize.small)],
-          AppText.labelLarge(text),
+          Text(text),
         ],
       ),
     );
@@ -112,8 +112,12 @@ class AppButton extends StatelessWidget {
         ),
         child: label,
       ),
-      _AppButtonVariant.tonal => FilledButton.tonal(
+      _AppButtonVariant.inverse => ElevatedButton(
         onPressed: isLoading ? null : onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: context.colorScheme.inverseSurface,
+          foregroundColor: context.colorScheme.onInverseSurface,
+        ),
         child: label,
       ),
       _AppButtonVariant.outlined => OutlinedButton(

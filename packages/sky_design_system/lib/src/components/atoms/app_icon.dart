@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sky_design_system/src/extensions.dart';
 
 enum AppIconSize {
   /// 18px icon size
@@ -33,7 +32,7 @@ class AppIcon extends StatelessWidget {
     return Icon(
       icon,
       size: size.value,
-      color: color ?? context.colorScheme.onSurface,
+      color: color,
     );
   }
 }

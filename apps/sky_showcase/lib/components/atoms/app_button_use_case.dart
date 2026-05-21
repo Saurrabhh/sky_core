@@ -10,7 +10,7 @@ Widget appButtonInteractiveUseCase(BuildContext context) {
   final isEnabled = context.knobs.boolean(label: 'Enabled', initialValue: true);
   final variant = context.knobs.list(
     label: 'Variant',
-    options: ['Primary', 'Secondary', 'Tonal', 'Outlined', 'Text', 'FAB'],
+    options: ['Primary', 'Secondary', 'Inverse', 'Outlined', 'Text', 'FAB'],
     initialOption: 'Primary',
   );
 
@@ -35,7 +35,7 @@ Widget appButtonInteractiveUseCase(BuildContext context) {
           isLoading: isLoading,
           onPressed: onPressed,
         ),
-      'Tonal' => AppButton.tonal(
+      'Inverse' => AppButton.inverse(
           text: text,
           icon: icon,
           isLoading: isLoading,
