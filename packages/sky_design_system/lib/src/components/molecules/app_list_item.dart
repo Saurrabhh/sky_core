@@ -23,8 +23,8 @@ class AppListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: AppText.titleMedium(title),
-      subtitle: subtitle != null ? AppText.bodySmall(subtitle!) : null,
+      title: Text(title),
+      subtitle: subtitle != null ? Text(subtitle!) : null,
       leading: leadingIcon != null ? AppIcon(leadingIcon!) : null,
       trailing:
           trailingWidget ??

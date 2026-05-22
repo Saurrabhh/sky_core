@@ -438,8 +438,8 @@ void main() {
                       onAction: () {},
                     );
                     // We'll just verify the properties of the created object
-                      expect(snackbar.content, isA<AppText>());
-                      expect((snackbar.content as AppText).data, 'Test Message');
+                      expect(snackbar.content, isA<Text>());
+                      expect((snackbar.content as Text).data, 'Test Message');
                     expect(snackbar.action?.label, 'Undo');
                   },
                   child: const Text('Show'),

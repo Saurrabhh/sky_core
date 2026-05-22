@@ -17,11 +17,11 @@ class AppSnackbar {
 
     return SnackBar(
       content: isError
-          ? AppText.bodyMedium(
+          ? Text(
               message,
-              color: colorScheme.onError,
+              style: TextStyle(color: colorScheme.onError),
             )
-          : AppText.bodyMedium(message),
+          : Text(message),
       backgroundColor: isError ? colorScheme.error : null,
       behavior: SnackBarBehavior.floating,
       shape: isError

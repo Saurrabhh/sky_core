@@ -17,7 +17,7 @@ class AppDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: AppText.titleLarge(title),
+      title: Text(title),
       content: content,
       actions: actions,
     );

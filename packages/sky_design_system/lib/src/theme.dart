@@ -135,6 +135,20 @@ class AppTheme {
           textStyle: textTheme.labelLarge,
         ),
       ),
+      appBarTheme: AppBarTheme(
+        titleTextStyle: textTheme.titleLarge,
+        elevation: 0,
+        backgroundColor: colorScheme.surface,
+        foregroundColor: colorScheme.onSurface,
+      ),
+      dialogTheme: DialogThemeData(
+        titleTextStyle: textTheme.titleLarge,
+        contentTextStyle: textTheme.bodyMedium,
+      ),
+      snackBarTheme: SnackBarThemeData(
+        behavior: SnackBarBehavior.floating,
+        contentTextStyle: textTheme.bodyMedium,
+      ),
     );
   }
 }
