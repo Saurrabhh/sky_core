@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sky_design_system/sky_design_system.dart';
 
 class AppSnackBar {
-  AppSnackBar._();
+  const AppSnackBar._();
 
   static SnackBar create({
     required BuildContext context,

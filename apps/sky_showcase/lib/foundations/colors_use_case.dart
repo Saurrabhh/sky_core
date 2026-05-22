@@ -4,14 +4,15 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 @widgetbook.UseCase(name: 'Colors', type: AppColors)
 Widget colorsUseCase(BuildContext context) {
-  final colorScheme = context.colorScheme;
+  final isDark = Theme.of(context).brightness == Brightness.dark;
+  final colorScheme = isDark ? AppColors.dark : AppColors.light;
 
   return Padding(
     padding: const EdgeInsets.all(AppSpacing.md),
     child: ListView(
       children: [
         _ColorSection(
-          title: 'Primary',
+          title: 'Primary Colors',
           items: [
             _ColorItem(
               name: 'Primary',
@@ -19,9 +20,19 @@ Widget colorsUseCase(BuildContext context) {
               onColor: colorScheme.onPrimary,
             ),
             _ColorItem(
+              name: 'On Primary',
+              color: colorScheme.onPrimary,
+              onColor: colorScheme.primary,
+            ),
+            _ColorItem(
               name: 'Primary Container',
               color: colorScheme.primaryContainer,
               onColor: colorScheme.onPrimaryContainer,
+            ),
+            _ColorItem(
+              name: 'On Primary Container',
+              color: colorScheme.onPrimaryContainer,
+              onColor: colorScheme.primaryContainer,
             ),
             _ColorItem(
               name: 'Inverse Primary',
@@ -30,11 +41,8 @@ Widget colorsUseCase(BuildContext context) {
             ),
           ],
         ),
-
-        // ...
-        // (skipping some lines for brevity in instruction, but will provide full context in old/new strings)
         _ColorSection(
-          title: 'Secondary',
+          title: 'Secondary Colors',
           items: [
             _ColorItem(
               name: 'Secondary',
@@ -42,14 +50,24 @@ Widget colorsUseCase(BuildContext context) {
               onColor: colorScheme.onSecondary,
             ),
             _ColorItem(
+              name: 'On Secondary',
+              color: colorScheme.onSecondary,
+              onColor: colorScheme.secondary,
+            ),
+            _ColorItem(
               name: 'Secondary Container',
               color: colorScheme.secondaryContainer,
               onColor: colorScheme.onSecondaryContainer,
             ),
+            _ColorItem(
+              name: 'On Secondary Container',
+              color: colorScheme.onSecondaryContainer,
+              onColor: colorScheme.secondaryContainer,
+            ),
           ],
         ),
         _ColorSection(
-          title: 'Tertiary',
+          title: 'Tertiary Colors',
           items: [
             _ColorItem(
               name: 'Tertiary',
@@ -57,14 +75,89 @@ Widget colorsUseCase(BuildContext context) {
               onColor: colorScheme.onTertiary,
             ),
             _ColorItem(
+              name: 'On Tertiary',
+              color: colorScheme.onTertiary,
+              onColor: colorScheme.tertiary,
+            ),
+            _ColorItem(
               name: 'Tertiary Container',
               color: colorScheme.tertiaryContainer,
               onColor: colorScheme.onTertiaryContainer,
             ),
+            _ColorItem(
+              name: 'On Tertiary Container',
+              color: colorScheme.onTertiaryContainer,
+              onColor: colorScheme.tertiaryContainer,
+            ),
           ],
         ),
         _ColorSection(
-          title: 'Surface',
+          title: 'Fixed Colors',
+          items: [
+            _ColorItem(
+              name: 'Primary Fixed',
+              color: colorScheme.primaryFixed,
+              onColor: colorScheme.onPrimaryFixed,
+            ),
+            _ColorItem(
+              name: 'Primary Fixed Dim',
+              color: colorScheme.primaryFixedDim,
+              onColor: colorScheme.onPrimaryFixed,
+            ),
+            _ColorItem(
+              name: 'On Primary Fixed',
+              color: colorScheme.onPrimaryFixed,
+              onColor: colorScheme.primaryFixed,
+            ),
+            _ColorItem(
+              name: 'On Primary Fixed Variant',
+              color: colorScheme.onPrimaryFixedVariant,
+              onColor: colorScheme.primaryFixed,
+            ),
+            _ColorItem(
+              name: 'Secondary Fixed',
+              color: colorScheme.secondaryFixed,
+              onColor: colorScheme.onSecondaryFixed,
+            ),
+            _ColorItem(
+              name: 'Secondary Fixed Dim',
+              color: colorScheme.secondaryFixedDim,
+              onColor: colorScheme.onSecondaryFixed,
+            ),
+            _ColorItem(
+              name: 'On Secondary Fixed',
+              color: colorScheme.onSecondaryFixed,
+              onColor: colorScheme.secondaryFixed,
+            ),
+            _ColorItem(
+              name: 'On Secondary Fixed Variant',
+              color: colorScheme.onSecondaryFixedVariant,
+              onColor: colorScheme.secondaryFixed,
+            ),
+            _ColorItem(
+              name: 'Tertiary Fixed',
+              color: colorScheme.tertiaryFixed,
+              onColor: colorScheme.onTertiaryFixed,
+            ),
+            _ColorItem(
+              name: 'Tertiary Fixed Dim',
+              color: colorScheme.tertiaryFixedDim,
+              onColor: colorScheme.onTertiaryFixed,
+            ),
+            _ColorItem(
+              name: 'On Tertiary Fixed',
+              color: colorScheme.onTertiaryFixed,
+              onColor: colorScheme.tertiaryFixed,
+            ),
+            _ColorItem(
+              name: 'On Tertiary Fixed Variant',
+              color: colorScheme.onTertiaryFixedVariant,
+              onColor: colorScheme.tertiaryFixed,
+            ),
+          ],
+        ),
+        _ColorSection(
+          title: 'Surface & Container Colors',
           items: [
             _ColorItem(
               name: 'Surface',
@@ -107,14 +200,34 @@ Widget colorsUseCase(BuildContext context) {
               onColor: colorScheme.onSurface,
             ),
             _ColorItem(
+              name: 'Surface Variant',
+              color: colorScheme.surfaceVariant,
+              onColor: colorScheme.onSurfaceVariant,
+            ),
+            _ColorItem(
+              name: 'On Surface Variant',
+              color: colorScheme.onSurfaceVariant,
+              onColor: colorScheme.surfaceVariant,
+            ),
+            _ColorItem(
               name: 'Inverse Surface',
               color: colorScheme.inverseSurface,
               onColor: colorScheme.onInverseSurface,
             ),
+            _ColorItem(
+              name: 'On Inverse Surface',
+              color: colorScheme.onInverseSurface,
+              onColor: colorScheme.inverseSurface,
+            ),
+            _ColorItem(
+              name: 'Surface Tint',
+              color: colorScheme.surfaceTint,
+              onColor: colorScheme.onSurface,
+            ),
           ],
         ),
         _ColorSection(
-          title: 'Outline',
+          title: 'Outline Colors',
           items: [
             _ColorItem(
               name: 'Outline',
@@ -129,7 +242,22 @@ Widget colorsUseCase(BuildContext context) {
           ],
         ),
         _ColorSection(
-          title: 'Error',
+          title: 'Background Colors',
+          items: [
+            _ColorItem(
+              name: 'Background',
+              color: colorScheme.background,
+              onColor: colorScheme.onBackground,
+            ),
+            _ColorItem(
+              name: 'On Background',
+              color: colorScheme.onBackground,
+              onColor: colorScheme.background,
+            ),
+          ],
+        ),
+        _ColorSection(
+          title: 'Error Colors',
           items: [
             _ColorItem(
               name: 'Error',
@@ -137,9 +265,19 @@ Widget colorsUseCase(BuildContext context) {
               onColor: colorScheme.onError,
             ),
             _ColorItem(
+              name: 'On Error',
+              color: colorScheme.onError,
+              onColor: colorScheme.error,
+            ),
+            _ColorItem(
               name: 'Error Container',
               color: colorScheme.errorContainer,
               onColor: colorScheme.onErrorContainer,
+            ),
+            _ColorItem(
+              name: 'On Error Container',
+              color: colorScheme.onErrorContainer,
+              onColor: colorScheme.errorContainer,
             ),
           ],
         ),
@@ -156,6 +294,13 @@ class _ColorSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final crossCount = width > 800
+        ? 5
+        : width > 600
+            ? 4
+            : 2;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -163,16 +308,13 @@ class _ColorSection extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
           child: Text(title, style: context.textTheme.headlineSmall),
         ),
-
-        // ...
-        // (rest of build method)
         GridView.count(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          crossAxisCount: MediaQuery.of(context).size.width > 600 ? 4 : 2,
+          crossAxisCount: crossCount,
           mainAxisSpacing: AppSpacing.sm,
           crossAxisSpacing: AppSpacing.sm,
-          childAspectRatio: 2.5,
+          childAspectRatio: 2.2,
           children: items,
         ),
       ],
@@ -193,6 +335,13 @@ class _ColorItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final hexString = color
+        .toARGB32()
+        .toRadixString(16)
+        .toUpperCase()
+        .padLeft(8, '0')
+        .substring(2);
+
     return Container(
       padding: const EdgeInsets.all(AppSpacing.sm),
       decoration: BoxDecoration(
@@ -205,14 +354,19 @@ class _ColorItem extends StatelessWidget {
         children: [
           Text(
             name,
-            style: context.textTheme.labelMedium?.copyWith(color: onColor),
+            style: context.textTheme.labelMedium?.copyWith(
+              color: onColor,
+              fontWeight: FontWeight.w600,
+            ),
             textAlign: TextAlign.center,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 4),
           Text(
-            '''#${color.toARGB32().toRadixString(16).toUpperCase().padLeft(8, '0').substring(2)}''',
+            '#$hexString',
             style: context.textTheme.labelSmall?.copyWith(
-              color: onColor.withValues(alpha: 0.7),
+              color: onColor.withValues(alpha: 0.75),
               fontFeatures: const [FontFeature.tabularFigures()],
             ),
           ),

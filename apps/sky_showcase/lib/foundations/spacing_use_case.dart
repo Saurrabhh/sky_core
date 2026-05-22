@@ -12,10 +12,15 @@ Widget spacingUseCase(BuildContext context) {
           'Spacing Scale (8px rhythm)',
           style: context.textTheme.headlineSmall,
         ),
-
-        // ...
-        // (rest of build method)
-        const SizedBox(height: AppSpacing.md),
+        const SizedBox(height: AppSpacing.xs),
+        Text(
+          'A responsive layout requires predefined margins and gutters. '
+          'Our spacing scale is based on an 8px layout grid structure.',
+          style: context.textTheme.bodyMedium?.copyWith(
+            color: context.colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: AppSpacing.lg),
         const _SpacingItem(name: 'none', value: AppSpacing.none),
         const _SpacingItem(name: 'xs', value: AppSpacing.xs),
         const _SpacingItem(name: 'sm', value: AppSpacing.sm),
@@ -24,8 +29,19 @@ Widget spacingUseCase(BuildContext context) {
         const _SpacingItem(name: 'xl', value: AppSpacing.xl),
         const _SpacingItem(name: 'xxl', value: AppSpacing.xxl),
         const Divider(height: AppSpacing.xxl),
-        Text('Layout Tokens', style: context.textTheme.headlineSmall),
-        const SizedBox(height: AppSpacing.md),
+        Text(
+          'Layout Spacing Tokens',
+          style: context.textTheme.headlineSmall,
+        ),
+        const SizedBox(height: AppSpacing.xs),
+        Text(
+          'Predefined margins and gutters ensure standard padding at screen '
+          'boundaries across different responsive break points.',
+          style: context.textTheme.bodyMedium?.copyWith(
+            color: context.colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: AppSpacing.lg),
         const _SpacingItem(name: 'gutter', value: AppSpacing.gutter),
         const _SpacingItem(
           name: 'marginMobile',
@@ -52,18 +68,59 @@ class _SpacingItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Multiplied by 4 for clear visual presentation on screen
+    final visualWidth = value == 0 ? 2.0 : value * 4;
+
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: AppSpacing.xs),
+      padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
       child: Row(
         children: [
           SizedBox(
-            width: 120,
-            child: Text('$name ($value)', style: context.textTheme.bodyMedium),
+            width: 160,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  name,
+                  style: context.textTheme.titleSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  '${value.toInt()} px',
+                  style: context.textTheme.bodySmall?.copyWith(
+                    color: context.colorScheme.outline,
+                  ),
+                ),
+              ],
+            ),
           ),
-          Container(
-            height: 24,
-            width: value == 0 ? 1 : value,
-            color: context.colorScheme.primary.withValues(alpha: 0.5),
+          Expanded(
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                height: 28,
+                width: visualWidth,
+                decoration: BoxDecoration(
+                  color: context.colorScheme.primaryContainer,
+                  borderRadius: AppBorderRadius.sm,
+                  border: Border.all(color: context.colorScheme.primary),
+                ),
+                child: Center(
+                  child: value > 0
+                      ? Text(
+                          '${value.toInt()}',
+                          style: context.textTheme.labelSmall?.copyWith(
+                            color: context.colorScheme.onPrimaryContainer,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      : const SizedBox.shrink(),
+                ),
+              ),
+            ),
           ),
         ],
       ),
