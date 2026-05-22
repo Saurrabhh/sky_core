@@ -84,7 +84,7 @@ void main() {
     expect(value, true);
   });
 
-  testWidgets('AppRadioButton renders and responds', (
+  testWidgets('AppRadioButton renders and responds in AppRadioGroup', (
     tester,
   ) async {
     var groupValue = 1;
@@ -94,10 +94,15 @@ void main() {
         home: Scaffold(
           body: StatefulBuilder(
             builder: (context, setState) {
-              return AppRadioButton<int>(
-                value: 2,
+              return AppRadioGroup<int>(
                 groupValue: groupValue,
                 onChanged: (v) => setState(() => groupValue = v!),
+                child: const Column(
+                  children: [
+                    AppRadioButton<int>(value: 1),
+                    AppRadioButton<int>(value: 2),
+                  ],
+                ),
               );
             },
           ),
@@ -105,8 +110,8 @@ void main() {
       ),
     );
 
-    expect(find.byType(Radio<int>), findsOneWidget);
-    await tester.tap(find.byType(AppRadioButton<int>));
+    expect(find.byType(Radio<int>), findsNWidgets(2));
+    await tester.tap(find.byType(AppRadioButton<int>).last);
     await tester.pump();
     expect(groupValue, 2);
   });

@@ -18,15 +18,17 @@ Widget appRadioButtonInteractiveUseCase(BuildContext context) {
   );
 
   return Center(
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [1, 2, 3]
-          .map((i) => AppRadioButton<int>(
-                value: i,
-                groupValue: selectedValue,
-                onChanged: (v) {},
-              ))
-          .toList(),
+    child: AppRadioGroup<int>(
+      groupValue: selectedValue,
+      onChanged: (v) {},
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [1, 2, 3]
+            .map((i) => AppRadioButton<int>(
+                  value: i,
+                ))
+            .toList(),
+      ),
     ),
   );
 }
