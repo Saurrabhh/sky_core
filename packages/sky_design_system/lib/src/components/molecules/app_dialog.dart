@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sky_design_system/sky_design_system.dart';
 
 /// A standard modal surface for Alerts and Confirmations.
 class AppDialog extends StatelessWidget {

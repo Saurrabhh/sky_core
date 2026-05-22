@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sky_design_system/src/extensions.dart';
 import 'package:sky_design_system/src/foundations/radius.dart';
 
 /// A circular container for user images or initials.
