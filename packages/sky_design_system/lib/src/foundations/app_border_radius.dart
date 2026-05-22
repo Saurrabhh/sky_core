@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sky_design_system/src/foundations/radius.dart';
+import 'package:sky_design_system/src/foundations/app_radius.dart';
 
 class AppBorderRadius {
   const AppBorderRadius._();

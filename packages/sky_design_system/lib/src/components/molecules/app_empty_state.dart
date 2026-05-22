@@ -3,7 +3,7 @@ import 'package:sky_design_system/src/components/atoms/app_button.dart';
 import 'package:sky_design_system/src/components/atoms/app_icon.dart';
 import 'package:sky_design_system/src/components/atoms/app_text.dart';
 import 'package:sky_design_system/src/extensions.dart';
-import 'package:sky_design_system/src/foundations/spacing.dart';
+import 'package:sky_design_system/src/foundations/app_spacing.dart';
 
 /// A combined Molecule of an Icon, Title, and Action Button for empty views.
 class AppEmptyState extends StatelessWidget {

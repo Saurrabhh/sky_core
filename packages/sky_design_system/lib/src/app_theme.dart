@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sky_design_system/src/foundations/app_color_scheme.dart';
-import 'package:sky_design_system/src/foundations/border_radius.dart';
-import 'package:sky_design_system/src/foundations/colors.dart';
-import 'package:sky_design_system/src/foundations/spacing.dart';
-import 'package:sky_design_system/src/foundations/typography.dart';
+import 'package:sky_design_system/src/foundations/foundations.dart';
 
 class AppTheme {
   const AppTheme._();
@@ -37,8 +33,8 @@ class AppTheme {
     final textTheme = useGoogleFonts
         ? AppTypography.textTheme
         : (colorScheme.brightness == Brightness.dark
-            ? ThemeData.dark().textTheme
-            : ThemeData.light().textTheme);
+              ? ThemeData.dark().textTheme
+              : ThemeData.light().textTheme);
 
     return ThemeData(
       useMaterial3: true,

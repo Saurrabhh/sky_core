@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/src/extensions.dart';
-import 'package:sky_design_system/src/foundations/border_radius.dart';
+import 'package:sky_design_system/src/foundations/app_border_radius.dart';
 
 enum _AppCardVariant { outlined, filled }
 

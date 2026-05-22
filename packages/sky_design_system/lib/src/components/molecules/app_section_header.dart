@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/src/components/atoms/app_button.dart';
 import 'package:sky_design_system/src/components/atoms/app_text.dart';
-import 'package:sky_design_system/src/foundations/spacing.dart';
+import 'package:sky_design_system/src/foundations/app_spacing.dart';
 
 /// A grouping molecule with a headline and an optional action.
 class AppSectionHeader extends StatelessWidget {

@@ -1,6 +1,6 @@
+export 'app_border_radius.dart';
 export 'app_color_scheme.dart';
-export 'border_radius.dart';
-export 'colors.dart';
-export 'radius.dart';
-export 'spacing.dart';
-export 'typography.dart';
+export 'app_colors.dart';
+export 'app_radius.dart';
+export 'app_spacing.dart';
+export 'app_typography.dart';
