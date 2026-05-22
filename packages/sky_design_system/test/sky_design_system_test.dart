@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sky_design_system/sky_design_system.dart';
@@ -140,58 +142,59 @@ void main() {
     expect(value, true);
   });
 
-  testWidgets('AppTextField renders, accepts text, and supports form validation', (
-    tester,
-  ) async {
-    final controller = TextEditingController();
-    final formKey = GlobalKey<FormState>();
-    String? savedValue;
+  testWidgets(
+    'AppTextField renders, accepts text, and supports form validation',
+    (tester) async {
+      final controller = TextEditingController();
+      final formKey = GlobalKey<FormState>();
+      String? savedValue;
 
-    await tester.pumpWidget(
-      MaterialApp(
-        theme: AppTheme.light(useGoogleFonts: false),
-        home: Scaffold(
-          body: Form(
-            key: formKey,
-            child: AppTextField(
-              controller: controller,
-              hintText: 'Enter text',
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Error message';
-                }
-                return null;
-              },
-              onSaved: (value) => savedValue = value,
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AppTheme.light(useGoogleFonts: false),
+          home: Scaffold(
+            body: Form(
+              key: formKey,
+              child: AppTextField(
+                controller: controller,
+                hintText: 'Enter text',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Error message';
+                  }
+                  return null;
+                },
+                onSaved: (value) => savedValue = value,
+              ),
             ),
           ),
         ),
-      ),
-    );
+      );
 
-    expect(find.byType(TextFormField), findsOneWidget);
-    expect(find.byType(TextField), findsOneWidget);
+      expect(find.byType(TextFormField), findsOneWidget);
+      expect(find.byType(TextField), findsOneWidget);
 
-    // Initial state: no validation error showing
-    expect(find.text('Error message'), findsNothing);
+      // Initial state: no validation error showing
+      expect(find.text('Error message'), findsNothing);
 
-    // Validate empty field
-    formKey.currentState!.validate();
-    await tester.pump();
-    expect(find.text('Error message'), findsOneWidget);
+      // Validate empty field
+      formKey.currentState!.validate();
+      await tester.pump();
+      expect(find.text('Error message'), findsOneWidget);
 
-    // Enter text and validate again
-    await tester.enterText(find.byType(AppTextField), 'Hello');
-    expect(controller.text, 'Hello');
+      // Enter text and validate again
+      await tester.enterText(find.byType(AppTextField), 'Hello');
+      expect(controller.text, 'Hello');
 
-    formKey.currentState!.validate();
-    await tester.pump();
-    expect(find.text('Error message'), findsNothing);
+      formKey.currentState!.validate();
+      await tester.pump();
+      expect(find.text('Error message'), findsNothing);
 
-    // Save field
-    formKey.currentState!.save();
-    expect(savedValue, 'Hello');
-  });
+      // Save field
+      formKey.currentState!.save();
+      expect(savedValue, 'Hello');
+    },
+  );
 
   testWidgets('AppProgressIndicator renders both variants', (
     tester,
@@ -327,9 +330,7 @@ void main() {
           body: AppListTile(
             title: 'Item Title',
             subtitle: 'Item Subtitle',
-            // ignore: deprecated_member_use_from_same_package, Testing deprecated property for backward compatibility.
             leadingIcon: Icons.star,
-            // ignore: deprecated_member_use_from_same_package, Testing deprecated property for backward compatibility.
             trailingIcon: Icons.chevron_right,
             onTap: () {},
           ),
@@ -409,7 +410,6 @@ void main() {
             title: 'Dialog Title',
             content: const Text('Dialog Content'),
             icon: const Icon(Icons.warning),
-            scrollable: true,
             actions: [AppButton.text(text: 'OK', onPressed: () {})],
           ),
         ),
@@ -435,10 +435,12 @@ void main() {
               return Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    AppBottomSheet.show(
-                      context: context,
-                      title: 'Sheet Title',
-                      child: const Text('Sheet Content'),
+                    unawaited(
+                      AppBottomSheet.show<void>(
+                        context: context,
+                        title: 'Sheet Title',
+                        child: const Text('Sheet Content'),
+                      ),
                     );
                   },
                   child: const Text('Show Sheet'),
@@ -489,8 +491,8 @@ void main() {
                       onAction: () {},
                     );
                     // We'll just verify the properties of the created object
-                      expect(snackbar.content, isA<Text>());
-                      expect((snackbar.content as Text).data, 'Test Message');
+                    expect(snackbar.content, isA<Text>());
+                    expect((snackbar.content as Text).data, 'Test Message');
                     expect(snackbar.action?.label, 'Undo');
                   },
                   child: const Text('Show'),
