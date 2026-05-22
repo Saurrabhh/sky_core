@@ -3,18 +3,18 @@ import 'package:sky_design_system/sky_design_system.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
-@widgetbook.UseCase(name: 'Interactive Date Picker', type: AppDatePickerField)
-Widget appDatePickerUseCase(BuildContext context) {
+@widgetbook.UseCase(name: 'Interactive', type: AppDatePickerField)
+Widget appDatePickerFieldInteractiveUseCase(BuildContext context) {
   final label = context.knobs.string(
-    label: 'Label',
+    label: 'Label Text',
     initialValue: 'Select Date',
   );
   final hint = context.knobs.string(
-    label: 'Hint',
+    label: 'Hint Text',
     initialValue: 'YYYY-MM-DD',
   );
   final error = context.knobs.string(
-    label: 'Error',
+    label: 'Error Text',
   );
   final enabled = context.knobs.boolean(
     label: 'Enabled',
@@ -27,62 +27,61 @@ Widget appDatePickerUseCase(BuildContext context) {
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 400),
         child: AppDatePickerField(
-          labelText: label.isNotEmpty ? label : null,
-          hintText: hint.isNotEmpty ? hint : null,
-          errorText: error.isNotEmpty ? error : null,
+          labelText: label.isEmpty ? null : label,
+          hintText: hint.isEmpty ? null : hint,
+          errorText: error.isEmpty ? null : error,
           enabled: enabled,
           firstDate: DateTime(2000),
           lastDate: DateTime(2030),
           initialDate: DateTime.now(),
-          onDateSelected: (date) {
-            debugPrint('Selected date: $date');
-          },
         ),
       ),
     ),
   );
 }
 
-@widgetbook.UseCase(name: 'Interactive Time Picker', type: AppTimePickerField)
-Widget appTimePickerUseCase(BuildContext context) {
-  final label = context.knobs.string(
-    label: 'Label',
-    initialValue: 'Select Time',
-  );
-  final hint = context.knobs.string(
-    label: 'Hint',
-    initialValue: 'HH:MM AM/PM',
-  );
-  final error = context.knobs.string(
-    label: 'Error',
-  );
-  final enabled = context.knobs.boolean(
-    label: 'Enabled',
-    initialValue: true,
-  );
-
+@widgetbook.UseCase(name: 'States', type: AppDatePickerField)
+Widget appDatePickerFieldStatesUseCase(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.all(AppSpacing.lg),
     child: Center(
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 400),
-        child: AppTimePickerField(
-          labelText: label.isNotEmpty ? label : null,
-          hintText: hint.isNotEmpty ? hint : null,
-          errorText: error.isNotEmpty ? error : null,
-          enabled: enabled,
-          initialTime: TimeOfDay.now(),
-          onTimeSelected: (time) {
-            debugPrint('Selected time: $time');
-          },
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const AppDatePickerField(
+                labelText: 'Normal State',
+                hintText: 'Choose date',
+              ),
+              const SizedBox(height: AppSpacing.md),
+              AppDatePickerField(
+                labelText: 'Pre-populated State',
+                initialDate: DateTime(2026, 5, 23),
+              ),
+              const SizedBox(height: AppSpacing.md),
+              const AppDatePickerField(
+                labelText: 'Disabled State',
+                enabled: false,
+                hintText: 'Cannot select',
+              ),
+              const SizedBox(height: AppSpacing.md),
+              const AppDatePickerField(
+                labelText: 'Error State',
+                errorText: 'This date is unavailable',
+              ),
+            ],
+          ),
         ),
       ),
     ),
   );
 }
 
-@widgetbook.UseCase(name: 'Form Integration Demo', type: AppDatePickerField)
-Widget appPickerFormDemoUseCase(BuildContext context) {
+@widgetbook.UseCase(name: 'Form Demo', type: AppDatePickerField)
+Widget appDatePickerFieldFormDemoUseCase(BuildContext context) {
   final formKey = GlobalKey<FormState>();
 
   return Padding(
@@ -113,26 +112,14 @@ Widget appPickerFormDemoUseCase(BuildContext context) {
                   return null;
                 },
               ),
-              const SizedBox(height: AppSpacing.md),
-              AppTimePickerField(
-                labelText: 'Meeting Time',
-                hintText: 'Choose a time',
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please select a meeting time';
-                  }
-                  return null;
-                },
-              ),
               const SizedBox(height: AppSpacing.lg),
               AppButton.primary(
                 text: 'Schedule Meeting',
                 onPressed: () {
                   if (formKey.currentState?.validate() ?? false) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Meeting Scheduled Successfully!'),
-                      ),
+                    AppSnackBar.show(
+                      context,
+                      message: 'Date selected successfully!',
                     );
                   }
                 },
