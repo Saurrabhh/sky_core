@@ -3,8 +3,8 @@ description: Monorepo for Sky Core architecture and design system.
 publish_to: none
 
 environment:
-  sdk: '^3.11.5'
-  flutter: '3.41.9'
+  sdk: '^3.12.0'
+  flutter: '3.44.0'
 
 dev_dependencies:
   melos: ^7.7.0

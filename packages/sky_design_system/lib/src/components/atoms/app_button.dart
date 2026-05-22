@@ -8,53 +8,47 @@ class AppButton extends StatelessWidget {
     required this.text,
     required this.onPressed,
     super.key,
-    IconData? icon,
-  }) : _variant = _AppButtonVariant.primary,
-       _iconData = icon;
+    this._icon,
+  }) : _variant = _AppButtonVariant.primary;
 
   const AppButton.secondary({
     required this.text,
     required this.onPressed,
     super.key,
-    IconData? icon,
-  }) : _variant = _AppButtonVariant.secondary,
-       _iconData = icon;
+    this._icon,
+  }) : _variant = _AppButtonVariant.secondary;
 
   const AppButton.outlined({
     required this.text,
     required this.onPressed,
     super.key,
-    IconData? icon,
-  }) : _variant = _AppButtonVariant.outlined,
-       _iconData = icon;
+    this._icon,
+  }) : _variant = _AppButtonVariant.outlined;
 
   const AppButton.inverse({
     required this.text,
     required this.onPressed,
     super.key,
-    IconData? icon,
-  }) : _variant = _AppButtonVariant.inverse,
-       _iconData = icon;
+    this._icon,
+  }) : _variant = _AppButtonVariant.inverse;
 
   const AppButton.text({
     required this.text,
     required this.onPressed,
     super.key,
-    IconData? icon,
-  }) : _variant = _AppButtonVariant.text,
-       _iconData = icon;
+    this._icon,
+  }) : _variant = _AppButtonVariant.text;
 
   const AppButton.fab({
-    required IconData icon,
+    required IconData this._icon,
     required this.onPressed,
     super.key,
   }) : _variant = _AppButtonVariant.fab,
-       text = '',
-       _iconData = icon;
+       text = '';
 
   final String text;
   final VoidCallback? onPressed;
-  final IconData? _iconData;
+  final IconData? _icon;
   final _AppButtonVariant _variant;
 
   @override
@@ -62,7 +56,7 @@ class AppButton extends StatelessWidget {
     if (_variant == _AppButtonVariant.fab) {
       return FloatingActionButton(
         onPressed: onPressed,
-        child: AppIcon.md(_iconData!),
+        child: AppIcon.md(_icon!),
       );
     }
 
@@ -71,8 +65,8 @@ class AppButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       spacing: AppSpacing.sm,
       children: [
-        if (_iconData != null) ...[
-          AppIcon.sm(_iconData),
+        if (_icon != null) ...[
+          AppIcon.sm(_icon),
         ],
         Text(text),
       ],

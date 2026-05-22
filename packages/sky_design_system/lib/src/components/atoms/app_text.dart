@@ -28,7 +28,6 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-    this.style,
   }) : _variant = _AppTextVariant.displayLarge;
 
   const AppText.displayMedium(
@@ -39,7 +38,6 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-    this.style,
   }) : _variant = _AppTextVariant.displayMedium;
 
   const AppText.displaySmall(
@@ -50,7 +48,6 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-    this.style,
   }) : _variant = _AppTextVariant.displaySmall;
 
   const AppText.headlineLarge(
@@ -61,7 +58,6 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-    this.style,
   }) : _variant = _AppTextVariant.headlineLarge;
 
   const AppText.headlineMedium(
@@ -72,7 +68,6 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-    this.style,
   }) : _variant = _AppTextVariant.headlineMedium;
 
   const AppText.headlineSmall(
@@ -83,7 +78,6 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-    this.style,
   }) : _variant = _AppTextVariant.headlineSmall;
 
   const AppText.titleLarge(
@@ -94,7 +88,6 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-    this.style,
   }) : _variant = _AppTextVariant.titleLarge;
 
   const AppText.titleMedium(
@@ -105,7 +98,6 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-    this.style,
   }) : _variant = _AppTextVariant.titleMedium;
 
   const AppText.titleSmall(
@@ -116,7 +108,6 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-    this.style,
   }) : _variant = _AppTextVariant.titleSmall;
 
   const AppText.bodyLarge(
@@ -127,7 +118,6 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-    this.style,
   }) : _variant = _AppTextVariant.bodyLarge;
 
   const AppText.bodyMedium(
@@ -138,7 +128,6 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-    this.style,
   }) : _variant = _AppTextVariant.bodyMedium;
 
   const AppText.bodySmall(
@@ -149,7 +138,6 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-    this.style,
   }) : _variant = _AppTextVariant.bodySmall;
 
   const AppText.labelLarge(
@@ -160,7 +148,6 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-    this.style,
   }) : _variant = _AppTextVariant.labelLarge;
 
   const AppText.labelMedium(
@@ -171,7 +158,6 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-    this.style,
   }) : _variant = _AppTextVariant.labelMedium;
 
   const AppText.labelSmall(
@@ -182,7 +168,6 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-    this.style,
   }) : _variant = _AppTextVariant.labelSmall;
 
   final String data;
@@ -191,7 +176,6 @@ class AppText extends StatelessWidget {
   final int? maxLines;
   final TextOverflow? overflow;
   final bool? softWrap;
-  final TextStyle? style;
   final _AppTextVariant _variant;
 
   @override
@@ -222,7 +206,7 @@ class AppText extends StatelessWidget {
       maxLines: maxLines,
       overflow: overflow,
       softWrap: softWrap,
-      style: baseStyle?.merge(style).copyWith(color: color),
+      style: baseStyle?.copyWith(color: color),
     );
   }
 }

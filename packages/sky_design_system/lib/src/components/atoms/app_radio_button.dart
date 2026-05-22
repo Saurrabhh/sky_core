@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// A wrapper for the Material Radio button ensuring a minimum 48dp hit target.
 class AppRadioButton<T> extends StatelessWidget {
   const AppRadioButton({
     required this.value,

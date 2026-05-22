@@ -4,12 +4,12 @@ class AppBadge extends StatelessWidget {
   const AppBadge({
     required this.child,
     super.key,
-    this.count,
+    this._count,
     this.isDot = false,
   });
 
   final Widget child;
-  final int? count;
+  final int? _count;
   final bool isDot;
 
   @override
@@ -19,8 +19,8 @@ class AppBadge extends StatelessWidget {
     }
 
     return Badge(
-      label: count != null ? Text(count.toString()) : null,
-      isLabelVisible: count != null && count! > 0,
+      label: _count != null ? Text(_count.toString()) : null,
+      isLabelVisible: _count != null && _count > 0,
       child: child,
     );
   }

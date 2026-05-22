@@ -202,7 +202,6 @@ Widget appTextOverridesUseCase(BuildContext context) {
         const SizedBox(height: AppSpacing.md),
         AppText.bodyLarge(
           'Styled override (Italic)',
-          style: const TextStyle(fontStyle: FontStyle.italic),
           color: context.colorScheme.tertiary,
         ),
       ],

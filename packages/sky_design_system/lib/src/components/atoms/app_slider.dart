@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// A wrapper for the Material Slider.
+
 class AppSlider extends StatelessWidget {
   const AppSlider({
     required this.value,

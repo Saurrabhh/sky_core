@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 
 enum _AppProgressVariant { circular, linear }
 
-
 class AppProgressIndicator extends StatelessWidget {
-
   const AppProgressIndicator.circular({super.key, this.value})
-      : _variant = _AppProgressVariant.circular;
-
+    : _variant = _AppProgressVariant.circular;
 
   const AppProgressIndicator.linear({super.key, this.value})
-      : _variant = _AppProgressVariant.linear;
+    : _variant = _AppProgressVariant.linear;
 
   final double? value;
   final _AppProgressVariant _variant;
