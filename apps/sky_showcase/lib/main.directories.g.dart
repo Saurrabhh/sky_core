@@ -58,8 +58,14 @@ import 'package:sky_showcase/components/molecules/app_tooltip_use_case.dart'
     as _sky_showcase_components_molecules_app_tooltip_use_case;
 import 'package:sky_showcase/components/molecules/app_top_bar_use_case.dart'
     as _sky_showcase_components_molecules_app_top_bar_use_case;
-import 'package:sky_showcase/components/organisms/navigation_use_cases.dart'
-    as _sky_showcase_components_organisms_navigation_use_cases;
+import 'package:sky_showcase/components/organisms/app_navigation_bar_use_case.dart'
+    as _sky_showcase_components_organisms_app_navigation_bar_use_case;
+import 'package:sky_showcase/components/organisms/app_navigation_drawer_use_case.dart'
+    as _sky_showcase_components_organisms_app_navigation_drawer_use_case;
+import 'package:sky_showcase/components/organisms/app_navigation_rail_use_case.dart'
+    as _sky_showcase_components_organisms_app_navigation_rail_use_case;
+import 'package:sky_showcase/components/organisms/app_tab_bar_use_case.dart'
+    as _sky_showcase_components_organisms_app_tab_bar_use_case;
 import 'package:sky_showcase/foundations/colors_use_case.dart'
     as _sky_showcase_foundations_colors_use_case;
 import 'package:sky_showcase/foundations/radius_use_case.dart'
@@ -505,8 +511,15 @@ final directories = <_widgetbook.WidgetbookNode>[
             useCases: [
               _widgetbook.WidgetbookUseCase(
                 name: 'Interactive',
-                builder: _sky_showcase_components_organisms_navigation_use_cases
-                    .appNavigationBarInteractiveUseCase,
+                builder:
+                    _sky_showcase_components_organisms_app_navigation_bar_use_case
+                        .appNavigationBarInteractiveUseCase,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Variants',
+                builder:
+                    _sky_showcase_components_organisms_app_navigation_bar_use_case
+                        .appNavigationBarVariantsUseCase,
               ),
             ],
           ),
@@ -514,9 +527,16 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'AppNavigationDrawer',
             useCases: [
               _widgetbook.WidgetbookUseCase(
-                name: 'Drawer',
-                builder: _sky_showcase_components_organisms_navigation_use_cases
-                    .appNavigationDrawerUseCase,
+                name: 'Interactive',
+                builder:
+                    _sky_showcase_components_organisms_app_navigation_drawer_use_case
+                        .appNavigationDrawerInteractiveUseCase,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Variants',
+                builder:
+                    _sky_showcase_components_organisms_app_navigation_drawer_use_case
+                        .appNavigationDrawerVariantsUseCase,
               ),
             ],
           ),
@@ -524,9 +544,16 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'AppNavigationRail',
             useCases: [
               _widgetbook.WidgetbookUseCase(
-                name: 'Rail',
-                builder: _sky_showcase_components_organisms_navigation_use_cases
-                    .appNavigationRailUseCase,
+                name: 'Interactive',
+                builder:
+                    _sky_showcase_components_organisms_app_navigation_rail_use_case
+                        .appNavigationRailInteractiveUseCase,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Variants',
+                builder:
+                    _sky_showcase_components_organisms_app_navigation_rail_use_case
+                        .appNavigationRailVariantsUseCase,
               ),
             ],
           ),
@@ -534,9 +561,14 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'AppTabBar',
             useCases: [
               _widgetbook.WidgetbookUseCase(
-                name: 'Default',
-                builder: _sky_showcase_components_organisms_navigation_use_cases
-                    .appTabBarUseCase,
+                name: 'Interactive',
+                builder: _sky_showcase_components_organisms_app_tab_bar_use_case
+                    .appTabBarInteractiveUseCase,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Variants',
+                builder: _sky_showcase_components_organisms_app_tab_bar_use_case
+                    .appTabBarVariantsUseCase,
               ),
             ],
           ),
