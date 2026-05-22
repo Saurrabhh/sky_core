@@ -140,22 +140,57 @@ void main() {
     expect(value, true);
   });
 
-  testWidgets('AppTextField renders and accepts text', (
+  testWidgets('AppTextField renders, accepts text, and supports form validation', (
     tester,
   ) async {
     final controller = TextEditingController();
+    final formKey = GlobalKey<FormState>();
+    String? savedValue;
+
     await tester.pumpWidget(
       MaterialApp(
         theme: AppTheme.light(useGoogleFonts: false),
         home: Scaffold(
-          body: AppTextField(controller: controller, hintText: 'Enter text'),
+          body: Form(
+            key: formKey,
+            child: AppTextField(
+              controller: controller,
+              hintText: 'Enter text',
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Error message';
+                }
+                return null;
+              },
+              onSaved: (value) => savedValue = value,
+            ),
+          ),
         ),
       ),
     );
 
+    expect(find.byType(TextFormField), findsOneWidget);
     expect(find.byType(TextField), findsOneWidget);
+
+    // Initial state: no validation error showing
+    expect(find.text('Error message'), findsNothing);
+
+    // Validate empty field
+    formKey.currentState!.validate();
+    await tester.pump();
+    expect(find.text('Error message'), findsOneWidget);
+
+    // Enter text and validate again
     await tester.enterText(find.byType(AppTextField), 'Hello');
     expect(controller.text, 'Hello');
+
+    formKey.currentState!.validate();
+    await tester.pump();
+    expect(find.text('Error message'), findsNothing);
+
+    // Save field
+    formKey.currentState!.save();
+    expect(savedValue, 'Hello');
   });
 
   testWidgets('AppProgressIndicator renders both variants', (
