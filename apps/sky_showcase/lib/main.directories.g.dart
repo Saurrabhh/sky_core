@@ -231,18 +231,7 @@ final directories = <_widgetbook.WidgetbookNode>[
             ],
           ),
           _widgetbook.WidgetbookComponent(
-            name: 'AppEmptyState',
-            useCases: [
-              _widgetbook.WidgetbookUseCase(
-                name: 'Interactive',
-                builder:
-                    _sky_showcase_components_molecules_feedback_molecules_use_cases
-                        .appEmptyStateInteractiveUseCase,
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookComponent(
-            name: 'AppListItem',
+            name: 'AppListTile',
             useCases: [
               _widgetbook.WidgetbookUseCase(
                 name: 'Interactive',
@@ -260,17 +249,6 @@ final directories = <_widgetbook.WidgetbookNode>[
                 builder:
                     _sky_showcase_components_molecules_layout_molecules_use_cases
                         .appSearchBarUseCase,
-              ),
-            ],
-          ),
-          _widgetbook.WidgetbookComponent(
-            name: 'AppSectionHeader',
-            useCases: [
-              _widgetbook.WidgetbookUseCase(
-                name: 'Default',
-                builder:
-                    _sky_showcase_components_molecules_layout_molecules_use_cases
-                        .appSectionHeaderUseCase,
               ),
             ],
           ),

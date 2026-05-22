@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// A standardized bottom navigation bar for mobile layouts.
 class AppNavigationBar extends StatelessWidget {
   const AppNavigationBar({
     required this.selectedIndex,

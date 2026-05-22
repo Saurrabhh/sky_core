@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// A standardized app bar for the design system.
 class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   const AppTopBar({
     required this.title,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// A standardized tab bar for top-level view switching.
 class AppTabBar extends StatelessWidget implements PreferredSizeWidget {
   const AppTabBar({
     required this.tabs,

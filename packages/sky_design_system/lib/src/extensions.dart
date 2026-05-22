@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 extension SkyDesignSystemContextExtension on BuildContext {
-  ThemeData get theme => Theme.of(this);
+  ColorScheme get colorScheme => ColorScheme.of(this);
 
-  ColorScheme get colorScheme => theme.colorScheme;
+  TextTheme get textTheme => TextTheme.of(this);
 
-  TextTheme get textTheme => theme.textTheme;
+  CardThemeData get cardTheme => CardTheme.of(this);
+
+  ScaffoldMessengerState get scaffoldMessenger => ScaffoldMessenger.of(this);
 }

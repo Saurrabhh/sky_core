@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sky_design_system/src/components/atoms/app_icon.dart';
 import 'package:sky_design_system/src/components/atoms/app_icon_button.dart';
 
-/// A composite input atom specifically for search fields.
 class AppSearchBar extends StatefulWidget {
   const AppSearchBar({
     super.key,
@@ -54,14 +53,6 @@ class _AppSearchBarState extends State<AppSearchBar> {
       hintText: widget.hintText,
       onChanged: widget.onChanged,
       leading: const AppIcon.md(Icons.search),
-      elevation: const WidgetStatePropertyAll(0),
-      backgroundColor: WidgetStatePropertyAll(
-        Theme.of(context).colorScheme.surfaceContainerLow,
-      ),
-      padding: const WidgetStatePropertyAll(
-        EdgeInsets.symmetric(horizontal: 12),
-      ),
-      constraints: const BoxConstraints(minHeight: 48, maxHeight: 48),
       trailing: [
         ValueListenableBuilder<TextEditingValue>(
           valueListenable: _controller,

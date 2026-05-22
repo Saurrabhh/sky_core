@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/sky_design_system.dart';
 
-/// Utility class for creating and displaying standardized Snackbars.
-class AppSnackbar {
-  AppSnackbar._();
+class AppSnackBar {
+  AppSnackBar._();
 
-  /// Creates a configured [SnackBar] widget.
   static SnackBar create({
     required BuildContext context,
     required String message,
@@ -37,7 +35,6 @@ class AppSnackbar {
     );
   }
 
-  /// Shows a standard snackbar using the nearest [ScaffoldMessenger].
   static void show(
     BuildContext context, {
     required String message,
@@ -45,8 +42,8 @@ class AppSnackbar {
     VoidCallback? onAction,
     bool isError = false,
   }) {
-    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    ScaffoldMessenger.of(context).showSnackBar(
+    context.scaffoldMessenger.hideCurrentSnackBar();
+    context.scaffoldMessenger.showSnackBar(
       create(
         context: context,
         message: message,

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Small Extra-Small rounded surfaces for providing context on long-press or
-/// hover.
 class AppTooltip extends StatelessWidget {
   const AppTooltip({required this.message, required this.child, super.key});
 

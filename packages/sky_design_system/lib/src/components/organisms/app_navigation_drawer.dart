@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// A standardized navigation drawer for responsive layouts.
 class AppNavigationDrawer extends StatelessWidget {
   const AppNavigationDrawer({
     required this.selectedIndex,

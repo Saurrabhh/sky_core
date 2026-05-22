@@ -152,6 +152,16 @@ class AppTheme {
         behavior: SnackBarBehavior.floating,
         contentTextStyle: textTheme.bodyMedium,
       ),
+      searchBarTheme: SearchBarThemeData(
+        elevation: const WidgetStatePropertyAll(0),
+        backgroundColor: WidgetStatePropertyAll(
+          colorScheme.surfaceContainerLow,
+        ),
+        padding: const WidgetStatePropertyAll(
+          EdgeInsets.symmetric(horizontal: AppSpacing.md),
+        ),
+        constraints: const BoxConstraints(minHeight: 48, maxHeight: 48),
+      ),
     );
   }
 }

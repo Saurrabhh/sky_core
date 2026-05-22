@@ -324,7 +324,7 @@ void main() {
       MaterialApp(
         theme: AppTheme.light(useGoogleFonts: false),
         home: Scaffold(
-          body: AppListItem(
+          body: AppListTile(
             title: 'Item Title',
             subtitle: 'Item Subtitle',
             // ignore: deprecated_member_use_from_same_package, Testing deprecated property for backward compatibility.
@@ -342,26 +342,6 @@ void main() {
     expect(find.byType(ListTile), findsOneWidget);
     expect(find.byIcon(Icons.star), findsOneWidget);
     expect(find.byIcon(Icons.chevron_right), findsOneWidget);
-  });
-
-  testWidgets('AppSectionHeader renders title and action', (
-    tester,
-  ) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        theme: AppTheme.light(useGoogleFonts: false),
-        home: Scaffold(
-          body: AppSectionHeader(
-            title: 'Section Title',
-            actionText: 'View All',
-            onActionTap: () {},
-          ),
-        ),
-      ),
-    );
-
-    expect(find.text('Section Title'), findsOneWidget);
-    expect(find.text('View All'), findsOneWidget);
   });
 
   testWidgets('AppSearchBar renders with search icon and clears text', (
@@ -450,7 +430,7 @@ void main() {
               return Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    final snackbar = AppSnackbar.create(
+                    final snackbar = AppSnackBar.create(
                       context: context,
                       message: 'Test Message',
                       actionText: 'Undo',
@@ -472,30 +452,6 @@ void main() {
 
     await tester.tap(find.text('Show'));
     await tester.pump();
-  });
-
-  testWidgets('AppEmptyState renders icon, title, description, and action', (
-    tester,
-  ) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        theme: AppTheme.light(useGoogleFonts: false),
-        home: Scaffold(
-          body: AppEmptyState(
-            icon: Icons.inbox,
-            title: 'No items',
-            description: 'You have no items in your inbox.',
-            actionText: 'Refresh',
-            onAction: () {},
-          ),
-        ),
-      ),
-    );
-
-    expect(find.byIcon(Icons.inbox), findsOneWidget);
-    expect(find.text('No items'), findsOneWidget);
-    expect(find.text('You have no items in your inbox.'), findsOneWidget);
-    expect(find.text('Refresh'), findsOneWidget);
   });
 
   testWidgets('AppTooltip wraps child with Tooltip', (

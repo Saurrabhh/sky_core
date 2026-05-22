@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// A standardized navigation rail for tablet and desktop layouts.
 class AppNavigationRail extends StatelessWidget {
   const AppNavigationRail({
     required this.selectedIndex,

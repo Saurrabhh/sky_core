@@ -33,7 +33,7 @@ Widget appCardInteractiveUseCase(BuildContext context) {
   );
 }
 
-@widgetbook.UseCase(name: 'Interactive', type: AppListItem)
+@widgetbook.UseCase(name: 'Interactive', type: AppListTile)
 Widget appListItemInteractiveUseCase(BuildContext context) {
   final title = context.knobs.string(label: 'Title', initialValue: 'Item Title');
   final subtitle = context.knobs.string(
@@ -48,7 +48,7 @@ Widget appListItemInteractiveUseCase(BuildContext context) {
 
   return Center(
     child: AppCard.outlined(
-      child: AppListItem(
+      child: AppListTile(
         title: title,
         subtitle: subtitle.isNotEmpty ? subtitle : null,
         leadingIcon: leading ? Icons.star : null,
@@ -68,17 +68,5 @@ Widget appSearchBarUseCase(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.all(AppSpacing.md),
     child: AppSearchBar(hintText: hint),
-  );
-}
-
-@widgetbook.UseCase(name: 'Default', type: AppSectionHeader)
-Widget appSectionHeaderUseCase(BuildContext context) {
-  final title = context.knobs.string(label: 'Title', initialValue: 'Section');
-  final action = context.knobs.string(label: 'Action', initialValue: 'View All');
-
-  return AppSectionHeader(
-    title: title,
-    actionText: action,
-    onActionTap: () {},
   );
 }

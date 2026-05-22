@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// A standard modal surface for Alerts and Confirmations.
 class AppDialog extends StatelessWidget {
   const AppDialog({
     required this.title,
@@ -22,7 +21,6 @@ class AppDialog extends StatelessWidget {
     );
   }
 
-  /// Helper method to show the dialog
   static Future<T?> show<T>({
     required BuildContext context,
     required String title,

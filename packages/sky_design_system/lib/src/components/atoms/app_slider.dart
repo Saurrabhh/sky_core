@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class AppSlider extends StatelessWidget {
   const AppSlider({
     required this.value,
