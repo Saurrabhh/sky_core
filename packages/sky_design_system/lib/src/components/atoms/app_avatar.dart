@@ -19,7 +19,7 @@ class AppAvatar extends StatelessWidget {
       radius: radius,
       backgroundImage: backgroundImage,
       child: backgroundImage == null && initials != null
-          ? Text(initials ?? '')
+          ? FittedBox(child: Text(initials ?? ''))
           : null,
     );
   }
