@@ -162,6 +162,16 @@ class AppTheme {
         ),
         constraints: const BoxConstraints(minHeight: 48, maxHeight: 48),
       ),
+      bottomSheetTheme: BottomSheetThemeData(
+        backgroundColor: colorScheme.surface,
+        elevation: 1,
+        showDragHandle: true,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(AppRadius.lg),
+          ),
+        ),
+      ),
     );
   }
 }

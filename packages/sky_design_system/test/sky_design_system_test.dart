@@ -398,7 +398,7 @@ void main() {
     expect(find.byType(AppBar), findsOneWidget);
   });
 
-  testWidgets('AppDialog renders title, content, and actions', (
+  testWidgets('AppDialog renders title, content, actions, and custom icon', (
     tester,
   ) async {
     await tester.pumpWidget(
@@ -408,6 +408,8 @@ void main() {
           body: AppDialog(
             title: 'Dialog Title',
             content: const Text('Dialog Content'),
+            icon: const Icon(Icons.warning),
+            scrollable: true,
             actions: [AppButton.text(text: 'OK', onPressed: () {})],
           ),
         ),
@@ -416,8 +418,58 @@ void main() {
 
     expect(find.text('Dialog Title'), findsOneWidget);
     expect(find.text('Dialog Content'), findsOneWidget);
+    expect(find.byIcon(Icons.warning), findsOneWidget);
     expect(find.text('OK'), findsOneWidget);
     expect(find.byType(AlertDialog), findsOneWidget);
+  });
+
+  testWidgets('AppBottomSheet renders title and child and can be dismissed', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(useGoogleFonts: false),
+        home: Scaffold(
+          body: Builder(
+            builder: (context) {
+              return Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    AppBottomSheet.show(
+                      context: context,
+                      title: 'Sheet Title',
+                      child: const Text('Sheet Content'),
+                    );
+                  },
+                  child: const Text('Show Sheet'),
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+
+    // Bottom sheet is not visible initially
+    expect(find.text('Sheet Title'), findsNothing);
+    expect(find.text('Sheet Content'), findsNothing);
+
+    // Tap button to show bottom sheet
+    await tester.tap(find.text('Show Sheet'));
+    await tester.pumpAndSettle();
+
+    // Now visible
+    expect(find.text('Sheet Title'), findsOneWidget);
+    expect(find.text('Sheet Content'), findsOneWidget);
+    expect(find.byType(AppBottomSheet), findsOneWidget);
+
+    // Tap close button to dismiss
+    await tester.tap(find.byIcon(Icons.close));
+    await tester.pumpAndSettle();
+
+    // Dismissed
+    expect(find.text('Sheet Title'), findsNothing);
+    expect(find.text('Sheet Content'), findsNothing);
   });
 
   testWidgets('AppSnackbar creation logic', (tester) async {
