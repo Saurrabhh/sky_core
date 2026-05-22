@@ -17,6 +17,9 @@ class AppTextField extends StatelessWidget {
     this.validator,
     this.autovalidateMode,
     this.onSaved,
+    this.readOnly = false,
+    this.onTap,
+    this.enabled,
   });
 
   final TextEditingController? controller;
@@ -32,6 +35,9 @@ class AppTextField extends StatelessWidget {
   final FormFieldValidator<String>? validator;
   final AutovalidateMode? autovalidateMode;
   final FormFieldSetter<String>? onSaved;
+  final bool readOnly;
+  final VoidCallback? onTap;
+  final bool? enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +50,9 @@ class AppTextField extends StatelessWidget {
       validator: validator,
       autovalidateMode: autovalidateMode,
       onSaved: onSaved,
+      readOnly: readOnly,
+      onTap: onTap,
+      enabled: enabled,
       style: context.textTheme.bodyMedium,
       decoration: InputDecoration(
         hintText: hintText,

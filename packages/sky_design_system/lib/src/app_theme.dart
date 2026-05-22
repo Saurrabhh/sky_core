@@ -172,6 +172,92 @@ class AppTheme {
           ),
         ),
       ),
+      datePickerTheme: DatePickerThemeData(
+        backgroundColor: colorScheme.surfaceContainerHigh,
+        elevation: 0,
+        shape: const RoundedRectangleBorder(
+          borderRadius: AppBorderRadius.xl,
+        ),
+        headerBackgroundColor: colorScheme.surfaceContainerHigh,
+        headerForegroundColor: colorScheme.onSurfaceVariant,
+        headerHeadlineStyle: textTheme.headlineLarge,
+        headerHelpStyle: textTheme.labelMedium,
+        weekdayStyle: textTheme.bodyMedium?.copyWith(
+          color: colorScheme.onSurfaceVariant,
+          fontWeight: FontWeight.bold,
+        ),
+        dayStyle: textTheme.bodyLarge,
+        dayForegroundColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return colorScheme.onPrimary;
+          }
+          if (states.contains(WidgetState.disabled)) {
+            return colorScheme.onSurface.withValues(alpha: 0.38);
+          }
+          return colorScheme.onSurface;
+        }),
+        dayBackgroundColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return colorScheme.primary;
+          }
+          return Colors.transparent;
+        }),
+        todayForegroundColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return colorScheme.onPrimary;
+          }
+          return colorScheme.primary;
+        }),
+        todayBackgroundColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return colorScheme.primary;
+          }
+          return Colors.transparent;
+        }),
+        todayBorder: BorderSide(
+          color: colorScheme.primary,
+        ),
+        yearStyle: textTheme.bodyLarge,
+        yearForegroundColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return colorScheme.onPrimary;
+          }
+          if (states.contains(WidgetState.disabled)) {
+            return colorScheme.onSurface.withValues(alpha: 0.38);
+          }
+          return colorScheme.onSurface;
+        }),
+        yearBackgroundColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return colorScheme.primary;
+          }
+          return Colors.transparent;
+        }),
+        dividerColor: colorScheme.outlineVariant,
+      ),
+      timePickerTheme: TimePickerThemeData(
+        backgroundColor: colorScheme.surfaceContainerHigh,
+        elevation: 0,
+        shape: const RoundedRectangleBorder(
+          borderRadius: AppBorderRadius.xl,
+        ),
+        hourMinuteColor: colorScheme.surfaceContainerHighest,
+        hourMinuteTextColor: colorScheme.onSurface,
+        hourMinuteShape: const RoundedRectangleBorder(
+          borderRadius: AppBorderRadius.md,
+        ),
+        dayPeriodColor: Colors.transparent,
+        dayPeriodTextColor: colorScheme.onSurface,
+        dayPeriodShape: const RoundedRectangleBorder(
+          borderRadius: AppBorderRadius.sm,
+        ),
+        dayPeriodBorderSide: BorderSide(color: colorScheme.outlineVariant),
+        dialBackgroundColor: colorScheme.surfaceContainerHighest,
+        dialHandColor: colorScheme.primary,
+        dialTextColor: colorScheme.onSurface,
+        entryModeIconColor: colorScheme.onSurfaceVariant,
+        helpTextStyle: textTheme.labelMedium,
+      ),
     );
   }
 }
