@@ -1,6 +1,91 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/sky_design_system.dart';
+import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
+
+@widgetbook.UseCase(name: 'Interactive', type: AppRadioButton)
+Widget appRadioButtonInteractiveUseCase(BuildContext context) {
+  final value = context.knobs.string(
+    label: 'Value',
+    initialValue: 'Option A',
+  );
+
+  final initialGroupValue = context.knobs.string(
+    label: 'Group Value',
+    initialValue: 'Option A',
+  );
+
+  final toggleable = context.knobs.boolean(
+    label: 'Toggleable',
+  );
+
+  return Center(
+    child: _InteractiveRadioWrapper(
+      value: value,
+      initialGroupValue: initialGroupValue,
+      toggleable: toggleable,
+    ),
+  );
+}
+
+class _InteractiveRadioWrapper extends StatefulWidget {
+  const _InteractiveRadioWrapper({
+    required this.value,
+    required this.initialGroupValue,
+    required this.toggleable,
+  });
+
+  final String value;
+  final String initialGroupValue;
+  final bool toggleable;
+
+  @override
+  State<_InteractiveRadioWrapper> createState() =>
+      _InteractiveRadioWrapperState();
+}
+
+class _InteractiveRadioWrapperState extends State<_InteractiveRadioWrapper> {
+  String? _groupValue;
+
+  @override
+  void initState() {
+    super.initState();
+    _groupValue = widget.initialGroupValue;
+  }
+
+  @override
+  void didUpdateWidget(covariant _InteractiveRadioWrapper oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.initialGroupValue != widget.initialGroupValue) {
+      _groupValue = widget.initialGroupValue;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      spacing: AppSpacing.md,
+      children: [
+        AppRadioGroup<String>(
+          groupValue: _groupValue,
+          onChanged: (val) => setState(() => _groupValue = val),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AppRadioButton<String>(
+                value: widget.value,
+                toggleable: widget.toggleable,
+              ),
+              AppText.bodyMedium('Value: ${widget.value}'),
+            ],
+          ),
+        ),
+        AppText.bodySmall('Current Group Value: ${_groupValue ?? "null"}'),
+      ],
+    );
+  }
+}
 
 @widgetbook.UseCase(name: 'Variants', type: AppRadioButton)
 Widget appRadioButtonVariantsUseCase(BuildContext context) {

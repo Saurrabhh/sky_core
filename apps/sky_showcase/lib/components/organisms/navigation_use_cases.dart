@@ -6,7 +6,10 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 @widgetbook.UseCase(name: 'Interactive', type: AppNavigationBar)
 Widget appNavigationBarInteractiveUseCase(BuildContext context) {
   final index = context.knobs.double
-      .slider(label: 'Selected Index', initialValue: 0, min: 0, max: 2)
+      .slider(
+        label: 'Selected Index',
+        max: 2,
+      )
       .toInt();
 
   return Align(

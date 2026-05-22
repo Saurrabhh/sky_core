@@ -72,6 +72,11 @@ final directories = <_widgetbook.WidgetbookNode>[
                     .appAvatarInitialsUseCase,
               ),
               _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_app_avatar_use_case
+                    .appAvatarInteractiveUseCase,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Sizes',
                 builder: _sky_showcase_components_atoms_app_avatar_use_case
                     .appAvatarSizesUseCase,
@@ -81,6 +86,11 @@ final directories = <_widgetbook.WidgetbookNode>[
           _widgetbook.WidgetbookComponent(
             name: 'AppBadge',
             useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_app_badge_use_case
+                    .appBadgeInteractiveUseCase,
+              ),
               _widgetbook.WidgetbookUseCase(
                 name: 'Variants',
                 builder: _sky_showcase_components_atoms_app_badge_use_case
@@ -92,6 +102,11 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'AppButton',
             useCases: [
               _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_app_button_use_case
+                    .appButtonInteractiveUseCase,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Variants',
                 builder: _sky_showcase_components_atoms_app_button_use_case
                     .appButtonVariantsUseCase,
@@ -101,6 +116,11 @@ final directories = <_widgetbook.WidgetbookNode>[
           _widgetbook.WidgetbookComponent(
             name: 'AppCheckbox',
             useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_app_checkbox_use_case
+                    .appCheckboxInteractiveUseCase,
+              ),
               _widgetbook.WidgetbookUseCase(
                 name: 'Variants',
                 builder: _sky_showcase_components_atoms_app_checkbox_use_case
@@ -115,6 +135,11 @@ final directories = <_widgetbook.WidgetbookNode>[
                 name: 'Horizontal',
                 builder: _sky_showcase_components_atoms_app_divider_use_case
                     .appDividerHorizontalUseCase,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_app_divider_use_case
+                    .appDividerInteractiveUseCase,
               ),
               _widgetbook.WidgetbookUseCase(
                 name: 'Vertical',
@@ -132,6 +157,11 @@ final directories = <_widgetbook.WidgetbookNode>[
                     .appIconColorsUseCase,
               ),
               _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_app_icon_use_case
+                    .appIconInteractiveUseCase,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Sizes',
                 builder: _sky_showcase_components_atoms_app_icon_use_case
                     .appIconSizesUseCase,
@@ -141,6 +171,11 @@ final directories = <_widgetbook.WidgetbookNode>[
           _widgetbook.WidgetbookComponent(
             name: 'AppIconButton',
             useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_app_icon_button_use_case
+                    .appIconButtonInteractiveUseCase,
+              ),
               _widgetbook.WidgetbookUseCase(
                 name: 'Variants',
                 builder: _sky_showcase_components_atoms_app_icon_button_use_case
@@ -163,11 +198,23 @@ final directories = <_widgetbook.WidgetbookNode>[
                     _sky_showcase_components_atoms_app_progress_indicator_use_case
                         .appProgressIndicatorIndeterminateUseCase,
               ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder:
+                    _sky_showcase_components_atoms_app_progress_indicator_use_case
+                        .appProgressIndicatorInteractiveUseCase,
+              ),
             ],
           ),
           _widgetbook.WidgetbookComponent(
             name: 'AppRadioButton',
             useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder:
+                    _sky_showcase_components_atoms_app_radio_button_use_case
+                        .appRadioButtonInteractiveUseCase,
+              ),
               _widgetbook.WidgetbookUseCase(
                 name: 'Variants',
                 builder:
@@ -184,11 +231,21 @@ final directories = <_widgetbook.WidgetbookNode>[
                 builder: _sky_showcase_components_atoms_app_radio_group_use_case
                     .appRadioGroupBasicUseCase,
               ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_app_radio_group_use_case
+                    .appRadioGroupInteractiveUseCase,
+              ),
             ],
           ),
           _widgetbook.WidgetbookComponent(
             name: 'AppSlider',
             useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_app_slider_use_case
+                    .appSliderInteractiveUseCase,
+              ),
               _widgetbook.WidgetbookUseCase(
                 name: 'Variants',
                 builder: _sky_showcase_components_atoms_app_slider_use_case
@@ -200,6 +257,11 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'AppSwitch',
             useCases: [
               _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_app_switch_use_case
+                    .appSwitchInteractiveUseCase,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Variants',
                 builder: _sky_showcase_components_atoms_app_switch_use_case
                     .appSwitchVariantsUseCase,
@@ -209,6 +271,11 @@ final directories = <_widgetbook.WidgetbookNode>[
           _widgetbook.WidgetbookComponent(
             name: 'AppText',
             useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_app_text_use_case
+                    .appTextInteractiveUseCase,
+              ),
               _widgetbook.WidgetbookUseCase(
                 name: 'Overrides',
                 builder: _sky_showcase_components_atoms_app_text_use_case
@@ -228,6 +295,11 @@ final directories = <_widgetbook.WidgetbookNode>[
                 name: 'Form Integration',
                 builder: _sky_showcase_components_atoms_app_text_field_use_case
                     .appTextFieldFormUseCase,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Interactive',
+                builder: _sky_showcase_components_atoms_app_text_field_use_case
+                    .appTextFieldInteractiveUseCase,
               ),
               _widgetbook.WidgetbookUseCase(
                 name: 'Variants',

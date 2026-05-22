@@ -5,10 +5,9 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 @widgetbook.UseCase(name: 'Interactive', type: AppCard)
 Widget appCardInteractiveUseCase(BuildContext context) {
-  final variant = context.knobs.list(
+  final variant = context.knobs.object.dropdown<String>(
     label: 'Variant',
-    options: ['Outlined', 'Filled'],
-    initialOption: 'Outlined',
+    options: const ['Outlined', 'Filled'],
   );
   final content = context.knobs.string(
     label: 'Content',
@@ -35,12 +34,18 @@ Widget appCardInteractiveUseCase(BuildContext context) {
 
 @widgetbook.UseCase(name: 'Interactive', type: AppListTile)
 Widget appListItemInteractiveUseCase(BuildContext context) {
-  final title = context.knobs.string(label: 'Title', initialValue: 'Item Title');
+  final title = context.knobs.string(
+    label: 'Title',
+    initialValue: 'Item Title',
+  );
   final subtitle = context.knobs.string(
     label: 'Subtitle',
     initialValue: 'Item Subtitle',
   );
-  final leading = context.knobs.boolean(label: 'Leading Icon', initialValue: true);
+  final leading = context.knobs.boolean(
+    label: 'Leading Icon',
+    initialValue: true,
+  );
   final trailing = context.knobs.boolean(
     label: 'Trailing Icon',
     initialValue: true,

@@ -23,11 +23,13 @@ Widget appDialogUseCase(BuildContext context) {
   return Center(
     child: AppButton.primary(
       text: 'Show Dialog',
-      onPressed: () => showDialog(
+      onPressed: () => showDialog<void>(
         context: context,
         builder: (context) => AppDialog(
           title: 'Confirm Action',
-          content: const AppText.bodyMedium('Are you sure you want to proceed?'),
+          content: const AppText.bodyMedium(
+            'Are you sure you want to proceed?',
+          ),
           actions: [
             AppButton.text(
               text: 'Cancel',

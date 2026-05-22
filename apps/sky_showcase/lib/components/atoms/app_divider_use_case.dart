@@ -1,6 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/sky_design_system.dart';
+import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
+
+@widgetbook.UseCase(name: 'Interactive', type: AppDivider)
+Widget appDividerInteractiveUseCase(BuildContext context) {
+  final variant = context.knobs.object.dropdown<String>(
+    label: 'Variant',
+    options: ['Horizontal', 'Vertical'],
+  );
+
+  return Padding(
+    padding: const EdgeInsets.all(AppSpacing.md),
+    child: Center(
+      child: variant == 'Horizontal'
+          ? const Column(
+              mainAxisSize: MainAxisSize.min,
+              spacing: AppSpacing.md,
+              children: [
+                AppText.bodyMedium('Above Divider'),
+                AppDivider.horizontal(),
+                AppText.bodyMedium('Below Divider'),
+              ],
+            )
+          : const SizedBox(
+              height: 50,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                spacing: AppSpacing.md,
+                children: [
+                  AppText.bodyMedium('Left'),
+                  AppDivider.vertical(),
+                  AppText.bodyMedium('Right'),
+                ],
+              ),
+            ),
+    ),
+  );
+}
 
 @widgetbook.UseCase(name: 'Horizontal', type: AppDivider)
 Widget appDividerHorizontalUseCase(BuildContext context) {

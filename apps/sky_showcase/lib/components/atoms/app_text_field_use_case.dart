@@ -1,6 +1,69 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/sky_design_system.dart';
+import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
+
+@widgetbook.UseCase(name: 'Interactive', type: AppTextField)
+Widget appTextFieldInteractiveUseCase(BuildContext context) {
+  final labelText = context.knobs.string(
+    label: 'Label Text',
+    initialValue: 'Input Label',
+  );
+
+  final hintText = context.knobs.string(
+    label: 'Hint Text',
+    initialValue: 'Placeholder hint...',
+  );
+
+  final errorText = context.knobs.string(
+    label: 'Error Text',
+  );
+
+  final obscureText = context.knobs.boolean(
+    label: 'Obscure Text',
+  );
+
+  final enabled = context.knobs.boolean(
+    label: 'Enabled',
+    initialValue: true,
+  );
+
+  final readOnly = context.knobs.boolean(
+    label: 'Read Only',
+  );
+
+  final hasPrefix = context.knobs.boolean(
+    label: 'Has Prefix Icon',
+  );
+
+  final hasSuffix = context.knobs.boolean(
+    label: 'Has Suffix Icon',
+  );
+
+  final initialValue = context.knobs.string(
+    label: 'Initial Value',
+  );
+
+  return Padding(
+    padding: const EdgeInsets.all(AppSpacing.md),
+    child: Center(
+      child: KeyedSubtree(
+        key: UniqueKey(),
+        child: AppTextField(
+          initialValue: initialValue.isEmpty ? null : initialValue,
+          labelText: labelText.isEmpty ? null : labelText,
+          hintText: hintText.isEmpty ? null : hintText,
+          errorText: errorText.isEmpty ? null : errorText,
+          obscureText: obscureText,
+          enabled: enabled,
+          readOnly: readOnly,
+          prefixIcon: hasPrefix ? const Icon(Icons.person) : null,
+          suffixIcon: hasSuffix ? const Icon(Icons.info) : null,
+        ),
+      ),
+    ),
+  );
+}
 
 @widgetbook.UseCase(name: 'Variants', type: AppTextField)
 Widget appTextFieldVariantsUseCase(BuildContext context) {
@@ -73,11 +136,10 @@ class _StatefulFormShowcaseState extends State<_StatefulFormShowcase> {
   void _submitForm() {
     if (_formKey.currentState?.validate() ?? false) {
       _formKey.currentState?.save();
-      final message =
-          'Form Validated! Email: $_email, Pwd: ${_password.length}';
+      final msg = 'Form Validated! Email: $_email, Pwd: ${_password.length}';
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(message),
+          content: Text(msg),
         ),
       );
     }

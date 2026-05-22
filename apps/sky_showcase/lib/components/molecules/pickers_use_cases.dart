@@ -5,10 +5,21 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 @widgetbook.UseCase(name: 'Interactive Date Picker', type: AppDatePickerField)
 Widget appDatePickerUseCase(BuildContext context) {
-  final label = context.knobs.string(label: 'Label', initialValue: 'Select Date');
-  final hint = context.knobs.string(label: 'Hint', initialValue: 'YYYY-MM-DD');
-  final error = context.knobs.string(label: 'Error', initialValue: '');
-  final enabled = context.knobs.boolean(label: 'Enabled', initialValue: true);
+  final label = context.knobs.string(
+    label: 'Label',
+    initialValue: 'Select Date',
+  );
+  final hint = context.knobs.string(
+    label: 'Hint',
+    initialValue: 'YYYY-MM-DD',
+  );
+  final error = context.knobs.string(
+    label: 'Error',
+  );
+  final enabled = context.knobs.boolean(
+    label: 'Enabled',
+    initialValue: true,
+  );
 
   return Padding(
     padding: const EdgeInsets.all(AppSpacing.lg),
@@ -34,10 +45,21 @@ Widget appDatePickerUseCase(BuildContext context) {
 
 @widgetbook.UseCase(name: 'Interactive Time Picker', type: AppTimePickerField)
 Widget appTimePickerUseCase(BuildContext context) {
-  final label = context.knobs.string(label: 'Label', initialValue: 'Select Time');
-  final hint = context.knobs.string(label: 'Hint', initialValue: 'HH:MM AM/PM');
-  final error = context.knobs.string(label: 'Error', initialValue: '');
-  final enabled = context.knobs.boolean(label: 'Enabled', initialValue: true);
+  final label = context.knobs.string(
+    label: 'Label',
+    initialValue: 'Select Time',
+  );
+  final hint = context.knobs.string(
+    label: 'Hint',
+    initialValue: 'HH:MM AM/PM',
+  );
+  final error = context.knobs.string(
+    label: 'Error',
+  );
+  final enabled = context.knobs.boolean(
+    label: 'Enabled',
+    initialValue: true,
+  );
 
   return Padding(
     padding: const EdgeInsets.all(AppSpacing.lg),

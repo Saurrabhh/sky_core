@@ -1,6 +1,110 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/sky_design_system.dart';
+import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
+
+@widgetbook.UseCase(name: 'Interactive', type: AppSlider)
+Widget appSliderInteractiveUseCase(BuildContext context) {
+  final min = context.knobs.double.slider(
+    label: 'Min',
+    max: 10,
+  );
+
+  final max = context.knobs.double.slider(
+    label: 'Max',
+    initialValue: 10,
+    min: 10,
+    max: 100,
+  );
+
+  final divisions = context.knobs.double
+      .slider(
+        label: 'Divisions (0 for continuous)',
+        max: 10,
+        divisions: 10,
+      )
+      .toInt();
+
+  final label = context.knobs.string(
+    label: 'Label',
+    initialValue: 'Custom Value',
+  );
+
+  final enabled = context.knobs.boolean(
+    label: 'Enabled',
+    initialValue: true,
+  );
+
+  return Padding(
+    padding: const EdgeInsets.all(AppSpacing.md),
+    child: _InteractiveSliderWrapper(
+      min: min,
+      max: max,
+      divisions: divisions > 0 ? divisions : null,
+      label: label.isEmpty ? null : label,
+      enabled: enabled,
+    ),
+  );
+}
+
+class _InteractiveSliderWrapper extends StatefulWidget {
+  const _InteractiveSliderWrapper({
+    required this.min,
+    required this.max,
+    required this.enabled,
+    this.divisions,
+    this.label,
+  });
+
+  final double min;
+  final double max;
+  final int? divisions;
+  final String? label;
+  final bool enabled;
+
+  @override
+  State<_InteractiveSliderWrapper> createState() =>
+      _InteractiveSliderWrapperState();
+}
+
+class _InteractiveSliderWrapperState extends State<_InteractiveSliderWrapper> {
+  double _value = 5;
+
+  @override
+  void initState() {
+    super.initState();
+    _value = widget.min + (widget.max - widget.min) / 2;
+  }
+
+  @override
+  void didUpdateWidget(covariant _InteractiveSliderWrapper oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (_value < widget.min || _value > widget.max) {
+      _value = widget.min + (widget.max - widget.min) / 2;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      spacing: AppSpacing.md,
+      children: [
+        AppText.titleMedium('Slider Value: ${_value.toStringAsFixed(2)}'),
+        AppSlider(
+          value: _value,
+          min: widget.min,
+          max: widget.max,
+          divisions: widget.divisions,
+          label: widget.label,
+          onChanged: widget.enabled
+              ? (val) => setState(() => _value = val)
+              : null,
+        ),
+      ],
+    );
+  }
+}
 
 @widgetbook.UseCase(name: 'Variants', type: AppSlider)
 Widget appSliderVariantsUseCase(BuildContext context) {
