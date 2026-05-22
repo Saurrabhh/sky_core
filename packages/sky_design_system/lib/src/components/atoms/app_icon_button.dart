@@ -10,7 +10,6 @@ class AppIconButton extends StatelessWidget {
     super.key,
     this.tooltip,
     this.color,
-    this.isLoading = false,
   }) : _variant = _AppIconButtonVariant.standard;
 
   const AppIconButton.primary({
@@ -19,7 +18,6 @@ class AppIconButton extends StatelessWidget {
     super.key,
     this.tooltip,
     this.color,
-    this.isLoading = false,
   }) : _variant = _AppIconButtonVariant.primary;
 
   const AppIconButton.secondary({
@@ -28,7 +26,6 @@ class AppIconButton extends StatelessWidget {
     super.key,
     this.tooltip,
     this.color,
-    this.isLoading = false,
   }) : _variant = _AppIconButtonVariant.secondary;
 
   const AppIconButton.outlined({
@@ -37,7 +34,6 @@ class AppIconButton extends StatelessWidget {
     super.key,
     this.tooltip,
     this.color,
-    this.isLoading = false,
   }) : _variant = _AppIconButtonVariant.outlined;
 
   const AppIconButton.inverse({
@@ -46,60 +42,44 @@ class AppIconButton extends StatelessWidget {
     super.key,
     this.tooltip,
     this.color,
-    this.isLoading = false,
   }) : _variant = _AppIconButtonVariant.inverse;
 
   final IconData icon;
   final VoidCallback? onPressed;
   final String? tooltip;
   final Color? color;
-  final bool isLoading;
   final _AppIconButtonVariant _variant;
 
   @override
   Widget build(BuildContext context) {
-    final iconWidget = isLoading
-        ? const SizedBox(
-            width: 24,
-            height: 24,
-            child: AppProgressIndicator.circular(),
-          )
-        : AppIcon.md(icon, color: color);
+    final iconWidget = AppIcon.md(icon, color: color);
 
     return switch (_variant) {
       _AppIconButtonVariant.standard => IconButton(
-        onPressed: isLoading ? null : onPressed,
+        onPressed: onPressed,
         tooltip: tooltip,
         icon: iconWidget,
       ),
       _AppIconButtonVariant.primary => IconButton.filled(
-        onPressed: isLoading ? null : onPressed,
+        onPressed: onPressed,
         tooltip: tooltip,
         icon: iconWidget,
         style: IconButton.styleFrom(
-          backgroundColor: isLoading || onPressed == null
-              ? null
-              : context.colorScheme.primary,
-          foregroundColor: isLoading || onPressed == null
-              ? null
-              : context.colorScheme.onPrimary,
+          backgroundColor: context.colorScheme.primary,
+          foregroundColor: context.colorScheme.onPrimary,
         ),
       ),
       _AppIconButtonVariant.secondary => IconButton.filled(
-        onPressed: isLoading ? null : onPressed,
+        onPressed: onPressed,
         tooltip: tooltip,
         icon: iconWidget,
         style: IconButton.styleFrom(
-          backgroundColor: isLoading || onPressed == null
-              ? null
-              : context.colorScheme.secondaryContainer,
-          foregroundColor: isLoading || onPressed == null
-              ? null
-              : context.colorScheme.onSecondaryContainer,
+          backgroundColor: context.colorScheme.secondaryContainer,
+          foregroundColor: context.colorScheme.onSecondaryContainer,
         ),
       ),
       _AppIconButtonVariant.outlined => IconButton.outlined(
-        onPressed: isLoading ? null : onPressed,
+        onPressed: onPressed,
         tooltip: tooltip,
         icon: iconWidget,
         style: IconButton.styleFrom(
@@ -108,16 +88,12 @@ class AppIconButton extends StatelessWidget {
         ),
       ),
       _AppIconButtonVariant.inverse => IconButton.filled(
-        onPressed: isLoading ? null : onPressed,
+        onPressed: onPressed,
         tooltip: tooltip,
         icon: iconWidget,
         style: IconButton.styleFrom(
-          backgroundColor: isLoading || onPressed == null
-              ? null
-              : context.colorScheme.inverseSurface,
-          foregroundColor: isLoading || onPressed == null
-              ? null
-              : context.colorScheme.onInverseSurface,
+          backgroundColor: context.colorScheme.inverseSurface,
+          foregroundColor: context.colorScheme.onInverseSurface,
         ),
       ),
     };

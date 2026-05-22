@@ -40,38 +40,6 @@ void main() {
     expect(find.byType(FloatingActionButton), findsOneWidget);
   });
 
-  testWidgets('AppButton variants show loading indicator', (
-    tester,
-  ) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        theme: AppTheme.light(useGoogleFonts: false),
-        home: Scaffold(
-          body: Column(
-            children: [
-              AppButton.inverse(
-                text: 'Inverted',
-                onPressed: () {},
-                isLoading: true,
-              ),
-              AppButton.fab(icon: Icons.add, onPressed: () {}, isLoading: true),
-            ],
-          ),
-        ),
-      ),
-    );
-
-    expect(find.byType(CircularProgressIndicator), findsNWidgets(2));
-    // Tonal button text should be invisible but present
-    final tonalText = tester.widget<Opacity>(
-      find.ancestor(of: find.text('Inverted'), matching: find.byType(Opacity)),
-    );
-    expect(tonalText.opacity, 0.0);
-
-    // FAB icon should NOT be present (it's conditionally rendered)
-    expect(find.byIcon(Icons.add), findsNothing);
-  });
-
   testWidgets('AppIcon renders at expected sizes', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
@@ -395,7 +363,10 @@ void main() {
           appBar: AppTopBar(
             title: 'Page Title',
             actions: [
-              IconButton(icon: const AppIcon.md(Icons.settings), onPressed: () {}),
+              IconButton(
+                icon: const AppIcon.md(Icons.settings),
+                onPressed: () {},
+              ),
             ],
           ),
         ),
@@ -676,25 +647,5 @@ void main() {
 
     // Verify standard IconButton
     expect(find.byType(IconButton), findsNWidgets(4));
-  });
-
-  testWidgets('AppIconButton shows loading indicator', (
-    tester,
-  ) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        theme: AppTheme.light(useGoogleFonts: false),
-        home: Scaffold(
-          body: AppIconButton(
-            icon: Icons.add,
-            onPressed: () {},
-            isLoading: true,
-          ),
-        ),
-      ),
-    );
-
-    expect(find.byType(CircularProgressIndicator), findsOneWidget);
-    expect(find.byIcon(Icons.add), findsNothing);
   });
 }

@@ -6,7 +6,6 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 @widgetbook.UseCase(name: 'Interactive', type: AppButton)
 Widget appButtonInteractiveUseCase(BuildContext context) {
   final text = context.knobs.string(label: 'Text', initialValue: 'Click Me');
-  final isLoading = context.knobs.boolean(label: 'Loading', initialValue: false);
   final isEnabled = context.knobs.boolean(label: 'Enabled', initialValue: true);
   final variant = context.knobs.list(
     label: 'Variant',
@@ -26,36 +25,30 @@ Widget appButtonInteractiveUseCase(BuildContext context) {
       'Primary' => AppButton.primary(
           text: text,
           icon: icon,
-          isLoading: isLoading,
           onPressed: onPressed,
         ),
       'Secondary' => AppButton.secondary(
           text: text,
           icon: icon,
-          isLoading: isLoading,
           onPressed: onPressed,
         ),
       'Inverse' => AppButton.inverse(
           text: text,
           icon: icon,
-          isLoading: isLoading,
           onPressed: onPressed,
         ),
       'Outlined' => AppButton.outlined(
           text: text,
           icon: icon,
-          isLoading: isLoading,
           onPressed: onPressed,
         ),
       'Text' => AppButton.text(
           text: text,
           icon: icon,
-          isLoading: isLoading,
           onPressed: onPressed,
         ),
       'FAB' => AppButton.fab(
           icon: icon ?? Icons.add,
-          isLoading: isLoading,
           onPressed: onPressed,
         ),
       _ => const SizedBox.shrink(),
@@ -65,7 +58,6 @@ Widget appButtonInteractiveUseCase(BuildContext context) {
 
 @widgetbook.UseCase(name: 'Interactive', type: AppIconButton)
 Widget appIconButtonUseCase(BuildContext context) {
-  final isLoading = context.knobs.boolean(label: 'Loading', initialValue: false);
   final isEnabled = context.knobs.boolean(label: 'Enabled', initialValue: true);
   final variant = context.knobs.list(
     label: 'Variant',
@@ -90,27 +82,22 @@ Widget appIconButtonUseCase(BuildContext context) {
     child: switch (variant) {
       'Standard' => AppIconButton(
           icon: icon,
-          isLoading: isLoading,
           onPressed: onPressed,
         ),
       'Primary' => AppIconButton.primary(
           icon: icon,
-          isLoading: isLoading,
           onPressed: onPressed,
         ),
       'Secondary' => AppIconButton.secondary(
           icon: icon,
-          isLoading: isLoading,
           onPressed: onPressed,
         ),
       'Outlined' => AppIconButton.outlined(
           icon: icon,
-          isLoading: isLoading,
           onPressed: onPressed,
         ),
       'Inverse' => AppIconButton.inverse(
           icon: icon,
-          isLoading: isLoading,
           onPressed: onPressed,
         ),
       _ => const SizedBox.shrink(),
@@ -161,31 +148,6 @@ Widget appButtonVariantsUseCase(BuildContext context) {
                 onPressed: () {},
               ),
               AppButton.text(text: 'Edit', icon: Icons.edit, onPressed: () {}),
-            ],
-          ),
-          const SizedBox(height: AppSpacing.xl),
-          const AppText.headlineSmall('Loading States'),
-          const SizedBox(height: AppSpacing.md),
-          Wrap(
-            spacing: AppSpacing.md,
-            runSpacing: AppSpacing.md,
-            children: [
-              AppButton.primary(
-                text: 'Primary',
-                isLoading: true,
-                onPressed: () {},
-              ),
-              AppButton.secondary(
-                text: 'Secondary',
-                isLoading: true,
-                onPressed: () {},
-              ),
-              AppButton.outlined(
-                text: 'Outlined',
-                isLoading: true,
-                onPressed: () {},
-              ),
-              AppButton.text(text: 'Text', isLoading: true, onPressed: () {}),
             ],
           ),
           const SizedBox(height: AppSpacing.xl),
