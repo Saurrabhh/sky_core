@@ -58,7 +58,7 @@ Widget appBadgeInteractiveUseCase(BuildContext context) {
     child: AppBadge(
       count: count > 0 ? count : null,
       isDot: isDot,
-      child: const AppIcon(Icons.notifications, size: AppIconSize.large),
+      child: const AppIcon.lg(Icons.notifications),
     ),
   );
 }
@@ -88,7 +88,7 @@ Widget appBadgeUseCase(BuildContext context) {
   return const Center(
     child: AppBadge(
       count: 3,
-      child: AppIcon(Icons.notifications, size: AppIconSize.large),
+      child: AppIcon.lg(Icons.notifications),
     ),
   );
 }

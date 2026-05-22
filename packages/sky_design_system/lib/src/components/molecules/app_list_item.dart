@@ -25,10 +25,10 @@ class AppListItem extends StatelessWidget {
     return ListTile(
       title: Text(title),
       subtitle: subtitle != null ? Text(subtitle!) : null,
-      leading: leadingIcon != null ? AppIcon(leadingIcon!) : null,
+      leading: leadingIcon != null ? AppIcon.md(leadingIcon!) : null,
       trailing:
           trailingWidget ??
-          (trailingIcon != null ? AppIcon(trailingIcon!) : null),
+          (trailingIcon != null ? AppIcon.md(trailingIcon!) : null),
       onTap: onTap,
     );
   }

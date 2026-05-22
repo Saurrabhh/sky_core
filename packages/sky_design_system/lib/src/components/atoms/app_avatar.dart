@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/src/foundations/app_radius.dart';
 
-/// A circular container for user images or initials.
 class AppAvatar extends StatelessWidget {
   const AppAvatar({
     super.key,

@@ -131,6 +131,13 @@ class AppTheme {
           textStyle: textTheme.labelLarge,
         ),
       ),
+      iconButtonTheme: IconButtonThemeData(
+        style: IconButton.styleFrom(
+          shape: const RoundedRectangleBorder(
+            borderRadius: AppBorderRadius.md,
+          ),
+        ),
+      ),
       appBarTheme: AppBarTheme(
         titleTextStyle: textTheme.titleLarge,
         elevation: 0,

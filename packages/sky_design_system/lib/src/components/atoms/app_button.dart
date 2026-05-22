@@ -3,9 +3,7 @@ import 'package:sky_design_system/sky_design_system.dart';
 
 enum _AppButtonVariant { primary, secondary, outlined, inverse, text, fab }
 
-/// A unified button component following the design system's specifications.
 class AppButton extends StatelessWidget {
-  /// Creates a primary button with filled background.
   const AppButton.primary({
     required this.text,
     required this.onPressed,
@@ -15,7 +13,6 @@ class AppButton extends StatelessWidget {
   }) : _variant = _AppButtonVariant.primary,
        iconData = icon;
 
-  /// Creates a secondary button with tonal background.
   const AppButton.secondary({
     required this.text,
     required this.onPressed,
@@ -25,7 +22,6 @@ class AppButton extends StatelessWidget {
   }) : _variant = _AppButtonVariant.secondary,
        iconData = icon;
 
-  /// Creates an outlined button with a border.
   const AppButton.outlined({
     required this.text,
     required this.onPressed,
@@ -35,7 +31,6 @@ class AppButton extends StatelessWidget {
   }) : _variant = _AppButtonVariant.outlined,
        iconData = icon;
 
-  /// Creates an inverse button with a border.
   const AppButton.inverse({
     required this.text,
     required this.onPressed,
@@ -45,7 +40,6 @@ class AppButton extends StatelessWidget {
   }) : _variant = _AppButtonVariant.inverse,
        iconData = icon;
 
-  /// Creates a text button with transparent background.
   const AppButton.text({
     required this.text,
     required this.onPressed,
@@ -55,7 +49,6 @@ class AppButton extends StatelessWidget {
   }) : _variant = _AppButtonVariant.text,
        iconData = icon;
 
-  /// Creates a floating action button.
   const AppButton.fab({
     required IconData icon,
     required this.onPressed,
@@ -82,7 +75,7 @@ class AppButton extends StatelessWidget {
                 height: 18,
                 child: AppProgressIndicator.circular(),
               )
-            : AppIcon(iconData!),
+            : AppIcon.md(iconData!),
       );
     }
 
@@ -94,7 +87,7 @@ class AppButton extends StatelessWidget {
         spacing: AppSpacing.sm,
         children: [
           if (iconData != null) ...[
-            AppIcon(iconData!, size: AppIconSize.small),
+            AppIcon.sm(iconData!),
           ],
           Text(text),
         ],

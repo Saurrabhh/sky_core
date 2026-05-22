@@ -30,7 +30,7 @@ class AppEmptyState extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          AppIcon(icon, color: context.colorScheme.outline),
+          AppIcon.md(icon, color: context.colorScheme.outline),
           const SizedBox(height: AppSpacing.md),
           AppText.titleLarge(title, textAlign: TextAlign.center),
           if (description != null) ...[

@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sky_design_system/src/components/atoms/app_icon.dart';
-import 'package:sky_design_system/src/components/atoms/app_progress_indicator.dart';
+import 'package:sky_design_system/sky_design_system.dart';
 
-enum _AppIconButtonVariant { standard, filled, tonal, outlined }
+enum _AppIconButtonVariant { standard, primary, secondary, outlined, inverse }
 
-/// A unified icon button component following the design system's
-/// specifications.
 class AppIconButton extends StatelessWidget {
-  /// Creates a standard icon button.
   const AppIconButton({
     required this.icon,
     required this.onPressed,
@@ -17,27 +13,24 @@ class AppIconButton extends StatelessWidget {
     this.isLoading = false,
   }) : _variant = _AppIconButtonVariant.standard;
 
-  /// Creates a filled icon button.
-  const AppIconButton.filled({
+  const AppIconButton.primary({
     required this.icon,
     required this.onPressed,
     super.key,
     this.tooltip,
     this.color,
     this.isLoading = false,
-  }) : _variant = _AppIconButtonVariant.filled;
+  }) : _variant = _AppIconButtonVariant.primary;
 
-  /// Creates a tonal icon button.
-  const AppIconButton.tonal({
+  const AppIconButton.secondary({
     required this.icon,
     required this.onPressed,
     super.key,
     this.tooltip,
     this.color,
     this.isLoading = false,
-  }) : _variant = _AppIconButtonVariant.tonal;
+  }) : _variant = _AppIconButtonVariant.secondary;
 
-  /// Creates an outlined icon button.
   const AppIconButton.outlined({
     required this.icon,
     required this.onPressed,
@@ -46,6 +39,15 @@ class AppIconButton extends StatelessWidget {
     this.color,
     this.isLoading = false,
   }) : _variant = _AppIconButtonVariant.outlined;
+
+  const AppIconButton.inverse({
+    required this.icon,
+    required this.onPressed,
+    super.key,
+    this.tooltip,
+    this.color,
+    this.isLoading = false,
+  }) : _variant = _AppIconButtonVariant.inverse;
 
   final IconData icon;
   final VoidCallback? onPressed;
@@ -62,28 +64,61 @@ class AppIconButton extends StatelessWidget {
             height: 24,
             child: AppProgressIndicator.circular(),
           )
-        : AppIcon(icon, color: color);
+        : AppIcon.md(icon, color: color);
 
     return switch (_variant) {
       _AppIconButtonVariant.standard => IconButton(
-        icon: iconWidget,
         onPressed: isLoading ? null : onPressed,
         tooltip: tooltip,
+        icon: iconWidget,
       ),
-      _AppIconButtonVariant.filled => IconButton.filled(
-        icon: iconWidget,
+      _AppIconButtonVariant.primary => IconButton.filled(
         onPressed: isLoading ? null : onPressed,
         tooltip: tooltip,
+        icon: iconWidget,
+        style: IconButton.styleFrom(
+          backgroundColor: isLoading || onPressed == null
+              ? null
+              : context.colorScheme.primary,
+          foregroundColor: isLoading || onPressed == null
+              ? null
+              : context.colorScheme.onPrimary,
+        ),
       ),
-      _AppIconButtonVariant.tonal => IconButton.filledTonal(
-        icon: iconWidget,
+      _AppIconButtonVariant.secondary => IconButton.filled(
         onPressed: isLoading ? null : onPressed,
         tooltip: tooltip,
+        icon: iconWidget,
+        style: IconButton.styleFrom(
+          backgroundColor: isLoading || onPressed == null
+              ? null
+              : context.colorScheme.secondaryContainer,
+          foregroundColor: isLoading || onPressed == null
+              ? null
+              : context.colorScheme.onSecondaryContainer,
+        ),
       ),
       _AppIconButtonVariant.outlined => IconButton.outlined(
-        icon: iconWidget,
         onPressed: isLoading ? null : onPressed,
         tooltip: tooltip,
+        icon: iconWidget,
+        style: IconButton.styleFrom(
+          foregroundColor: context.colorScheme.primary,
+          side: BorderSide(color: context.colorScheme.outline),
+        ),
+      ),
+      _AppIconButtonVariant.inverse => IconButton.filled(
+        onPressed: isLoading ? null : onPressed,
+        tooltip: tooltip,
+        icon: iconWidget,
+        style: IconButton.styleFrom(
+          backgroundColor: isLoading || onPressed == null
+              ? null
+              : context.colorScheme.inverseSurface,
+          foregroundColor: isLoading || onPressed == null
+              ? null
+              : context.colorScheme.onInverseSurface,
+        ),
       ),
     };
   }

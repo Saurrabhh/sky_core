@@ -1,37 +1,33 @@
 import 'package:flutter/material.dart';
 
-enum AppIconSize {
-  /// 18px icon size
-  small(18),
-
-  /// 24px icon size
-  medium(24),
-
-  /// 32px icon size
-  large(32);
-
-  const AppIconSize(this.value);
-  final double value;
-}
-
-/// A wrapper for standardizing icon sizes to the design system grid.
 class AppIcon extends StatelessWidget {
-  const AppIcon(
+  const AppIcon.sm(
     this.icon, {
     super.key,
-    this.size = AppIconSize.medium,
     this.color,
-  });
+  }) : _size = 18;
+
+  const AppIcon.md(
+    this.icon, {
+    super.key,
+    this.color,
+  }) : _size = 24;
+
+  const AppIcon.lg(
+    this.icon, {
+    super.key,
+    this.color,
+  }) : _size = 32;
 
   final IconData icon;
-  final AppIconSize size;
   final Color? color;
+  final double _size;
 
   @override
   Widget build(BuildContext context) {
     return Icon(
       icon,
-      size: size.value,
+      size: _size,
       color: color,
     );
   }

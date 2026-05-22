@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// A wrapper around Material Badge for numerical or status indicators.
 class AppBadge extends StatelessWidget {
   const AppBadge({
     required this.child,

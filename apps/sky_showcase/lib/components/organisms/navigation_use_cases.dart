@@ -15,9 +15,9 @@ Widget appNavigationBarInteractiveUseCase(BuildContext context) {
       selectedIndex: index,
       onDestinationSelected: (i) {},
       destinations: const [
-        NavigationDestination(icon: AppIcon(Icons.home), label: 'Home'),
-        NavigationDestination(icon: AppIcon(Icons.search), label: 'Search'),
-        NavigationDestination(icon: AppIcon(Icons.person), label: 'Profile'),
+        NavigationDestination(icon: AppIcon.md(Icons.home), label: 'Home'),
+        NavigationDestination(icon: AppIcon.md(Icons.search), label: 'Search'),
+        NavigationDestination(icon: AppIcon.md(Icons.person), label: 'Profile'),
       ],
     ),
   );
@@ -35,11 +35,11 @@ Widget appNavigationDrawerUseCase(BuildContext context) {
           child: AppText.titleMedium('Menu'),
         ),
         NavigationDrawerDestination(
-          icon: AppIcon(Icons.home),
+          icon: AppIcon.md(Icons.home),
           label: Text('Home'),
         ),
         NavigationDrawerDestination(
-          icon: AppIcon(Icons.settings),
+          icon: AppIcon.md(Icons.settings),
           label: Text('Settings'),
         ),
       ],
@@ -59,11 +59,11 @@ Widget appNavigationRailUseCase(BuildContext context) {
           onDestinationSelected: (i) {},
           destinations: const [
             NavigationRailDestination(
-              icon: AppIcon(Icons.home),
+              icon: AppIcon.md(Icons.home),
               label: Text('Home'),
             ),
             NavigationRailDestination(
-              icon: AppIcon(Icons.settings),
+              icon: AppIcon.md(Icons.settings),
               label: Text('Settings'),
             ),
           ],

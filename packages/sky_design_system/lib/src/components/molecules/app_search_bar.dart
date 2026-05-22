@@ -53,7 +53,7 @@ class _AppSearchBarState extends State<AppSearchBar> {
       controller: _controller,
       hintText: widget.hintText,
       onChanged: widget.onChanged,
-      leading: const AppIcon(Icons.search),
+      leading: const AppIcon.md(Icons.search),
       elevation: const WidgetStatePropertyAll(0),
       backgroundColor: WidgetStatePropertyAll(
         Theme.of(context).colorScheme.surfaceContainerLow,

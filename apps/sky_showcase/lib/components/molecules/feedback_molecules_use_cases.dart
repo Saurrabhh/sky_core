@@ -31,7 +31,7 @@ Widget appTooltipInteractiveUseCase(BuildContext context) {
   return Center(
     child: AppTooltip(
       message: message,
-      child: const AppIcon(Icons.info, size: AppIconSize.large),
+      child: const AppIcon.lg(Icons.info,),
     ),
   );
 }

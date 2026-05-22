@@ -78,8 +78,8 @@ void main() {
         home: Scaffold(
           body: Column(
             children: [
-              AppIcon(Icons.star, size: AppIconSize.small),
-              AppIcon(Icons.star),
+              AppIcon.sm(Icons.star),
+              AppIcon.md(Icons.star),
             ],
           ),
         ),
@@ -242,7 +242,7 @@ void main() {
       MaterialApp(
         theme: AppTheme.light(useGoogleFonts: false),
         home: const Scaffold(
-          body: AppBadge(count: 3, child: AppIcon(Icons.mail)),
+          body: AppBadge(count: 3, child: AppIcon.md(Icons.mail)),
         ),
       ),
     );
@@ -256,7 +256,7 @@ void main() {
       MaterialApp(
         theme: AppTheme.light(useGoogleFonts: false),
         home: const Scaffold(
-          body: AppBadge(isDot: true, child: AppIcon(Icons.notifications)),
+          body: AppBadge(isDot: true, child: AppIcon.md(Icons.notifications)),
         ),
       ),
     );
@@ -395,7 +395,7 @@ void main() {
           appBar: AppTopBar(
             title: 'Page Title',
             actions: [
-              IconButton(icon: const AppIcon(Icons.settings), onPressed: () {}),
+              IconButton(icon: const AppIcon.md(Icons.settings), onPressed: () {}),
             ],
           ),
         ),
@@ -494,7 +494,7 @@ void main() {
       MaterialApp(
         theme: AppTheme.light(useGoogleFonts: false),
         home: const Scaffold(
-          body: AppTooltip(message: 'Help text', child: AppIcon(Icons.info)),
+          body: AppTooltip(message: 'Help text', child: AppIcon.md(Icons.info)),
         ),
       ),
     );
@@ -518,11 +518,11 @@ void main() {
                     setState(() => selectedIndex = index),
                 destinations: const [
                   NavigationDestination(
-                    icon: AppIcon(Icons.home),
+                    icon: AppIcon.md(Icons.home),
                     label: 'Home',
                   ),
                   NavigationDestination(
-                    icon: AppIcon(Icons.settings),
+                    icon: AppIcon.md(Icons.settings),
                     label: 'Settings',
                   ),
                 ],
@@ -558,11 +558,11 @@ void main() {
                     setState(() => selectedIndex = index),
                 destinations: const [
                   NavigationRailDestination(
-                    icon: AppIcon(Icons.home),
+                    icon: AppIcon.md(Icons.home),
                     label: Text('Home'),
                   ),
                   NavigationRailDestination(
-                    icon: AppIcon(Icons.settings),
+                    icon: AppIcon.md(Icons.settings),
                     label: Text('Settings'),
                   ),
                 ],
@@ -600,11 +600,11 @@ void main() {
                 children: const [
                   Padding(padding: EdgeInsets.all(16), child: Text('Header')),
                   NavigationDrawerDestination(
-                    icon: AppIcon(Icons.home),
+                    icon: AppIcon.md(Icons.home),
                     label: Text('Home'),
                   ),
                   NavigationDrawerDestination(
-                    icon: AppIcon(Icons.settings),
+                    icon: AppIcon.md(Icons.settings),
                     label: Text('Settings'),
                   ),
                 ],
@@ -660,8 +660,8 @@ void main() {
           body: Column(
             children: [
               AppIconButton(icon: Icons.add, onPressed: () {}),
-              AppIconButton.filled(icon: Icons.remove, onPressed: () {}),
-              AppIconButton.tonal(icon: Icons.edit, onPressed: () {}),
+              AppIconButton.primary(icon: Icons.remove, onPressed: () {}),
+              AppIconButton.secondary(icon: Icons.edit, onPressed: () {}),
               AppIconButton.outlined(icon: Icons.delete, onPressed: () {}),
             ],
           ),

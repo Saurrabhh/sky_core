@@ -69,7 +69,7 @@ Widget appIconButtonUseCase(BuildContext context) {
   final isEnabled = context.knobs.boolean(label: 'Enabled', initialValue: true);
   final variant = context.knobs.list(
     label: 'Variant',
-    options: ['Standard', 'Filled', 'Tonal', 'Outlined'],
+    options: ['Standard', 'Primary', 'Secondary', 'Outlined', 'Inverse'],
     initialOption: 'Standard',
   );
   final icon = context.knobs.list<IconData>(
@@ -93,17 +93,22 @@ Widget appIconButtonUseCase(BuildContext context) {
           isLoading: isLoading,
           onPressed: onPressed,
         ),
-      'Filled' => AppIconButton.filled(
+      'Primary' => AppIconButton.primary(
           icon: icon,
           isLoading: isLoading,
           onPressed: onPressed,
         ),
-      'Tonal' => AppIconButton.tonal(
+      'Secondary' => AppIconButton.secondary(
           icon: icon,
           isLoading: isLoading,
           onPressed: onPressed,
         ),
       'Outlined' => AppIconButton.outlined(
+          icon: icon,
+          isLoading: isLoading,
+          onPressed: onPressed,
+        ),
+      'Inverse' => AppIconButton.inverse(
           icon: icon,
           isLoading: isLoading,
           onPressed: onPressed,

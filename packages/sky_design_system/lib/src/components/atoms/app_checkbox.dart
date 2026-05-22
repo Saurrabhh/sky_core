@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// A wrapper for the Material Checkbox ensuring a minimum 48dp hit target.
 class AppCheckbox extends StatelessWidget {
   const AppCheckbox({
     required this.value,
