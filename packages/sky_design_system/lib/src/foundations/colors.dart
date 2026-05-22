@@ -15,7 +15,7 @@ class AppColors {
   static const Color _onSurfaceLight = Color(0xFF191C20);
   static const Color _onSurfaceVariantLight = Color(0xFF414750);
   static const Color _inverseSurfaceLight = Color(0xFF2E3135);
-  static const Color _inverseOnSurfaceLight = Color(0xFFEFF0F7);
+  static const Color _onInverseSurfaceLight = Color(0xFFEFF0F7);
   static const Color _outlineLight = Color(0xFF717782);
   static const Color _outlineVariantLight = Color(0xFFC1C7D2);
   static const Color _surfaceTintLight = Color(0xFF0061A4);
@@ -63,7 +63,7 @@ class AppColors {
   static const Color _onSurfaceDark = Color(0xFFE1E2E8);
   static const Color _onSurfaceVariantDark = Color(0xFFC1C7D2);
   static const Color _inverseSurfaceDark = Color(0xFFE1E2E8);
-  static const Color _inverseOnSurfaceDark = Color(0xFF2E3135);
+  static const Color _onInverseSurfaceDark = Color(0xFF2E3135);
   static const Color _outlineDark = Color(0xFF8B919C);
   static const Color _outlineVariantDark = Color(0xFF414750);
   static const Color _surfaceTintDark = Color(0xFF9FCAFF);
@@ -112,7 +112,7 @@ class AppColors {
     onSurface: _onSurfaceLight,
     onSurfaceVariant: _onSurfaceVariantLight,
     inverseSurface: _inverseSurfaceLight,
-    inverseOnSurface: _inverseOnSurfaceLight,
+    onInverseSurface: _onInverseSurfaceLight,
     outline: _outlineLight,
     outlineVariant: _outlineVariantLight,
     surfaceTint: _surfaceTintLight,
@@ -162,7 +162,7 @@ class AppColors {
     onSurface: _onSurfaceDark,
     onSurfaceVariant: _onSurfaceVariantDark,
     inverseSurface: _inverseSurfaceDark,
-    inverseOnSurface: _inverseOnSurfaceDark,
+    onInverseSurface: _onInverseSurfaceDark,
     outline: _outlineDark,
     outlineVariant: _outlineVariantDark,
     surfaceTint: _surfaceTintDark,

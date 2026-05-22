@@ -93,7 +93,9 @@ class AppButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: AppSpacing.sm,
         children: [
-          if (iconData != null) ...[AppIcon(iconData!, size: AppIconSize.small)],
+          if (iconData != null) ...[
+            AppIcon(iconData!, size: AppIconSize.small),
+          ],
           Text(text),
         ],
       ),
@@ -107,16 +109,24 @@ class AppButton extends StatelessWidget {
       _AppButtonVariant.secondary => ElevatedButton(
         onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: context.colorScheme.secondaryContainer,
-          foregroundColor: context.colorScheme.onSecondaryContainer,
+          backgroundColor: isLoading || onPressed == null
+              ? null
+              : context.colorScheme.secondaryContainer,
+          foregroundColor: isLoading || onPressed == null
+              ? null
+              : context.colorScheme.onSecondaryContainer,
         ),
         child: label,
       ),
       _AppButtonVariant.inverse => ElevatedButton(
         onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: context.colorScheme.inverseSurface,
-          foregroundColor: context.colorScheme.onInverseSurface,
+          backgroundColor: isLoading || onPressed == null
+              ? null
+              : context.colorScheme.inverseSurface,
+          foregroundColor: isLoading || onPressed == null
+              ? null
+              : context.colorScheme.onInverseSurface,
         ),
         child: label,
       ),

@@ -45,6 +45,7 @@ class AppSnackbar {
     VoidCallback? onAction,
     bool isError = false,
   }) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
       create(
         context: context,

@@ -49,7 +49,11 @@ void main() {
         home: Scaffold(
           body: Column(
             children: [
-              AppButton.inverse(text: 'Inverted', onPressed: () {}, isLoading: true),
+              AppButton.inverse(
+                text: 'Inverted',
+                onPressed: () {},
+                isLoading: true,
+              ),
               AppButton.fab(icon: Icons.add, onPressed: () {}, isLoading: true),
             ],
           ),
@@ -237,7 +241,9 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         theme: AppTheme.light(useGoogleFonts: false),
-        home: const Scaffold(body: AppBadge(count: 3, child: AppIcon(Icons.mail))),
+        home: const Scaffold(
+          body: AppBadge(count: 3, child: AppIcon(Icons.mail)),
+        ),
       ),
     );
 
@@ -313,7 +319,9 @@ void main() {
           body: AppListItem(
             title: 'Item Title',
             subtitle: 'Item Subtitle',
+            // ignore: deprecated_member_use_from_same_package, Testing deprecated property for backward compatibility.
             leadingIcon: Icons.star,
+            // ignore: deprecated_member_use_from_same_package, Testing deprecated property for backward compatibility.
             trailingIcon: Icons.chevron_right,
             onTap: () {},
           ),
@@ -361,10 +369,10 @@ void main() {
       ),
     );
 
-    expect(find.byType(AppTextField), findsOneWidget);
+    expect(find.byType(SearchBar), findsOneWidget);
     expect(find.byIcon(Icons.search), findsOneWidget);
 
-    await tester.enterText(find.byType(AppTextField), 'Query');
+    await tester.enterText(find.byType(SearchBar), 'Query');
     await tester.pumpAndSettle();
 
     // Clear icon should now be visible
@@ -509,7 +517,10 @@ void main() {
                 onDestinationSelected: (index) =>
                     setState(() => selectedIndex = index),
                 destinations: const [
-                  NavigationDestination(icon: AppIcon(Icons.home), label: 'Home'),
+                  NavigationDestination(
+                    icon: AppIcon(Icons.home),
+                    label: 'Home',
+                  ),
                   NavigationDestination(
                     icon: AppIcon(Icons.settings),
                     label: 'Settings',

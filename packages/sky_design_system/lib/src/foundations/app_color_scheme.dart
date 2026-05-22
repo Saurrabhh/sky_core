@@ -13,7 +13,7 @@ class AppColorScheme {
     required this.onSurface,
     required this.onSurfaceVariant,
     required this.inverseSurface,
-    required this.inverseOnSurface,
+    required this.onInverseSurface,
     required this.outline,
     required this.outlineVariant,
     required this.surfaceTint,
@@ -62,7 +62,7 @@ class AppColorScheme {
   final Color onSurface;
   final Color onSurfaceVariant;
   final Color inverseSurface;
-  final Color inverseOnSurface;
+  final Color onInverseSurface;
   final Color outline;
   final Color outlineVariant;
   final Color surfaceTint;
@@ -111,7 +111,7 @@ class AppColorScheme {
     Color? onSurface,
     Color? onSurfaceVariant,
     Color? inverseSurface,
-    Color? inverseOnSurface,
+    Color? onInverseSurface,
     Color? outline,
     Color? outlineVariant,
     Color? surfaceTint,
@@ -162,7 +162,7 @@ class AppColorScheme {
       onSurface: onSurface ?? this.onSurface,
       onSurfaceVariant: onSurfaceVariant ?? this.onSurfaceVariant,
       inverseSurface: inverseSurface ?? this.inverseSurface,
-      inverseOnSurface: inverseOnSurface ?? this.inverseOnSurface,
+      onInverseSurface: onInverseSurface ?? this.onInverseSurface,
       outline: outline ?? this.outline,
       outlineVariant: outlineVariant ?? this.outlineVariant,
       surfaceTint: surfaceTint ?? this.surfaceTint,
@@ -218,7 +218,7 @@ class AppColorScheme {
       onSurface: other.onSurface,
       onSurfaceVariant: other.onSurfaceVariant,
       inverseSurface: other.inverseSurface,
-      inverseOnSurface: other.inverseOnSurface,
+      onInverseSurface: other.onInverseSurface,
       outline: other.outline,
       outlineVariant: other.outlineVariant,
       surfaceTint: other.surfaceTint,
@@ -287,7 +287,7 @@ class AppColorScheme {
       outline: outline,
       outlineVariant: outlineVariant,
       inverseSurface: inverseSurface,
-      onInverseSurface: inverseOnSurface,
+      onInverseSurface: onInverseSurface,
       inversePrimary: inversePrimary,
       surfaceTint: surfaceTint,
       primaryFixed: primaryFixed,

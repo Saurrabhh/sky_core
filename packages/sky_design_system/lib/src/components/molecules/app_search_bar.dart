@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/src/components/atoms/app_icon.dart';
 import 'package:sky_design_system/src/components/atoms/app_icon_button.dart';
-import 'package:sky_design_system/src/components/atoms/app_text_field.dart';
 
 /// A composite input atom specifically for search fields.
 class AppSearchBar extends StatefulWidget {
@@ -50,26 +49,36 @@ class _AppSearchBarState extends State<AppSearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    return AppTextField(
+    return SearchBar(
       controller: _controller,
       hintText: widget.hintText,
       onChanged: widget.onChanged,
-      prefixIcon: const AppIcon(Icons.search),
-      suffixIcon: ValueListenableBuilder<TextEditingValue>(
-        valueListenable: _controller,
-        builder: (context, value, child) {
-          if (value.text.isEmpty) {
-            return const SizedBox.shrink();
-          }
-          return AppIconButton(
-            icon: Icons.close,
-            onPressed: () {
-              _controller.clear();
-              widget.onChanged?.call('');
-            },
-          );
-        },
+      leading: const AppIcon(Icons.search),
+      elevation: const WidgetStatePropertyAll(0),
+      backgroundColor: WidgetStatePropertyAll(
+        Theme.of(context).colorScheme.surfaceContainerLow,
       ),
+      padding: const WidgetStatePropertyAll(
+        EdgeInsets.symmetric(horizontal: 12),
+      ),
+      constraints: const BoxConstraints(minHeight: 48, maxHeight: 48),
+      trailing: [
+        ValueListenableBuilder<TextEditingValue>(
+          valueListenable: _controller,
+          builder: (context, value, child) {
+            if (value.text.isEmpty) {
+              return const SizedBox.shrink();
+            }
+            return AppIconButton(
+              icon: Icons.close,
+              onPressed: () {
+                _controller.clear();
+                widget.onChanged?.call('');
+              },
+            );
+          },
+        ),
+      ],
     );
   }
 }

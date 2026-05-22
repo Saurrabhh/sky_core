@@ -107,7 +107,7 @@ class AppTheme {
           side: BorderSide(color: colorScheme.outlineVariant),
         ),
         color: colorScheme.surface,
-        margin: const EdgeInsets.all(AppSpacing.sm),
+        margin: EdgeInsets.zero,
       ),
       checkboxTheme: CheckboxThemeData(
         shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.sm),
