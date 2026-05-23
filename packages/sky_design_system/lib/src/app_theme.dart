@@ -106,7 +106,7 @@ class AppTheme {
         margin: EdgeInsets.zero,
       ),
       checkboxTheme: CheckboxThemeData(
-        shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.sm),
+        shape: const RoundedRectangleBorder(borderRadius: AppBorderRadius.xs),
         fillColor: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.selected)) {
             return colorScheme.primary;
