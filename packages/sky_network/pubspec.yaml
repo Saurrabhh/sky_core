@@ -1,0 +1,25 @@
+name: sky_network
+description: A robust, decoupled remote network client wrapped around Dio and Connectivity.
+version: 0.0.1
+publish_to: none
+resolution: workspace
+
+environment:
+  sdk: '^3.12.0'
+  flutter: '3.44.0'
+
+dependencies:
+  connectivity_plus: ^6.0.3
+  dio: ^5.4.3
+  flutter:
+    sdk: flutter
+  sky_architecture:
+    path: ../sky_architecture
+  sky_telemetry:
+    path: ../sky_telemetry
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  sky_lints:
+    path: ../sky_lints
