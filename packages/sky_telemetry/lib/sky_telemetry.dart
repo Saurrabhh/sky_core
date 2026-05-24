@@ -1,7 +1,3 @@
-
-
-library;
-
 export 'src/analytics/analytics.dart';
 export 'src/analytics/analytics_service.dart';
 export 'src/crash_reporting/breadcrumb_logger.dart';

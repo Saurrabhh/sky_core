@@ -1,8 +1,6 @@
 import 'package:sky_telemetry/sky_telemetry.dart';
 import 'package:test/test.dart';
 
-
-
 class MockLogger extends SkyLogger {
   final List<String> loggedMessages = [];
 
@@ -269,11 +267,13 @@ void main() {
 
     test('forwards messages above minLevel to crash breadcrumbs', () {
       SkyLogging.instance.debug('Debug is below minLevel info');
-      SkyLogging.instance.warning('Warning is above minLevel info', context: {
-        'code': 500,
-      });
+      SkyLogging.instance.warning(
+        'Warning is above minLevel info',
+        context: {
+          'code': 500,
+        },
+      );
 
-      
       expect(mockReporter.loggedBreadcrumbs, hasLength(1));
       expect(
         mockReporter.loggedBreadcrumbs.first,
