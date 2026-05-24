@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:sky_architecture/sky_architecture.dart';
 import 'package:sky_network/sky_network.dart';
 
-/// A custom [HttpClientAdapter] for mocking network responses in Dio.
+
 class MockAdapter implements HttpClientAdapter {
   MockAdapter({required this.handler});
 
@@ -23,7 +23,7 @@ class MockAdapter implements HttpClientAdapter {
   void close({bool force = false}) {}
 }
 
-/// A concrete test implementation of [BaseAuthInterceptor].
+
 class TestAuthInterceptor extends BaseAuthInterceptor {
   TestAuthInterceptor({
     required super.dio,
@@ -122,11 +122,11 @@ void main() {
             final authHeader = options.headers['Authorization'] as String?;
 
             if (requestIndex == 1) {
-              // First request fails with 401. Verify it had the initial token.
+              
               expect(authHeader, equals('Bearer initial_token'));
               return ResponseBody.fromString('Unauthorized', 401);
             } else {
-              // Second request succeeds. Verify it has the refreshed token.
+              
               expect(authHeader, equals('Bearer new_token'));
               return ResponseBody.fromString(
                 jsonEncode({'status': 'ok'}),
@@ -161,8 +161,8 @@ void main() {
         dio.httpClientAdapter = MockAdapter(
           handler: (options) async {
             final authHeader = options.headers['Authorization'] as String?;
-            // Verify that No-Authentication is removed and Authorization is
-            // null
+            
+            
             expect(options.headers.containsKey('No-Authentication'), isFalse);
             expect(authHeader, isNull);
 
@@ -191,7 +191,7 @@ void main() {
 
       expect(dio.options.baseUrl, equals('https://api.example.com'));
       expect(dio.options.connectTimeout, equals(const Duration(seconds: 15)));
-      // Logger interceptor should be added automatically
+      
       expect(dio.interceptors, isNotEmpty);
     });
   });

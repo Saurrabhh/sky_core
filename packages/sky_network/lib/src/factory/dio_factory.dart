@@ -1,10 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:sky_network/src/options/network_options.dart';
 
-/// {@template dio_factory}
-/// An abstract interface for creating fully configured [Dio] instances.
-/// {@endtemplate}
+// The interface pattern is intentionally chosen here for DI mockability.
 // ignore: one_member_abstracts
 abstract interface class DioFactory {
   /// Creates and configures a [Dio] instance.
@@ -39,16 +38,17 @@ class DioFactoryImpl implements DioFactory {
       ..sendTimeout = options.sendTimeout
       ..headers = options.headers ?? {};
 
-    // 1. Add standard pretty logger for beautiful trace formatting.
-    dio.interceptors.add(
-      PrettyDioLogger(
-        requestHeader: true,
-        requestBody: true,
-        maxWidth: 80,
-      ),
-    );
+    // 1. Add standard pretty logger in debug mode only for formatting.
+    if (kDebugMode) {
+      dio.interceptors.add(
+        PrettyDioLogger(
+          requestHeader: true,
+          requestBody: true,
+          maxWidth: 80,
+        ),
+      );
+    }
 
-    // 2. Add custom business and telemetry interceptors.
     if (interceptors.isNotEmpty) {
       dio.interceptors.addAll(interceptors);
     }
