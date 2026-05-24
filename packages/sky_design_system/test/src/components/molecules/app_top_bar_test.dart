@@ -35,19 +35,28 @@ void main() {
       expect(appBar.centerTitle, isTrue);
     });
 
-    test('preferredSize calculated correctly with and without bottom widget', () {
-      const topBarWithoutBottom = AppTopBar(title: 'Title');
-      expect(topBarWithoutBottom.preferredSize.height, equals(kToolbarHeight));
+    test(
+      'preferredSize calculated correctly with and without bottom widget',
+      () {
+        const topBarWithoutBottom = AppTopBar(title: 'Title');
+        expect(
+          topBarWithoutBottom.preferredSize.height,
+          equals(kToolbarHeight),
+        );
 
-      const bottomWidget = PreferredSize(
-        preferredSize: Size.fromHeight(48.0),
-        child: SizedBox.shrink(),
-      );
-      const topBarWithBottom = AppTopBar(
-        title: 'Title',
-        bottom: bottomWidget,
-      );
-      expect(topBarWithBottom.preferredSize.height, equals(kToolbarHeight + 48.0));
-    });
+        const bottomWidget = PreferredSize(
+          preferredSize: Size.fromHeight(48),
+          child: SizedBox.shrink(),
+        );
+        const topBarWithBottom = AppTopBar(
+          title: 'Title',
+          bottom: bottomWidget,
+        );
+        expect(
+          topBarWithBottom.preferredSize.height,
+          equals(kToolbarHeight + 48.0),
+        );
+      },
+    );
   });
 }

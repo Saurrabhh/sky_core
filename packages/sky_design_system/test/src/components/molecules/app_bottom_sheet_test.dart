@@ -6,7 +6,9 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('AppBottomSheet', () {
-    testWidgets('renders child and can be dismissed via show modal', (tester) async {
+    testWidgets('renders child and can be dismissed via show modal', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           theme: AppTheme.light(useGoogleFonts: false),
@@ -14,8 +16,8 @@ void main() {
             body: Builder(
               builder: (context) {
                 return ElevatedButton(
-                  onPressed: () {
-                    AppBottomSheet.show<void>(
+                  onPressed: () async {
+                    await AppBottomSheet.show<void>(
                       context: context,
                       child: const Text('Sheet Content'),
                     );
@@ -37,13 +39,17 @@ void main() {
       expect(find.byType(AppBottomSheet), findsOneWidget);
 
       // Dismiss by tapping outside (or using escape/back button)
-      await tester.tapAt(const Offset(10, 10)); // Tap near top-left outside modal
+      await tester.tapAt(
+        const Offset(10, 10),
+      ); // Tap near top-left outside modal
       await tester.pumpAndSettle();
 
       expect(find.text('Sheet Content'), findsNothing);
     });
 
-    testWidgets('renders title and close icon button pops context', (tester) async {
+    testWidgets('renders title and close icon button pops context', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           theme: AppTheme.light(useGoogleFonts: false),
@@ -51,8 +57,8 @@ void main() {
             body: Builder(
               builder: (context) {
                 return ElevatedButton(
-                  onPressed: () {
-                    AppBottomSheet.show<void>(
+                  onPressed: () async {
+                    await AppBottomSheet.show<void>(
                       context: context,
                       title: 'My Custom Sheet Title',
                       child: const Text('Sheet Content'),

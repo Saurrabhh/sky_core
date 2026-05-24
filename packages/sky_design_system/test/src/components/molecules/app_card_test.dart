@@ -27,12 +27,20 @@ void main() {
       expect(card.color, isNull); // Defaults to theme outlined behavior
       expect(card.elevation, isNull);
 
-      final paddingFinder = find.descendant(of: cardFinder, matching: find.byType(Padding));
+      final paddingFinder = find.descendant(
+        of: cardFinder,
+        matching: find.byType(Padding),
+      );
       final paddings = tester.widgetList<Padding>(paddingFinder);
-      expect(paddings.any((p) => p.padding == const EdgeInsets.all(16)), isTrue);
+      expect(
+        paddings.any((p) => p.padding == const EdgeInsets.all(16)),
+        isTrue,
+      );
     });
 
-    testWidgets('AppCard.filled renders filled Card with no padding', (tester) async {
+    testWidgets('AppCard.filled renders filled Card with no padding', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           theme: AppTheme.light(useGoogleFonts: false),

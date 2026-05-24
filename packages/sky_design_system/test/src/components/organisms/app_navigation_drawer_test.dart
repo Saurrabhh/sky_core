@@ -6,8 +6,10 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('AppNavigationDrawer', () {
-    testWidgets('renders drawer header, destinations and fires callbacks', (tester) async {
-      int selectedIdx = 0;
+    testWidgets('renders drawer header, destinations and fires callbacks', (
+      tester,
+    ) async {
+      var selectedIdx = 0;
       final scaffoldKey = GlobalKey<ScaffoldState>();
 
       await tester.pumpWidget(
@@ -57,7 +59,9 @@ void main() {
       expect(find.text('Home'), findsOneWidget);
       expect(find.text('Favorites'), findsOneWidget);
 
-      final navDrawer = tester.widget<NavigationDrawer>(find.byType(NavigationDrawer));
+      final navDrawer = tester.widget<NavigationDrawer>(
+        find.byType(NavigationDrawer),
+      );
       expect(navDrawer.selectedIndex, equals(0));
 
       // Tap on Favorites

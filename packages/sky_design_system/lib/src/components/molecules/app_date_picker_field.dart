@@ -124,7 +124,8 @@ class _AppDatePickerFieldState extends State<AppDatePickerField> {
       labelText: widget.labelText,
       errorText: widget.errorText,
       prefixIcon: widget.prefixIcon,
-      suffixIcon: widget.suffixIcon ??
+      suffixIcon:
+          widget.suffixIcon ??
           AppIconButton(
             icon: Icons.calendar_today_outlined,
             onPressed: widget.enabled ? _showPicker : null,

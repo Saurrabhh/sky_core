@@ -6,7 +6,9 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('AppScaffold', () {
-    testWidgets('renders all scaffold widgets and custom background color', (tester) async {
+    testWidgets('renders all scaffold widgets and custom background color', (
+      tester,
+    ) async {
       const bgColor = Colors.yellow;
 
       await tester.pumpWidget(
@@ -20,7 +22,10 @@ void main() {
               onPressed: () {},
               child: const Icon(Icons.add),
             ),
-            bottomNavigationBar: const SizedBox(height: 50, child: Text('Bottom Nav')),
+            bottomNavigationBar: const SizedBox(
+              height: 50,
+              child: Text('Bottom Nav'),
+            ),
           ),
         ),
       );

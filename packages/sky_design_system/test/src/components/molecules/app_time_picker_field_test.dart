@@ -6,7 +6,9 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('AppTimePickerField', () {
-    testWidgets('renders initialTime and formats appropriately', (tester) async {
+    testWidgets('renders initialTime and formats appropriately', (
+      tester,
+    ) async {
       const initialTime = TimeOfDay(hour: 14, minute: 30); // 2:30 PM
 
       await tester.pumpWidget(
@@ -45,37 +47,40 @@ void main() {
       expect(find.text('9:15'), findsOneWidget);
     });
 
-    testWidgets('opens showTimePicker on tap and triggers callback on confirmation', (tester) async {
-      const initialTime = TimeOfDay(hour: 10, minute: 0);
-      TimeOfDay? selectedTime;
+    testWidgets(
+      'opens showTimePicker on tap and triggers callback on confirmation',
+      (tester) async {
+        const initialTime = TimeOfDay(hour: 10, minute: 0);
+        TimeOfDay? selectedTime;
 
-      await tester.pumpWidget(
-        MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
-          home: Scaffold(
-            body: AppTimePickerField(
-              initialTime: initialTime,
-              onTimeSelected: (time) {
-                selectedTime = time;
-              },
+        await tester.pumpWidget(
+          MaterialApp(
+            theme: AppTheme.light(useGoogleFonts: false),
+            home: Scaffold(
+              body: AppTimePickerField(
+                initialTime: initialTime,
+                onTimeSelected: (time) {
+                  selectedTime = time;
+                },
+              ),
             ),
           ),
-        ),
-      );
+        );
 
-      // Tap field to open time picker
-      await tester.tap(find.byType(TextField));
-      await tester.pumpAndSettle();
+        // Tap field to open time picker
+        await tester.tap(find.byType(TextField));
+        await tester.pumpAndSettle();
 
-      // Verify TimePickerDialog is shown
-      expect(find.byType(TimePickerDialog), findsOneWidget);
+        // Verify TimePickerDialog is shown
+        expect(find.byType(TimePickerDialog), findsOneWidget);
 
-      // Confirm with default/initial time by clicking OK
-      await tester.tap(find.text('OK'));
-      await tester.pumpAndSettle();
+        // Confirm with default/initial time by clicking OK
+        await tester.tap(find.text('OK'));
+        await tester.pumpAndSettle();
 
-      expect(selectedTime, equals(initialTime));
-    });
+        expect(selectedTime, equals(initialTime));
+      },
+    );
 
     testWidgets('respects enabled=false flag', (tester) async {
       await tester.pumpWidget(

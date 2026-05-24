@@ -7,7 +7,7 @@ void main() {
 
   group('AppIconButton', () {
     testWidgets('standard variant renders and handles clicks', (tester) async {
-      bool pressed = false;
+      var pressed = false;
       await tester.pumpWidget(
         MaterialApp(
           theme: AppTheme.light(useGoogleFonts: false),

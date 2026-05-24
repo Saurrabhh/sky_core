@@ -6,32 +6,35 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('AppTooltip', () {
-    testWidgets('wraps child inside Tooltip and triggers message display on long press', (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: Scaffold(
-            body: AppTooltip(
-              message: 'Information text',
-              child: Icon(Icons.info),
+    testWidgets(
+      'wraps child inside Tooltip and triggers message display on long press',
+      (tester) async {
+        await tester.pumpWidget(
+          const MaterialApp(
+            home: Scaffold(
+              body: AppTooltip(
+                message: 'Information text',
+                child: Icon(Icons.info),
+              ),
             ),
           ),
-        ),
-      );
+        );
 
-      final tooltipFinder = find.byType(Tooltip);
-      expect(tooltipFinder, findsOneWidget);
-      expect(find.byIcon(Icons.info), findsOneWidget);
+        final tooltipFinder = find.byType(Tooltip);
+        expect(tooltipFinder, findsOneWidget);
+        expect(find.byIcon(Icons.info), findsOneWidget);
 
-      final tooltip = tester.widget<Tooltip>(tooltipFinder);
-      expect(tooltip.message, equals('Information text'));
+        final tooltip = tester.widget<Tooltip>(tooltipFinder);
+        expect(tooltip.message, equals('Information text'));
 
-      // Long press triggers showing the tooltip
-      expect(find.text('Information text'), findsNothing);
+        // Long press triggers showing the tooltip
+        expect(find.text('Information text'), findsNothing);
 
-      await tester.longPress(find.byIcon(Icons.info));
-      await tester.pumpAndSettle();
+        await tester.longPress(find.byIcon(Icons.info));
+        await tester.pumpAndSettle();
 
-      expect(find.text('Information text'), findsOneWidget);
-    });
+        expect(find.text('Information text'), findsOneWidget);
+      },
+    );
   });
 }

@@ -6,8 +6,10 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('AppNavigationBar', () {
-    testWidgets('renders destinations and handles destination selections', (tester) async {
-      int selectedIdx = 0;
+    testWidgets('renders destinations and handles destination selections', (
+      tester,
+    ) async {
+      var selectedIdx = 0;
 
       await tester.pumpWidget(
         MaterialApp(
@@ -43,7 +45,9 @@ void main() {
       expect(find.text('Home'), findsOneWidget);
       expect(find.text('Search'), findsOneWidget);
 
-      final navBarWidget = tester.widget<NavigationBar>(find.byType(NavigationBar));
+      final navBarWidget = tester.widget<NavigationBar>(
+        find.byType(NavigationBar),
+      );
       expect(navBarWidget.selectedIndex, equals(0));
 
       // Tap on search

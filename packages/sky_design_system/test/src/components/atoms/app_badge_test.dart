@@ -26,26 +26,29 @@ void main() {
       expect(badgeWidget.label, isNull);
     });
 
-    testWidgets('renders count badge when count is provided and greater than 0', (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: Scaffold(
-            body: AppBadge(
-              // Using the parameter name that works in compiler
-              count: 5,
-              child: Icon(Icons.mail),
+    testWidgets(
+      'renders count badge when count is provided and greater than 0',
+      (tester) async {
+        await tester.pumpWidget(
+          const MaterialApp(
+            home: Scaffold(
+              body: AppBadge(
+                // Using the parameter name that works in compiler
+                count: 5,
+                child: Icon(Icons.mail),
+              ),
             ),
           ),
-        ),
-      );
+        );
 
-      final badgeFinder = find.byType(Badge);
-      expect(badgeFinder, findsOneWidget);
+        final badgeFinder = find.byType(Badge);
+        expect(badgeFinder, findsOneWidget);
 
-      final badgeWidget = tester.widget<Badge>(badgeFinder);
-      expect(badgeWidget.isLabelVisible, isTrue);
-      expect(find.text('5'), findsOneWidget);
-    });
+        final badgeWidget = tester.widget<Badge>(badgeFinder);
+        expect(badgeWidget.isLabelVisible, isTrue);
+        expect(find.text('5'), findsOneWidget);
+      },
+    );
 
     testWidgets('does not show label when count is 0', (tester) async {
       await tester.pumpWidget(

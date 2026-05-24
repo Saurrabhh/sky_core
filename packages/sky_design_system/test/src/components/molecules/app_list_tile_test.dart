@@ -7,7 +7,7 @@ void main() {
 
   group('AppListTile', () {
     testWidgets('renders all details inside ListTile', (tester) async {
-      bool tapped = false;
+      var tapped = false;
 
       await tester.pumpWidget(
         MaterialApp(

@@ -7,7 +7,7 @@ void main() {
 
   group('AppSwitch', () {
     testWidgets('renders Switch and handles state changes', (tester) async {
-      bool active = false;
+      var active = false;
 
       await tester.pumpWidget(
         MaterialApp(

@@ -114,7 +114,8 @@ class _AppTimePickerFieldState extends State<AppTimePickerField> {
       labelText: widget.labelText,
       errorText: widget.errorText,
       prefixIcon: widget.prefixIcon,
-      suffixIcon: widget.suffixIcon ??
+      suffixIcon:
+          widget.suffixIcon ??
           AppIconButton(
             icon: Icons.access_time_outlined,
             onPressed: widget.enabled ? _showPicker : null,

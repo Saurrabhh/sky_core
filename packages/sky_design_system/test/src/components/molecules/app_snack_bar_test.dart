@@ -6,7 +6,9 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('AppSnackBar', () {
-    testWidgets('create returns SnackBar with correct configurations', (tester) async {
+    testWidgets('create returns SnackBar with correct configurations', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           theme: AppTheme.light(useGoogleFonts: false),
@@ -33,35 +35,46 @@ void main() {
       );
     });
 
-    testWidgets('create error SnackBar sets error background and action styling', (tester) async {
-      await tester.pumpWidget(
-        MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
-          home: Scaffold(
-            body: Builder(
-              builder: (context) {
-                final snackBar = AppSnackBar.create(
-                  context: context,
-                  message: 'Error Snack',
-                  actionText: 'Retry',
-                  onAction: () {},
-                  isError: true,
-                );
+    testWidgets(
+      'create error SnackBar sets error background and action styling',
+      (tester) async {
+        await tester.pumpWidget(
+          MaterialApp(
+            theme: AppTheme.light(useGoogleFonts: false),
+            home: Scaffold(
+              body: Builder(
+                builder: (context) {
+                  final snackBar = AppSnackBar.create(
+                    context: context,
+                    message: 'Error Snack',
+                    actionText: 'Retry',
+                    onAction: () {},
+                    isError: true,
+                  );
 
-                expect((snackBar.content as Text).data, equals('Error Snack'));
-                expect(snackBar.backgroundColor, equals(context.colorScheme.error));
-                expect(snackBar.action?.label, equals('Retry'));
-                expect(snackBar.shape, isA<RoundedRectangleBorder>());
-                return const SizedBox.shrink();
-              },
+                  expect(
+                    (snackBar.content as Text).data,
+                    equals('Error Snack'),
+                  );
+                  expect(
+                    snackBar.backgroundColor,
+                    equals(context.colorScheme.error),
+                  );
+                  expect(snackBar.action?.label, equals('Retry'));
+                  expect(snackBar.shape, isA<RoundedRectangleBorder>());
+                  return const SizedBox.shrink();
+                },
+              ),
             ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
 
-    testWidgets('show displays SnackBar in scaffold and triggers action', (tester) async {
-      bool actionTapped = false;
+    testWidgets('show displays SnackBar in scaffold and triggers action', (
+      tester,
+    ) async {
+      var actionTapped = false;
 
       await tester.pumpWidget(
         MaterialApp(

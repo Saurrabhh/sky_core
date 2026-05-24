@@ -6,7 +6,9 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('AppDialog', () {
-    testWidgets('renders all details inside AlertDialog widget', (tester) async {
+    testWidgets('renders all details inside AlertDialog widget', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           theme: AppTheme.light(useGoogleFonts: false),
@@ -42,49 +44,50 @@ void main() {
       expect(dialog.scrollable, isFalse);
     });
 
-    testWidgets('show static dialog builder pops and respects barrierDismissible', (tester) async {
-      bool barrierTapped = false;
-      await tester.pumpWidget(
-        MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
-          home: Scaffold(
-            body: Builder(
-              builder: (context) {
-                return ElevatedButton(
-                  onPressed: () {
-                    AppDialog.show<void>(
-                      context: context,
-                      title: 'Info',
-                      content: const Text('Dialog message'),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.of(context).pop(),
-                          child: const Text('OK'),
-                        )
-                      ],
-                      barrierDismissible: true,
-                    );
-                  },
-                  child: const Text('Trigger Dialog'),
-                );
-              },
+    testWidgets(
+      'show static dialog builder pops and respects barrierDismissible',
+      (tester) async {
+        await tester.pumpWidget(
+          MaterialApp(
+            theme: AppTheme.light(useGoogleFonts: false),
+            home: Scaffold(
+              body: Builder(
+                builder: (context) {
+                  return ElevatedButton(
+                    onPressed: () async {
+                      await AppDialog.show<void>(
+                        context: context,
+                        title: 'Info',
+                        content: const Text('Dialog message'),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.of(context).pop(),
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      );
+                    },
+                    child: const Text('Trigger Dialog'),
+                  );
+                },
+              ),
             ),
           ),
-        ),
-      );
+        );
 
-      expect(find.text('Info'), findsNothing);
+        expect(find.text('Info'), findsNothing);
 
-      await tester.tap(find.text('Trigger Dialog'));
-      await tester.pumpAndSettle();
+        await tester.tap(find.text('Trigger Dialog'));
+        await tester.pumpAndSettle();
 
-      expect(find.text('Info'), findsOneWidget);
+        expect(find.text('Info'), findsOneWidget);
 
-      // Tap OK button to dismiss
-      await tester.tap(find.text('OK'));
-      await tester.pumpAndSettle();
+        // Tap OK button to dismiss
+        await tester.tap(find.text('OK'));
+        await tester.pumpAndSettle();
 
-      expect(find.text('Info'), findsNothing);
-    });
+        expect(find.text('Info'), findsNothing);
+      },
+    );
   });
 }

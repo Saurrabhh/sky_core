@@ -6,8 +6,10 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('AppTextField', () {
-    testWidgets('renders hint, label, and responds to text changes', (tester) async {
-      String changedText = '';
+    testWidgets('renders hint, label, and responds to text changes', (
+      tester,
+    ) async {
+      var changedText = '';
       final controller = TextEditingController();
 
       await tester.pumpWidget(
@@ -51,7 +53,9 @@ void main() {
       expect(find.text('Pre-filled text'), findsOneWidget);
     });
 
-    testWidgets('supports form validation, errorText, and onSaved', (tester) async {
+    testWidgets('supports form validation, errorText, and onSaved', (
+      tester,
+    ) async {
       final formKey = GlobalKey<FormState>();
       String? savedValue;
 
@@ -93,38 +97,41 @@ void main() {
       expect(savedValue, equals('Valid text'));
     });
 
-    testWidgets('propagates input decoration icons and readOnly/disabled states', (tester) async {
-      bool tapped = false;
+    testWidgets(
+      'propagates input decoration icons and readOnly/disabled states',
+      (tester) async {
+        var tapped = false;
 
-      await tester.pumpWidget(
-        MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
-          home: Scaffold(
-            body: AppTextField(
-              prefixIcon: const Icon(Icons.lock),
-              suffixIcon: const Icon(Icons.visibility),
-              obscureText: true,
-              readOnly: true,
-              enabled: false,
-              onTap: () => tapped = true,
+        await tester.pumpWidget(
+          MaterialApp(
+            theme: AppTheme.light(useGoogleFonts: false),
+            home: Scaffold(
+              body: AppTextField(
+                prefixIcon: const Icon(Icons.lock),
+                suffixIcon: const Icon(Icons.visibility),
+                obscureText: true,
+                readOnly: true,
+                enabled: false,
+                onTap: () => tapped = true,
+              ),
             ),
           ),
-        ),
-      );
+        );
 
-      expect(find.byIcon(Icons.lock), findsOneWidget);
-      expect(find.byIcon(Icons.visibility), findsOneWidget);
+        expect(find.byIcon(Icons.lock), findsOneWidget);
+        expect(find.byIcon(Icons.visibility), findsOneWidget);
 
-      final textField = tester.widget<TextField>(find.byType(TextField));
-      expect(textField.obscureText, isTrue);
-      expect(textField.readOnly, isTrue);
-      expect(textField.enabled, isFalse);
+        final textField = tester.widget<TextField>(find.byType(TextField));
+        expect(textField.obscureText, isTrue);
+        expect(textField.readOnly, isTrue);
+        expect(textField.enabled, isFalse);
 
-      // Tap should not trigger callback when disabled
-      await tester.tap(find.byType(AppTextField));
-      await tester.pump();
-      expect(tapped, isFalse);
-    });
+        // Tap should not trigger callback when disabled
+        await tester.tap(find.byType(AppTextField));
+        await tester.pump();
+        expect(tapped, isFalse);
+      },
+    );
 
     testWidgets('displays static errorText', (tester) async {
       await tester.pumpWidget(

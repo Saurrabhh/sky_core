@@ -137,54 +137,79 @@ void main() {
       expect(merged.error, Colors.purple);
     });
 
-    test('toColorScheme returns valid Material 3 ColorScheme with correct mappings', () {
-      final colorScheme = baseScheme.toColorScheme(Brightness.light);
+    test(
+      'toColorScheme returns valid Material 3 ColorScheme with correct '
+          'mappings',
+      () {
+        final colorScheme = baseScheme.toColorScheme(Brightness.light);
 
-      expect(colorScheme.brightness, Brightness.light);
-      expect(colorScheme.primary, baseScheme.primary);
-      expect(colorScheme.onPrimary, baseScheme.onPrimary);
-      expect(colorScheme.primaryContainer, baseScheme.primaryContainer);
-      expect(colorScheme.onPrimaryContainer, baseScheme.onPrimaryContainer);
-      expect(colorScheme.secondary, baseScheme.secondary);
-      expect(colorScheme.onSecondary, baseScheme.onSecondary);
-      expect(colorScheme.secondaryContainer, baseScheme.secondaryContainer);
-      expect(colorScheme.onSecondaryContainer, baseScheme.onSecondaryContainer);
-      expect(colorScheme.tertiary, baseScheme.tertiary);
-      expect(colorScheme.onTertiary, baseScheme.onTertiary);
-      expect(colorScheme.tertiaryContainer, baseScheme.tertiaryContainer);
-      expect(colorScheme.onTertiaryContainer, baseScheme.onTertiaryContainer);
-      expect(colorScheme.error, baseScheme.error);
-      expect(colorScheme.onError, baseScheme.onError);
-      expect(colorScheme.errorContainer, baseScheme.errorContainer);
-      expect(colorScheme.onErrorContainer, baseScheme.onErrorContainer);
-      expect(colorScheme.surface, baseScheme.surface);
-      expect(colorScheme.onSurface, baseScheme.onSurface);
-      expect(colorScheme.surfaceContainerLowest, baseScheme.surfaceContainerLowest);
-      expect(colorScheme.surfaceContainerLow, baseScheme.surfaceContainerLow);
-      expect(colorScheme.surfaceContainer, baseScheme.surfaceContainer);
-      expect(colorScheme.surfaceContainerHigh, baseScheme.surfaceContainerHigh);
-      expect(colorScheme.surfaceContainerHighest, baseScheme.surfaceContainerHighest);
-      expect(colorScheme.onSurfaceVariant, baseScheme.onSurfaceVariant);
-      expect(colorScheme.outline, baseScheme.outline);
-      expect(colorScheme.outlineVariant, baseScheme.outlineVariant);
-      expect(colorScheme.inverseSurface, baseScheme.inverseSurface);
-      expect(colorScheme.onInverseSurface, baseScheme.onInverseSurface);
-      expect(colorScheme.inversePrimary, baseScheme.inversePrimary);
-      expect(colorScheme.surfaceTint, baseScheme.surfaceTint);
-      expect(colorScheme.primaryFixed, baseScheme.primaryFixed);
-      expect(colorScheme.primaryFixedDim, baseScheme.primaryFixedDim);
-      expect(colorScheme.onPrimaryFixed, baseScheme.onPrimaryFixed);
-      expect(colorScheme.onPrimaryFixedVariant, baseScheme.onPrimaryFixedVariant);
-      expect(colorScheme.secondaryFixed, baseScheme.secondaryFixed);
-      expect(colorScheme.secondaryFixedDim, baseScheme.secondaryFixedDim);
-      expect(colorScheme.onSecondaryFixed, baseScheme.onSecondaryFixed);
-      expect(colorScheme.onSecondaryFixedVariant, baseScheme.onSecondaryFixedVariant);
-      expect(colorScheme.tertiaryFixed, baseScheme.tertiaryFixed);
-      expect(colorScheme.tertiaryFixedDim, baseScheme.tertiaryFixedDim);
-      expect(colorScheme.onTertiaryFixed, baseScheme.onTertiaryFixed);
-      expect(colorScheme.onTertiaryFixedVariant, baseScheme.onTertiaryFixedVariant);
-      expect(colorScheme.surfaceDim, baseScheme.surfaceDim);
-      expect(colorScheme.surfaceBright, baseScheme.surfaceBright);
-    });
+        expect(colorScheme.brightness, Brightness.light);
+        expect(colorScheme.primary, baseScheme.primary);
+        expect(colorScheme.onPrimary, baseScheme.onPrimary);
+        expect(colorScheme.primaryContainer, baseScheme.primaryContainer);
+        expect(colorScheme.onPrimaryContainer, baseScheme.onPrimaryContainer);
+        expect(colorScheme.secondary, baseScheme.secondary);
+        expect(colorScheme.onSecondary, baseScheme.onSecondary);
+        expect(colorScheme.secondaryContainer, baseScheme.secondaryContainer);
+        expect(
+          colorScheme.onSecondaryContainer,
+          baseScheme.onSecondaryContainer,
+        );
+        expect(colorScheme.tertiary, baseScheme.tertiary);
+        expect(colorScheme.onTertiary, baseScheme.onTertiary);
+        expect(colorScheme.tertiaryContainer, baseScheme.tertiaryContainer);
+        expect(colorScheme.onTertiaryContainer, baseScheme.onTertiaryContainer);
+        expect(colorScheme.error, baseScheme.error);
+        expect(colorScheme.onError, baseScheme.onError);
+        expect(colorScheme.errorContainer, baseScheme.errorContainer);
+        expect(colorScheme.onErrorContainer, baseScheme.onErrorContainer);
+        expect(colorScheme.surface, baseScheme.surface);
+        expect(colorScheme.onSurface, baseScheme.onSurface);
+        expect(
+          colorScheme.surfaceContainerLowest,
+          baseScheme.surfaceContainerLowest,
+        );
+        expect(colorScheme.surfaceContainerLow, baseScheme.surfaceContainerLow);
+        expect(colorScheme.surfaceContainer, baseScheme.surfaceContainer);
+        expect(
+          colorScheme.surfaceContainerHigh,
+          baseScheme.surfaceContainerHigh,
+        );
+        expect(
+          colorScheme.surfaceContainerHighest,
+          baseScheme.surfaceContainerHighest,
+        );
+        expect(colorScheme.onSurfaceVariant, baseScheme.onSurfaceVariant);
+        expect(colorScheme.outline, baseScheme.outline);
+        expect(colorScheme.outlineVariant, baseScheme.outlineVariant);
+        expect(colorScheme.inverseSurface, baseScheme.inverseSurface);
+        expect(colorScheme.onInverseSurface, baseScheme.onInverseSurface);
+        expect(colorScheme.inversePrimary, baseScheme.inversePrimary);
+        expect(colorScheme.surfaceTint, baseScheme.surfaceTint);
+        expect(colorScheme.primaryFixed, baseScheme.primaryFixed);
+        expect(colorScheme.primaryFixedDim, baseScheme.primaryFixedDim);
+        expect(colorScheme.onPrimaryFixed, baseScheme.onPrimaryFixed);
+        expect(
+          colorScheme.onPrimaryFixedVariant,
+          baseScheme.onPrimaryFixedVariant,
+        );
+        expect(colorScheme.secondaryFixed, baseScheme.secondaryFixed);
+        expect(colorScheme.secondaryFixedDim, baseScheme.secondaryFixedDim);
+        expect(colorScheme.onSecondaryFixed, baseScheme.onSecondaryFixed);
+        expect(
+          colorScheme.onSecondaryFixedVariant,
+          baseScheme.onSecondaryFixedVariant,
+        );
+        expect(colorScheme.tertiaryFixed, baseScheme.tertiaryFixed);
+        expect(colorScheme.tertiaryFixedDim, baseScheme.tertiaryFixedDim);
+        expect(colorScheme.onTertiaryFixed, baseScheme.onTertiaryFixed);
+        expect(
+          colorScheme.onTertiaryFixedVariant,
+          baseScheme.onTertiaryFixedVariant,
+        );
+        expect(colorScheme.surfaceDim, baseScheme.surfaceDim);
+        expect(colorScheme.surfaceBright, baseScheme.surfaceBright);
+      },
+    );
   });
 }

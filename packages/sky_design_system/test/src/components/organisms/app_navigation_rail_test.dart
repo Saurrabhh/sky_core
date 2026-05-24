@@ -6,8 +6,10 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('AppNavigationRail', () {
-    testWidgets('renders leading, trailing, and responds to click', (tester) async {
-      int selectedIdx = 0;
+    testWidgets('renders leading, trailing, and responds to click', (
+      tester,
+    ) async {
+      var selectedIdx = 0;
 
       await tester.pumpWidget(
         MaterialApp(

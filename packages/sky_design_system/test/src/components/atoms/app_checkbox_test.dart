@@ -6,7 +6,9 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('AppCheckbox', () {
-    testWidgets('renders Checkbox with specified value and responds to tap', (tester) async {
+    testWidgets('renders Checkbox with specified value and responds to tap', (
+      tester,
+    ) async {
       bool? checked = false;
 
       await tester.pumpWidget(

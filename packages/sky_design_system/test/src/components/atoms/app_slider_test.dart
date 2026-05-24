@@ -6,49 +6,51 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('AppSlider', () {
-    testWidgets('renders Slider with correct attributes and responds to drag/tap', (tester) async {
-      double sliderValue = 50.0;
+    testWidgets(
+      'renders Slider with correct attributes and responds to drag/tap',
+      (tester) async {
+        var sliderValue = 50.0;
 
-      await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            body: StatefulBuilder(
-              builder: (context, setState) {
-                return AppSlider(
-                  value: sliderValue,
-                  min: 0.0,
-                  max: 100.0,
-                  divisions: 10,
-                  label: 'Value: ${sliderValue.round()}',
-                  onChanged: (val) {
-                    setState(() {
-                      sliderValue = val;
-                    });
-                  },
-                );
-              },
+        await tester.pumpWidget(
+          MaterialApp(
+            home: Scaffold(
+              body: StatefulBuilder(
+                builder: (context, setState) {
+                  return AppSlider(
+                    value: sliderValue,
+                    max: 100,
+                    divisions: 10,
+                    label: 'Value: ${sliderValue.round()}',
+                    onChanged: (val) {
+                      setState(() {
+                        sliderValue = val;
+                      });
+                    },
+                  );
+                },
+              ),
             ),
           ),
-        ),
-      );
+        );
 
-      final sliderFinder = find.byType(Slider);
-      expect(sliderFinder, findsOneWidget);
+        final sliderFinder = find.byType(Slider);
+        expect(sliderFinder, findsOneWidget);
 
-      var slider = tester.widget<Slider>(sliderFinder);
-      expect(slider.value, equals(50.0));
-      expect(slider.min, equals(0.0));
-      expect(slider.max, equals(100.0));
-      expect(slider.divisions, equals(10));
-      expect(slider.label, equals('Value: 50'));
+        var slider = tester.widget<Slider>(sliderFinder);
+        expect(slider.value, equals(50.0));
+        expect(slider.min, equals(0.0));
+        expect(slider.max, equals(100.0));
+        expect(slider.divisions, equals(10));
+        expect(slider.label, equals('Value: 50'));
 
-      // Drag the slider to the right
-      await tester.drag(sliderFinder, const Offset(100, 0));
-      await tester.pump();
+        // Drag the slider to the right
+        await tester.drag(sliderFinder, const Offset(100, 0));
+        await tester.pump();
 
-      slider = tester.widget<Slider>(sliderFinder);
-      expect(sliderValue, isNot(equals(0.5))); // Should have changed
-    });
+        slider = tester.widget<Slider>(sliderFinder);
+        expect(sliderValue, isNot(equals(0.5))); // Should have changed
+      },
+    );
 
     testWidgets('supports disabled state', (tester) async {
       await tester.pumpWidget(

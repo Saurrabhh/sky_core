@@ -6,7 +6,9 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('AppRadioButton & AppRadioGroup', () {
-    testWidgets('AppRadioGroup propagates selection and responds to tap', (tester) async {
+    testWidgets('AppRadioGroup propagates selection and responds to tap', (
+      tester,
+    ) async {
       int? selectedValue = 1;
 
       await tester.pumpWidget(
@@ -45,7 +47,9 @@ void main() {
       expect(selectedValue, equals(2));
     });
 
-    testWidgets('AppRadioButton toggleable parameter is propagated', (tester) async {
+    testWidgets('AppRadioButton toggleable parameter is propagated', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(

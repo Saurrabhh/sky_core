@@ -6,23 +6,30 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('AppProgressIndicator', () {
-    testWidgets('AppProgressIndicator.circular renders CircularProgressIndicator', (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: Scaffold(
-            body: AppProgressIndicator.circular(value: 0.75),
+    testWidgets(
+      'AppProgressIndicator.circular renders CircularProgressIndicator',
+      (tester) async {
+        await tester.pumpWidget(
+          const MaterialApp(
+            home: Scaffold(
+              body: AppProgressIndicator.circular(value: 0.75),
+            ),
           ),
-        ),
-      );
+        );
 
-      final progressFinder = find.byType(CircularProgressIndicator);
-      expect(progressFinder, findsOneWidget);
+        final progressFinder = find.byType(CircularProgressIndicator);
+        expect(progressFinder, findsOneWidget);
 
-      final progressWidget = tester.widget<CircularProgressIndicator>(progressFinder);
-      expect(progressWidget.value, 0.75);
-    });
+        final progressWidget = tester.widget<CircularProgressIndicator>(
+          progressFinder,
+        );
+        expect(progressWidget.value, 0.75);
+      },
+    );
 
-    testWidgets('AppProgressIndicator.linear renders LinearProgressIndicator', (tester) async {
+    testWidgets('AppProgressIndicator.linear renders LinearProgressIndicator', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
@@ -34,7 +41,9 @@ void main() {
       final progressFinder = find.byType(LinearProgressIndicator);
       expect(progressFinder, findsOneWidget);
 
-      final progressWidget = tester.widget<LinearProgressIndicator>(progressFinder);
+      final progressWidget = tester.widget<LinearProgressIndicator>(
+        progressFinder,
+      );
       expect(progressWidget.value, isNull); // Indeterminate
     });
   });

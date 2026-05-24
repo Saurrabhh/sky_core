@@ -7,7 +7,7 @@ void main() {
 
   group('AppButton', () {
     testWidgets('AppButton.primary renders correctly', (tester) async {
-      bool tapped = false;
+      var tapped = false;
       await tester.pumpWidget(
         MaterialApp(
           theme: AppTheme.light(useGoogleFonts: false),
@@ -123,7 +123,7 @@ void main() {
     });
 
     testWidgets('AppButton.fab renders correctly', (tester) async {
-      bool tapped = false;
+      var tapped = false;
       await tester.pumpWidget(
         MaterialApp(
           theme: AppTheme.light(useGoogleFonts: false),

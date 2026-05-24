@@ -6,7 +6,9 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('AppDatePickerField', () {
-    testWidgets('renders initialDate and supports custom formatting', (tester) async {
+    testWidgets('renders initialDate and supports custom formatting', (
+      tester,
+    ) async {
       final initialDate = DateTime(2026, 5, 24);
 
       await tester.pumpWidget(
@@ -45,9 +47,11 @@ void main() {
       expect(find.text('24/5/2026'), findsOneWidget);
     });
 
-    testWidgets('opens showDatePicker on tap and updates selected date', (tester) async {
+    testWidgets('opens showDatePicker on tap and updates selected date', (
+      tester,
+    ) async {
       final initialDate = DateTime(2026, 5, 24);
-      final firstDate = DateTime(2026, 5, 1);
+      final firstDate = DateTime(2026, 5);
       final lastDate = DateTime(2026, 5, 31);
       DateTime? selectedDate;
 
@@ -105,7 +109,9 @@ void main() {
       expect(find.byType(CalendarDatePicker), findsNothing);
     });
 
-    testWidgets('handles didUpdateWidget when initialDate changes', (tester) async {
+    testWidgets('handles didUpdateWidget when initialDate changes', (
+      tester,
+    ) async {
       final controller = TextEditingController();
       final key = GlobalKey();
 
