@@ -145,50 +145,90 @@ void main() {
         expect(authInterceptor.refreshCalls, equals(1));
       },
     );
+
+    test(
+      'bypasses access token injection when '
+      'No-Authentication header is present',
+      () async {
+        final dio = Dio();
+        final authInterceptor = TestAuthInterceptor(
+          dio: dio,
+          token: 'initial_token',
+          onRefresh: () async => true,
+        );
+
+        dio.interceptors.add(authInterceptor);
+        dio.httpClientAdapter = MockAdapter(
+          handler: (options) async {
+            final authHeader = options.headers['Authorization'] as String?;
+            // Verify that No-Authentication is removed and Authorization is
+            // null
+            expect(options.headers.containsKey('No-Authentication'), isFalse);
+            expect(authHeader, isNull);
+
+            return ResponseBody.fromString(jsonEncode({'status': 'ok'}), 200);
+          },
+        );
+
+        final response = await dio.get<dynamic>(
+          '/public',
+          options: Options(headers: {'No-Authentication': true}),
+        );
+        expect(response.statusCode, equals(200));
+      },
+    );
   });
 
-  group('DioNetworkClient Interface Integration', () {
-    test('sends successful request and resolves response', () async {
-      final dio = Dio();
-      final client = DioNetworkClient(
-        dio: dio,
-        options: const NetworkOptions(baseUrl: 'https://api.example.com'),
+  group('DioFactory Implementation', () {
+    test('creates configured Dio instance with pretty logger', () {
+      const dioFactory = DioFactoryImpl();
+      final dio = dioFactory.create(
+        options: const NetworkOptions(
+          baseUrl: 'https://api.example.com',
+          connectTimeout: Duration(seconds: 15),
+        ),
       );
 
-      client.dio.httpClientAdapter = MockAdapter(
-        handler: (options) async {
-          expect(options.baseUrl, equals('https://api.example.com'));
-          return ResponseBody.fromString(
-            jsonEncode({'status': 'ok'}),
-            200,
-            headers: {
-              Headers.contentTypeHeader: [Headers.jsonContentType],
-            },
-          );
-        },
-      );
+      expect(dio.options.baseUrl, equals('https://api.example.com'));
+      expect(dio.options.connectTimeout, equals(const Duration(seconds: 15)));
+      // Logger interceptor should be added automatically
+      expect(dio.interceptors, isNotEmpty);
+    });
+  });
 
-      final response = await client.get<Map<String, dynamic>>('/data');
-      expect(response.statusCode, equals(200));
-      expect(response.data?['status'], equals('ok'));
+  group('ApiCallHandler & ApiCallHandlerImpl Integration', () {
+    test('executes successful request and resolves data', () async {
+      const apiHandler = ApiCallHandlerImpl();
+
+      final result = await apiHandler.handle(() async {
+        return 'success_response';
+      });
+
+      expect(result, equals('success_response'));
     });
 
     test('rethrows mapped Failure upon DioException', () async {
-      final dio = Dio();
-      final client = DioNetworkClient(
-        dio: dio,
-        options: const NetworkOptions(),
-      );
+      const apiHandler = ApiCallHandlerImpl();
 
-      client.dio.httpClientAdapter = MockAdapter(
-        handler: (options) async {
-          return ResponseBody.fromString('Unauthorized', 401);
-        },
+      final dioError = DioException(
+        requestOptions: RequestOptions(path: '/secure'),
+        type: DioExceptionType.badResponse,
+        response: Response(
+          requestOptions: RequestOptions(path: '/secure'),
+          statusCode: 403,
+          data: {'message': 'Forbidden access'},
+        ),
       );
 
       await expectLater(
-        client.get<dynamic>('/secure'),
-        throwsA(isA<ServerFailure>()),
+        apiHandler.handle(() async {
+          throw dioError;
+        }),
+        throwsA(isA<ServerFailure>().having(
+          (f) => f.message,
+          'message',
+          equals('Forbidden access'),
+        )),
       );
     });
   });

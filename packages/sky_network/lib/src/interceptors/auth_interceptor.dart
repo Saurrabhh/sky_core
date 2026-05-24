@@ -21,6 +21,12 @@ abstract class BaseAuthInterceptor extends Interceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
+    if (options.headers.containsKey('No-Authentication')) {
+      options.headers.remove('No-Authentication');
+      super.onRequest(options, handler);
+      return;
+    }
+
     final token = await getAccessToken();
     if (token != null) {
       options.headers[tokenHeaderName] = formatToken(token);
