@@ -139,7 +139,7 @@ void main() {
 
     test(
       'toColorScheme returns valid Material 3 ColorScheme with correct '
-          'mappings',
+      'mappings',
       () {
         final colorScheme = baseScheme.toColorScheme(Brightness.light);
 

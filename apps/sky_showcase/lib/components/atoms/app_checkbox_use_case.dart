@@ -65,9 +65,7 @@ class _InteractiveCheckboxWrapperState
     return AppCheckbox(
       value: _val,
       isError: widget.isError,
-      onChanged: widget.enabled
-          ? (v) => setState(() => _val = v)
-          : null,
+      onChanged: widget.enabled ? (v) => setState(() => _val = v) : null,
     );
   }
 }

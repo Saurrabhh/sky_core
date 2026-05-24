@@ -8,7 +8,7 @@ void main() {
   group('AppSearchBar', () {
     testWidgets(
       'renders hintText, leading search icon, and toggles clear button on '
-          'input',
+      'input',
       (tester) async {
         var typedText = '';
 

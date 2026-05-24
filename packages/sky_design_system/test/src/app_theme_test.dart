@@ -31,7 +31,7 @@ void main() {
 
     test(
       'customColorScheme parameter overrides default colors in light() and '
-          'dark()',
+      'dark()',
       () {
         const customScheme = AppColorScheme(
           surface: Colors.red,

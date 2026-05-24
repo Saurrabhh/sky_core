@@ -25,7 +25,7 @@ Widget typographyUseCase(BuildContext context) {
           ),
         ),
         const SizedBox(height: AppSpacing.lg),
-        
+
         Text(
           'Display Styles',
           style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
@@ -34,7 +34,7 @@ Widget typographyUseCase(BuildContext context) {
         _TypeItem(name: 'Display Large', style: textTheme.displayLarge!),
         _TypeItem(name: 'Display Medium', style: textTheme.displayMedium!),
         _TypeItem(name: 'Display Small', style: textTheme.displaySmall!),
-        
+
         const SizedBox(height: AppSpacing.lg),
         Text(
           'Headline Styles',
@@ -44,7 +44,7 @@ Widget typographyUseCase(BuildContext context) {
         _TypeItem(name: 'Headline Large', style: textTheme.headlineLarge!),
         _TypeItem(name: 'Headline Medium', style: textTheme.headlineMedium!),
         _TypeItem(name: 'Headline Small', style: textTheme.headlineSmall!),
-        
+
         const SizedBox(height: AppSpacing.lg),
         Text(
           'Title Styles',
@@ -54,7 +54,7 @@ Widget typographyUseCase(BuildContext context) {
         _TypeItem(name: 'Title Large', style: textTheme.titleLarge!),
         _TypeItem(name: 'Title Medium', style: textTheme.titleMedium!),
         _TypeItem(name: 'Title Small', style: textTheme.titleSmall!),
-        
+
         const SizedBox(height: AppSpacing.lg),
         Text(
           'Body Styles',
@@ -64,7 +64,7 @@ Widget typographyUseCase(BuildContext context) {
         _TypeItem(name: 'Body Large', style: textTheme.bodyLarge!),
         _TypeItem(name: 'Body Medium', style: textTheme.bodyMedium!),
         _TypeItem(name: 'Body Small', style: textTheme.bodySmall!),
-        
+
         const SizedBox(height: AppSpacing.lg),
         Text(
           'Label Styles',
@@ -74,7 +74,7 @@ Widget typographyUseCase(BuildContext context) {
         _TypeItem(name: 'Label Large', style: textTheme.labelLarge!),
         _TypeItem(name: 'Label Medium', style: textTheme.labelMedium!),
         _TypeItem(name: 'Label Small', style: textTheme.labelSmall!),
-        
+
         const Divider(height: AppSpacing.xxl),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),

@@ -58,9 +58,7 @@ class _InteractiveSwitchWrapperState extends State<_InteractiveSwitchWrapper> {
   Widget build(BuildContext context) {
     return AppSwitch(
       value: _val,
-      onChanged: widget.enabled
-          ? (v) => setState(() => _val = v)
-          : null,
+      onChanged: widget.enabled ? (v) => setState(() => _val = v) : null,
     );
   }
 }

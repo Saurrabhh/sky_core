@@ -99,7 +99,7 @@ void main() {
 
     testWidgets(
       'renders background image and does not show initials when both are '
-          'provided',
+      'provided',
       (tester) async {
         final mockImage = MemoryImage(transparentPng);
         await tester.pumpWidget(

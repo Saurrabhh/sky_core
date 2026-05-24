@@ -298,8 +298,8 @@ class _ColorSection extends StatelessWidget {
     final crossCount = width > 800
         ? 5
         : width > 600
-            ? 4
-            : 2;
+        ? 4
+        : 2;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

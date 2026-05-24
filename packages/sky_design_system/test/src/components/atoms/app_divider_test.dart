@@ -8,7 +8,7 @@ void main() {
   group('AppDivider', () {
     testWidgets(
       'AppDivider.horizontal renders Divider with expected height and '
-          'thickness',
+      'thickness',
       (tester) async {
         await tester.pumpWidget(
           const MaterialApp(
@@ -29,7 +29,7 @@ void main() {
 
     testWidgets(
       'AppDivider.vertical renders VerticalDivider with expected width and '
-          'thickness',
+      'thickness',
       (tester) async {
         await tester.pumpWidget(
           const MaterialApp(
