@@ -248,18 +248,18 @@ void main() {
     });
   });
 
-  group('BreadcrumbLoggerAdapter Decoupled Mediator', () {
+  group('BreadcrumbLogger Decoupled Mediator', () {
     late MockCrashReporter mockReporter;
-    late BreadcrumbLoggerAdapter breadcrumbAdapter;
+    late BreadcrumbLogger breadcrumbLogger;
 
     setUp(() {
       mockReporter = MockCrashReporter();
       SkyCrashReporting.instance.clearReporters();
       SkyCrashReporting.instance.registerReporter(mockReporter);
 
-      breadcrumbAdapter = const BreadcrumbLoggerAdapter();
+      breadcrumbLogger = const BreadcrumbLogger();
       SkyLogging.instance.clearLoggers();
-      SkyLogging.instance.registerLogger(breadcrumbAdapter);
+      SkyLogging.instance.registerLogger(breadcrumbLogger);
     });
 
     tearDown(() {
@@ -285,9 +285,9 @@ void main() {
     });
   });
 
-  group('ConsoleLoggerAdapter Printer Verification', () {
+  group('ConsoleLogger Printer Verification', () {
     test('instantiates and formats log calls without crashing', () {
-      final consoleLogger = ConsoleLoggerAdapter();
+      final consoleLogger = ConsoleLogger();
 
       expect(
         () => consoleLogger.info(

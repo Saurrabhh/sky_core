@@ -1,19 +1,19 @@
 import 'dart:async';
-import 'package:sky_telemetry/src/interfaces/logger.dart';
-import 'package:sky_telemetry/src/services/crash_reporting_service.dart';
-import 'package:sky_telemetry/src/services/logging_service.dart';
+import 'package:sky_telemetry/src/crash_reporting/crash_reporting_service.dart';
+import 'package:sky_telemetry/src/logger/logger.dart';
 
-/// {@template breadcrumb_logger_adapter}
-/// A mediator logging adapter that bridges log statements to crash breadcrumbs.
+/// {@template breadcrumb_logger}
+/// A mediator logging implementation that bridges log statements to
+/// crash breadcrumbs.
 ///
-/// Implements [SkyLogger]. When registered with [SkyLogging], it forwards
+/// Implements [SkyLogger]. When registered with `SkyLogging`, it forwards
 /// logs above [minLevel] directly to [SkyCrashReporting] as session
 /// breadcrumbs. This allows crash reporters like Sentry to automatically
 /// receive preceding logs when an exception occurs.
 /// {@endtemplate}
-class BreadcrumbLoggerAdapter extends SkyLogger {
-  /// {@macro breadcrumb_logger_adapter}
-  const BreadcrumbLoggerAdapter({
+class BreadcrumbLogger extends SkyLogger {
+  /// {@macro breadcrumb_logger}
+  const BreadcrumbLogger({
     this.minLevel = LogLevel.info,
   });
 

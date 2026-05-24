@@ -1,16 +1,16 @@
 import 'package:logger/logger.dart' as log_pkg;
-import 'package:sky_telemetry/src/interfaces/logger.dart';
+import 'package:sky_telemetry/src/logger/logger.dart';
 
-/// {@template console_logger_adapter}
+/// {@template console_logger}
 /// A highly optimized console logging implementation of [SkyLogger].
 ///
 /// Uses the `logger` package internally with custom formatting to provide
 /// readable, compact console log lines in the terminal without excessive
 /// clutter.
 /// {@endtemplate}
-class ConsoleLoggerAdapter extends SkyLogger {
-  /// {@macro console_logger_adapter}
-  ConsoleLoggerAdapter({
+class ConsoleLogger extends SkyLogger {
+  /// {@macro console_logger}
+  ConsoleLogger({
     log_pkg.Level level = log_pkg.Level.debug,
   }) : _logger = log_pkg.Logger(
           level: level,

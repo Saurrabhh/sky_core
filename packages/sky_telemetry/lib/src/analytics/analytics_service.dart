@@ -1,4 +1,4 @@
-import 'package:sky_telemetry/src/interfaces/analytics.dart';
+import 'package:sky_telemetry/src/analytics/analytics.dart';
 
 /// {@template sky_analytics_registry}
 /// The registry and coordinator for all analytics tracking.

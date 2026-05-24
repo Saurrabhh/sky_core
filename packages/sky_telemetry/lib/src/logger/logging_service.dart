@@ -1,4 +1,4 @@
-import 'package:sky_telemetry/src/interfaces/logger.dart';
+import 'package:sky_telemetry/src/logger/logger.dart';
 
 /// {@template sky_logging}
 /// The registry and coordinator for all diagnostic logging.

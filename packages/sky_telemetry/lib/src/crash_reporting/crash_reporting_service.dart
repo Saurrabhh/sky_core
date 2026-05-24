@@ -1,4 +1,4 @@
-import 'package:sky_telemetry/src/interfaces/crash_reporter.dart';
+import 'package:sky_telemetry/src/crash_reporting/crash_reporter.dart';
 
 /// {@template sky_crash_reporting}
 /// The registry and coordinator for all crash reporting.

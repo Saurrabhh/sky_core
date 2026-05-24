@@ -2,16 +2,11 @@
 /// library for Sky applications.
 library;
 
-// Concrete Adapters
-export 'src/adapters/breadcrumb_logger_adapter.dart';
-export 'src/adapters/console_logger_adapter.dart';
-
-// Public Interfaces
-export 'src/interfaces/analytics.dart';
-export 'src/interfaces/crash_reporter.dart';
-export 'src/interfaces/logger.dart';
-
-// Registry Services
-export 'src/services/analytics_service.dart';
-export 'src/services/crash_reporting_service.dart';
-export 'src/services/logging_service.dart';
+export 'src/analytics/analytics.dart';
+export 'src/analytics/analytics_service.dart';
+export 'src/crash_reporting/breadcrumb_logger.dart';
+export 'src/crash_reporting/crash_reporter.dart';
+export 'src/crash_reporting/crash_reporting_service.dart';
+export 'src/logger/console_logger.dart';
+export 'src/logger/logger.dart';
+export 'src/logger/logging_service.dart';
