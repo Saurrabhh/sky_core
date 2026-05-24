@@ -19,3 +19,4 @@ build/
 # IDE files
 *.iml
 .idea/
+/coverage/
