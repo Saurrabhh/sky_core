@@ -12,6 +12,7 @@ dependencies:
   dio: ^5.4.3
   flutter:
     sdk: flutter
+  fpdart: ^1.1.0
   pretty_dio_logger: ^1.4.0
   sky_architecture:
     path: ../sky_architecture

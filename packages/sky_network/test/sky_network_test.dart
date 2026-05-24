@@ -197,17 +197,21 @@ void main() {
   });
 
   group('ApiCallHandler & ApiCallHandlerImpl Integration', () {
-    test('executes successful request and resolves data', () async {
+    test('executes successful request and resolves Right data', () async {
       const apiHandler = ApiCallHandlerImpl();
 
       final result = await apiHandler.handle(() async {
         return 'success_response';
       });
 
-      expect(result, equals('success_response'));
+      expect(result.isRight(), isTrue);
+      result.fold(
+        (failure) => fail('Should have succeeded'),
+        (data) => expect(data, equals('success_response')),
+      );
     });
 
-    test('rethrows mapped SkyException upon DioException', () async {
+    test('returns Left wrapping mapped Failure upon DioException', () async {
       const apiHandler = ApiCallHandlerImpl();
 
       final dioError = DioException(
@@ -220,15 +224,17 @@ void main() {
         ),
       );
 
-      await expectLater(
-        apiHandler.handle(() async {
-          throw dioError;
-        }),
-        throwsA(isA<ServerException>().having(
-          (f) => f.message,
-          'message',
-          equals('Forbidden access'),
-        )),
+      final result = await apiHandler.handle(() async {
+        throw dioError;
+      });
+
+      expect(result.isLeft(), isTrue);
+      result.fold(
+        (failure) {
+          expect(failure, isA<ServerFailure>());
+          expect(failure.message, equals('Forbidden access'));
+        },
+        (data) => fail('Should have failed'),
       );
     });
   });
