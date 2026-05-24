@@ -1,7 +1,7 @@
 import 'package:sky_telemetry/sky_telemetry.dart';
 import 'package:test/test.dart';
 
-// --- Mock Telemetry Adapters ---
+
 
 class MockLogger extends SkyLogger {
   final List<String> loggedMessages = [];
@@ -18,7 +18,7 @@ class MockLogger extends SkyLogger {
   }
 }
 
-class MockCrashReporter extends SkyCrashReporter {
+class MockCrashReporter implements SkyCrashReporter {
   final List<String> reportedErrors = [];
   final List<String> loggedBreadcrumbs = [];
   String? userId;
@@ -61,7 +61,7 @@ class MockCrashReporter extends SkyCrashReporter {
   }
 }
 
-class MockAnalytics extends SkyAnalytics {
+class MockAnalytics implements SkyAnalytics {
   final List<String> trackedEvents = [];
   final List<String> trackedScreens = [];
   String? userId;
@@ -273,7 +273,7 @@ void main() {
         'code': 500,
       });
 
-      // The debug log is omitted from breadcrumbs, only the warning remains.
+      
       expect(mockReporter.loggedBreadcrumbs, hasLength(1));
       expect(
         mockReporter.loggedBreadcrumbs.first,

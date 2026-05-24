@@ -1,36 +1,24 @@
 import 'package:sky_telemetry/src/crash_reporting/crash_reporter.dart';
 
-/// {@template sky_crash_reporting}
-/// The registry and coordinator for all crash reporting.
-///
-/// Implements [SkyCrashReporter] to act as a unified error tracking gateway,
-/// multiplexing errors, user traits, and breadcrumbs to Sentry, Crashlytics,
-/// etc.
-/// {@endtemplate}
-class SkyCrashReporting extends SkyCrashReporter {
+class SkyCrashReporting implements SkyCrashReporter {
   SkyCrashReporting._();
 
-  /// Unified singleton instance of the crash reporting coordinator.
   static final SkyCrashReporting instance = SkyCrashReporting._();
 
   final List<SkyCrashReporter> _reporters = [];
 
-  /// Returns a read-only list of currently registered crash reporters.
   List<SkyCrashReporter> get reporters => List.unmodifiable(_reporters);
 
-  /// Registers a new crash [reporter] adapter.
   void registerReporter(SkyCrashReporter reporter) {
     if (!_reporters.contains(reporter)) {
       _reporters.add(reporter);
     }
   }
 
-  /// Unregisters an active crash [reporter] adapter.
   void unregisterReporter(SkyCrashReporter reporter) {
     _reporters.remove(reporter);
   }
 
-  /// Clears all registered crash reporting adapters.
   void clearReporters() {
     _reporters.clear();
   }

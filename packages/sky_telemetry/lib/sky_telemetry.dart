@@ -1,5 +1,5 @@
-/// A highly optimized, decoupled logging, crash reporting, and analytics
-/// library for Sky applications.
+
+
 library;
 
 export 'src/analytics/analytics.dart';
