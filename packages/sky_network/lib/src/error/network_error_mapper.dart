@@ -1,20 +1,26 @@
 import 'package:dio/dio.dart';
 import 'package:sky_architecture/sky_architecture.dart';
 
+/// Extension methods to map standard [DioException]s to data exceptions.
 extension DioExceptionX on DioException {
-  Failure toFailure() {
+  /// Maps this [DioException] to a pure [SkyException] model.
+  SkyException toException() {
     switch (type) {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:
       case DioExceptionType.receiveTimeout:
-        return const NetworkFailure(
+        return NetworkException(
           message: 'Connection timeout. Please check your internet connection.',
           code: 'TIMEOUT',
+          error: error,
+          stackTrace: stackTrace,
         );
       case DioExceptionType.connectionError:
-        return const NetworkFailure(
+        return NetworkException(
           message: 'No internet connection. Please check your network status.',
           code: 'NO_CONNECTION',
+          error: error,
+          stackTrace: stackTrace,
         );
       case DioExceptionType.badResponse:
         final statusCode = response?.statusCode;
@@ -23,8 +29,7 @@ extension DioExceptionX on DioException {
         String? code;
 
         if (responseData is Map<String, dynamic>) {
-          message =
-              responseData['message'] as String? ??
+          message = responseData['message'] as String? ??
               responseData['error'] as String? ??
               message;
           code = responseData['code'] as String?;
@@ -32,25 +37,33 @@ extension DioExceptionX on DioException {
           message = responseData;
         }
 
-        return ServerFailure(
+        return ServerException(
           message: message,
           code: code ?? 'SERVER_ERROR',
           statusCode: statusCode,
+          error: error,
+          stackTrace: stackTrace,
         );
       case DioExceptionType.cancel:
-        return const UnknownFailure(
+        return UnknownException(
           message: 'Request was cancelled.',
           code: 'CANCELLED',
+          error: error,
+          stackTrace: stackTrace,
         );
       case DioExceptionType.badCertificate:
-        return const UnknownFailure(
+        return UnknownException(
           message: 'Invalid server certificate.',
           code: 'BAD_CERTIFICATE',
+          error: error,
+          stackTrace: stackTrace,
         );
       case DioExceptionType.unknown:
-        return UnknownFailure(
+        return UnknownException(
           message: message ?? 'An unexpected network error occurred.',
           code: 'UNKNOWN',
+          error: error,
+          stackTrace: stackTrace,
         );
     }
   }

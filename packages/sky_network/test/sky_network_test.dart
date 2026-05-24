@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:sky_architecture/sky_architecture.dart';
 import 'package:sky_network/sky_network.dart';
 
-
+/// A custom [HttpClientAdapter] for mocking network responses in Dio.
 class MockAdapter implements HttpClientAdapter {
   MockAdapter({required this.handler});
 
@@ -23,7 +23,7 @@ class MockAdapter implements HttpClientAdapter {
   void close({bool force = false}) {}
 }
 
-
+/// A concrete test implementation of [BaseAuthInterceptor].
 class TestAuthInterceptor extends BaseAuthInterceptor {
   TestAuthInterceptor({
     required super.dio,
@@ -50,32 +50,32 @@ class TestAuthInterceptor extends BaseAuthInterceptor {
 }
 
 void main() {
-  group('DioExceptionX Failure Mapping', () {
-    test('maps timeout exceptions to NetworkFailure', () {
+  group('DioExceptionX Exception Mapping', () {
+    test('maps timeout exceptions to NetworkException', () {
       final dioError = DioException(
         requestOptions: RequestOptions(path: '/test'),
         type: DioExceptionType.connectionTimeout,
         message: 'Timeout occured',
       );
 
-      final failure = dioError.toFailure();
-      expect(failure, isA<NetworkFailure>());
-      expect(failure.code, equals('TIMEOUT'));
+      final exception = dioError.toException();
+      expect(exception, isA<NetworkException>());
+      expect(exception.code, equals('TIMEOUT'));
     });
 
-    test('maps connection exceptions to NetworkFailure', () {
+    test('maps connection exceptions to NetworkException', () {
       final dioError = DioException(
         requestOptions: RequestOptions(path: '/test'),
         type: DioExceptionType.connectionError,
         message: 'No route to host',
       );
 
-      final failure = dioError.toFailure();
-      expect(failure, isA<NetworkFailure>());
-      expect(failure.code, equals('NO_CONNECTION'));
+      final exception = dioError.toException();
+      expect(exception, isA<NetworkException>());
+      expect(exception.code, equals('NO_CONNECTION'));
     });
 
-    test('maps 4xx/5xx responses to ServerFailure with custom messages', () {
+    test('maps 4xx/5xx responses to ServerException with custom messages', () {
       final responseData = {
         'message': 'Invalid data passed',
         'code': 'VAL_ERR',
@@ -90,11 +90,11 @@ void main() {
         ),
       );
 
-      final failure = dioError.toFailure();
-      expect(failure, isA<ServerFailure>());
-      expect(failure.code, equals('VAL_ERR'));
-      expect(failure.message, equals('Invalid data passed'));
-      expect((failure as ServerFailure).statusCode, equals(422));
+      final exception = dioError.toException();
+      expect(exception, isA<ServerException>());
+      expect(exception.code, equals('VAL_ERR'));
+      expect(exception.message, equals('Invalid data passed'));
+      expect((exception as ServerException).statusCode, equals(422));
     });
   });
 
@@ -122,11 +122,11 @@ void main() {
             final authHeader = options.headers['Authorization'] as String?;
 
             if (requestIndex == 1) {
-              
+              // First request fails with 401. Verify it had the initial token.
               expect(authHeader, equals('Bearer initial_token'));
               return ResponseBody.fromString('Unauthorized', 401);
             } else {
-              
+              // Second request succeeds. Verify it has the refreshed token.
               expect(authHeader, equals('Bearer new_token'));
               return ResponseBody.fromString(
                 jsonEncode({'status': 'ok'}),
@@ -161,8 +161,8 @@ void main() {
         dio.httpClientAdapter = MockAdapter(
           handler: (options) async {
             final authHeader = options.headers['Authorization'] as String?;
-            
-            
+            // Verify that No-Authentication is removed and Authorization is
+            // null
             expect(options.headers.containsKey('No-Authentication'), isFalse);
             expect(authHeader, isNull);
 
@@ -191,7 +191,7 @@ void main() {
 
       expect(dio.options.baseUrl, equals('https://api.example.com'));
       expect(dio.options.connectTimeout, equals(const Duration(seconds: 15)));
-      
+      // Logger interceptor should be added automatically
       expect(dio.interceptors, isNotEmpty);
     });
   });
@@ -207,7 +207,7 @@ void main() {
       expect(result, equals('success_response'));
     });
 
-    test('rethrows mapped Failure upon DioException', () async {
+    test('rethrows mapped SkyException upon DioException', () async {
       const apiHandler = ApiCallHandlerImpl();
 
       final dioError = DioException(
@@ -224,7 +224,7 @@ void main() {
         apiHandler.handle(() async {
           throw dioError;
         }),
-        throwsA(isA<ServerFailure>().having(
+        throwsA(isA<ServerException>().having(
           (f) => f.message,
           'message',
           equals('Forbidden access'),
