@@ -18,7 +18,7 @@ void main() {
       expect(AppColors.dark.primary, const Color(0xFF9FCAFF));
       expect(AppColors.dark.onPrimary, const Color(0xFF003258));
       expect(AppColors.dark.secondary, const Color(0xFFBBC7DB));
-      expect(AppColors.dark.error, const Color(0xFFFFFFB4AB));
+      expect(AppColors.dark.error, const Color(0xFFFFB4AB));
       expect(AppColors.dark.background, const Color(0xFF111418));
     });
   });
