@@ -36,13 +36,12 @@ extension SkyUtilsEnumIterableExtension<T extends Enum> on Iterable<T> {
   /// Returns `null` if no match is found.
   T? byNameOrNull(String? name) {
     if (name == null) return null;
-    final normalizedInput = ReCase(name).camelCase;
+    final normalizedInput = name.camelCase;
     for (final value in this) {
-      if (ReCase(value.name).camelCase == normalizedInput) {
+      if (value.camelCase == normalizedInput) {
         return value;
       }
     }
     return null;
   }
 }
-
