@@ -27457,8 +27457,18 @@ Copyright 2026 The Android Open Source Project
 Use of this source code is governed by a BSD-style license that can be
 found in the LICENSE file.
 --------------------------------------------------------------------------------
+sky_architecture
+sky_bloc
 sky_core
+sky_design_system
 sky_lints
+sky_network
+sky_showcase
+sky_storage
+sky_storage_hive
+sky_storage_isar
+sky_telemetry
+sky_utils
 
 Copyright (c) 2026 Sky Core
 
@@ -27479,11 +27489,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
---------------------------------------------------------------------------------
-sky_design_system
-
-TODO: Add your license here.
 
 --------------------------------------------------------------------------------
 spirv-cross
