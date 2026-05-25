@@ -2,6 +2,12 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sky_utils/sky_utils.dart';
 
+enum TestEnum {
+  userRole,
+  adminUser,
+  guest,
+}
+
 void main() {
   group('String Extensions Tests', () {
     test('capitalize transforms first letter', () {
@@ -15,6 +21,35 @@ void main() {
       expect('hello'.truncate(10), equals('hello'));
       expect('hello world'.truncate(5, suffix: '!!!'), equals('hello!!!'));
     });
+
+    test('recase transformations', () {
+      const input = 'hello_world_text';
+      expect(input.toCamelCase(), equals('helloWorldText'));
+      expect(input.toPascalCase(), equals('HelloWorldText'));
+      expect(input.toSnakeCase(), equals('hello_world_text'));
+      expect(input.toTitleCase(), equals('Hello World Text'));
+      expect(input.toParamCase(), equals('hello-world-text'));
+      expect(input.toSentenceCase(), equals('Hello world text'));
+    });
+  });
+
+  group('Enum Extensions Tests', () {
+    test('toTitleCase formats correctly', () {
+      expect(TestEnum.userRole.toTitleCase(), equals('User Role'));
+      expect(TestEnum.adminUser.toTitleCase(), equals('Admin User'));
+      expect(TestEnum.guest.toTitleCase(), equals('Guest'));
+    });
+
+    test('toCapitalizedName formats correctly', () {
+      expect(TestEnum.userRole.toCapitalizedName(), equals('UserRole'));
+      expect(TestEnum.guest.toCapitalizedName(), equals('Guest'));
+    });
+
+    test('other casing formats', () {
+      expect(TestEnum.userRole.toSnakeCase(), equals('user_role'));
+      expect(TestEnum.userRole.toPascalCase(), equals('UserRole'));
+      expect(TestEnum.userRole.toCamelCase(), equals('userRole'));
+    });
   });
 
   group('Debouncer Tests', () {
@@ -22,38 +57,63 @@ void main() {
       final debouncer = Debouncer(duration: const Duration(milliseconds: 50));
       var count = 0;
 
+      expect(debouncer.isPending, isFalse);
+
       debouncer
         ..run(() => count++)
         ..run(() => count++)
         ..run(() => count++);
 
+      expect(debouncer.isPending, isTrue);
       expect(count, equals(0));
 
       await Future<void>.delayed(const Duration(milliseconds: 100));
+
+      expect(debouncer.isPending, isFalse);
       expect(count, equals(1));
 
       debouncer.dispose();
     });
+
+    test('dispose cancels pending action', () {
+      final debouncer = Debouncer(duration: const Duration(milliseconds: 50));
+      var count = 0;
+
+      debouncer.run(() => count++);
+      expect(debouncer.isPending, isTrue);
+
+      debouncer.dispose();
+      expect(debouncer.isPending, isFalse);
+      expect(count, equals(0));
+    });
   });
 
   group('Throttler Tests', () {
-    test('throttler limits successive calls', () async {
+    test('throttler limits successive calls and updates state', () async {
       final throttler = Throttler(duration: const Duration(milliseconds: 50));
       var count = 0;
 
+      expect(throttler.isThrottled, isFalse);
+
+      throttler.run(() => count++); // Runs immediately
+      expect(throttler.isThrottled, isTrue);
+
       throttler
-        ..run(() => count++) // Runs immediately
-        ..run(() => count++) // Ignored (throttled)
-        ..run(() => count++); // Ignored (throttled)
+        ..run(() => count++) // Throttled
+        ..run(() => count++); // Throttled
 
       expect(count, equals(1));
 
       await Future<void>.delayed(const Duration(milliseconds: 100));
 
+      expect(throttler.isThrottled, isFalse);
+
       throttler.run(() => count++); // Runs again
+      expect(throttler.isThrottled, isTrue);
       expect(count, equals(2));
 
       throttler.dispose();
+      expect(throttler.isThrottled, isFalse);
     });
   });
 
