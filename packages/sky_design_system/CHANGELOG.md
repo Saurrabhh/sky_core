@@ -1,3 +1,4 @@
-## 0.0.1
+# 0.1.0
 
-* TODO: Describe initial release.
+- Initial release of `sky_design_system`.
+- Atomic UI design system components, typography, layout, themes, and styles.

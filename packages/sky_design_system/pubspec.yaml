@@ -1,6 +1,6 @@
 name: sky_design_system
 description: Atomic design system for Sky Core applications.
-version: 0.0.1
+version: 0.1.0
 publish_to: none
 resolution: workspace
 

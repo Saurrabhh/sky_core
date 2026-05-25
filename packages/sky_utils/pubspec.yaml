@@ -2,7 +2,7 @@ name: sky_utils
 description: >
   Reusable, high-performance Dart and Flutter utility extensions and
   concurrency controls.
-version: 0.0.1
+version: 0.1.0
 publish_to: none
 resolution: workspace
 

@@ -1,6 +1,6 @@
 name: sky_telemetry
 description: Pure Dart logging, crash reporting, and analytics pillars with local logger implementation.
-version: 0.0.1
+version: 0.1.0
 publish_to: none
 resolution: workspace
 
