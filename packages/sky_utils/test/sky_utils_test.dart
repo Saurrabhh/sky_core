@@ -52,22 +52,22 @@ void main() {
     });
 
     test('lookup from string with various casing styles', () {
-      expect(TestEnum.values.byNameOrNull('userRole'), TestEnum.userRole);
-      expect(TestEnum.values.byNameOrNull('user_role'), TestEnum.userRole);
-      expect(TestEnum.values.byNameOrNull('UserRole'), TestEnum.userRole);
-      expect(TestEnum.values.byNameOrNull('user-role'), TestEnum.userRole);
-      expect(TestEnum.values.byNameOrNull('USER_ROLE'), TestEnum.userRole);
+      expect(TestEnum.values.byName('userRole'), TestEnum.userRole);
+      expect(TestEnum.values.byName('user_role'), TestEnum.userRole);
+      expect(TestEnum.values.byName('UserRole'), TestEnum.userRole);
+      expect(TestEnum.values.byName('user-role'), TestEnum.userRole);
+      expect(TestEnum.values.byName('USER_ROLE'), TestEnum.userRole);
 
-      expect(TestEnum.values.byNameOrNull('adminUser'), TestEnum.adminUser);
-      expect(TestEnum.values.byNameOrNull('admin_user'), TestEnum.adminUser);
-      expect(TestEnum.values.byNameOrNull('AdminUser'), TestEnum.adminUser);
-      expect(TestEnum.values.byNameOrNull('admin-user'), TestEnum.adminUser);
+      expect(TestEnum.values.byName('adminUser'), TestEnum.adminUser);
+      expect(TestEnum.values.byName('admin_user'), TestEnum.adminUser);
+      expect(TestEnum.values.byName('AdminUser'), TestEnum.adminUser);
+      expect(TestEnum.values.byName('admin-user'), TestEnum.adminUser);
 
-      expect(TestEnum.values.byNameOrNull('guest'), TestEnum.guest);
-      expect(TestEnum.values.byNameOrNull('GUEST'), TestEnum.guest);
+      expect(TestEnum.values.byName('guest'), TestEnum.guest);
+      expect(TestEnum.values.byName('GUEST'), TestEnum.guest);
 
-      expect(TestEnum.values.byNameOrNull('unknown'), isNull);
-      expect(TestEnum.values.byNameOrNull(null), isNull);
+      expect(TestEnum.values.byName('unknown'), isNull);
+      expect(TestEnum.values.byName(null), isNull);
     });
   });
 

@@ -34,11 +34,11 @@ extension SkyUtilsEnumIterableExtension<T extends Enum> on Iterable<T> {
   /// and delimiters (e.g. matching 'user_role', 'UserRole', or 'user-role').
   ///
   /// Returns `null` if no match is found.
-  T? byNameOrNull(String? name) {
+  T? byName(String? name) {
     if (name == null) return null;
-    final normalizedInput = ReCase(name).camelCase;
+    final normalizedInput = name.camelCase;
     for (final value in this) {
-      if (ReCase(value.name).camelCase == normalizedInput) {
+      if (value.toCamelCase() == normalizedInput) {
         return value;
       }
     }
