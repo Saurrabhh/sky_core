@@ -5,25 +5,25 @@ import 'package:recase/recase.dart';
 /// {@endtemplate}
 extension SkyUtilsEnumExtension on Enum {
   /// Converts the enum name to Title Case (e.g., `userRole` to `User Role`).
-  String get toTitleCase => ReCase(name).titleCase;
+  String get titleCase => ReCase(name).titleCase;
 
   /// Capitalizes the first character of the enum name.
   ///
   /// Returns an empty string if the enum name is empty.
-  String get toCapitalizedName {
+  String get capitalizedName {
     final rawName = name;
     if (rawName.isEmpty) return '';
     return '${rawName[0].toUpperCase()}${rawName.substring(1)}';
   }
 
   /// Converts the enum name to camelCase (e.g., `user_role` to `userRole`).
-  String get toCamelCase => ReCase(name).camelCase;
+  String get camelCase => ReCase(name).camelCase;
 
   /// Converts the enum name to snake_case (e.g., `userRole` to `user_role`).
-  String get toSnakeCase => ReCase(name).snakeCase;
+  String get snakeCase => ReCase(name).snakeCase;
 
   /// Converts the enum name to PascalCase (e.g., `user_role` to `UserRole`).
-  String get toPascalCase => ReCase(name).pascalCase;
+  String get pascalCase => ReCase(name).pascalCase;
 }
 
 /// {@template sky_utils_enum_iterable_extension}

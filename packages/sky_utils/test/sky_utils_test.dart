@@ -24,31 +24,31 @@ void main() {
 
     test('recase transformations', () {
       const input = 'hello_world_text';
-      expect(input.toCamelCase, equals('helloWorldText'));
-      expect(input.toPascalCase, equals('HelloWorldText'));
-      expect(input.toSnakeCase, equals('hello_world_text'));
-      expect(input.toTitleCase, equals('Hello World Text'));
-      expect(input.toParamCase, equals('hello-world-text'));
-      expect(input.toSentenceCase, equals('Hello world text'));
+      expect(input.camelCase, equals('helloWorldText'));
+      expect(input.pascalCase, equals('HelloWorldText'));
+      expect(input.snakeCase, equals('hello_world_text'));
+      expect(input.titleCase, equals('Hello World Text'));
+      expect(input.paramCase, equals('hello-world-text'));
+      expect(input.sentenceCase, equals('Hello world text'));
     });
   });
 
   group('Enum Extensions Tests', () {
-    test('toTitleCase formats correctly', () {
-      expect(TestEnum.userRole.toTitleCase, equals('User Role'));
-      expect(TestEnum.adminUser.toTitleCase, equals('Admin User'));
-      expect(TestEnum.guest.toTitleCase, equals('Guest'));
+    test('titleCase formats correctly', () {
+      expect(TestEnum.userRole.titleCase, equals('User Role'));
+      expect(TestEnum.adminUser.titleCase, equals('Admin User'));
+      expect(TestEnum.guest.titleCase, equals('Guest'));
     });
 
-    test('toCapitalizedName formats correctly', () {
-      expect(TestEnum.userRole.toCapitalizedName, equals('UserRole'));
-      expect(TestEnum.guest.toCapitalizedName, equals('Guest'));
+    test('capitalizedName formats correctly', () {
+      expect(TestEnum.userRole.capitalizedName, equals('UserRole'));
+      expect(TestEnum.guest.capitalizedName, equals('Guest'));
     });
 
     test('other casing formats', () {
-      expect(TestEnum.userRole.toSnakeCase, equals('user_role'));
-      expect(TestEnum.userRole.toPascalCase, equals('UserRole'));
-      expect(TestEnum.userRole.toCamelCase, equals('userRole'));
+      expect(TestEnum.userRole.snakeCase, equals('user_role'));
+      expect(TestEnum.userRole.pascalCase, equals('UserRole'));
+      expect(TestEnum.userRole.camelCase, equals('userRole'));
     });
 
     test('lookup from string with various casing styles', () {

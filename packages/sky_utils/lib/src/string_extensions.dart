@@ -24,22 +24,22 @@ extension SkyUtilsStringExtension on String {
   }
 
   /// Converts the string to camelCase (e.g., `hello_world` to `helloWorld`).
-  String get toCamelCase => ReCase(this).camelCase;
+  String get camelCase => ReCase(this).camelCase;
 
   /// Converts the string to snake_case (e.g., `helloWorld` to `hello_world`).
-  String get toSnakeCase => ReCase(this).snakeCase;
+  String get snakeCase => ReCase(this).snakeCase;
 
   /// Converts the string to PascalCase (e.g., `hello_world` to `HelloWorld`).
-  String get toPascalCase => ReCase(this).pascalCase;
+  String get pascalCase => ReCase(this).pascalCase;
 
   /// Converts the string to Title Case (e.g., `hello_world` to `Hello World`).
-  String get toTitleCase => ReCase(this).titleCase;
+  String get titleCase => ReCase(this).titleCase;
 
   /// Converts the string to param-case (kebab-case) (e.g., `helloWorld` to
   /// `hello-world`).
-  String get toParamCase => ReCase(this).paramCase;
+  String get paramCase => ReCase(this).paramCase;
 
   /// Converts the string to Sentence Case (e.g., `hello_world` to
   /// `Hello world`).
-  String get toSentenceCase => ReCase(this).sentenceCase;
+  String get sentenceCase => ReCase(this).sentenceCase;
 }
