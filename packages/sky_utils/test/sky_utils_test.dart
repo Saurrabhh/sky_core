@@ -11,9 +11,9 @@ enum TestEnum {
 void main() {
   group('String Extensions Tests', () {
     test('capitalize transforms first letter', () {
-      expect('hello'.capitalize(), equals('Hello'));
-      expect('HELLO'.capitalize(), equals('HELLO'));
-      expect(''.capitalize(), isEmpty);
+      expect('hello'.capitalize, equals('Hello'));
+      expect('HELLO'.capitalize, equals('HELLO'));
+      expect(''.capitalize, isEmpty);
     });
 
     test('truncate trims long strings and appends suffix', () {
@@ -24,50 +24,50 @@ void main() {
 
     test('recase transformations', () {
       const input = 'hello_world_text';
-      expect(input.toCamelCase(), equals('helloWorldText'));
-      expect(input.toPascalCase(), equals('HelloWorldText'));
-      expect(input.toSnakeCase(), equals('hello_world_text'));
-      expect(input.toTitleCase(), equals('Hello World Text'));
-      expect(input.toParamCase(), equals('hello-world-text'));
-      expect(input.toSentenceCase(), equals('Hello world text'));
+      expect(input.toCamelCase, equals('helloWorldText'));
+      expect(input.toPascalCase, equals('HelloWorldText'));
+      expect(input.toSnakeCase, equals('hello_world_text'));
+      expect(input.toTitleCase, equals('Hello World Text'));
+      expect(input.toParamCase, equals('hello-world-text'));
+      expect(input.toSentenceCase, equals('Hello world text'));
     });
   });
 
   group('Enum Extensions Tests', () {
     test('toTitleCase formats correctly', () {
-      expect(TestEnum.userRole.toTitleCase(), equals('User Role'));
-      expect(TestEnum.adminUser.toTitleCase(), equals('Admin User'));
-      expect(TestEnum.guest.toTitleCase(), equals('Guest'));
+      expect(TestEnum.userRole.toTitleCase, equals('User Role'));
+      expect(TestEnum.adminUser.toTitleCase, equals('Admin User'));
+      expect(TestEnum.guest.toTitleCase, equals('Guest'));
     });
 
     test('toCapitalizedName formats correctly', () {
-      expect(TestEnum.userRole.toCapitalizedName(), equals('UserRole'));
-      expect(TestEnum.guest.toCapitalizedName(), equals('Guest'));
+      expect(TestEnum.userRole.toCapitalizedName, equals('UserRole'));
+      expect(TestEnum.guest.toCapitalizedName, equals('Guest'));
     });
 
     test('other casing formats', () {
-      expect(TestEnum.userRole.toSnakeCase(), equals('user_role'));
-      expect(TestEnum.userRole.toPascalCase(), equals('UserRole'));
-      expect(TestEnum.userRole.toCamelCase(), equals('userRole'));
+      expect(TestEnum.userRole.toSnakeCase, equals('user_role'));
+      expect(TestEnum.userRole.toPascalCase, equals('UserRole'));
+      expect(TestEnum.userRole.toCamelCase, equals('userRole'));
     });
 
     test('lookup from string with various casing styles', () {
-      expect(TestEnum.values.byName('userRole'), TestEnum.userRole);
-      expect(TestEnum.values.byName('user_role'), TestEnum.userRole);
-      expect(TestEnum.values.byName('UserRole'), TestEnum.userRole);
-      expect(TestEnum.values.byName('user-role'), TestEnum.userRole);
-      expect(TestEnum.values.byName('USER_ROLE'), TestEnum.userRole);
+      expect(TestEnum.values.byNameOrNull('userRole'), TestEnum.userRole);
+      expect(TestEnum.values.byNameOrNull('user_role'), TestEnum.userRole);
+      expect(TestEnum.values.byNameOrNull('UserRole'), TestEnum.userRole);
+      expect(TestEnum.values.byNameOrNull('user-role'), TestEnum.userRole);
+      expect(TestEnum.values.byNameOrNull('USER_ROLE'), TestEnum.userRole);
 
-      expect(TestEnum.values.byName('adminUser'), TestEnum.adminUser);
-      expect(TestEnum.values.byName('admin_user'), TestEnum.adminUser);
-      expect(TestEnum.values.byName('AdminUser'), TestEnum.adminUser);
-      expect(TestEnum.values.byName('admin-user'), TestEnum.adminUser);
+      expect(TestEnum.values.byNameOrNull('adminUser'), TestEnum.adminUser);
+      expect(TestEnum.values.byNameOrNull('admin_user'), TestEnum.adminUser);
+      expect(TestEnum.values.byNameOrNull('AdminUser'), TestEnum.adminUser);
+      expect(TestEnum.values.byNameOrNull('admin-user'), TestEnum.adminUser);
 
-      expect(TestEnum.values.byName('guest'), TestEnum.guest);
-      expect(TestEnum.values.byName('GUEST'), TestEnum.guest);
+      expect(TestEnum.values.byNameOrNull('guest'), TestEnum.guest);
+      expect(TestEnum.values.byNameOrNull('GUEST'), TestEnum.guest);
 
-      expect(TestEnum.values.byName('unknown'), isNull);
-      expect(TestEnum.values.byName(null), isNull);
+      expect(TestEnum.values.byNameOrNull('unknown'), isNull);
+      expect(TestEnum.values.byNameOrNull(null), isNull);
     });
   });
 

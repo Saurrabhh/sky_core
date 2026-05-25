@@ -8,7 +8,7 @@ extension SkyUtilsStringExtension on String {
   /// unchanged.
   ///
   /// Returns an empty string if this string is empty.
-  String capitalize() {
+  String get capitalize {
     if (isEmpty) return '';
     return '${this[0].toUpperCase()}${substring(1)}';
   }
@@ -24,22 +24,22 @@ extension SkyUtilsStringExtension on String {
   }
 
   /// Converts the string to camelCase (e.g., `hello_world` to `helloWorld`).
-  String toCamelCase() => ReCase(this).camelCase;
+  String get toCamelCase => ReCase(this).camelCase;
 
   /// Converts the string to snake_case (e.g., `helloWorld` to `hello_world`).
-  String toSnakeCase() => ReCase(this).snakeCase;
+  String get toSnakeCase => ReCase(this).snakeCase;
 
   /// Converts the string to PascalCase (e.g., `hello_world` to `HelloWorld`).
-  String toPascalCase() => ReCase(this).pascalCase;
+  String get toPascalCase => ReCase(this).pascalCase;
 
   /// Converts the string to Title Case (e.g., `hello_world` to `Hello World`).
-  String toTitleCase() => ReCase(this).titleCase;
+  String get toTitleCase => ReCase(this).titleCase;
 
   /// Converts the string to param-case (kebab-case) (e.g., `helloWorld` to
   /// `hello-world`).
-  String toParamCase() => ReCase(this).paramCase;
+  String get toParamCase => ReCase(this).paramCase;
 
   /// Converts the string to Sentence Case (e.g., `hello_world` to
   /// `Hello world`).
-  String toSentenceCase() => ReCase(this).sentenceCase;
+  String get toSentenceCase => ReCase(this).sentenceCase;
 }
