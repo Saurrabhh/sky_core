@@ -1,0 +1,24 @@
+name: sky_storage_hive
+description: Local persistence implementation wrapping Hive and providing HiveDao.
+version: 0.0.1
+publish_to: none
+resolution: workspace
+
+environment:
+  sdk: '^3.12.0'
+  flutter: '3.44.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  sky_storage:
+    path: ../sky_storage
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  sky_lints:
+    path: ../sky_lints
+
