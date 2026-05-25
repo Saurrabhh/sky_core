@@ -11,15 +11,19 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   isar_community: ^3.3.2
   isar_community_flutter_libs: ^3.3.2
+
   sky_storage:
     path: ../sky_storage
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
   mocktail: ^1.0.4
+
   sky_lints:
     path: ../sky_lints
 

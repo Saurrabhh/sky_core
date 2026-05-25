@@ -13,11 +13,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  recase: ^4.1.0
 
+  recase: ^4.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
   sky_lints:
     path: ../sky_lints

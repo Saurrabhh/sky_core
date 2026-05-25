@@ -1,6 +1,7 @@
 name: sky_telemetry
 description: Pure Dart logging, crash reporting, and analytics pillars with local logger implementation.
 version: 0.0.1
+publish_to: none
 resolution: workspace
 
 environment:
@@ -8,9 +9,11 @@ environment:
 
 dependencies:
   equatable: ^2.0.5
+
   logger: ^2.4.0
 
 dev_dependencies:
   sky_lints:
     path: ../sky_lints
+
   test: ^1.24.0

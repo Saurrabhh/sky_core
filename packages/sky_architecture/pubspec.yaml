@@ -1,6 +1,7 @@
 name: sky_architecture
 description: Pure Dart domain layer clean architecture core contracts and utilities.
 version: 0.0.1
+publish_to: none
 resolution: workspace
 
 environment:

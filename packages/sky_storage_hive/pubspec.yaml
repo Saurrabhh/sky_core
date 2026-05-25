@@ -11,14 +11,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   hive_ce: ^2.19.3
   hive_ce_flutter: ^2.3.4
+
   sky_storage:
     path: ../sky_storage
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
   sky_lints:
     path: ../sky_lints
 

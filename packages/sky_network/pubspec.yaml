@@ -10,17 +10,23 @@ environment:
 
 dependencies:
   dio: ^5.4.3
+
   flutter:
     sdk: flutter
+
   fpdart: ^1.1.0
+
   pretty_dio_logger: ^1.4.0
+
   sky_architecture:
     path: ../sky_architecture
+
   sky_telemetry:
     path: ../sky_telemetry
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
   sky_lints:
     path: ../sky_lints
