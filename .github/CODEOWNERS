@@ -1,0 +1,5 @@
+# CODEOWNERS for sky_core monorepo
+# More details: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# @Saurrabhh owns everything in the repository by default.
+*       @Saurrabhh
