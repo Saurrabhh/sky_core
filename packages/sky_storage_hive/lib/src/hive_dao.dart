@@ -1,4 +1,5 @@
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive.dart';
+
 import 'package:sky_storage/sky_storage.dart';
 
 /// {@template hive_dao}

@@ -1,4 +1,7 @@
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
+
+
+
 import 'package:sky_storage/sky_storage.dart';
 
 /// {@template isar_schema_provider}

@@ -1,4 +1,5 @@
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_ce_flutter/hive_ce_flutter.dart';
+
 import 'package:sky_storage/sky_storage.dart';
 
 /// {@template hive_adapter_registerer}
