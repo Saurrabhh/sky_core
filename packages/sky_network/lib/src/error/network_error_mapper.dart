@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:sky_architecture/sky_architecture.dart';
 
-/// Extension methods to map standard [DioException]s to data exceptions.
 extension DioExceptionX on DioException {
-  /// Maps this [DioException] to a pure [SkyException] model.
   SkyException toException() {
     switch (type) {
       case DioExceptionType.connectionTimeout:
@@ -29,7 +27,8 @@ extension DioExceptionX on DioException {
         String? code;
 
         if (responseData is Map<String, dynamic>) {
-          message = responseData['message'] as String? ??
+          message =
+              responseData['message'] as String? ??
               responseData['error'] as String? ??
               message;
           code = responseData['code'] as String?;
