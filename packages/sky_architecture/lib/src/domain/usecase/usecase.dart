@@ -1,6 +1,3 @@
-// UseCases are designed with a single 'call' method to serve as callables.
-// ignore_for_file: one_member_abstracts
-
 import 'package:fpdart/fpdart.dart';
 import 'package:sky_architecture/src/domain/failures/failure.dart';
 
