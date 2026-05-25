@@ -1,0 +1,21 @@
+name: sky_utils
+description: >
+  Reusable, high-performance Dart and Flutter utility extensions and
+  concurrency controls.
+version: 0.0.1
+publish_to: none
+resolution: workspace
+
+environment:
+  sdk: '^3.12.0'
+  flutter: '3.44.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  sky_lints:
+    path: ../sky_lints
