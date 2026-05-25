@@ -50,6 +50,29 @@ void main() {
       expect(TestEnum.userRole.toPascalCase(), equals('UserRole'));
       expect(TestEnum.userRole.toCamelCase(), equals('userRole'));
     });
+
+    test('lookup and conversion from string', () {
+      // Test Iterable extensions
+      expect(TestEnum.values.byNameOrNull('userRole'), TestEnum.userRole);
+      expect(TestEnum.values.byNameOrNull('unknown'), isNull);
+      expect(TestEnum.values.byNameOrNull(null), isNull);
+
+      expect(
+        TestEnum.values.byNameIgnoreCaseOrNull('USERROLE'),
+        TestEnum.userRole,
+      );
+      expect(TestEnum.values.byNameIgnoreCaseOrNull('UNKNOWN'), isNull);
+
+      // Test String extensions
+      expect('userRole'.toEnumOrNull(TestEnum.values), TestEnum.userRole);
+      expect('unknown'.toEnumOrNull(TestEnum.values), isNull);
+
+      expect(
+        'USERROLE'.toEnumIgnoreCaseOrNull(TestEnum.values),
+        TestEnum.userRole,
+      );
+      expect('UNKNOWN'.toEnumIgnoreCaseOrNull(TestEnum.values), isNull);
+    });
   });
 
   group('Debouncer Tests', () {
