@@ -36,7 +36,7 @@ extension ExceptionMapper on Object {
       );
     }
 
-    if (self is SkyException) {
+    if (self is BaseException) {
       return UnknownFailure(
         message: self.message,
         code: self.code,

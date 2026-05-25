@@ -1,6 +1,6 @@
 import 'package:sky_architecture/src/data/exceptions/exception.dart';
 
-class ServerException extends SkyException {
+class ServerException extends BaseException {
   const ServerException({
     required super.message,
     super.code,
@@ -15,7 +15,7 @@ class ServerException extends SkyException {
   List<Object?> get props => [...super.props, statusCode];
 }
 
-class CacheException extends SkyException {
+class CacheException extends BaseException {
   const CacheException({
     required super.message,
     super.code,
@@ -24,7 +24,7 @@ class CacheException extends SkyException {
   });
 }
 
-class NetworkException extends SkyException {
+class NetworkException extends BaseException {
   const NetworkException({
     required super.message,
     super.code,
@@ -33,7 +33,7 @@ class NetworkException extends SkyException {
   });
 }
 
-class ValidationException extends SkyException {
+class ValidationException extends BaseException {
   const ValidationException({
     required super.message,
     super.code,
@@ -42,7 +42,7 @@ class ValidationException extends SkyException {
   });
 }
 
-class UnknownException extends SkyException {
+class UnknownException extends BaseException {
   const UnknownException({
     required super.message,
     super.code,

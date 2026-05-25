@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:sky_architecture/sky_architecture.dart';
 
 extension DioExceptionX on DioException {
-  SkyException toException() {
+  BaseException toException() {
     switch (type) {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:

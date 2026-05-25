@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-abstract class SkyException extends Equatable implements Exception {
-  const SkyException({
+abstract class BaseException extends Equatable implements Exception {
+  const BaseException({
     required this.message,
     this.code,
     this.error,
