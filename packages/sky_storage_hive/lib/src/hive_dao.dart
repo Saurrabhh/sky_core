@@ -2,17 +2,9 @@ import 'package:hive_ce/hive.dart';
 
 import 'package:sky_storage/sky_storage.dart';
 
-/// {@template hive_dao}
-/// A highly optimized generic [Dao] implementation wrapping a Hive [Box].
-///
-/// Operates on keys of type [String].
-/// {@endtemplate}
 class HiveDao<T> implements Dao<String, T> {
-  /// {@macro hive_dao}
   const HiveDao({required this.box});
 
-  /// Exposes the underlying Hive [Box] for advanced, database-specific
-  /// actions.
   final Box<T> box;
 
   @override

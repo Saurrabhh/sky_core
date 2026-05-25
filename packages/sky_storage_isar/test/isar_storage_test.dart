@@ -1,12 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isar_community/isar.dart';
 
-
-
 import 'package:mocktail/mocktail.dart';
 import 'package:sky_storage_isar/sky_storage_isar.dart';
 
 class MockIsar extends Mock implements Isar {}
+
 class MockIsarCollection<T> extends Mock implements IsarCollection<T> {}
 
 class TestModel {
@@ -34,35 +33,29 @@ void main() {
       when(() => mockCollection.isar).thenReturn(mockIsar);
 
       // Stub writeTxn on mockIsar to immediately execute the callback
-      when(() => mockIsar.writeTxn<int>(any()))
-          .thenAnswer((invocation) async {
-        final callback = invocation.positionalArguments[0]
-            as Future<int> Function();
+      when(() => mockIsar.writeTxn<int>(any())).thenAnswer((invocation) async {
+        final callback =
+            invocation.positionalArguments[0] as Future<int> Function();
         return callback();
       });
 
-      when(() => mockIsar.writeTxn<bool>(any()))
-          .thenAnswer((invocation) async {
-        final callback = invocation.positionalArguments[0]
-            as Future<bool> Function();
+      when(() => mockIsar.writeTxn<bool>(any())).thenAnswer((invocation) async {
+        final callback =
+            invocation.positionalArguments[0] as Future<bool> Function();
         return callback();
       });
 
-      when(() => mockIsar.writeTxn<void>(any()))
-          .thenAnswer((invocation) async {
-        final callback = invocation.positionalArguments[0]
-            as Future<void> Function();
+      when(() => mockIsar.writeTxn<void>(any())).thenAnswer((invocation) async {
+        final callback =
+            invocation.positionalArguments[0] as Future<void> Function();
         return callback();
       });
 
-      when(() => mockIsar.writeTxn<Null>(any()))
-          .thenAnswer((invocation) async {
-        final callback = invocation.positionalArguments[0]
-            as Future<Null> Function();
+      when(() => mockIsar.writeTxn<Null>(any())).thenAnswer((invocation) async {
+        final callback =
+            invocation.positionalArguments[0] as Future<Null> Function();
         return callback();
       });
-
-
 
       dao = IsarDao<TestModel>(collection: mockCollection);
     });
@@ -78,7 +71,6 @@ void main() {
       verify(() => mockIsar.writeTxn<Null>(any())).called(1);
       verify(() => mockCollection.put(model)).called(1);
     });
-
 
     test('get retrieves value by ID', () async {
       final model = TestModel(id: 1, name: 'Test');
@@ -108,7 +100,6 @@ void main() {
       verify(() => mockCollection.clear()).called(1);
     });
   });
-
 
   group('IsarDatabaseInitializer Tests', () {
     test('exposes properties correctly', () {

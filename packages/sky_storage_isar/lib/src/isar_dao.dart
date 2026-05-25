@@ -1,21 +1,10 @@
 import 'package:isar_community/isar.dart';
 
-
-
 import 'package:sky_storage/sky_storage.dart';
 
-/// {@template isar_dao}
-/// A highly optimized generic [Dao] implementation wrapping an
-/// [IsarCollection].
-///
-/// Operates on keys of type [int] (Isar identifiers).
-/// {@endtemplate}
 class IsarDao<T> implements Dao<int, T> {
-  /// {@macro isar_dao}
   const IsarDao({required this.collection});
 
-  /// Exposes the underlying [IsarCollection] for advanced, database-specific
-  /// typed queries and actions.
   final IsarCollection<T> collection;
 
   @override

@@ -137,8 +137,9 @@ void main() {
   });
 
   group('BuildContext Extensions Tests', () {
-    testWidgets('looks up atomic MediaQuery properties correctly',
-        (tester) async {
+    testWidgets('looks up atomic MediaQuery properties correctly', (
+      tester,
+    ) async {
       late BuildContext capturedContext;
 
       await tester.pumpWidget(

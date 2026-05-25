@@ -1,4 +1,3 @@
-/// Isar-specific implementation of the base sky_storage contracts.
 library;
 
 export 'src/isar_dao.dart';

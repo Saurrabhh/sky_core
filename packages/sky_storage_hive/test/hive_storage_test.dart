@@ -36,7 +36,6 @@ void main() {
       }
     });
 
-
     test('put and get value', () async {
       await dao.put('key1', 'value1');
       expect(await dao.get('key1'), equals('value1'));
@@ -80,9 +79,7 @@ void main() {
 
       await expectation;
     });
-
   });
-
 
   group('HiveDatabaseInitializer Tests', () {
     const channel = MethodChannel('plugins.flutter.io/path_provider');
@@ -90,8 +87,8 @@ void main() {
     setUp(() {
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
           .setMockMethodCallHandler(channel, (methodCall) async {
-        return '.';
-      });
+            return '.';
+          });
     });
 
     tearDown(() {

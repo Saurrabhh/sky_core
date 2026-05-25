@@ -1,4 +1,3 @@
-/// Core utility extensions and concurrency control tools.
 library;
 
 export 'src/context_extensions.dart';
