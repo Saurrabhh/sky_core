@@ -15,8 +15,7 @@ dependencies:
   isar_community: ^3.3.2
   isar_community_flutter_libs: ^3.3.2
 
-  sky_storage:
-    path: ../sky_storage
+  sky_storage: ^1.0.1
 
 dev_dependencies:
   flutter_test:

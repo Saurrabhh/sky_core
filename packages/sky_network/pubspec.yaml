@@ -18,11 +18,8 @@ dependencies:
 
   pretty_dio_logger: ^1.4.0
 
-  sky_architecture:
-    path: ../sky_architecture
-
-  sky_telemetry:
-    path: ../sky_telemetry
+  sky_architecture: ^1.0.1
+  sky_telemetry: ^1.0.1
 
 dev_dependencies:
   flutter_test:
