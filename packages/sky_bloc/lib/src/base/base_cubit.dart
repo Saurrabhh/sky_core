@@ -1,4 +1,4 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc/bloc.dart';
 import 'package:sky_architecture/sky_architecture.dart';
 import 'package:sky_bloc/src/base/base_state.dart';
 
