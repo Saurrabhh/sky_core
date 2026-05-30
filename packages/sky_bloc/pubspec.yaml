@@ -1,6 +1,6 @@
 name: sky_bloc
 description: Standardized BLoC state management core for the Sky monorepo.
-version: 1.0.0
+version: 1.1.0
 publish_to: none
 resolution: workspace
 

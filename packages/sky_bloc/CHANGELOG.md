@@ -1,3 +1,7 @@
+## 1.1.0
+
+ - **FEAT**(sky_bloc): update bloc version (#1).
+
 # 1.0.0
 
 - Initial release of `sky_bloc`.
