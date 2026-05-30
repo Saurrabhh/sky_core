@@ -1,4 +1,4 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc/bloc.dart';
 import 'package:sky_telemetry/sky_telemetry.dart';
 
 class TelemetryBlocObserver extends BlocObserver {
