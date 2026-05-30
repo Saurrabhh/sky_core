@@ -1,3 +1,7 @@
+## 1.1.2
+
+ - **FIX**(sky_bloc): point repository URL to package subdirectory on GitHub.
+
 ## 1.1.1
 
 ## 1.1.0

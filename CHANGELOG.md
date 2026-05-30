@@ -15,6 +15,72 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_architecture` - `v1.0.2`](#sky_architecture---v102)
+ - [`sky_bloc` - `v1.1.2`](#sky_bloc---v112)
+ - [`sky_design_system` - `v1.0.2`](#sky_design_system---v102)
+ - [`sky_lints` - `v1.0.2`](#sky_lints---v102)
+ - [`sky_network` - `v1.0.2`](#sky_network---v102)
+ - [`sky_storage` - `v1.0.2`](#sky_storage---v102)
+ - [`sky_storage_hive` - `v1.0.2`](#sky_storage_hive---v102)
+ - [`sky_storage_isar` - `v1.0.2`](#sky_storage_isar---v102)
+ - [`sky_telemetry` - `v1.0.2`](#sky_telemetry---v102)
+ - [`sky_utils` - `v1.0.2`](#sky_utils---v102)
+
+---
+
+#### `sky_architecture` - `v1.0.2`
+
+ - **FIX**(sky_architecture): point repository URL to package subdirectory on GitHub.
+
+#### `sky_bloc` - `v1.1.2`
+
+ - **FIX**(sky_bloc): point repository URL to package subdirectory on GitHub.
+
+#### `sky_design_system` - `v1.0.2`
+
+ - **FIX**(sky_design_system): point repository URL to package subdirectory on GitHub.
+
+#### `sky_lints` - `v1.0.2`
+
+ - **FIX**(sky_lints): point repository URL to package subdirectory on GitHub.
+
+#### `sky_network` - `v1.0.2`
+
+ - **FIX**(sky_network): point repository URL to package subdirectory on GitHub.
+
+#### `sky_storage` - `v1.0.2`
+
+ - **FIX**(sky_storage): point repository URL to package subdirectory on GitHub.
+
+#### `sky_storage_hive` - `v1.0.2`
+
+ - **FIX**(sky_storage_hive): point repository URL to package subdirectory on GitHub.
+
+#### `sky_storage_isar` - `v1.0.2`
+
+ - **FIX**(sky_storage_isar): point repository URL to package subdirectory on GitHub.
+
+#### `sky_telemetry` - `v1.0.2`
+
+ - **FIX**(sky_telemetry): point repository URL to package subdirectory on GitHub.
+
+#### `sky_utils` - `v1.0.2`
+
+ - **FIX**(sky_utils): point repository URL to package subdirectory on GitHub.
+
+
+## 2026-05-31
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_architecture` - `v1.0.1`](#sky_architecture---v101)
  - [`sky_bloc` - `v1.1.1`](#sky_bloc---v111)
  - [`sky_design_system` - `v1.0.1`](#sky_design_system---v101)

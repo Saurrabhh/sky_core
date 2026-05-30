@@ -1,3 +1,7 @@
+## 1.0.2
+
+ - **FIX**(sky_lints): point repository URL to package subdirectory on GitHub.
+
 ## 1.0.1
 
 # 1.0.0
