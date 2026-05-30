@@ -1,7 +1,7 @@
 name: sky_design_system
 description: Atomic design system for Sky Core applications.
 version: 1.0.1
-repository: https://github.com/Saurabh/sky_core
+repository: https://github.com/Saurrabhh/sky_core/tree/master/packages/sky_design_system
 resolution: workspace
 
 environment:
