@@ -1,7 +1,7 @@
 name: sky_lints
 description: Shared lint rules for Sky Core.
 version: 1.0.1
-repository: https://github.com/Saurabh/sky_core
+repository: https://github.com/Saurrabhh/sky_core/tree/master/packages/sky_lints
 resolution: workspace
 
 environment:
