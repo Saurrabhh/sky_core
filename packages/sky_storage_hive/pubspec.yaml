@@ -1,6 +1,6 @@
 name: sky_storage_hive
 description: Local persistence implementation wrapping Hive and providing HiveDao.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/Saurabh/sky_core
 resolution: workspace
 
