@@ -1,4 +1,3 @@
-library;
 
 export 'src/context_extensions.dart';
 export 'src/debouncer.dart';

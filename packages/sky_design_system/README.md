@@ -1,39 +1,70 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# sky_design_system
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A production-grade, highly customizable atomic design system and theme package for Flutter applications. Built with curated typography, harmonious light and dark color schemas, and reactive responsive widgets.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+* **Atomic Component Design:** Organized clean UI abstractions into Atoms (buttons, inputs), Molecules (cards, list tiles), and Organisms (headers, views).
+* **Curated Typography:** Integrated Google Fonts Outfit and Inter scales directly into standard text styles.
+* **Premium Theme Palettes:** Highly tailored, cohesive Light and Dark Theme configurations to wow users at first glance.
+* **Fluid Hover & Micro-Animations:** Standard interactive components come packaged with smooth feedback and touch indicators.
 
-## Getting started
+## Getting Started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add the package to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  sky_design_system: ^1.0.0
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Initialize the design system themes inside your entry app:
 
 ```dart
-const like = 'sample';
+import 'package:flutter/material.dart';
+import 'package:sky_design_system/sky_design_system.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Sky Core App',
+      theme: SkyTheme.lightTheme,
+      darkTheme: SkyTheme.darkTheme,
+      themeMode: ThemeMode.system,
+      home: const HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Design System Showcase')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Standard atom button
+            SkyPrimaryButton(
+              onPressed: () {},
+              label: 'Explore Showcase',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 ```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.

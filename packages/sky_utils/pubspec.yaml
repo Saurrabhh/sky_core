@@ -3,7 +3,7 @@ description: >
   Reusable, high-performance Dart and Flutter utility extensions and
   concurrency controls.
 version: 1.0.0
-publish_to: none
+repository: https://github.com/Saurabh/sky_core
 resolution: workspace
 
 environment:
