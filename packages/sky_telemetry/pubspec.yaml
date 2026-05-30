@@ -1,7 +1,7 @@
 name: sky_telemetry
 description: Pure Dart logging, crash reporting, and analytics pillars with local logger implementation.
 version: 1.0.1
-repository: https://github.com/Saurabh/sky_core
+repository: https://github.com/Saurrabhh/sky_core/tree/master/packages/sky_telemetry
 resolution: workspace
 
 environment:
