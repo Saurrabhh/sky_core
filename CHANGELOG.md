@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_design_system` - `v1.1.0`](#sky_design_system---v110)
+
+---
+
+#### `sky_design_system` - `v1.1.0`
+
+ - **FEAT**(sky_design_system): add AppShimmer and AppImage.
+
+
+## 2026-05-31
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_architecture` - `v1.0.2`](#sky_architecture---v102)
  - [`sky_bloc` - `v1.1.2`](#sky_bloc---v112)
  - [`sky_design_system` - `v1.0.2`](#sky_design_system---v102)
