@@ -9,10 +9,12 @@ environment:
   flutter: '>=3.44.0'
 
 dependencies:
+  cached_network_image: ^3.4.1
   flutter:
     sdk: flutter
-
+  flutter_svg: ^2.3.0
   google_fonts: ^8.1.0
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
