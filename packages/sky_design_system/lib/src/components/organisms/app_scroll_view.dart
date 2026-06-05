@@ -21,7 +21,7 @@ class AppScrollView extends StatelessWidget {
     this.physics,
     this.padding,
     this.footerPadding,
-    this.spacing = AppSpacing.md,
+    this.spacing = AppSpacing.none,
     this.crossAxisAlignment = CrossAxisAlignment.stretch,
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.mainAxisSize = MainAxisSize.max,
