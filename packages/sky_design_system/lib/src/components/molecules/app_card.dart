@@ -7,16 +7,25 @@ enum _AppCardVariant { outlined, filled }
 /// A card container widget with support for headers and gestures.
 class AppCard extends StatelessWidget {
   /// Creates an [AppCard] in the outlined style.
-  const AppCard.outlined({required this.child, super.key, this._padding})
-    : _variant = _AppCardVariant.outlined;
+  const AppCard.outlined({
+    required this.child,
+    super.key,
+    this._padding,
+    this.color,
+  }) : _variant = _AppCardVariant.outlined;
 
   /// Creates an [AppCard] in the filled style.
-  const AppCard.filled({required this.child, super.key, this._padding})
-    : _variant = _AppCardVariant.filled;
+  const AppCard.filled({
+    required this.child,
+    super.key,
+    this._padding,
+    this.color,
+  }) : _variant = _AppCardVariant.filled;
 
   /// The child of this widget.
   final Widget child;
   final EdgeInsetsGeometry? _padding;
+  final Color? color;
   final _AppCardVariant _variant;
 
   @override
@@ -33,7 +42,9 @@ class AppCard extends StatelessWidget {
 
     return Card(
       elevation: isOutlined ? null : 0,
-      color: isOutlined ? null : context.colorScheme.surfaceContainerLow,
+      color: isOutlined
+          ? color
+          : color ?? context.colorScheme.surfaceContainerLow,
       shape: isOutlined
           ? null
           : RoundedRectangleBorder(
