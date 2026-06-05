@@ -3,7 +3,13 @@ import 'package:sky_architecture/src/data/exceptions/exceptions.dart';
 import 'package:sky_architecture/src/domain/failures/failure.dart';
 import 'package:sky_architecture/src/domain/failures/failures.dart';
 
+/// Extension providing mapping from any [Object] to a domain [Failure].
 extension ExceptionMapper on Object {
+  /// Maps this object to a corresponding [Failure] instance.
+  ///
+  /// Inspects the type of this object to yield a specific failure type (e.g.
+  /// [ServerFailure] for [ServerException]). Falls back to [UnknownFailure] for
+  /// unhandled types.
   Failure toFailure() {
     final self = this;
 
