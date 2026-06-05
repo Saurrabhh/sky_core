@@ -1,3 +1,7 @@
+## 1.1.1
+
+ - **DOCS**(sky_design_system): add pub.dev-compliant dartdoc comments to public API.
+
 ## 1.1.0
 
  - **FEAT**(sky_design_system): add AppShimmer and AppImage.

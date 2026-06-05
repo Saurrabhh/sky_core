@@ -1,3 +1,8 @@
+## 1.2.1
+
+ - **FIX**(sky_bloc): add bloc lints as dependency.
+ - **DOCS**(sky_bloc): add pub.dev-compliant dartdoc comments to public API.
+
 ## 1.2.0
 
  - **FEAT**(sky_bloc): add flutter_bloc and bloc lints.

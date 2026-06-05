@@ -1,6 +1,6 @@
 name: sky_storage
 description: Base local storage abstraction package containing database interfaces and DAOs.
-version: 1.0.2
+version: 1.0.3
 repository: https://github.com/Saurrabhh/sky_core/tree/master/packages/sky_storage
 resolution: workspace
 
