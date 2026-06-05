@@ -1,3 +1,8 @@
+## 1.2.3
+
+ - **FIX**(sky_bloc): fix loader widget.
+ - **DOCS**(sky_bloc): add doc comments on BasePage.
+
 ## 1.2.2
 
  - **DOCS**(sky_bloc): add pub.dev-compliant dartdoc comments to BasePage and export it.

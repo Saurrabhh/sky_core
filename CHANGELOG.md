@@ -15,6 +15,28 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_bloc` - `v1.2.3`](#sky_bloc---v123)
+
+---
+
+#### `sky_bloc` - `v1.2.3`
+
+ - **FIX**(sky_bloc): fix loader widget.
+ - **DOCS**(sky_bloc): add doc comments on BasePage.
+
+
+## 2026-06-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_bloc` - `v1.2.2`](#sky_bloc---v122)
 
 ---
