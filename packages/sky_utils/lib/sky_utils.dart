@@ -1,3 +1,6 @@
+/// Core utility classes, helper functions, and context/string/enum extensions.
+library;
+
 export 'src/context_extensions.dart';
 export 'src/debouncer.dart';
 export 'src/enum_extensions.dart';
