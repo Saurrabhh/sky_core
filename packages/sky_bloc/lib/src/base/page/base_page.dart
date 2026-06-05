@@ -80,7 +80,6 @@ class _PageState<B extends BlocBase<S>, S> extends State<_Page> {
   Widget build(BuildContext context) {
     return BlocListener<B, S>(
       listener: (context, state) {
-        print('UYTYU ${state} ${widget.showLoading(state)}');
         if (widget.showLoading(state)) {
           _overlayPortalController.show();
         } else {
