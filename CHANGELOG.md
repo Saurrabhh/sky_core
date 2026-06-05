@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_design_system` - `v1.3.0`](#sky_design_system---v130)
+
+---
+
+#### `sky_design_system` - `v1.3.0`
+
+ - **FEAT**(sky_design_system): add TextAlign.
+
+
+## 2026-06-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_design_system` - `v1.2.2`](#sky_design_system---v122)
 
 ---

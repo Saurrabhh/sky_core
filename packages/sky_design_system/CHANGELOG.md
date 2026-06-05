@@ -1,3 +1,7 @@
+## 1.3.0
+
+ - **FEAT**(sky_design_system): add TextAlign.
+
 ## 1.2.2
 
  - **FIX**(sky_design_system): text height.
