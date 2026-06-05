@@ -8,3 +8,6 @@ class NoParams extends Equatable {
   @override
   List<Object?> get props => [];
 }
+
+/// Helper variable for use cases that do not require input.
+const noParams = NoParams();
