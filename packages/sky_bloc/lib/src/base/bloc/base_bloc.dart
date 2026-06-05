@@ -23,7 +23,7 @@ abstract class BaseBloc<Event extends BaseEvent, State extends BaseState>
   void started({Map<String, dynamic>? args});
 
   /// Emits a state update indicating changes to the loading status.
-  void setLoading({
+  void changeLoadingState({
     required Emitter<BaseState> emit,
     required bool loading,
   }) {
