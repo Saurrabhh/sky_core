@@ -1,7 +1,9 @@
 import 'package:logger/logger.dart' as log_pkg;
 import 'package:sky_telemetry/src/logger/logger.dart';
 
+/// A [SkyLogger] that prints formatted log output to the system console.
 class ConsoleLogger extends SkyLogger {
+  /// Creates a [ConsoleLogger] filtering logs below the specified [level].
   ConsoleLogger({
     log_pkg.Level level = log_pkg.Level.debug,
   }) : _logger = log_pkg.Logger(
