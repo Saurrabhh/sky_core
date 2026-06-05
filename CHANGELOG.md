@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_design_system` - `v1.2.1`](#sky_design_system---v121)
+
+---
+
+#### `sky_design_system` - `v1.2.1`
+
+ - **FIX**(sky_design_system): button responsive.
+
+
+## 2026-06-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_design_system` - `v1.2.0`](#sky_design_system---v120)
 
 ---

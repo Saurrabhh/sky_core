@@ -1,3 +1,7 @@
+## 1.2.1
+
+ - **FIX**(sky_design_system): button responsive.
+
 ## 1.2.0
 
  - **FEAT**(sky_design_system): add color in app_card.dart.
