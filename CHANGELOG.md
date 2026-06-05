@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_bloc` - `v2.0.4`](#sky_bloc---v204)
+
+---
+
+#### `sky_bloc` - `v2.0.4`
+
+ - **FIX**(sky_bloc): print removed.
+
+
+## 2026-06-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_architecture` - `v1.2.0`](#sky_architecture---v120)
  - [`sky_bloc` - `v2.0.3`](#sky_bloc---v203)
  - [`sky_network` - `v1.0.5`](#sky_network---v105)

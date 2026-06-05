@@ -1,3 +1,7 @@
+## 2.0.4
+
+ - **FIX**(sky_bloc): print removed.
+
 ## 2.0.3
 
  - Update a dependency to the latest release.
