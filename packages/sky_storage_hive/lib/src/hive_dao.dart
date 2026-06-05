@@ -2,9 +2,14 @@ import 'package:hive_ce/hive.dart';
 
 import 'package:sky_storage/sky_storage.dart';
 
+/// A [Dao] implementation that uses Hive for persistence.
+///
+/// Manages objects of type [T] using string keys.
 class HiveDao<T> implements Dao<String, T> {
+  /// Creates a [HiveDao] using the specified [box].
   const HiveDao({required this.box});
 
+  /// The underlying Hive box.
   final Box<T> box;
 
   @override
