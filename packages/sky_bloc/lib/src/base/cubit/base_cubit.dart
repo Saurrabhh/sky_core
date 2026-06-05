@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:sky_architecture/sky_architecture.dart';
-import 'package:sky_bloc/src/base/base_state.dart';
+import 'package:sky_bloc/src/base/bloc/base_state.dart';
 
 /// A base Cubit implementation that standardizes status tracking and error handling.
 ///

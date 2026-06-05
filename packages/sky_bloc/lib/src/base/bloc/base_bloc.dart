@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:sky_architecture/sky_architecture.dart';
-import 'package:sky_bloc/src/base/base_event.dart';
-import 'package:sky_bloc/src/base/base_state.dart';
+import 'package:sky_bloc/src/base/bloc/base_event.dart';
+import 'package:sky_bloc/src/base/bloc/base_state.dart';
 
 /// A base BLoC implementation that standardizes event handling and status tracking.
 ///
