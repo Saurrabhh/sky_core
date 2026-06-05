@@ -3,18 +3,29 @@ import 'package:sky_architecture/sky_architecture.dart';
 import 'package:sky_bloc/src/base/base_event.dart';
 import 'package:sky_bloc/src/base/base_state.dart';
 
+/// A base BLoC implementation that standardizes event handling and status tracking.
+///
+/// Provides built-in support for loading indicators and failure propagation
+/// using standard state transitions.
 abstract class BaseBloc<Event extends BaseEvent, State extends BaseState>
     extends Bloc<Event, State> {
+  /// Creates a [BaseBloc] with the given [initialState] and sets up event handling.
   BaseBloc(super.initialState) {
     handleEvents();
   }
 
+  /// Indicates if the BLoC is currently processing an operation.
   bool get isLoading;
 
+  /// Registers event handlers for this BLoC.
+  ///
+  /// Automatically called during initialization.
   void handleEvents();
 
+  /// Starts the BLoC operations with optional configuration arguments [args].
   void started({Map<String, dynamic>? args});
 
+  /// Emits a state update indicating changes to the loading status.
   void setLoading({
     required Emitter<BaseState> emit,
     required bool loading,
@@ -22,6 +33,7 @@ abstract class BaseBloc<Event extends BaseEvent, State extends BaseState>
     emit(state.getLoadingState(loading: loading));
   }
 
+  /// Emits a state update representing a failure condition.
   void handleFailure({
     required Emitter<BaseState> emit,
     required Failure failure,

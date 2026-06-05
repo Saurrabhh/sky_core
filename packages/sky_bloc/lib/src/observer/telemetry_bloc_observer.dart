@@ -1,7 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:sky_telemetry/sky_telemetry.dart';
 
+/// A [BlocObserver] that records BLoC and Cubit lifecycle transitions.
+///
+/// Sends logs for creation, state updates, errors, and closure events to the
+/// registered telemetry service.
 class TelemetryBlocObserver extends BlocObserver {
+  /// Creates a [TelemetryBlocObserver] that logs to the provided [_skyLogging] instance.
   const TelemetryBlocObserver(this._skyLogging);
 
   final SkyLogging _skyLogging;
