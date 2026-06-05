@@ -1,3 +1,7 @@
+## 1.2.0
+
+ - **FEAT**(sky_bloc): add helper no params variable.
+
 ## 1.1.0
 
  - **FEAT**(sky_architecture): make usecases pure interfaces.
