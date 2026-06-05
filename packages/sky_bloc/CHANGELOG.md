@@ -1,3 +1,7 @@
+## 1.2.2
+
+ - **DOCS**(sky_bloc): add pub.dev-compliant dartdoc comments to BasePage and export it.
+
 ## 1.2.1
 
  - **FIX**(sky_bloc): add bloc lints as dependency.

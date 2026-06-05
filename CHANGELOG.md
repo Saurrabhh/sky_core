@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_bloc` - `v1.2.2`](#sky_bloc---v122)
+
+---
+
+#### `sky_bloc` - `v1.2.2`
+
+ - **DOCS**(sky_bloc): add pub.dev-compliant dartdoc comments to BasePage and export it.
+
+
+## 2026-06-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_architecture` - `v1.0.3`](#sky_architecture---v103)
  - [`sky_bloc` - `v1.2.1`](#sky_bloc---v121)
  - [`sky_design_system` - `v1.1.1`](#sky_design_system---v111)
