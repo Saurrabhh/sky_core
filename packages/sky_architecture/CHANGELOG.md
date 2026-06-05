@@ -1,3 +1,7 @@
+## 1.1.0
+
+ - **FEAT**(sky_architecture): make usecases pure interfaces.
+
 ## 1.0.3
 
  - **DOCS**(sky_architecture): add pub.dev-compliant dartdoc comments to public API.

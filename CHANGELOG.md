@@ -11,6 +11,36 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 Packages with breaking changes:
 
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sky_architecture` - `v1.1.0`](#sky_architecture---v110)
+ - [`sky_bloc` - `v2.0.1`](#sky_bloc---v201)
+ - [`sky_network` - `v1.0.4`](#sky_network---v104)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `sky_bloc` - `v2.0.1`
+ - `sky_network` - `v1.0.4`
+
+---
+
+#### `sky_architecture` - `v1.1.0`
+
+ - **FEAT**(sky_architecture): make usecases pure interfaces.
+
+
+## 2026-06-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
  - [`sky_bloc` - `v2.0.0`](#sky_bloc---v200)
 
 Packages with other changes:

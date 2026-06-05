@@ -1,3 +1,7 @@
+## 1.0.4
+
+ - Update a dependency to the latest release.
+
 ## 1.0.3
 
  - **DOCS**(sky_network): add pub.dev-compliant dartdoc comments to public API.
