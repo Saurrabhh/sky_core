@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-06-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sky_bloc` - `v1.2.0`](#sky_bloc---v120)
+
+---
+
+#### `sky_bloc` - `v1.2.0`
+
+ - **FEAT**(sky_bloc): add flutter_bloc and bloc lints.
+
+
 ## 2026-05-31
 
 ### Changes
