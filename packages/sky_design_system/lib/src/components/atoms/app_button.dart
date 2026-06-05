@@ -11,6 +11,7 @@ class AppButton extends StatelessWidget {
     this.onPressed,
     super.key,
     this._icon,
+    this.textAlign,
   }) : _variant = _AppButtonVariant.primary;
 
   /// Creates an [AppButton] in the secondary style.
@@ -19,6 +20,7 @@ class AppButton extends StatelessWidget {
     this.onPressed,
     super.key,
     this._icon,
+    this.textAlign,
   }) : _variant = _AppButtonVariant.secondary;
 
   /// Creates an [AppButton] in the outlined style.
@@ -27,6 +29,7 @@ class AppButton extends StatelessWidget {
     this.onPressed,
     super.key,
     this._icon,
+    this.textAlign,
   }) : _variant = _AppButtonVariant.outlined;
 
   /// Creates an [AppButton] in the inverse style.
@@ -35,6 +38,7 @@ class AppButton extends StatelessWidget {
     this.onPressed,
     super.key,
     this._icon,
+    this.textAlign,
   }) : _variant = _AppButtonVariant.inverse;
 
   /// Creates an [AppButton] in the text style.
@@ -43,6 +47,7 @@ class AppButton extends StatelessWidget {
     this.onPressed,
     super.key,
     this._icon,
+    this.textAlign,
   }) : _variant = _AppButtonVariant.text;
 
   /// Creates an [AppButton] in the fab style.
@@ -51,13 +56,16 @@ class AppButton extends StatelessWidget {
     this.onPressed,
     super.key,
   }) : _variant = _AppButtonVariant.fab,
-       text = '';
+       text = '',
+       textAlign = null;
 
   /// The text of this widget.
   final String text;
+
   /// The onPressed of this widget.
   final VoidCallback? onPressed;
   final IconData? _icon;
+  final TextAlign? textAlign;
   final _AppButtonVariant _variant;
 
   @override
@@ -77,7 +85,12 @@ class AppButton extends StatelessWidget {
         if (_icon != null) ...[
           AppIcon.sm(_icon),
         ],
-        Flexible(child: Text(text)),
+        Flexible(
+          child: Text(
+            text,
+            textAlign: textAlign,
+          ),
+        ),
       ],
     );
 
