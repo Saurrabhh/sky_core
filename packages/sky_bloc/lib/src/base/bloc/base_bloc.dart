@@ -14,9 +14,6 @@ abstract class BaseBloc<Event extends BaseEvent, State extends BaseState>
     handleEvents();
   }
 
-  /// Indicates if the BLoC is currently processing an operation.
-  bool get isLoading;
-
   /// Registers event handlers for this BLoC.
   ///
   /// Automatically called during initialization.
