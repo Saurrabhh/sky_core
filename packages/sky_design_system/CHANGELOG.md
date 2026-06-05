@@ -1,3 +1,7 @@
+## 1.2.2
+
+ - **FIX**(sky_design_system): text height.
+
 ## 1.2.1
 
  - **FIX**(sky_design_system): button responsive.
