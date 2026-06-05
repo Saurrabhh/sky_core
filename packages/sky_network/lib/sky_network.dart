@@ -1,3 +1,6 @@
+/// Core network clients, error mapping, and authentication interceptors.
+library;
+
 export 'src/error/network_error_mapper.dart';
 export 'src/factory/dio_factory.dart';
 export 'src/handler/api_call_handler.dart';

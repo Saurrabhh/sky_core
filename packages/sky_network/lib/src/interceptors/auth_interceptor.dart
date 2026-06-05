@@ -2,18 +2,25 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 
+/// Base interceptor for injecting auth tokens and handling 401 refreshes.
 abstract class BaseAuthInterceptor extends Interceptor {
+  /// Creates a [BaseAuthInterceptor] with [dio] for retrying requests.
   BaseAuthInterceptor({required this.dio});
 
+  /// The [Dio] client instance used to retry requests upon token refresh.
   final Dio dio;
   Future<bool>? _refreshFuture;
 
+  /// Retrieves the current access token.
   Future<String?> getAccessToken();
 
+  /// Requests a token refresh. Returns true if the refresh succeeded.
   Future<bool> refreshToken();
 
+  /// The header name used for authorization. Defaults to 'Authorization'.
   String get tokenHeaderName => 'Authorization';
 
+  /// Formats the token string. Defaults to prefixing with 'Bearer'.
   String formatToken(String token) => 'Bearer $token';
 
   @override

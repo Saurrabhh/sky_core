@@ -1,7 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:sky_architecture/sky_architecture.dart';
 
+/// Extension on [DioException] to map HTTP client exceptions.
 extension DioExceptionX on DioException {
+  /// Converts this [DioException] into a domain-specific [BaseException].
+  ///
+  /// Maps timeouts to [NetworkException], bad responses to [ServerException],
+  /// and cancellation or cert errors to [UnknownException].
   BaseException toException() {
     switch (type) {
       case DioExceptionType.connectionTimeout:

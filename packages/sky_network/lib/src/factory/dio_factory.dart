@@ -3,14 +3,18 @@ import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:sky_network/src/options/network_options.dart';
 
+/// Factory interface for creating and configuring [Dio] HTTP clients.
 abstract interface class DioFactory {
+  /// Creates a [Dio] client configured with [options] and [interceptors].
   Dio create({
     required NetworkOptions options,
     List<Interceptor> interceptors,
   });
 }
 
+/// Default implementation of [DioFactory] configuring common settings.
 class DioFactoryImpl implements DioFactory {
+  /// Creates a [DioFactoryImpl].
   const DioFactoryImpl();
 
   @override
