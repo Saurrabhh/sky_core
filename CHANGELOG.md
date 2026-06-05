@@ -11,6 +11,27 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 Packages with breaking changes:
 
+ - [`sky_bloc` - `v2.0.0`](#sky_bloc---v200)
+
+Packages with other changes:
+
+ - There are no other changes in this release.
+
+---
+
+#### `sky_bloc` - `v2.0.0`
+
+ - **BREAKING** **FEAT**(sky_bloc): remove isLoading getter.
+
+
+## 2026-06-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
  - There are no breaking changes in this release.
 
 Packages with other changes:

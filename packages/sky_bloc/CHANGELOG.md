@@ -1,3 +1,9 @@
+## 2.0.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FEAT**(sky_bloc): remove isLoading getter.
+
 ## 1.2.3
 
  - **FIX**(sky_bloc): fix loader widget.
