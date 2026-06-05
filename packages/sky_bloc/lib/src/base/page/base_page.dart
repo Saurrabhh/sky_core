@@ -80,6 +80,7 @@ class _PageState<B extends BlocBase<S>, S> extends State<_Page> {
   Widget build(BuildContext context) {
     return BlocListener<B, S>(
       listener: (context, state) {
+        print('UYTYU ${state} ${widget.showLoading(state)}');
         if (widget.showLoading(state)) {
           _overlayPortalController.show();
         } else {
@@ -93,7 +94,23 @@ class _PageState<B extends BlocBase<S>, S> extends State<_Page> {
           final theme = Theme.of(context);
           final scrimColor = theme.colorScheme.scrim.withValues(alpha: 0.4);
 
-          return ModalBarrier(dismissible: false, color: scrimColor);
+          return Material(
+            type: MaterialType.transparency,
+            // 1. BlockSemantics stops screen readers (TalkBack/VoiceOver)
+            // from reading the hidden page behind the loader.
+            child: BlockSemantics(
+              // 2. AbsorbPointer consumes all physical taps, acting as the barrier.
+              child: AbsorbPointer(
+                // 3. ColoredBox is the most lightweight way to paint a background.
+                // It is significantly cheaper than a Container.
+                child: ColoredBox(
+                  color: scrimColor,
+                  // 4. Center the indicator
+                  child: const Center(child: CircularProgressIndicator()),
+                ),
+              ),
+            ),
+          );
         },
         child: widget.builder(context),
       ),
