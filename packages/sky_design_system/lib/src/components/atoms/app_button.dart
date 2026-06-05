@@ -8,7 +8,7 @@ class AppButton extends StatelessWidget {
   /// Creates an [AppButton] in the primary style.
   const AppButton.primary({
     required this.text,
-    required this.onPressed,
+    this.onPressed,
     super.key,
     this._icon,
   }) : _variant = _AppButtonVariant.primary;
@@ -16,7 +16,7 @@ class AppButton extends StatelessWidget {
   /// Creates an [AppButton] in the secondary style.
   const AppButton.secondary({
     required this.text,
-    required this.onPressed,
+    this.onPressed,
     super.key,
     this._icon,
   }) : _variant = _AppButtonVariant.secondary;
@@ -24,7 +24,7 @@ class AppButton extends StatelessWidget {
   /// Creates an [AppButton] in the outlined style.
   const AppButton.outlined({
     required this.text,
-    required this.onPressed,
+    this.onPressed,
     super.key,
     this._icon,
   }) : _variant = _AppButtonVariant.outlined;
@@ -32,7 +32,7 @@ class AppButton extends StatelessWidget {
   /// Creates an [AppButton] in the inverse style.
   const AppButton.inverse({
     required this.text,
-    required this.onPressed,
+    this.onPressed,
     super.key,
     this._icon,
   }) : _variant = _AppButtonVariant.inverse;
@@ -40,7 +40,7 @@ class AppButton extends StatelessWidget {
   /// Creates an [AppButton] in the text style.
   const AppButton.text({
     required this.text,
-    required this.onPressed,
+    this.onPressed,
     super.key,
     this._icon,
   }) : _variant = _AppButtonVariant.text;
@@ -48,7 +48,7 @@ class AppButton extends StatelessWidget {
   /// Creates an [AppButton] in the fab style.
   const AppButton.fab({
     required IconData this._icon,
-    required this.onPressed,
+    this.onPressed,
     super.key,
   }) : _variant = _AppButtonVariant.fab,
        text = '';
@@ -77,7 +77,7 @@ class AppButton extends StatelessWidget {
         if (_icon != null) ...[
           AppIcon.sm(_icon),
         ],
-        Text(text),
+        Flexible(child: Text(text)),
       ],
     );
 
