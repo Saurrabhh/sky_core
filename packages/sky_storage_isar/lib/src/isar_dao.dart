@@ -2,9 +2,14 @@ import 'package:isar_community/isar.dart';
 
 import 'package:sky_storage/sky_storage.dart';
 
+/// A [Dao] implementation that uses Isar for persistence.
+///
+/// Manages objects of type [T] using integer keys.
 class IsarDao<T> implements Dao<int, T> {
+  /// Creates an [IsarDao] using the specified [collection].
   const IsarDao({required this.collection});
 
+  /// The underlying Isar collection.
   final IsarCollection<T> collection;
 
   @override
