@@ -1,3 +1,7 @@
+## 2.0.2
+
+ - **FIX**(sky_bloc): loading state fn name change.
+
 ## 2.0.1
 
  - Update a dependency to the latest release.

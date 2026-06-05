@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_bloc` - `v2.0.2`](#sky_bloc---v202)
+
+---
+
+#### `sky_bloc` - `v2.0.2`
+
+ - **FIX**(sky_bloc): loading state fn name change.
+
+
+## 2026-06-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_architecture` - `v1.1.0`](#sky_architecture---v110)
  - [`sky_bloc` - `v2.0.1`](#sky_bloc---v201)
  - [`sky_network` - `v1.0.4`](#sky_network---v104)
