@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:sky_design_system/src/components/atoms/atoms.dart';
 import 'package:sky_design_system/src/foundations/foundations.dart';
 
+/// A sheet that slides up from the bottom of the screen.
 class AppBottomSheet extends StatelessWidget {
+  /// Creates an [AppBottomSheet] instance.
   const AppBottomSheet({
     required this.child,
     this._title,
     super.key,
   });
 
+  /// The child of this widget.
   final Widget child;
   final String? _title;
 

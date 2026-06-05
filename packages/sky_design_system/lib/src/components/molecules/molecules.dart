@@ -1,3 +1,6 @@
+/// Molecule components like bottom sheets, search bars, cards, and dialogs.
+library;
+
 export 'app_bottom_sheet.dart';
 export 'app_card.dart';
 export 'app_date_picker_field.dart';

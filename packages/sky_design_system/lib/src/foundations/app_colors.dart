@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/src/foundations/app_color_scheme.dart';
 
+/// Pre-defined color schemes for the design system.
 class AppColors {
   const AppColors._();
 
@@ -100,6 +101,7 @@ class AppColors {
   static const Color _onBackgroundDark = Color(0xFFE1E2E8);
   static const Color _surfaceVariantDark = Color(0xFF32353A);
 
+  /// The default light color scheme.
   static const AppColorScheme light = AppColorScheme(
     surface: _surfaceLight,
     surfaceDim: _surfaceDimLight,
@@ -150,6 +152,7 @@ class AppColors {
     surfaceVariant: _surfaceVariantLight,
   );
 
+  /// The default dark color scheme.
   static const AppColorScheme dark = AppColorScheme(
     surface: _surfaceDark,
     surfaceDim: _surfaceDimDark,

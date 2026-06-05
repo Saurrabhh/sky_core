@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/src/components/atoms/atoms.dart';
 
+/// A field that opens a time picker dialog when tapped.
 class AppTimePickerField extends StatefulWidget {
+  /// Creates an [AppTimePickerField] instance.
   const AppTimePickerField({
     super.key,
     this.controller,
@@ -19,24 +21,37 @@ class AppTimePickerField extends StatefulWidget {
     this.enabled = true,
   });
 
+  /// The controller of this widget.
   final TextEditingController? controller;
+  /// The initialTime of this widget.
   final TimeOfDay? initialTime;
+  /// The onTimeSelected of this widget.
   final ValueChanged<TimeOfDay>? onTimeSelected;
   final String Function(TimeOfDay)? formatTime;
+  /// The labelText of this widget.
   final String? labelText;
+  /// The hintText of this widget.
   final String? hintText;
+  /// The errorText of this widget.
   final String? errorText;
+  /// The validator of this widget.
   final FormFieldValidator<String>? validator;
+  /// The autovalidateMode of this widget.
   final AutovalidateMode? autovalidateMode;
+  /// The onSaved of this widget.
   final FormFieldSetter<String>? onSaved;
+  /// The prefixIcon of this widget.
   final Widget? prefixIcon;
+  /// The suffixIcon of this widget.
   final Widget? suffixIcon;
+  /// The enabled of this widget.
   final bool enabled;
 
   @override
   State<AppTimePickerField> createState() => _AppTimePickerFieldState();
 }
 
+/// The [_AppTimePickerFieldState] widget.
 class _AppTimePickerFieldState extends State<AppTimePickerField> {
   late final TextEditingController _controller;
   TimeOfDay? _selectedTime;

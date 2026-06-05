@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/src/components/atoms/atoms.dart';
 
+/// A field that opens a date picker dialog when tapped.
 class AppDatePickerField extends StatefulWidget {
+  /// Creates an [AppDatePickerField] instance.
   const AppDatePickerField({
     super.key,
     this.controller,
@@ -21,26 +23,41 @@ class AppDatePickerField extends StatefulWidget {
     this.enabled = true,
   });
 
+  /// The controller of this widget.
   final TextEditingController? controller;
+  /// The initialDate of this widget.
   final DateTime? initialDate;
+  /// The firstDate of this widget.
   final DateTime? firstDate;
+  /// The lastDate of this widget.
   final DateTime? lastDate;
+  /// The onDateSelected of this widget.
   final ValueChanged<DateTime>? onDateSelected;
   final String Function(DateTime)? formatDate;
+  /// The labelText of this widget.
   final String? labelText;
+  /// The hintText of this widget.
   final String? hintText;
+  /// The errorText of this widget.
   final String? errorText;
+  /// The validator of this widget.
   final FormFieldValidator<String>? validator;
+  /// The autovalidateMode of this widget.
   final AutovalidateMode? autovalidateMode;
+  /// The onSaved of this widget.
   final FormFieldSetter<String>? onSaved;
+  /// The prefixIcon of this widget.
   final Widget? prefixIcon;
+  /// The suffixIcon of this widget.
   final Widget? suffixIcon;
+  /// The enabled of this widget.
   final bool enabled;
 
   @override
   State<AppDatePickerField> createState() => _AppDatePickerFieldState();
 }
 
+/// The [_AppDatePickerFieldState] widget.
 class _AppDatePickerFieldState extends State<AppDatePickerField> {
   late final TextEditingController _controller;
   DateTime? _selectedDate;

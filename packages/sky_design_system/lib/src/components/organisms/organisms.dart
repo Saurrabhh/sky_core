@@ -1,3 +1,6 @@
+/// Organism components like navigation bars, drawer, rails, and scaffolding.
+library;
+
 export 'app_navigation_bar.dart';
 export 'app_navigation_drawer.dart';
 export 'app_navigation_rail.dart';

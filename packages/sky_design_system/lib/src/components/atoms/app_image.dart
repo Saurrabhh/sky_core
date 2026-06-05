@@ -161,7 +161,9 @@ class AppImage extends StatelessWidget {
   }
 }
 
+/// The [_AppNetworkImage] widget.
 class _AppNetworkImage extends StatelessWidget {
+  /// Creates an [_AppNetworkImage] instance.
   const _AppNetworkImage({
     required this.uri,
     required this.fit,
@@ -174,14 +176,21 @@ class _AppNetworkImage extends StatelessWidget {
     this._cacheHeight,
   });
 
+  /// The uri of this widget.
   final Uri uri;
+  /// The width of this widget.
   final double? width;
+  /// The height of this widget.
   final double? height;
+  /// The fit of this widget.
   final BoxFit fit;
+  /// The placeholder of this widget.
   final Widget? placeholder;
+  /// The errorWidget of this widget.
   final Widget? errorWidget;
   final int? _cacheWidth;
   final int? _cacheHeight;
+  /// The fadeInDuration of this widget.
   final Duration fadeInDuration;
 
   @override
@@ -227,7 +236,9 @@ class _AppNetworkImage extends StatelessWidget {
   }
 }
 
+/// The [_AppAssetImage] widget.
 class _AppAssetImage extends StatelessWidget {
+  /// Creates an [_AppAssetImage] instance.
   const _AppAssetImage({
     required this.image,
     required this.fit,
@@ -240,14 +251,23 @@ class _AppAssetImage extends StatelessWidget {
     this.errorWidget,
   });
 
+  /// The image of this widget.
   final String image;
+  /// The width of this widget.
   final double? width;
+  /// The height of this widget.
   final double? height;
+  /// The fit of this widget.
   final BoxFit fit;
+  /// The cacheHeight of this widget.
   final int? cacheHeight;
+  /// The cacheWidth of this widget.
   final int? cacheWidth;
+  /// The placeholder of this widget.
   final Widget? placeholder;
+  /// The semanticLabel of this widget.
   final String? semanticLabel;
+  /// The errorWidget of this widget.
   final Widget? errorWidget;
 
   @override
@@ -287,7 +307,9 @@ class _AppAssetImage extends StatelessWidget {
   }
 }
 
+/// The [_AppFileImage] widget.
 class _AppFileImage extends StatelessWidget {
+  /// Creates an [_AppFileImage] instance.
   const _AppFileImage({
     required this.file,
     required this.fit,
@@ -300,14 +322,23 @@ class _AppFileImage extends StatelessWidget {
     this.errorWidget,
   });
 
+  /// The file of this widget.
   final File file;
+  /// The width of this widget.
   final double? width;
+  /// The height of this widget.
   final double? height;
+  /// The fit of this widget.
   final BoxFit fit;
+  /// The cacheHeight of this widget.
   final int? cacheHeight;
+  /// The cacheWidth of this widget.
   final int? cacheWidth;
+  /// The placeholder of this widget.
   final Widget? placeholder;
+  /// The semanticLabel of this widget.
   final String? semanticLabel;
+  /// The errorWidget of this widget.
   final Widget? errorWidget;
 
   @override
@@ -351,15 +382,20 @@ class _AppFileImage extends StatelessWidget {
   }
 }
 
+/// The [_AppImagePlaceholder] widget.
 class _AppImagePlaceholder extends StatelessWidget {
+  /// Creates an [_AppImagePlaceholder] instance.
   const _AppImagePlaceholder({
     this.placeholder,
     this.width,
     this.height,
   });
 
+  /// The placeholder of this widget.
   final Widget? placeholder;
+  /// The width of this widget.
   final double? width;
+  /// The height of this widget.
   final double? height;
 
   @override
@@ -372,11 +408,14 @@ class _AppImagePlaceholder extends StatelessWidget {
   }
 }
 
+/// The [_AppImageError] widget.
 class _AppImageError extends StatelessWidget {
+  /// Creates an [_AppImageError] instance.
   const _AppImageError({
     this.errorWidget,
   });
 
+  /// The errorWidget of this widget.
   final Widget? errorWidget;
 
   @override

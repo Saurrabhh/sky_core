@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/src/foundations/foundations.dart';
 
+/// Configures theme parameters using design tokens.
 class AppTheme {
   const AppTheme._();
 
+  /// Returns light mode [ThemeData] using an optional [customColorScheme].
   static ThemeData light({
     AppColorScheme? customColorScheme,
     bool useGoogleFonts = true,
@@ -15,6 +17,7 @@ class AppTheme {
     );
   }
 
+  /// Returns dark mode [ThemeData] using an optional [customColorScheme].
   static ThemeData dark({
     AppColorScheme? customColorScheme,
     bool useGoogleFonts = true,

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+/// Typography definitions and [TextTheme] tokens.
 class AppTypography {
   const AppTypography._();
 
+  /// Standard [TextTheme] configured with Google Fonts Inter.
   static final TextTheme textTheme = TextTheme(
     displayLarge: GoogleFonts.inter(
       fontSize: 57,

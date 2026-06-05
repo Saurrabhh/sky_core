@@ -1,3 +1,6 @@
+/// Atom-level UI components like buttons, checkboxes, text fields, and icons.
+library;
+
 export 'app_avatar.dart';
 export 'app_badge.dart';
 export 'app_button.dart';

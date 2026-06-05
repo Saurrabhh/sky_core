@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 
 enum _AppDividerVariant { horizontal, vertical }
 
+/// A visual separator line widget.
 class AppDivider extends StatelessWidget {
+  /// Creates an [AppDivider] in the horizontal style.
   const AppDivider.horizontal({super.key})
     : _variant = _AppDividerVariant.horizontal;
 
+  /// Creates an [AppDivider] in the vertical style.
   const AppDivider.vertical({super.key})
     : _variant = _AppDividerVariant.vertical;
 

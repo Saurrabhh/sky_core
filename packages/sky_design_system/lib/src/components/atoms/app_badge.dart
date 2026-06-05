@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// A badge widget that displays an optional count or status dot.
 class AppBadge extends StatelessWidget {
+  /// Creates an [AppBadge] instance.
   const AppBadge({
     required this.child,
     super.key,
@@ -8,8 +10,10 @@ class AppBadge extends StatelessWidget {
     this.isDot = false,
   });
 
+  /// The child of this widget.
   final Widget child;
   final int? _count;
+  /// The isDot of this widget.
   final bool isDot;
 
   @override

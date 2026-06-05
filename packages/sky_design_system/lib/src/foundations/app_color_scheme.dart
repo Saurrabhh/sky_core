@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// Represents the design system's Material 3 color tokens.
 class AppColorScheme {
+  /// Creates a custom [AppColorScheme].
   const AppColorScheme({
     required this.surface,
     required this.surfaceDim,
@@ -99,6 +101,7 @@ class AppColorScheme {
   final Color onBackground;
   final Color surfaceVariant;
 
+  /// Returns a copy of this color scheme with the given fields replaced.
   AppColorScheme copyWith({
     Color? surface,
     Color? surfaceDim,
@@ -204,6 +207,7 @@ class AppColorScheme {
     );
   }
 
+  /// Merges this color scheme with [other], prioritizing non-null fields.
   AppColorScheme merge(AppColorScheme? other) {
     if (other == null) return this;
     return copyWith(
@@ -257,6 +261,7 @@ class AppColorScheme {
     );
   }
 
+  /// Converts this scheme to a Material [ColorScheme] with [brightness].
   ColorScheme toColorScheme(Brightness brightness) {
     return ColorScheme(
       brightness: brightness,

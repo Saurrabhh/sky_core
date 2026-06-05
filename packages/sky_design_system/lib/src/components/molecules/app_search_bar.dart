@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:sky_design_system/src/components/atoms/app_icon.dart';
 import 'package:sky_design_system/src/components/atoms/app_icon_button.dart';
 
+/// A search input field.
 class AppSearchBar extends StatefulWidget {
+  /// Creates an [AppSearchBar] instance.
   const AppSearchBar({
     super.key,
     this.controller,
@@ -10,14 +12,18 @@ class AppSearchBar extends StatefulWidget {
     this.onChanged,
   });
 
+  /// The controller of this widget.
   final TextEditingController? controller;
+  /// The hintText of this widget.
   final String hintText;
+  /// The onChanged of this widget.
   final ValueChanged<String>? onChanged;
 
   @override
   State<AppSearchBar> createState() => _AppSearchBarState();
 }
 
+/// The [_AppSearchBarState] widget.
 class _AppSearchBarState extends State<AppSearchBar> {
   late TextEditingController _controller;
 

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/sky_design_system.dart';
 
+/// A single fixed-height row that contains text and optional icons.
 class AppListTile extends StatelessWidget {
+  /// Creates an [AppListTile] instance.
   const AppListTile({
     required this.title,
     super.key,
@@ -12,11 +14,14 @@ class AppListTile extends StatelessWidget {
     this.onTap,
   });
 
+  /// The title of this widget.
   final String title;
   final String? _subtitle;
   final IconData? _leadingIcon;
   final IconData? _trailingIcon;
+  /// The trailingWidget of this widget.
   final Widget? trailingWidget;
+  /// The onTap of this widget.
   final VoidCallback? onTap;
 
   @override

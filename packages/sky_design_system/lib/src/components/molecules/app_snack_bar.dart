@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/sky_design_system.dart';
 
+/// A utility class for building and presenting snackbar notifications.
 class AppSnackBar {
+  /// Private constructor for [AppSnackBar].
   const AppSnackBar._();
 
+  /// Custom static method [create] for [AppSnackBar].
   static SnackBar create({
     required BuildContext context,
     required String message,
@@ -35,6 +38,7 @@ class AppSnackBar {
     );
   }
 
+  /// Custom static method [show] for [AppSnackBar].
   static void show(
     BuildContext context, {
     required String message,

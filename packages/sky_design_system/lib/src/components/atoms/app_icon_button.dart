@@ -3,7 +3,9 @@ import 'package:sky_design_system/sky_design_system.dart';
 
 enum _AppIconButtonVariant { standard, primary, secondary, outlined, inverse }
 
+/// A button widget consisting of a single icon.
 class AppIconButton extends StatelessWidget {
+  /// Creates an [AppIconButton] instance.
   const AppIconButton({
     required this.icon,
     required this.onPressed,
@@ -12,6 +14,7 @@ class AppIconButton extends StatelessWidget {
     this.color,
   }) : _variant = _AppIconButtonVariant.standard;
 
+  /// Creates an [AppIconButton] in the primary style.
   const AppIconButton.primary({
     required this.icon,
     required this.onPressed,
@@ -20,6 +23,7 @@ class AppIconButton extends StatelessWidget {
     this.color,
   }) : _variant = _AppIconButtonVariant.primary;
 
+  /// Creates an [AppIconButton] in the secondary style.
   const AppIconButton.secondary({
     required this.icon,
     required this.onPressed,
@@ -28,6 +32,7 @@ class AppIconButton extends StatelessWidget {
     this.color,
   }) : _variant = _AppIconButtonVariant.secondary;
 
+  /// Creates an [AppIconButton] in the outlined style.
   const AppIconButton.outlined({
     required this.icon,
     required this.onPressed,
@@ -36,6 +41,7 @@ class AppIconButton extends StatelessWidget {
     this.color,
   }) : _variant = _AppIconButtonVariant.outlined;
 
+  /// Creates an [AppIconButton] in the inverse style.
   const AppIconButton.inverse({
     required this.icon,
     required this.onPressed,
@@ -44,9 +50,13 @@ class AppIconButton extends StatelessWidget {
     this.color,
   }) : _variant = _AppIconButtonVariant.inverse;
 
+  /// The icon of this widget.
   final IconData icon;
+  /// The onPressed of this widget.
   final VoidCallback? onPressed;
+  /// The tooltip of this widget.
   final String? tooltip;
+  /// The color of this widget.
   final Color? color;
   final _AppIconButtonVariant _variant;
 

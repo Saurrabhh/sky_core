@@ -4,13 +4,17 @@ import 'package:sky_design_system/src/foundations/app_border_radius.dart';
 
 enum _AppCardVariant { outlined, filled }
 
+/// A card container widget with support for headers and gestures.
 class AppCard extends StatelessWidget {
+  /// Creates an [AppCard] in the outlined style.
   const AppCard.outlined({required this.child, super.key, this._padding})
     : _variant = _AppCardVariant.outlined;
 
+  /// Creates an [AppCard] in the filled style.
   const AppCard.filled({required this.child, super.key, this._padding})
     : _variant = _AppCardVariant.filled;
 
+  /// The child of this widget.
   final Widget child;
   final EdgeInsetsGeometry? _padding;
   final _AppCardVariant _variant;
