@@ -15,6 +15,28 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_design_system` - `v1.2.0`](#sky_design_system---v120)
+
+---
+
+#### `sky_design_system` - `v1.2.0`
+
+ - **FEAT**(sky_design_system): add color in app_card.dart.
+ - **FEAT**(sky_design_system): add scroll views.
+
+
+## 2026-06-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_bloc` - `v2.0.4`](#sky_bloc---v204)
 
 ---

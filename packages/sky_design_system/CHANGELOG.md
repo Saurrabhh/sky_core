@@ -1,3 +1,8 @@
+## 1.2.0
+
+ - **FEAT**(sky_design_system): add color in app_card.dart.
+ - **FEAT**(sky_design_system): add scroll views.
+
 ## 1.1.1
 
  - **DOCS**(sky_design_system): add pub.dev-compliant dartdoc comments to public API.
