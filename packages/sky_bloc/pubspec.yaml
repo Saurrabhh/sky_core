@@ -10,6 +10,7 @@ environment:
 
 dependencies:
   bloc: ^9.2.1
+  bloc_lint: ^0.4.1
 
   flutter:
     sdk: flutter
@@ -20,8 +21,6 @@ dependencies:
   sky_telemetry: ^1.0.2
 
 dev_dependencies:
-  bloc_lint: ^0.4.1
-
   flutter_test:
     sdk: flutter
 
