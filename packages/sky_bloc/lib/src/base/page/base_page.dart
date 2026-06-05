@@ -1,11 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-/// A base page widget that automatically registers and manages a [BlocBase] instance.
+/// A base page widget that registers and manages a [BlocBase] instance.
 ///
 /// Coordinates page building, state change listeners, and optional fullscreen
 /// loading overlays.
+///
+/// Example:
+/// ```dart
+/// class MyPage extends BasePage<MyBloc, MyState> {
+///   const MyPage({super.key});
+///
+///   @override
+///   MyBloc createBloc() => MyBloc();
+///
+///   @override
+///   Widget buildPage(BuildContext context) {
+///     return const Scaffold(
+///       body: Center(child: Text('Page Content')),
+///     );
+///   }
+/// }
+/// ```
 abstract class BasePage<B extends BlocBase<S>, S> extends StatelessWidget {
+  /// Creates a [BasePage] instance.
+  const BasePage({super.key});
+
   /// Creates the BLoC or Cubit of type [B] associated with this page.
   B createBloc();
 
@@ -15,7 +35,8 @@ abstract class BasePage<B extends BlocBase<S>, S> extends StatelessWidget {
   /// Callback invoked whenever the BLoC state changes.
   void handleStateChange(BuildContext context, S state) {}
 
-  /// Returns true if a fullscreen loading overlay should be shown for the current [state].
+  /// Returns whether a fullscreen loading overlay should be shown
+  /// for the given [state].
   bool showLoading(S state) => false;
 
   @override
