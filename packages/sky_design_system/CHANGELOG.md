@@ -1,3 +1,7 @@
+## 1.3.1
+
+ - **FIX**(sky_design_system): default spacing.
+
 ## 1.3.0
 
  - **FEAT**(sky_design_system): add TextAlign.
