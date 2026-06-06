@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/src/extensions.dart';
 
-enum _AppTextVariant {
+enum AppTextVariant {
   displayLarge,
   displayMedium,
   displaySmall,
@@ -30,7 +30,7 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-  }) : _variant = _AppTextVariant.displayLarge;
+  }) : _variant = AppTextVariant.displayLarge;
 
   /// Creates an [AppText] in the displayMedium style.
   const AppText.displayMedium(
@@ -41,7 +41,7 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-  }) : _variant = _AppTextVariant.displayMedium;
+  }) : _variant = AppTextVariant.displayMedium;
 
   /// Creates an [AppText] in the displaySmall style.
   const AppText.displaySmall(
@@ -52,7 +52,7 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-  }) : _variant = _AppTextVariant.displaySmall;
+  }) : _variant = AppTextVariant.displaySmall;
 
   /// Creates an [AppText] in the headlineLarge style.
   const AppText.headlineLarge(
@@ -63,7 +63,7 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-  }) : _variant = _AppTextVariant.headlineLarge;
+  }) : _variant = AppTextVariant.headlineLarge;
 
   /// Creates an [AppText] in the headlineMedium style.
   const AppText.headlineMedium(
@@ -74,7 +74,7 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-  }) : _variant = _AppTextVariant.headlineMedium;
+  }) : _variant = AppTextVariant.headlineMedium;
 
   /// Creates an [AppText] in the headlineSmall style.
   const AppText.headlineSmall(
@@ -85,7 +85,7 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-  }) : _variant = _AppTextVariant.headlineSmall;
+  }) : _variant = AppTextVariant.headlineSmall;
 
   /// Creates an [AppText] in the titleLarge style.
   const AppText.titleLarge(
@@ -96,7 +96,7 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-  }) : _variant = _AppTextVariant.titleLarge;
+  }) : _variant = AppTextVariant.titleLarge;
 
   /// Creates an [AppText] in the titleMedium style.
   const AppText.titleMedium(
@@ -107,7 +107,7 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-  }) : _variant = _AppTextVariant.titleMedium;
+  }) : _variant = AppTextVariant.titleMedium;
 
   /// Creates an [AppText] in the titleSmall style.
   const AppText.titleSmall(
@@ -118,7 +118,7 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-  }) : _variant = _AppTextVariant.titleSmall;
+  }) : _variant = AppTextVariant.titleSmall;
 
   /// Creates an [AppText] in the bodyLarge style.
   const AppText.bodyLarge(
@@ -129,7 +129,7 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-  }) : _variant = _AppTextVariant.bodyLarge;
+  }) : _variant = AppTextVariant.bodyLarge;
 
   /// Creates an [AppText] in the bodyMedium style.
   const AppText.bodyMedium(
@@ -140,7 +140,7 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-  }) : _variant = _AppTextVariant.bodyMedium;
+  }) : _variant = AppTextVariant.bodyMedium;
 
   /// Creates an [AppText] in the bodySmall style.
   const AppText.bodySmall(
@@ -151,7 +151,7 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-  }) : _variant = _AppTextVariant.bodySmall;
+  }) : _variant = AppTextVariant.bodySmall;
 
   /// Creates an [AppText] in the labelLarge style.
   const AppText.labelLarge(
@@ -162,7 +162,7 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-  }) : _variant = _AppTextVariant.labelLarge;
+  }) : _variant = AppTextVariant.labelLarge;
 
   /// Creates an [AppText] in the labelMedium style.
   const AppText.labelMedium(
@@ -173,7 +173,7 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-  }) : _variant = _AppTextVariant.labelMedium;
+  }) : _variant = AppTextVariant.labelMedium;
 
   /// Creates an [AppText] in the labelSmall style.
   const AppText.labelSmall(
@@ -184,42 +184,47 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-  }) : _variant = _AppTextVariant.labelSmall;
+  }) : _variant = AppTextVariant.labelSmall;
 
   /// The data of this widget.
   final String data;
+
   /// The color of this widget.
   final Color? color;
+
   /// The textAlign of this widget.
   final TextAlign? textAlign;
+
   /// The maxLines of this widget.
   final int? maxLines;
+
   /// The overflow of this widget.
   final TextOverflow? overflow;
+
   /// The softWrap of this widget.
   final bool? softWrap;
-  final _AppTextVariant _variant;
+  final AppTextVariant _variant;
 
   @override
   Widget build(BuildContext context) {
     final textTheme = context.textTheme;
 
     final baseStyle = switch (_variant) {
-      _AppTextVariant.displayLarge => textTheme.displayLarge,
-      _AppTextVariant.displayMedium => textTheme.displayMedium,
-      _AppTextVariant.displaySmall => textTheme.displaySmall,
-      _AppTextVariant.headlineLarge => textTheme.headlineLarge,
-      _AppTextVariant.headlineMedium => textTheme.headlineMedium,
-      _AppTextVariant.headlineSmall => textTheme.headlineSmall,
-      _AppTextVariant.titleLarge => textTheme.titleLarge,
-      _AppTextVariant.titleMedium => textTheme.titleMedium,
-      _AppTextVariant.titleSmall => textTheme.titleSmall,
-      _AppTextVariant.bodyLarge => textTheme.bodyLarge,
-      _AppTextVariant.bodyMedium => textTheme.bodyMedium,
-      _AppTextVariant.bodySmall => textTheme.bodySmall,
-      _AppTextVariant.labelLarge => textTheme.labelLarge,
-      _AppTextVariant.labelMedium => textTheme.labelMedium,
-      _AppTextVariant.labelSmall => textTheme.labelSmall,
+      AppTextVariant.displayLarge => textTheme.displayLarge,
+      AppTextVariant.displayMedium => textTheme.displayMedium,
+      AppTextVariant.displaySmall => textTheme.displaySmall,
+      AppTextVariant.headlineLarge => textTheme.headlineLarge,
+      AppTextVariant.headlineMedium => textTheme.headlineMedium,
+      AppTextVariant.headlineSmall => textTheme.headlineSmall,
+      AppTextVariant.titleLarge => textTheme.titleLarge,
+      AppTextVariant.titleMedium => textTheme.titleMedium,
+      AppTextVariant.titleSmall => textTheme.titleSmall,
+      AppTextVariant.bodyLarge => textTheme.bodyLarge,
+      AppTextVariant.bodyMedium => textTheme.bodyMedium,
+      AppTextVariant.bodySmall => textTheme.bodySmall,
+      AppTextVariant.labelLarge => textTheme.labelLarge,
+      AppTextVariant.labelMedium => textTheme.labelMedium,
+      AppTextVariant.labelSmall => textTheme.labelSmall,
     };
 
     return Text(
