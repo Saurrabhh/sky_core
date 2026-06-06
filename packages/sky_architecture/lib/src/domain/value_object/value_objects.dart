@@ -85,3 +85,27 @@ class PhoneNumber extends ValueObject<String> {
     r'^\+?[0-9\s\-()]{7,15}$',
   );
 }
+
+/// Represents a validated password.
+class Password extends ValueObject<String> {
+  /// Validates the given password string.
+  ///
+  /// A password is valid if it has at least 6 characters.
+  factory Password(String input) {
+    if (input.length < 6) {
+      return Password._(
+        left(
+          const ValidationFailure(
+            message: 'Password must be at least 6 characters',
+          ),
+        ),
+      );
+    }
+    return Password._(right(input));
+  }
+
+  const Password._(this.value);
+
+  @override
+  final Either<Failure, String> value;
+}
