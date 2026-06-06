@@ -17,7 +17,7 @@ class AppTextField extends StatelessWidget {
     this.suffixIcon,
     this.onChanged,
     this.validator,
-    this.autovalidateMode,
+    this.autovalidateMode = AutovalidateMode.always,
     this.onSaved,
     this.readOnly = false,
     this.onTap,
@@ -58,7 +58,7 @@ class AppTextField extends StatelessWidget {
   final FormFieldValidator<String>? validator;
 
   /// The autovalidateMode of this widget.
-  final AutovalidateMode? autovalidateMode;
+  final AutovalidateMode autovalidateMode;
 
   /// The onSaved of this widget.
   final FormFieldSetter<String>? onSaved;

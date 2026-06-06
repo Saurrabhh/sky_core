@@ -16,7 +16,7 @@ class AppDatePickerField extends StatefulWidget {
     this.hintText,
     this.errorText,
     this.validator,
-    this.autovalidateMode,
+    this.autovalidateMode = AutovalidateMode.always,
     this.onSaved,
     this.prefixIcon,
     this.suffixIcon,
@@ -52,7 +52,7 @@ class AppDatePickerField extends StatefulWidget {
   final FormFieldValidator<String>? validator;
 
   /// The autovalidateMode of this widget.
-  final AutovalidateMode? autovalidateMode;
+  final AutovalidateMode autovalidateMode;
 
   /// The onSaved of this widget.
   final FormFieldSetter<String>? onSaved;
