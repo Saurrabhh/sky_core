@@ -1,3 +1,7 @@
+## 2.0.6
+
+ - Update a dependency to the latest release.
+
 ## 2.0.5
 
  - **FIX**(sky_bloc): dart format.

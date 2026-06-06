@@ -1,3 +1,7 @@
+## 1.4.0
+
+ - **FEAT**(sky_design_system): add password text field.
+
 ## 1.3.0
 
  - **FEAT**(sky_architecture): add email, name and phone number value objects.
