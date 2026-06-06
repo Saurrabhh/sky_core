@@ -149,27 +149,21 @@ Widget appButtonVariantsUseCase(BuildContext context) {
             children: [
               AppButton.primary(
                 text: 'Primary',
-                onPressed: null,
               ),
               AppButton.secondary(
                 text: 'Secondary',
-                onPressed: null,
               ),
               AppButton.outlined(
                 text: 'Outlined',
-                onPressed: null,
               ),
               AppButton.text(
                 text: 'Text',
-                onPressed: null,
               ),
               AppButton.inverse(
                 text: 'Inverse',
-                onPressed: null,
               ),
               AppButton.fab(
                 icon: Icons.add,
-                onPressed: null,
               ),
             ],
           ),
