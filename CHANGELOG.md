@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_design_system` - `v1.4.1`](#sky_design_system---v141)
+
+---
+
+#### `sky_design_system` - `v1.4.1`
+
+ - **FIX**(sky_design_system): app scroll under elevation.
+
+
+## 2026-06-06
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_architecture` - `v1.3.0`](#sky_architecture---v130)
  - [`sky_bloc` - `v2.0.5`](#sky_bloc---v205)
  - [`sky_design_system` - `v1.4.0`](#sky_design_system---v140)

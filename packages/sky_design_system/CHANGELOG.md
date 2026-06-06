@@ -1,3 +1,7 @@
+## 1.4.1
+
+ - **FIX**(sky_design_system): app scroll under elevation.
+
 ## 1.4.0
 
  - **FIX**(sky_design_system): dart format.
