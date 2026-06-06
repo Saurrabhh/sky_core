@@ -187,6 +187,7 @@ void main() {
 
         // 10. AppBar and Dialog themes
         expect(theme.appBarTheme.elevation, 0);
+        expect(theme.appBarTheme.scrolledUnderElevation, 0);
         expect(theme.appBarTheme.backgroundColor, AppColors.light.surface);
         expect(theme.appBarTheme.foregroundColor, AppColors.light.onSurface);
 
