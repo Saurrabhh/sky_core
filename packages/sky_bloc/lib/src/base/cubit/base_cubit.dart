@@ -17,10 +17,7 @@ abstract class BaseCubit<State extends BaseState> extends Cubit<State> {
   void started({Map<String, dynamic>? args});
 
   /// Emits a state update indicating changes to the loading status.
-  void setLoading({
-    required Emitter<BaseState> emit,
-    required bool loading,
-  }) {
+  void setLoading({required Emitter<BaseState> emit, required bool loading}) {
     emit(state.getLoadingState(loading: loading));
   }
 
