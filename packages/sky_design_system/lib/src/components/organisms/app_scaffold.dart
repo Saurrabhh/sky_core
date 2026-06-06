@@ -15,14 +15,19 @@ class AppScaffold extends StatelessWidget {
 
   /// The appBar of this widget.
   final PreferredSizeWidget? appBar;
+
   /// The body of this widget.
   final Widget? body;
+
   /// The drawer of this widget.
   final Widget? drawer;
+
   /// The floatingActionButton of this widget.
   final Widget? floatingActionButton;
+
   /// The bottomNavigationBar of this widget.
   final Widget? bottomNavigationBar;
+
   /// The backgroundColor of this widget.
   final Color? backgroundColor;
 

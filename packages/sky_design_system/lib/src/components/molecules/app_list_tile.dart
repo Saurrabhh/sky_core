@@ -19,8 +19,10 @@ class AppListTile extends StatelessWidget {
   final String? _subtitle;
   final IconData? _leadingIcon;
   final IconData? _trailingIcon;
+
   /// The trailingWidget of this widget.
   final Widget? trailingWidget;
+
   /// The onTap of this widget.
   final VoidCallback? onTap;
 

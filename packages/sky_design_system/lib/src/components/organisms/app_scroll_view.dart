@@ -13,7 +13,7 @@ class AppScrollView extends StatelessWidget {
   ///
   /// The [spacing] parameter determines the vertical space between each child.
   const AppScrollView({
-    required List<Widget> this.children,
+    required this.children,
     super.key,
     this.footer,
     this.stickyFooter = false,
@@ -67,7 +67,8 @@ class AppScrollView extends StatelessWidget {
   /// How much space the column should take up along the main axis.
   final MainAxisSize mainAxisSize;
 
-  /// Whether tapping on background areas of the screen should dismiss the keyboard.
+  /// Whether tapping on background areas of the screen should dismiss the
+  /// keyboard.
   final bool dismissKeyboardOnTap;
 
   /// Whether to wrap the scroll view content in a [SafeArea].
@@ -114,7 +115,8 @@ class AppScrollView extends StatelessWidget {
 
     final footerWidget = footer != null
         ? Padding(
-            padding: footerPadding ??
+            padding:
+                footerPadding ??
                 EdgeInsets.only(
                   left: horizontalPadding,
                   right: horizontalPadding,
@@ -156,7 +158,7 @@ class AppScrollView extends StatelessWidget {
               padding: resolvedBodyPadding,
               child: contentBody,
             ),
-            if (footerWidget != null) footerWidget,
+            ?footerWidget,
           ],
         ),
       );

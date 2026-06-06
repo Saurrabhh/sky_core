@@ -15,14 +15,19 @@ class AppSlider extends StatelessWidget {
 
   /// The value of this widget.
   final double value;
+
   /// The onChanged of this widget.
   final ValueChanged<double>? onChanged;
+
   /// The min of this widget.
   final double min;
+
   /// The max of this widget.
   final double max;
+
   /// The divisions of this widget.
   final int? divisions;
+
   /// The label of this widget.
   final String? label;
 

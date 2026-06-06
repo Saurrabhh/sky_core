@@ -14,8 +14,10 @@ class AppSearchBar extends StatefulWidget {
 
   /// The controller of this widget.
   final TextEditingController? controller;
+
   /// The hintText of this widget.
   final String hintText;
+
   /// The onChanged of this widget.
   final ValueChanged<String>? onChanged;
 

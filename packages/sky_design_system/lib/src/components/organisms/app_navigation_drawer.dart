@@ -12,8 +12,10 @@ class AppNavigationDrawer extends StatelessWidget {
 
   /// The selectedIndex of this widget.
   final int selectedIndex;
+
   /// The onDestinationSelected of this widget.
   final ValueChanged<int> onDestinationSelected;
+
   /// The children of this widget.
   final List<Widget> children;
 

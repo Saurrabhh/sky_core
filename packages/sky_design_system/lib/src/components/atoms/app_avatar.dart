@@ -13,8 +13,10 @@ class AppAvatar extends StatelessWidget {
 
   /// The initials of this widget.
   final String? initials;
+
   /// The backgroundImage of this widget.
   final ImageProvider? backgroundImage;
+
   /// The radius of this widget.
   final double radius;
 

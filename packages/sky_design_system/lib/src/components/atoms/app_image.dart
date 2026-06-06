@@ -178,18 +178,24 @@ class _AppNetworkImage extends StatelessWidget {
 
   /// The uri of this widget.
   final Uri uri;
+
   /// The width of this widget.
   final double? width;
+
   /// The height of this widget.
   final double? height;
+
   /// The fit of this widget.
   final BoxFit fit;
+
   /// The placeholder of this widget.
   final Widget? placeholder;
+
   /// The errorWidget of this widget.
   final Widget? errorWidget;
   final int? _cacheWidth;
   final int? _cacheHeight;
+
   /// The fadeInDuration of this widget.
   final Duration fadeInDuration;
 
@@ -253,20 +259,28 @@ class _AppAssetImage extends StatelessWidget {
 
   /// The image of this widget.
   final String image;
+
   /// The width of this widget.
   final double? width;
+
   /// The height of this widget.
   final double? height;
+
   /// The fit of this widget.
   final BoxFit fit;
+
   /// The cacheHeight of this widget.
   final int? cacheHeight;
+
   /// The cacheWidth of this widget.
   final int? cacheWidth;
+
   /// The placeholder of this widget.
   final Widget? placeholder;
+
   /// The semanticLabel of this widget.
   final String? semanticLabel;
+
   /// The errorWidget of this widget.
   final Widget? errorWidget;
 
@@ -324,20 +338,28 @@ class _AppFileImage extends StatelessWidget {
 
   /// The file of this widget.
   final File file;
+
   /// The width of this widget.
   final double? width;
+
   /// The height of this widget.
   final double? height;
+
   /// The fit of this widget.
   final BoxFit fit;
+
   /// The cacheHeight of this widget.
   final int? cacheHeight;
+
   /// The cacheWidth of this widget.
   final int? cacheWidth;
+
   /// The placeholder of this widget.
   final Widget? placeholder;
+
   /// The semanticLabel of this widget.
   final String? semanticLabel;
+
   /// The errorWidget of this widget.
   final Widget? errorWidget;
 
@@ -393,8 +415,10 @@ class _AppImagePlaceholder extends StatelessWidget {
 
   /// The placeholder of this widget.
   final Widget? placeholder;
+
   /// The width of this widget.
   final double? width;
+
   /// The height of this widget.
   final double? height;
 

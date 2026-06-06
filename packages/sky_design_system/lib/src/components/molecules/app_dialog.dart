@@ -14,12 +14,16 @@ class AppDialog extends StatelessWidget {
 
   /// The title of this widget.
   final String title;
+
   /// The content of this widget.
   final Widget content;
+
   /// The actions of this widget.
   final List<Widget> actions;
+
   /// The icon of this widget.
   final Widget? icon;
+
   /// The scrollable of this widget.
   final bool scrollable;
 

@@ -12,8 +12,10 @@ class AppRadioGroup<T> extends StatelessWidget {
 
   /// The groupValue of this widget.
   final T? groupValue;
+
   /// The onChanged of this widget.
   final ValueChanged<T?> onChanged;
+
   /// The child of this widget.
   final Widget child;
 

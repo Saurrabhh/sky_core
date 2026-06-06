@@ -25,6 +25,7 @@ class AppIcon extends StatelessWidget {
 
   /// The icon of this widget.
   final IconData icon;
+
   /// The color of this widget.
   final Color? color;
   final double _size;

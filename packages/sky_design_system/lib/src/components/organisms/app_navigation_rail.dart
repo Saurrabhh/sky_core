@@ -15,14 +15,19 @@ class AppNavigationRail extends StatelessWidget {
 
   /// The selectedIndex of this widget.
   final int selectedIndex;
+
   /// The onDestinationSelected of this widget.
   final ValueChanged<int> onDestinationSelected;
+
   /// The destinations of this widget.
   final List<NavigationRailDestination> destinations;
+
   /// The leading of this widget.
   final Widget? leading;
+
   /// The trailing of this widget.
   final Widget? trailing;
+
   /// The extended of this widget.
   final bool extended;
 

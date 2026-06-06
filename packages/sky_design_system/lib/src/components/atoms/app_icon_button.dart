@@ -52,10 +52,13 @@ class AppIconButton extends StatelessWidget {
 
   /// The icon of this widget.
   final IconData icon;
+
   /// The onPressed of this widget.
   final VoidCallback? onPressed;
+
   /// The tooltip of this widget.
   final String? tooltip;
+
   /// The color of this widget.
   final Color? color;
   final _AppIconButtonVariant _variant;

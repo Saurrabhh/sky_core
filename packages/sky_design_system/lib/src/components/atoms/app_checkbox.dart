@@ -12,8 +12,10 @@ class AppCheckbox extends StatelessWidget {
 
   /// The value of this widget.
   final bool? value;
+
   /// The onChanged of this widget.
   final ValueChanged<bool?>? onChanged;
+
   /// The isError of this widget.
   final bool isError;
 

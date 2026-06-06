@@ -13,6 +13,7 @@ class AppBadge extends StatelessWidget {
   /// The child of this widget.
   final Widget child;
   final int? _count;
+
   /// The isDot of this widget.
   final bool isDot;
 

@@ -95,7 +95,8 @@ class AppSliverScrollView extends StatelessWidget {
 
     final footerWidget = footer != null
         ? Padding(
-            padding: footerPadding ??
+            padding:
+                footerPadding ??
                 EdgeInsets.only(
                   left: horizontalPadding,
                   right: horizontalPadding,

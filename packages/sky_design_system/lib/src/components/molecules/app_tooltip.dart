@@ -7,6 +7,7 @@ class AppTooltip extends StatelessWidget {
 
   /// The message of this widget.
   final String message;
+
   /// The child of this widget.
   final Widget child;
 

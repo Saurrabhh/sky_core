@@ -26,14 +26,15 @@ void main() {
       expect(find.byType(SingleChildScrollView), findsOneWidget);
     });
 
-    testWidgets('renders footer at the bottom of layout (non-sticky)', (tester) async {
+    testWidgets('renders footer at the bottom of layout (non-sticky)', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           theme: AppTheme.light(useGoogleFonts: false),
           home: const Scaffold(
             body: AppScrollView(
               footer: Text('Test Footer'),
-              stickyFooter: false,
               children: [Text('Test Child')],
             ),
           ),
@@ -44,7 +45,9 @@ void main() {
       expect(find.text('Test Footer'), findsOneWidget);
     });
 
-    testWidgets('renders footer at the bottom of layout (sticky)', (tester) async {
+    testWidgets('renders footer at the bottom of layout (sticky)', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           theme: AppTheme.light(useGoogleFonts: false),
@@ -62,8 +65,9 @@ void main() {
       expect(find.text('Test Footer'), findsOneWidget);
     });
 
-    testWidgets('dismisses keyboard when tap outside text field',
-        (tester) async {
+    testWidgets('dismisses keyboard when tap outside text field', (
+      tester,
+    ) async {
       final focusNode = FocusNode();
       await tester.pumpWidget(
         MaterialApp(

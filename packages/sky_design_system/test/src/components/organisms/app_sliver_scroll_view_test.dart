@@ -26,8 +26,9 @@ void main() {
       expect(find.byType(CustomScrollView), findsOneWidget);
     });
 
-    testWidgets('renders footer at the bottom of sliver layout (sticky)',
-        (tester) async {
+    testWidgets('renders footer at the bottom of sliver layout (sticky)', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           theme: AppTheme.light(useGoogleFonts: false),
@@ -47,15 +48,15 @@ void main() {
       expect(find.text('Sliver Footer'), findsOneWidget);
     });
 
-    testWidgets('renders footer at the bottom of sliver layout (non-sticky)',
-        (tester) async {
+    testWidgets('renders footer at the bottom of sliver layout (non-sticky)', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           theme: AppTheme.light(useGoogleFonts: false),
           home: const Scaffold(
             body: AppSliverScrollView(
               footer: Text('Sliver Footer'),
-              stickyFooter: false,
               slivers: [
                 SliverToBoxAdapter(child: Text('Sliver Body')),
               ],

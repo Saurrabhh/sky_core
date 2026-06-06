@@ -38,7 +38,6 @@ void main() {
             body: AppButton.primary(
               text: 'Primary Icon',
               icon: Icons.star,
-              onPressed: null, // Disabled
             ),
           ),
         ),

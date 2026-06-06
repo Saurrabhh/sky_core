@@ -12,8 +12,10 @@ class AppNavigationBar extends StatelessWidget {
 
   /// The selectedIndex of this widget.
   final int selectedIndex;
+
   /// The onDestinationSelected of this widget.
   final ValueChanged<int> onDestinationSelected;
+
   /// The destinations of this widget.
   final List<NavigationDestination> destinations;
 

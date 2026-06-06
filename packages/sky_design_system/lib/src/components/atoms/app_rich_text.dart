@@ -11,7 +11,8 @@ abstract class AppSpan {
   InlineSpan toInlineSpan(BuildContext context);
 }
 
-/// A text span component for [AppRichText] that integrates with the design system's typography.
+/// A text span component for [AppRichText] that integrates with the design
+/// system's typography.
 class AppTextSpan extends AppSpan {
   /// Creates an [AppTextSpan] with optional style and variant overrides.
   const AppTextSpan(
@@ -260,7 +261,8 @@ class AppTextSpan extends AppSpan {
   }
 }
 
-/// A widget span component for [AppRichText] to insert arbitrary widgets (like icons or images) inline.
+/// A widget span component for [AppRichText] to insert arbitrary widgets
+/// (like icons or images) inline.
 class AppWidgetSpan extends AppSpan {
   /// Creates an [AppWidgetSpan] wrapping the provided child [Widget].
   const AppWidgetSpan({

@@ -11,6 +11,7 @@ class AppRadioButton<T> extends StatelessWidget {
 
   /// The value of this widget.
   final T value;
+
   /// The toggleable of this widget.
   final bool toggleable;
 

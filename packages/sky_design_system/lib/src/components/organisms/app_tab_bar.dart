@@ -12,8 +12,10 @@ class AppTabBar extends StatelessWidget implements PreferredSizeWidget {
 
   /// The tabs of this widget.
   final List<Widget> tabs;
+
   /// The controller of this widget.
   final TabController? controller;
+
   /// The isScrollable of this widget.
   final bool isScrollable;
 

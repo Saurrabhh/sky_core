@@ -7,6 +7,7 @@ class AppSwitch extends StatelessWidget {
 
   /// The value of this widget.
   final bool value;
+
   /// The onChanged of this widget.
   final ValueChanged<bool>? onChanged;
 
