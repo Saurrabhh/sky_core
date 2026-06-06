@@ -13,4 +13,7 @@ extension SkyDesignSystemContextExtension on BuildContext {
 
   /// Returns the current [ScaffoldMessengerState].
   ScaffoldMessengerState get scaffoldMessenger => ScaffoldMessenger.of(this);
+
+  /// Returns the current [AppBarTheme].
+  AppBarThemeData get appBarTheme => AppBarTheme.of(this);
 }
