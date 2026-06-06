@@ -19,5 +19,5 @@ melos:
       run: melos exec -- "dart analyze"
       description: Run dart analyze in all packages.
     release:
-      run: melos version --yes && git push --follow-tags && melos publish --no-dry-run --yes
+      run: melos version --yes && git push --follow-tags 2>&1 && melos publish --no-dry-run --yes
       description: Version, push tags, and publish packages sequentially.
