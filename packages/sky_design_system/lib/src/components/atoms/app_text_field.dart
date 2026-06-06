@@ -22,6 +22,7 @@ class AppTextField extends StatelessWidget {
     this.readOnly = false,
     this.onTap,
     this.enabled,
+    this.textInputAction = TextInputAction.next,
   });
 
   /// The controller of this widget.
@@ -72,6 +73,9 @@ class AppTextField extends StatelessWidget {
   /// The enabled of this widget.
   final bool? enabled;
 
+  /// The textInputAction of this widget.
+  final TextInputAction textInputAction;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -84,6 +88,7 @@ class AppTextField extends StatelessWidget {
       autovalidateMode: autovalidateMode,
       onSaved: onSaved,
       readOnly: readOnly,
+      textInputAction: textInputAction,
       onTap: onTap,
       enabled: enabled,
       style: context.textTheme.bodyMedium,
