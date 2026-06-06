@@ -1,3 +1,7 @@
+## 1.4.2
+
+ - **FIX**(sky_design_system): autoValidateMode is always by default.
+
 ## 1.4.1
 
  - **FIX**(sky_design_system): app scroll under elevation.

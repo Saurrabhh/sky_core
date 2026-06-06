@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_design_system` - `v1.4.2`](#sky_design_system---v142)
+
+---
+
+#### `sky_design_system` - `v1.4.2`
+
+ - **FIX**(sky_design_system): autoValidateMode is always by default.
+
+
+## 2026-06-06
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_design_system` - `v1.4.1`](#sky_design_system---v141)
 
 ---
