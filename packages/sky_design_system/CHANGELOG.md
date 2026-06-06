@@ -1,3 +1,7 @@
+## 1.5.0
+
+ - **FEAT**(sky_design_system): add TextInputAction.
+
 ## 1.4.2
 
  - **FIX**(sky_design_system): autoValidateMode is always by default.
