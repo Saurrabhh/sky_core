@@ -1,3 +1,7 @@
+## 1.3.0
+
+ - **FEAT**(sky_architecture): add email, name and phone number value objects.
+
 ## 1.2.0
 
  - **FEAT**(sky_bloc): add helper no params variable.

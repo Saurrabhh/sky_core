@@ -1,3 +1,7 @@
+## 2.0.5
+
+ - **FIX**(sky_bloc): dart format.
+
 ## 2.0.4
 
  - **FIX**(sky_bloc): print removed.

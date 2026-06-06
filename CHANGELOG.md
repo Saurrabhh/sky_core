@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-06-06
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sky_architecture` - `v1.3.0`](#sky_architecture---v130)
+ - [`sky_bloc` - `v2.0.5`](#sky_bloc---v205)
+ - [`sky_design_system` - `v1.4.0`](#sky_design_system---v140)
+ - [`sky_network` - `v1.0.6`](#sky_network---v106)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `sky_network` - `v1.0.6`
+
+---
+
+#### `sky_architecture` - `v1.3.0`
+
+ - **FEAT**(sky_architecture): add email, name and phone number value objects.
+
+#### `sky_bloc` - `v2.0.5`
+
+ - **FIX**(sky_bloc): dart format.
+
+#### `sky_design_system` - `v1.4.0`
+
+ - **FIX**(sky_design_system): dart format.
+ - **FEAT**(sky_design_system): add color property in app bar.
+ - **FEAT**(sky_design_system): add rich text.
+
+
 ## 2026-06-05
 
 ### Changes

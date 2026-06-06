@@ -1,3 +1,9 @@
+## 1.4.0
+
+ - **FIX**(sky_design_system): dart format.
+ - **FEAT**(sky_design_system): add color property in app bar.
+ - **FEAT**(sky_design_system): add rich text.
+
 ## 1.3.1
 
  - **FIX**(sky_design_system): default spacing.
