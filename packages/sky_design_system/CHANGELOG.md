@@ -1,3 +1,7 @@
+## 1.5.1
+
+ - **FIX**(sky_design_system): app snackbar.
+
 ## 1.5.0
 
  - **FEAT**(sky_design_system): add TextInputAction.

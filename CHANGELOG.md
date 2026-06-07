@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_design_system` - `v1.5.1`](#sky_design_system---v151)
+
+---
+
+#### `sky_design_system` - `v1.5.1`
+
+ - **FIX**(sky_design_system): app snackbar.
+
+
+## 2026-06-07
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_architecture` - `v1.5.0`](#sky_architecture---v150)
  - [`sky_bloc` - `v2.0.7`](#sky_bloc---v207)
  - [`sky_network` - `v1.0.8`](#sky_network---v108)
