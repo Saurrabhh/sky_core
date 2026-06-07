@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_design_system` - `v1.6.0`](#sky_design_system---v160)
+
+---
+
+#### `sky_design_system` - `v1.6.0`
+
+ - **FEAT**(sky_design_system): add border radius property in app_icon_button.dart.
+
+
+## 2026-06-07
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_design_system` - `v1.5.1`](#sky_design_system---v151)
 
 ---
