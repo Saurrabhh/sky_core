@@ -121,5 +121,66 @@ void main() {
       final icon = tester.widget<Icon>(find.byType(Icon));
       expect(icon.color, customColor);
     });
+
+    testWidgets(
+      'applies custom borderRadius to standard variant',
+      (tester) async {
+        final customRadius = BorderRadius.circular(12);
+        await tester.pumpWidget(
+          MaterialApp(
+            home: Scaffold(
+              body: AppIconButton(
+                icon: Icons.star,
+                onPressed: () {},
+                borderRadius: customRadius,
+              ),
+            ),
+          ),
+        );
+
+        final buttonFinder = find.byType(IconButton);
+        expect(buttonFinder, findsOneWidget);
+
+        final iconButton = tester.widget<IconButton>(buttonFinder);
+        expect(
+          iconButton.style?.shape?.resolve({}),
+          isA<RoundedRectangleBorder>(),
+        );
+        final shape = iconButton.style!.shape!.resolve({})!
+            as RoundedRectangleBorder;
+        expect(shape.borderRadius, customRadius);
+      },
+    );
+
+    testWidgets(
+      'applies custom borderRadius to primary variant',
+      (tester) async {
+        final customRadius = BorderRadius.circular(8);
+        await tester.pumpWidget(
+          MaterialApp(
+            theme: AppTheme.light(useGoogleFonts: false),
+            home: Scaffold(
+              body: AppIconButton.primary(
+                icon: Icons.star,
+                onPressed: () {},
+                borderRadius: customRadius,
+              ),
+            ),
+          ),
+        );
+
+        final buttonFinder = find.byType(IconButton);
+        expect(buttonFinder, findsOneWidget);
+
+        final iconButton = tester.widget<IconButton>(buttonFinder);
+        expect(
+          iconButton.style?.shape?.resolve({}),
+          isA<RoundedRectangleBorder>(),
+        );
+        final shape = iconButton.style!.shape!.resolve({})!
+            as RoundedRectangleBorder;
+        expect(shape.borderRadius, customRadius);
+      },
+    );
   });
 }

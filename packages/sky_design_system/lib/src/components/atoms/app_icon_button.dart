@@ -12,6 +12,7 @@ class AppIconButton extends StatelessWidget {
     super.key,
     this.tooltip,
     this.color,
+    this._borderRadius,
   }) : _variant = _AppIconButtonVariant.standard;
 
   /// Creates an [AppIconButton] in the primary style.
@@ -21,6 +22,7 @@ class AppIconButton extends StatelessWidget {
     super.key,
     this.tooltip,
     this.color,
+    this._borderRadius,
   }) : _variant = _AppIconButtonVariant.primary;
 
   /// Creates an [AppIconButton] in the secondary style.
@@ -30,6 +32,7 @@ class AppIconButton extends StatelessWidget {
     super.key,
     this.tooltip,
     this.color,
+    this._borderRadius,
   }) : _variant = _AppIconButtonVariant.secondary;
 
   /// Creates an [AppIconButton] in the outlined style.
@@ -39,6 +42,7 @@ class AppIconButton extends StatelessWidget {
     super.key,
     this.tooltip,
     this.color,
+    this._borderRadius,
   }) : _variant = _AppIconButtonVariant.outlined;
 
   /// Creates an [AppIconButton] in the inverse style.
@@ -48,6 +52,7 @@ class AppIconButton extends StatelessWidget {
     super.key,
     this.tooltip,
     this.color,
+    this._borderRadius,
   }) : _variant = _AppIconButtonVariant.inverse;
 
   /// The icon of this widget.
@@ -61,6 +66,10 @@ class AppIconButton extends StatelessWidget {
 
   /// The color of this widget.
   final Color? color;
+
+  /// The border radius of this widget.
+  final BorderRadius? _borderRadius;
+
   final _AppIconButtonVariant _variant;
 
   @override
@@ -72,6 +81,11 @@ class AppIconButton extends StatelessWidget {
         onPressed: onPressed,
         tooltip: tooltip,
         icon: iconWidget,
+        style: _borderRadius != null
+            ? IconButton.styleFrom(
+                shape: RoundedRectangleBorder(borderRadius: _borderRadius),
+              )
+            : null,
       ),
       _AppIconButtonVariant.primary => IconButton.filled(
         onPressed: onPressed,
@@ -80,6 +94,9 @@ class AppIconButton extends StatelessWidget {
         style: IconButton.styleFrom(
           backgroundColor: context.colorScheme.primary,
           foregroundColor: context.colorScheme.onPrimary,
+          shape: _borderRadius != null
+              ? RoundedRectangleBorder(borderRadius: _borderRadius)
+              : null,
         ),
       ),
       _AppIconButtonVariant.secondary => IconButton.filled(
@@ -89,6 +106,9 @@ class AppIconButton extends StatelessWidget {
         style: IconButton.styleFrom(
           backgroundColor: context.colorScheme.secondaryContainer,
           foregroundColor: context.colorScheme.onSecondaryContainer,
+          shape: _borderRadius != null
+              ? RoundedRectangleBorder(borderRadius: _borderRadius)
+              : null,
         ),
       ),
       _AppIconButtonVariant.outlined => IconButton.outlined(
@@ -98,6 +118,9 @@ class AppIconButton extends StatelessWidget {
         style: IconButton.styleFrom(
           foregroundColor: context.colorScheme.primary,
           side: BorderSide(color: context.colorScheme.outline),
+          shape: _borderRadius != null
+              ? RoundedRectangleBorder(borderRadius: _borderRadius)
+              : null,
         ),
       ),
       _AppIconButtonVariant.inverse => IconButton.filled(
@@ -107,6 +130,9 @@ class AppIconButton extends StatelessWidget {
         style: IconButton.styleFrom(
           backgroundColor: context.colorScheme.inverseSurface,
           foregroundColor: context.colorScheme.onInverseSurface,
+          shape: _borderRadius != null
+              ? RoundedRectangleBorder(borderRadius: _borderRadius)
+              : null,
         ),
       ),
     };
