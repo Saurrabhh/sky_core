@@ -1,6 +1,6 @@
 name: sky_bloc
 description: Standardized BLoC state management core for the Sky monorepo.
-version: 2.0.6
+version: 2.0.7
 repository: https://github.com/Saurrabhh/sky_core/tree/master/packages/sky_bloc
 resolution: workspace
 
@@ -17,7 +17,7 @@ dependencies:
 
   flutter_bloc: ^9.1.1
 
-  sky_architecture: ^1.4.0
+  sky_architecture: ^1.5.0
   sky_telemetry: ^1.0.3
 
 dev_dependencies:

@@ -1,3 +1,7 @@
+## 1.5.0
+
+ - **FEAT**(sky_design_system): update value_objects.dart.
+
 ## 1.4.0
 
  - **FEAT**(sky_design_system): add password text field.

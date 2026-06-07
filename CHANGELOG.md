@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-06-07
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sky_architecture` - `v1.5.0`](#sky_architecture---v150)
+ - [`sky_bloc` - `v2.0.7`](#sky_bloc---v207)
+ - [`sky_network` - `v1.0.8`](#sky_network---v108)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `sky_bloc` - `v2.0.7`
+ - `sky_network` - `v1.0.8`
+
+---
+
+#### `sky_architecture` - `v1.5.0`
+
+ - **FEAT**(sky_design_system): update value_objects.dart.
+
+
 ## 2026-06-06
 
 ### Changes
