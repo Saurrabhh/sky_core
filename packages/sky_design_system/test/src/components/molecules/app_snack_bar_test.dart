@@ -26,7 +26,11 @@ void main() {
                 expect((snackBar.content as Text).data, equals('Normal Snack'));
                 expect(snackBar.behavior, equals(SnackBarBehavior.floating));
                 expect(snackBar.action?.label, equals('Undo'));
-                expect(snackBar.backgroundColor, isNull); // Default
+                expect(
+                  snackBar.backgroundColor,
+                  equals(context.colorScheme.inverseSurface),
+                );
+                expect(snackBar.shape, isA<RoundedRectangleBorder>());
                 return const SizedBox.shrink();
               },
             ),

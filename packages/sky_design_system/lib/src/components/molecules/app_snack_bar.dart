@@ -15,23 +15,26 @@ class AppSnackBar {
     bool isError = false,
   }) {
     final colorScheme = context.colorScheme;
+    final textTheme = context.textTheme;
+
+    final backgroundColor = isError ? colorScheme.error : colorScheme.inverseSurface;
+    final textColor = isError ? colorScheme.onError : colorScheme.onInverseSurface;
+    final actionTextColor = isError ? colorScheme.onError : colorScheme.inversePrimary;
 
     return SnackBar(
-      content: isError
-          ? Text(
-              message,
-              style: TextStyle(color: colorScheme.onError),
-            )
-          : Text(message),
-      backgroundColor: isError ? colorScheme.error : null,
+      content: Text(
+        message,
+        style: textTheme.bodyMedium?.copyWith(color: textColor),
+      ),
+      backgroundColor: backgroundColor,
       behavior: SnackBarBehavior.floating,
-      shape: isError
-          ? const RoundedRectangleBorder(borderRadius: AppBorderRadius.sm)
-          : null,
+      shape: const RoundedRectangleBorder(
+        borderRadius: AppBorderRadius.sm,
+      ),
       action: actionText != null && onAction != null
           ? SnackBarAction(
               label: actionText,
-              textColor: isError ? colorScheme.onError : null,
+              textColor: actionTextColor,
               onPressed: onAction,
             )
           : null,
