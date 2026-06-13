@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-06-13
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sky_architecture` - `v1.6.0`](#sky_architecture---v160)
+ - [`sky_design_system` - `v1.6.1`](#sky_design_system---v161)
+ - [`sky_bloc` - `v2.0.8`](#sky_bloc---v208)
+ - [`sky_network` - `v1.0.9`](#sky_network---v109)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `sky_bloc` - `v2.0.8`
+ - `sky_network` - `v1.0.9`
+
+---
+
+#### `sky_architecture` - `v1.6.0`
+
+ - **FEAT**(sky_architecture): add functional error handling typedefs.
+
+#### `sky_design_system` - `v1.6.1`
+
+ - **FIX**(sky_design_system): reformat ternary operators in AppSnackBar.
+
+
 ## 2026-06-07
 
 ### Changes

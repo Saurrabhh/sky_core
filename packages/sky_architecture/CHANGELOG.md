@@ -1,3 +1,7 @@
+## 1.6.0
+
+ - **FEAT**(sky_architecture): add functional error handling typedefs.
+
 ## 1.5.0
 
  - **FEAT**(sky_design_system): update value_objects.dart.
