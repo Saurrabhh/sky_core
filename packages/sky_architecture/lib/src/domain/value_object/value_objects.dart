@@ -1,7 +1,7 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:sky_architecture/src/domain/failures/failure.dart';
 import 'package:sky_architecture/src/domain/failures/failures.dart';
 import 'package:sky_architecture/src/domain/value_object/value_object.dart';
+import 'package:sky_architecture/src/utils/typedefs.dart';
 
 /// Represents a validated user name in the domain layer.
 class Name extends ValueObject<String> {
@@ -14,7 +14,7 @@ class Name extends ValueObject<String> {
   final String _input;
 
   @override
-  Either<Failure, String> get value {
+  EitherFailure<String> get value {
     final trimmed = _input.trim();
     if (trimmed.isEmpty) {
       return left(const ValidationFailure(message: 'Name cannot be empty'));
@@ -35,7 +35,7 @@ class EmailAddress extends ValueObject<String> {
   final String _input;
 
   @override
-  Either<Failure, String> get value {
+  EitherFailure<String> get value {
     final cleaned = _input.trim();
     if (cleaned.isEmpty) {
       return left(
@@ -62,13 +62,14 @@ class PhoneNumber extends ValueObject<String> {
   ///
   /// Validation is performed lazily when accessing the [value] property.
   /// A phone number is valid if it is not empty and matches a pattern allowing
-  /// an optional '+' prefix followed by 7 to 15 digits, spaces, hyphens, or parentheses.
+  /// an optional '+' prefix followed by 7 to 15 digits, spaces, hyphens, or
+  /// parentheses.
   const PhoneNumber(this._input);
 
   final String _input;
 
   @override
-  Either<Failure, String> get value {
+  EitherFailure<String> get value {
     final cleaned = _input.trim();
     if (cleaned.isEmpty) {
       return left(
@@ -101,7 +102,7 @@ class Password extends ValueObject<String> {
   final String _input;
 
   @override
-  Either<Failure, String> get value {
+  EitherFailure<String> get value {
     if (_input.length < 6) {
       return left(
         const ValidationFailure(

@@ -1,5 +1,4 @@
-import 'package:fpdart/fpdart.dart';
-import 'package:sky_architecture/src/domain/failures/failure.dart';
+import 'package:sky_architecture/sky_architecture.dart';
 
 /// Represents an asynchronous use case.
 ///
@@ -10,7 +9,7 @@ abstract interface class UseCase<T, Params> {
   const UseCase();
 
   /// Runs the use case logic.
-  Future<Either<Failure, T>> call(Params params);
+  FutureEitherFailure<T> call(Params params);
 }
 
 /// Represents a synchronous use case.
@@ -21,7 +20,7 @@ abstract interface class SyncUseCase<T, Params> {
   const SyncUseCase();
 
   /// Runs the use case logic synchronously.
-  Either<Failure, T> call(Params params);
+  EitherFailure<T> call(Params params);
 }
 
 /// Represents a streaming use case.
@@ -33,5 +32,5 @@ abstract interface class StreamUseCase<T, Params> {
   const StreamUseCase();
 
   /// Runs the use case logic, returning a stream of results.
-  Stream<Either<Failure, T>> call(Params params);
+  StreamEitherFailure<T> call(Params params);
 }

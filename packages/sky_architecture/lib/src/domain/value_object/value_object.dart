@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:fpdart/fpdart.dart';
-import 'package:sky_architecture/src/domain/failures/failure.dart';
+import 'package:sky_architecture/sky_architecture.dart';
 
 /// Represents a Domain-Driven Design Value Object.
 ///
@@ -12,7 +11,7 @@ import 'package:sky_architecture/src/domain/failures/failure.dart';
 /// ```dart
 /// class EmailAddress extends ValueObject<String> {
 ///   @override
-///   final Either<Failure, String> value;
+///   final EitherFailure<String> value;
 ///
 ///   const EmailAddress(this.value);
 /// }
@@ -22,7 +21,7 @@ abstract class ValueObject<T> extends Equatable {
   const ValueObject();
 
   /// The underlying value, containing either a [Failure] or a valid value [T].
-  Either<Failure, T> get value;
+  EitherFailure<T> get value;
 
   /// Returns true if the value is valid.
   bool isValid() => value.isRight();

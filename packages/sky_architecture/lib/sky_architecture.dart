@@ -11,3 +11,4 @@ export 'src/domain/usecase/usecase.dart';
 export 'src/domain/value_object/value_object.dart';
 export 'src/domain/value_object/value_objects.dart';
 export 'src/utils/functional_extensions.dart';
+export 'src/utils/typedefs.dart';
