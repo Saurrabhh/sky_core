@@ -17,9 +17,15 @@ class AppSnackBar {
     final colorScheme = context.colorScheme;
     final textTheme = context.textTheme;
 
-    final backgroundColor = isError ? colorScheme.error : colorScheme.inverseSurface;
-    final textColor = isError ? colorScheme.onError : colorScheme.onInverseSurface;
-    final actionTextColor = isError ? colorScheme.onError : colorScheme.inversePrimary;
+    final backgroundColor = isError
+        ? colorScheme.error
+        : colorScheme.inverseSurface;
+    final textColor = isError
+        ? colorScheme.onError
+        : colorScheme.onInverseSurface;
+    final actionTextColor = isError
+        ? colorScheme.onError
+        : colorScheme.inversePrimary;
 
     return SnackBar(
       content: Text(
