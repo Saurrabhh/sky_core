@@ -18,6 +18,9 @@ melos:
     analyze:
       run: melos exec -- "dart analyze"
       description: Run dart analyze in all packages.
+    build:showcase:
+      run: 'melos exec --scope="sky_showcase" -- flutter build web --wasm --release --base-href "/"'
+      description: Build the sky_showcase application for web in release mode.
     release:
       run: melos version --yes && git push --follow-tags 2>&1 && melos publish --no-dry-run --yes
       description: Version, push tags, and publish packages sequentially.
