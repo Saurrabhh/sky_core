@@ -12,6 +12,10 @@ This repository contains the core logic and design system for Sky applications.
 - `packages/sky_storage`: Storage abstractions.
 - `packages/sky_storage_isar`: Isar implementation of storage.
 
+### Applications
+
+- `apps/sky_showcase`: Widgetbook-based showcase application (Live at [design.skycore.dev](https://design.skycore.dev/)).
+
 ## Getting Started
 
 This project is managed by [Melos](https://melos.invertase.dev/).
