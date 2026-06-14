@@ -1,17 +1,19 @@
-import 'dart:io' show File;
-
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/foundation.dart';
+import 'package:cross_file/cross_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sky_design_system/src/components/atoms/app_raster_web.dart'
+    if (dart.library.io) 'app_raster_io.dart';
 import 'package:sky_design_system/src/components/atoms/app_shimmer.dart';
+import 'package:sky_design_system/src/components/atoms/app_svg_image_web.dart'
+    if (dart.library.io) 'app_svg_image_io.dart';
 import 'package:sky_design_system/src/extensions.dart';
 
 /// A highly optimized, universal image rendering widget for the
 /// Sky Design System.
 ///
 /// It supports raster (JPEG, PNG, WebP) and vector (SVG) formats across
-/// multiple source types: network, assets, and local [File] objects.
+/// multiple source types: network, assets, and local [XFile] objects.
 ///
 /// ### Core Features:
 /// * **Automatic Type Detection:** The default constructor auto-detects the
@@ -41,7 +43,7 @@ class AppImage extends StatelessWidget {
 
   /// Explicitly renders a local [File] image passed from outside.
   const AppImage.file(
-    File this._file, {
+    XFile this._file, {
     super.key,
     this.width,
     this.height,
@@ -59,7 +61,7 @@ class AppImage extends StatelessWidget {
   final String? image;
 
   /// The local file object to render.
-  final File? _file;
+  final XFile? _file;
 
   /// Width of the image container.
   final double? width;
@@ -103,7 +105,7 @@ class AppImage extends StatelessWidget {
         fit: fit,
         cacheHeight: cacheHeight,
         cacheWidth: cacheWidth,
-        semanticLabel: semanticLabel,
+        semanticsLabel: semanticLabel,
         placeholder: placeholder,
         errorWidget: errorWidget,
       );
@@ -332,12 +334,12 @@ class _AppFileImage extends StatelessWidget {
     this.cacheHeight,
     this.cacheWidth,
     this.placeholder,
-    this.semanticLabel,
+    this.semanticsLabel,
     this.errorWidget,
   });
 
   /// The file of this widget.
-  final File file;
+  final XFile file;
 
   /// The width of this widget.
   final double? width;
@@ -358,46 +360,42 @@ class _AppFileImage extends StatelessWidget {
   final Widget? placeholder;
 
   /// The semanticLabel of this widget.
-  final String? semanticLabel;
+  final String? semanticsLabel;
 
   /// The errorWidget of this widget.
   final Widget? errorWidget;
 
   @override
   Widget build(BuildContext context) {
-    if (kIsWeb) {
-      return _AppImageError(errorWidget: errorWidget);
-    }
-
     final isSvg = file.path.toLowerCase().endsWith('.svg');
 
     if (isSvg) {
-      return SvgPicture.file(
-        file,
+      return PlatformSvgWidget(
+        file: file,
         width: width,
         height: height,
         fit: fit,
-        semanticsLabel: semanticLabel,
-        placeholderBuilder: (_) => _AppImagePlaceholder(
+        semanticsLabel: semanticsLabel,
+        placeholder: _AppImagePlaceholder(
           placeholder: placeholder,
           width: width,
           height: height,
         ),
-        errorBuilder: (_, _, _) => _AppImageError(
+        errorWidget: _AppImageError(
           errorWidget: errorWidget,
         ),
       );
     }
 
-    return Image.file(
-      file,
+    return PlatformRasterWidget(
+      file: file,
       width: width,
       height: height,
       fit: fit,
-      semanticLabel: semanticLabel,
+      semanticLabel: semanticsLabel,
       cacheHeight: cacheHeight,
       cacheWidth: cacheWidth,
-      errorBuilder: (_, _, _) => _AppImageError(
+      errorWidget: _AppImageError(
         errorWidget: errorWidget,
       ),
     );

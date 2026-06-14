@@ -10,6 +10,7 @@ environment:
 
 dependencies:
   cached_network_image: ^3.4.1
+  cross_file: ^0.3.5+2
   flutter:
     sdk: flutter
   flutter_svg: ^2.3.0
