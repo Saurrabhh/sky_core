@@ -3,8 +3,12 @@ import 'package:cross_file/cross_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-/// Native implementation: Uses dart:io to stream from disk to save RAM.
+/// Native implementation of the platform-specific SVG rendering widget.
+///
+/// Uses [dart:io] via [SvgPicture.file] to stream the SVG content from disk
+/// to optimize RAM usage.
 class PlatformSvgWidget extends StatelessWidget {
+  /// Creates a [PlatformSvgWidget] for native (I/O) platforms.
   const PlatformSvgWidget({
     required this.file,
     required this.fit,
@@ -16,25 +20,25 @@ class PlatformSvgWidget extends StatelessWidget {
     super.key,
   });
 
-  /// The file of this widget.
+  /// The local file containing the SVG image to render.
   final XFile file;
 
-  /// The width of this widget.
+  /// The target width of the SVG image container.
   final double? width;
 
-  /// The height of this widget.
+  /// The target height of the SVG image container.
   final double? height;
 
-  /// The fit of this widget.
+  /// How the SVG image should be inscribed into its container.
   final BoxFit fit;
 
-  /// The placeholder of this widget.
+  /// The placeholder widget to display while the SVG is loading.
   final Widget placeholder;
 
-  /// The semanticLabel of this widget.
+  /// The semantic label for the SVG image, used for accessibility.
   final String? semanticsLabel;
 
-  /// The errorWidget of this widget.
+  /// The widget to display if the SVG image fails to load.
   final Widget errorWidget;
 
   @override

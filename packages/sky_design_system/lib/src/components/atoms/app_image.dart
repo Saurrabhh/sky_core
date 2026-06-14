@@ -41,7 +41,7 @@ class AppImage extends StatelessWidget {
     this.semanticLabel,
   }) : _file = null;
 
-  /// Explicitly renders a local [File] image passed from outside.
+  /// Explicitly renders a local [XFile] image passed from outside.
   const AppImage.file(
     XFile this._file, {
     super.key,
@@ -163,9 +163,13 @@ class AppImage extends StatelessWidget {
   }
 }
 
-/// The [_AppNetworkImage] widget.
+/// An internal helper widget that renders network images.
+///
+/// It supports SVG images via [SvgPicture.network] and raster images
+/// via [CachedNetworkImage], incorporating memory cache size constraints
+/// and fade-in animations.
 class _AppNetworkImage extends StatelessWidget {
-  /// Creates an [_AppNetworkImage] instance.
+  /// Creates a [_AppNetworkImage] helper widget.
   const _AppNetworkImage({
     required this.uri,
     required this.fit,
@@ -178,27 +182,27 @@ class _AppNetworkImage extends StatelessWidget {
     this._cacheHeight,
   });
 
-  /// The uri of this widget.
+  /// The network [Uri] of the image to fetch.
   final Uri uri;
 
-  /// The width of this widget.
+  /// The target width of the image container.
   final double? width;
 
-  /// The height of this widget.
+  /// The target height of the image container.
   final double? height;
 
-  /// The fit of this widget.
+  /// How the image should be inscribed into its container.
   final BoxFit fit;
 
-  /// The placeholder of this widget.
+  /// A custom placeholder widget to display while loading.
   final Widget? placeholder;
 
-  /// The errorWidget of this widget.
+  /// A custom widget to display if the image loading fails.
   final Widget? errorWidget;
   final int? _cacheWidth;
   final int? _cacheHeight;
 
-  /// The fadeInDuration of this widget.
+  /// The duration of the fade-in animation once the image loads.
   final Duration fadeInDuration;
 
   @override
@@ -244,9 +248,12 @@ class _AppNetworkImage extends StatelessWidget {
   }
 }
 
-/// The [_AppAssetImage] widget.
+/// An internal helper widget that renders local asset images.
+///
+/// It supports SVG assets via [SvgPicture.asset] and raster assets
+/// via [Image.asset].
 class _AppAssetImage extends StatelessWidget {
-  /// Creates an [_AppAssetImage] instance.
+  /// Creates an [_AppAssetImage] helper widget.
   const _AppAssetImage({
     required this.image,
     required this.fit,
@@ -259,31 +266,31 @@ class _AppAssetImage extends StatelessWidget {
     this.errorWidget,
   });
 
-  /// The image of this widget.
+  /// The path to the asset image.
   final String image;
 
-  /// The width of this widget.
+  /// The target width of the image container.
   final double? width;
 
-  /// The height of this widget.
+  /// The target height of the image container.
   final double? height;
 
-  /// The fit of this widget.
+  /// How the image should be inscribed into its container.
   final BoxFit fit;
 
-  /// The cacheHeight of this widget.
+  /// The maximum height to decode the image to in the cache.
   final int? cacheHeight;
 
-  /// The cacheWidth of this widget.
+  /// The maximum width to decode the image to in the cache.
   final int? cacheWidth;
 
-  /// The placeholder of this widget.
+  /// A custom placeholder widget to display while loading.
   final Widget? placeholder;
 
-  /// The semanticLabel of this widget.
+  /// The semantic label for the asset image.
   final String? semanticLabel;
 
-  /// The errorWidget of this widget.
+  /// A custom widget to display if the asset fails to load.
   final Widget? errorWidget;
 
   @override
@@ -323,9 +330,12 @@ class _AppAssetImage extends StatelessWidget {
   }
 }
 
-/// The [_AppFileImage] widget.
+/// An internal helper widget that renders local files as images.
+///
+/// It delegates to platform-specific SVG or raster implementations
+/// depending on the file extension and runtime platform.
 class _AppFileImage extends StatelessWidget {
-  /// Creates an [_AppFileImage] instance.
+  /// Creates an [_AppFileImage] helper widget.
   const _AppFileImage({
     required this.file,
     required this.fit,
@@ -338,31 +348,31 @@ class _AppFileImage extends StatelessWidget {
     this.errorWidget,
   });
 
-  /// The file of this widget.
+  /// The local [XFile] to be rendered.
   final XFile file;
 
-  /// The width of this widget.
+  /// The target width of the image container.
   final double? width;
 
-  /// The height of this widget.
+  /// The target height of the image container.
   final double? height;
 
-  /// The fit of this widget.
+  /// How the image should be inscribed into its container.
   final BoxFit fit;
 
-  /// The cacheHeight of this widget.
+  /// The maximum height to decode the image to in the cache.
   final int? cacheHeight;
 
-  /// The cacheWidth of this widget.
+  /// The maximum width to decode the image to in the cache.
   final int? cacheWidth;
 
-  /// The placeholder of this widget.
+  /// A custom placeholder widget to display while loading.
   final Widget? placeholder;
 
-  /// The semanticLabel of this widget.
+  /// The semantic label for the file image.
   final String? semanticsLabel;
 
-  /// The errorWidget of this widget.
+  /// A custom widget to display if the file image fails to load.
   final Widget? errorWidget;
 
   @override
@@ -402,22 +412,24 @@ class _AppFileImage extends StatelessWidget {
   }
 }
 
-/// The [_AppImagePlaceholder] widget.
+/// An internal widget used as a placeholder during image loading.
+///
+/// If a custom [placeholder] is not provided, defaults to [AppShimmer].
 class _AppImagePlaceholder extends StatelessWidget {
-  /// Creates an [_AppImagePlaceholder] instance.
+  /// Creates an [_AppImagePlaceholder] helper widget.
   const _AppImagePlaceholder({
     this.placeholder,
     this.width,
     this.height,
   });
 
-  /// The placeholder of this widget.
+  /// The custom placeholder widget to display, if any.
   final Widget? placeholder;
 
-  /// The width of this widget.
+  /// The target width of the placeholder.
   final double? width;
 
-  /// The height of this widget.
+  /// The target height of the placeholder.
   final double? height;
 
   @override
@@ -430,14 +442,16 @@ class _AppImagePlaceholder extends StatelessWidget {
   }
 }
 
-/// The [_AppImageError] widget.
+/// An internal widget displayed when an image fails to load.
+///
+/// If a custom [errorWidget] is not provided, defaults to a broken image icon.
 class _AppImageError extends StatelessWidget {
-  /// Creates an [_AppImageError] instance.
+  /// Creates an [_AppImageError] helper widget.
   const _AppImageError({
     this.errorWidget,
   });
 
-  /// The errorWidget of this widget.
+  /// The custom error widget to display, if any.
   final Widget? errorWidget;
 
   @override

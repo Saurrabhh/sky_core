@@ -1,11 +1,17 @@
 import 'package:cross_file/cross_file.dart';
 import 'package:flutter/material.dart';
 
+/// An internal widget that renders a raster image (e.g., PNG, JPEG) from a
+/// local file on web platforms.
+///
+/// This widget securely loads the local file via a blob URL using [Image.network].
 class PlatformRasterWidget extends StatelessWidget {
+  /// Creates a [PlatformRasterWidget].
   const PlatformRasterWidget({
     required this.file,
     required this.fit,
-    required this.errorWidget, this.width,
+    required this.errorWidget,
+    this.width,
     this.height,
     this.cacheHeight,
     this.cacheWidth,
@@ -13,28 +19,28 @@ class PlatformRasterWidget extends StatelessWidget {
     super.key,
   });
 
-  /// The file of this widget.
+  /// The local file containing the raster image to render.
   final XFile file;
 
-  /// The width of this widget.
+  /// The target width of the image container.
   final double? width;
 
-  /// The height of this widget.
+  /// The target height of the image container.
   final double? height;
 
-  /// The fit of this widget.
+  /// How the image should be inscribed into its container.
   final BoxFit fit;
 
-  /// The cacheHeight of this widget.
+  /// The maximum height to decode the image to, used for memory optimization.
   final int? cacheHeight;
 
-  /// The cacheWidth of this widget.
+  /// The maximum width to decode the image to, used for memory optimization.
   final int? cacheWidth;
 
-  /// The semanticLabel of this widget.
+  /// The semantic label for the image, used for accessibility.
   final String? semanticLabel;
 
-  /// The errorWidget of this widget.
+  /// The widget to display if the image fails to load.
   final Widget errorWidget;
 
   @override
