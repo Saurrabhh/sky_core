@@ -1,3 +1,7 @@
+## 1.7.1
+
+ - **FIX**(sky_design_system): format app_raster_web and app_svg_image_io.
+
 ## 1.7.0
 
  - **FEAT**(sky_design_system): support web platform for local file images in AppImage.

@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_design_system` - `v1.7.1`](#sky_design_system---v171)
+
+---
+
+#### `sky_design_system` - `v1.7.1`
+
+ - **FIX**(sky_design_system): format app_raster_web and app_svg_image_io.
+
+
+## 2026-06-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_design_system` - `v1.7.0`](#sky_design_system---v170)
 
 ---
