@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-06-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sky_design_system` - `v1.7.0`](#sky_design_system---v170)
+
+---
+
+#### `sky_design_system` - `v1.7.0`
+
+ - **FEAT**(sky_design_system): support web platform for local file images in AppImage.
+ - **DOCS**(sky_design_system): add comprehensive doc comments to AppImage components.
+
+
 ## 2026-06-13
 
 ### Changes

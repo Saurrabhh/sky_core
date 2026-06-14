@@ -1,3 +1,8 @@
+## 1.7.0
+
+ - **FEAT**(sky_design_system): support web platform for local file images in AppImage.
+ - **DOCS**(sky_design_system): add comprehensive doc comments to AppImage components.
+
 ## 1.6.1
 
  - **FIX**(sky_design_system): reformat ternary operators in AppSnackBar.
