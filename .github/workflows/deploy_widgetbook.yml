@@ -29,7 +29,7 @@ jobs:
         run: melos bs
 
       - name: Build Flutter Web
-        run: melos exec --scope="sky_showcase" -- flutter build web --release --base-href "/${{ github.event.repository.name }}/"
+        run: melos exec --scope="sky_showcase" -- flutter build web --release --base-href "/"
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
