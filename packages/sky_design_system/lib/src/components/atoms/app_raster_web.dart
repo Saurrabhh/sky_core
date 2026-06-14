@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 /// An internal widget that renders a raster image (e.g., PNG, JPEG) from a
 /// local file on web platforms.
 ///
-/// This widget securely loads the local file via a blob URL using [Image.network].
+/// This widget securely loads the local file via a blob URL using
+/// [Image.network].
 class PlatformRasterWidget extends StatelessWidget {
   /// Creates a [PlatformRasterWidget].
   const PlatformRasterWidget({
@@ -54,7 +55,7 @@ class PlatformRasterWidget extends StatelessWidget {
       semanticLabel: semanticLabel,
       cacheWidth: cacheWidth,
       cacheHeight: cacheHeight,
-      errorBuilder:(_, _, _) => errorWidget,
+      errorBuilder: (_, _, _) => errorWidget,
     );
   }
 }
