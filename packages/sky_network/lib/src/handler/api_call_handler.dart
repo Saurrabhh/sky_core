@@ -24,7 +24,7 @@ class ApiCallHandlerImpl implements ApiCallHandler {
       final failure = exception.toFailure();
       return Left(failure);
     } on Exception catch (e) {
-      return Left(UnknownFailure(message: e.toString()));
+      return Left(e.toFailure());
     }
   }
 }
