@@ -1,3 +1,9 @@
+## 1.1.0
+
+ - **FEAT**(sky_network): implement telemetry tracking, clock drift synchronization, and User-Agent enrichment.
+ - **FEAT**(sky_network): implement background transformer, retry interceptor with jitter, and dynamic base URL resolver.
+ - **FEAT**(sky_network): implement ssl certificate pinning and flag-based logging configuration.
+
 ## 1.0.9
 
  - Update a dependency to the latest release.

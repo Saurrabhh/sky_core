@@ -1,6 +1,6 @@
 name: sky_network
 description: A robust, decoupled remote network client wrapped around Dio and Connectivity.
-version: 1.0.9
+version: 1.1.0
 repository: https://github.com/Saurrabhh/sky_core/tree/master/packages/sky_network
 resolution: workspace
 

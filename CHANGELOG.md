@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-06-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sky_network` - `v1.1.0`](#sky_network---v110)
+
+---
+
+#### `sky_network` - `v1.1.0`
+
+ - **FEAT**(sky_network): implement telemetry tracking, clock drift synchronization, and User-Agent enrichment.
+ - **FEAT**(sky_network): implement background transformer, retry interceptor with jitter, and dynamic base URL resolver.
+ - **FEAT**(sky_network): implement ssl certificate pinning and flag-based logging configuration.
+
+
 ## 2026-06-14
 
 ### Changes
