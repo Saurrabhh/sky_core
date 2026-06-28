@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http_certificate_pinning/http_certificate_pinning.dart';
 import 'package:sky_architecture/sky_architecture.dart';
 import 'package:sky_network/sky_network.dart';
+import 'package:sky_telemetry/sky_telemetry.dart';
 
 class MockAdapter implements HttpClientAdapter {
   MockAdapter({required this.handler});
@@ -442,6 +443,79 @@ void main() {
     });
   });
 
+  group('UserAgentEnrichmentInterceptor', () {
+    test('injects default and custom headers correctly', () async {
+      final dio = Dio();
+      dio.interceptors.add(
+        UserAgentEnrichmentInterceptor(
+          const NetworkOptions(userAgent: 'CustomAgent/2.0.0'),
+        ),
+      );
+
+      var headers = <String, dynamic>{};
+      dio.httpClientAdapter = MockAdapter(
+        handler: (options) async {
+          headers = options.headers;
+          return ResponseBody.fromString(jsonEncode({'status': 'ok'}), 200);
+        },
+      );
+
+      await dio.get<dynamic>('/test');
+      expect(headers['User-Agent'], equals('CustomAgent/2.0.0'));
+      expect(headers['Accept-Language'], isNotEmpty);
+      expect(headers['X-Client-Timezone'], isNotEmpty);
+    });
+  });
+
+  group('TelemetryInterceptor & NetworkTime Sync', () {
+    late List<Map<String, dynamic>> trackedEvents;
+    late SkyAnalytics mockAnalytics;
+
+    setUp(() {
+      trackedEvents = [];
+      mockAnalytics = _TestAnalytics(onTrack: (name, params) {
+        trackedEvents.add({'name': name, 'params': params});
+      });
+      SkyAnalyticsRegistry.instance.registerProvider(mockAnalytics);
+    });
+
+    tearDown(() {
+      SkyAnalyticsRegistry.instance.unregisterProvider(mockAnalytics);
+    });
+
+    test('captures latency and formats HTTP response size correctly', () async {
+      final dio = Dio();
+      dio.interceptors.add(TelemetryInterceptor());
+
+      dio.httpClientAdapter = MockAdapter(
+        handler: (options) async {
+          return ResponseBody.fromString(
+            jsonEncode({'message': 'success'}),
+            200,
+            headers: {
+              Headers.contentTypeHeader: [Headers.jsonContentType],
+              'date': ['Wed, 21 Oct 2015 07:28:00 GMT'],
+            },
+          );
+        },
+      );
+
+      await dio.get<dynamic>('/users/123/posts/abc-uuid-hash-value-123456');
+
+      // Verify event was logged to analytics
+      final performanceEvent = trackedEvents.firstWhere((e) => e['name'] == 'api_performance');
+      final params = performanceEvent['params'] as Map<String, dynamic>;
+      
+      expect(params['method'], equals('GET'));
+      expect(params['path'], equals('/users/:id/posts/:id'));
+      expect(params['statusCode'], equals(200));
+      expect(params['latencyMs'], isNot(equals(-1)));
+
+      // Verify timezone drift sync
+      expect(NetworkTime.clockDriftMs, isNot(equals(0)));
+    });
+  });
+
   group('ApiCallHandler & ApiCallHandlerImpl Integration', () {
     test('executes successful request and resolves Right data', () async {
       const apiHandler = ApiCallHandlerImpl();
@@ -484,4 +558,26 @@ void main() {
       );
     });
   });
+}
+
+class _TestAnalytics implements SkyAnalytics {
+  _TestAnalytics({required this.onTrack});
+  final void Function(String name, Map<String, dynamic>? parameters) onTrack;
+
+  @override
+  Future<void> trackEvent(String name, {Map<String, dynamic>? parameters}) async {
+    onTrack(name, parameters);
+  }
+
+  @override
+  Future<void> trackScreen(String name, {String? screenClass, Map<String, dynamic>? parameters}) async {}
+
+  @override
+  Future<void> setUserId(String userId) async {}
+
+  @override
+  Future<void> setUserProperty(String key, String value) async {}
+
+  @override
+  Future<void> clearUser() async {}
 }

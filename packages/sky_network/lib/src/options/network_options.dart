@@ -18,6 +18,7 @@ class NetworkOptions {
     this.retryBackoffFactor = 2.0,
     this.retryableStatuses = const [502, 503, 504],
     this.baseUrlResolver,
+    this.userAgent,
   });
 
   /// The base URL for network requests.
@@ -61,4 +62,7 @@ class NetworkOptions {
 
   /// Callback function used to dynamically resolve the base URL per-request.
   final FutureOr<String> Function()? baseUrlResolver;
+
+  /// Custom User-Agent string to include in requests.
+  final String? userAgent;
 }

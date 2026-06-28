@@ -5,6 +5,8 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:sky_network/src/factory/background_transformer.dart';
 import 'package:sky_network/src/interceptors/dynamic_url_interceptor.dart';
 import 'package:sky_network/src/interceptors/retry_interceptor.dart';
+import 'package:sky_network/src/interceptors/telemetry_interceptor.dart';
+import 'package:sky_network/src/interceptors/user_agent_enrichment_interceptor.dart';
 import 'package:sky_network/src/options/network_options.dart';
 
 /// Factory interface for creating and configuring [Dio] HTTP clients.
@@ -39,6 +41,8 @@ class DioFactoryImpl implements DioFactory {
       thresholdBytes: options.jsonBgParserThresholdBytes,
     );
 
+    dio.interceptors.add(UserAgentEnrichmentInterceptor(options));
+
     if (options.baseUrlResolver != null) {
       dio.interceptors.add(DynamicUrlInterceptor(options));
     }
@@ -46,6 +50,8 @@ class DioFactoryImpl implements DioFactory {
     dio.interceptors.add(
       RetryInterceptor(dio: dio, options: options),
     );
+
+    dio.interceptors.add(TelemetryInterceptor());
 
     if (!kIsWeb && options.sslFingerprints.isNotEmpty) {
       dio.interceptors.add(

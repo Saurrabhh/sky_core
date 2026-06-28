@@ -8,4 +8,7 @@ export 'src/handler/api_call_handler.dart';
 export 'src/interceptors/auth_interceptor.dart';
 export 'src/interceptors/dynamic_url_interceptor.dart';
 export 'src/interceptors/retry_interceptor.dart';
+export 'src/interceptors/telemetry_interceptor.dart';
+export 'src/interceptors/user_agent_enrichment_interceptor.dart';
 export 'src/options/network_options.dart';
+export 'src/utils/network_time.dart';
