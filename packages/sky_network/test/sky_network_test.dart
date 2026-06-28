@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http_certificate_pinning/http_certificate_pinning.dart';
@@ -177,78 +178,96 @@ void main() {
   });
 
   group('DioFactory Implementation', () {
-    test('creates configured Dio instance without pretty logger by default', () {
-      const dioFactory = DioFactoryImpl();
-      final dio = dioFactory.create(
-        options: const NetworkOptions(
-          baseUrl: 'https://api.example.com',
-          connectTimeout: Duration(seconds: 15),
-          enableLogging: false,
-        ),
-      );
+    test(
+      'creates configured Dio instance without pretty logger by default',
+      () {
+        const dioFactory = DioFactoryImpl();
+        final dio = dioFactory.create(
+          options: const NetworkOptions(
+            baseUrl: 'https://api.example.com',
+            connectTimeout: Duration(seconds: 15),
+          ),
+        );
 
-      expect(dio.options.baseUrl, equals('https://api.example.com'));
-      expect(dio.options.connectTimeout, equals(const Duration(seconds: 15)));
+        expect(dio.options.baseUrl, equals('https://api.example.com'));
+        expect(dio.options.connectTimeout, equals(const Duration(seconds: 15)));
 
-      final prettyLogger = dio.interceptors.where((i) => i.runtimeType.toString() == 'PrettyDioLogger');
-      expect(prettyLogger, isEmpty);
-    });
+        final prettyLogger = dio.interceptors.where(
+          (i) => i.runtimeType.toString() == 'PrettyDioLogger',
+        );
+        expect(prettyLogger, isEmpty);
+      },
+    );
 
-    test('creates configured Dio instance with pretty logger when enableLogging is true', () {
-      const dioFactory = DioFactoryImpl();
-      final dio = dioFactory.create(
-        options: const NetworkOptions(
-          baseUrl: 'https://api.example.com',
-          connectTimeout: Duration(seconds: 15),
-          enableLogging: true,
-        ),
-      );
+    test(
+      'creates configured Dio instance with pretty logger when enableLogging '
+      'is true',
+      () {
+        const dioFactory = DioFactoryImpl();
+        final dio = dioFactory.create(
+          options: const NetworkOptions(
+            baseUrl: 'https://api.example.com',
+            connectTimeout: Duration(seconds: 15),
+            enableLogging: true,
+          ),
+        );
 
-      expect(dio.options.baseUrl, equals('https://api.example.com'));
-      expect(dio.options.connectTimeout, equals(const Duration(seconds: 15)));
+        expect(dio.options.baseUrl, equals('https://api.example.com'));
+        expect(dio.options.connectTimeout, equals(const Duration(seconds: 15)));
 
-      final prettyLogger = dio.interceptors.where((i) => i.runtimeType.toString() == 'PrettyDioLogger');
-      expect(prettyLogger, isNotEmpty);
-    });
+        final prettyLogger = dio.interceptors.where(
+          (i) => i.runtimeType.toString() == 'PrettyDioLogger',
+        );
+        expect(prettyLogger, isNotEmpty);
+      },
+    );
 
-    test('creates configured Dio instance with CertificatePinningInterceptor when sslFingerprints is not empty', () {
-      const dioFactory = DioFactoryImpl();
-      final dio = dioFactory.create(
-        options: const NetworkOptions(
-          baseUrl: 'https://api.example.com',
-          connectTimeout: Duration(seconds: 15),
-          sslFingerprints: ['9A:3D:5F:8B'],
-        ),
-      );
+    test(
+      'creates configured Dio instance with CertificatePinningInterceptor when '
+      'sslFingerprints is not empty',
+      () {
+        const dioFactory = DioFactoryImpl();
+        final dio = dioFactory.create(
+          options: const NetworkOptions(
+            baseUrl: 'https://api.example.com',
+            connectTimeout: Duration(seconds: 15),
+            sslFingerprints: ['9A:3D:5F:8B'],
+          ),
+        );
 
-      final pinLogger = dio.interceptors.whereType<CertificatePinningInterceptor>();
-      expect(pinLogger, isNotEmpty);
-    });
+        final pinLogger = dio.interceptors
+            .whereType<CertificatePinningInterceptor>();
+        expect(pinLogger, isNotEmpty);
+      },
+    );
   });
 
   group('SkyBackgroundTransformer', () {
-    test('parses json correctly and uses background decoding fallback', () async {
-      final transformer = SkyBackgroundTransformer(thresholdBytes: 10);
-      final jsonMap = {'message': 'hello', 'status': 'ok'};
-      final responseBody = ResponseBody.fromString(
-        jsonEncode(jsonMap),
-        200,
-        headers: {
-          Headers.contentTypeHeader: [Headers.jsonContentType],
-        },
-      );
+    test(
+      'parses json correctly and uses background decoding fallback',
+      () async {
+        final transformer = SkyBackgroundTransformer(thresholdBytes: 10);
+        final jsonMap = {'message': 'hello', 'status': 'ok'};
+        final responseBody = ResponseBody.fromString(
+          jsonEncode(jsonMap),
+          200,
+          headers: {
+            Headers.contentTypeHeader: [Headers.jsonContentType],
+          },
+        );
 
-      final result = await transformer.transformResponse(
-        RequestOptions(path: '/test', responseType: ResponseType.json),
-        responseBody,
-      );
+        final result = await transformer.transformResponse(
+          RequestOptions(path: '/test', responseType: ResponseType.json),
+          responseBody,
+        );
 
-      expect(result, equals(jsonMap));
-    });
+        expect(result, equals(jsonMap));
+      },
+    );
 
     test('ignores non-json response type', () async {
       final transformer = SkyBackgroundTransformer(thresholdBytes: 10);
-      final rawText = 'plain text response';
+      const rawText = 'plain text response';
       final responseBody = ResponseBody.fromString(
         rawText,
         200,
@@ -267,38 +286,45 @@ void main() {
   });
 
   group('RetryInterceptor', () {
-    test('retries transient 503 error and succeeds on second attempt', () async {
-      final dio = Dio();
-      var attempts = 0;
-      dio.interceptors.add(
-        RetryInterceptor(
-          dio: dio,
-          options: const NetworkOptions(
-            maxRetries: 2,
-            initialRetryDelay: Duration(milliseconds: 5),
-            retryBackoffFactor: 1.5,
-            retryableStatuses: [503],
+    test(
+      'retries transient 503 error and succeeds on second attempt',
+      () async {
+        final dio = Dio();
+        var attempts = 0;
+        dio.interceptors.add(
+          RetryInterceptor(
+            dio: dio,
+            options: const NetworkOptions(
+              maxRetries: 2,
+              initialRetryDelay: Duration(milliseconds: 5),
+              retryBackoffFactor: 1.5,
+              retryableStatuses: [503],
+            ),
           ),
-        ),
-      );
+        );
 
-      dio.httpClientAdapter = MockAdapter(
-        handler: (options) async {
-          attempts++;
-          if (attempts == 1) {
-            return ResponseBody.fromString('', 503);
-          } else {
-            return ResponseBody.fromString(jsonEncode({'status': 'ok'}), 200, headers: {
-              Headers.contentTypeHeader: [Headers.jsonContentType],
-            });
-          }
-        },
-      );
+        dio.httpClientAdapter = MockAdapter(
+          handler: (options) async {
+            attempts++;
+            if (attempts == 1) {
+              return ResponseBody.fromString('', 503);
+            } else {
+              return ResponseBody.fromString(
+                jsonEncode({'status': 'ok'}),
+                200,
+                headers: {
+                  Headers.contentTypeHeader: [Headers.jsonContentType],
+                },
+              );
+            }
+          },
+        );
 
-      final response = await dio.get<dynamic>('/test');
-      expect(response.statusCode, equals(200));
-      expect(attempts, equals(2));
-    });
+        final response = await dio.get<dynamic>('/test');
+        expect(response.statusCode, equals(200));
+        expect(attempts, equals(2));
+      },
+    );
 
     test('gives up after max retries are exhausted', () async {
       final dio = Dio();
@@ -309,7 +335,7 @@ void main() {
           options: const NetworkOptions(
             maxRetries: 2,
             initialRetryDelay: Duration(milliseconds: 1),
-            retryBackoffFactor: 1.0,
+            retryBackoffFactor: 1,
             retryableStatuses: [503],
           ),
         ),
@@ -328,7 +354,10 @@ void main() {
       } on DioException catch (e) {
         expect(e.response?.statusCode, equals(503));
       }
-      expect(attempts, equals(3)); // 1 initial request + 2 retries = 3 total attempts
+      expect(
+        attempts,
+        equals(3),
+      ); // 1 initial request + 2 retries = 3 total attempts
     });
 
     test('respects disableRetry flag and does not retry', () async {
@@ -340,7 +369,7 @@ void main() {
           options: const NetworkOptions(
             maxRetries: 2,
             initialRetryDelay: Duration(milliseconds: 1),
-            retryBackoffFactor: 1.0,
+            retryBackoffFactor: 1,
             retryableStatuses: [503],
           ),
         ),
@@ -362,7 +391,10 @@ void main() {
       } on DioException catch (e) {
         expect(e.response?.statusCode, equals(503));
       }
-      expect(attempts, equals(1)); // should only be 1 attempt because retries are disabled
+      expect(
+        attempts,
+        equals(1),
+      ); // should only be 1 attempt because retries are disabled
     });
   });
 
@@ -473,9 +505,11 @@ void main() {
 
     setUp(() {
       trackedEvents = [];
-      mockAnalytics = _TestAnalytics(onTrack: (name, params) {
-        trackedEvents.add({'name': name, 'params': params});
-      });
+      mockAnalytics = _TestAnalytics(
+        onTrack: (name, params) {
+          trackedEvents.add({'name': name, 'params': params});
+        },
+      );
       SkyAnalyticsRegistry.instance.registerProvider(mockAnalytics);
     });
 
@@ -503,9 +537,11 @@ void main() {
       await dio.get<dynamic>('/users/123/posts/abc-uuid-hash-value-123456');
 
       // Verify event was logged to analytics
-      final performanceEvent = trackedEvents.firstWhere((e) => e['name'] == 'api_performance');
+      final performanceEvent = trackedEvents.firstWhere(
+        (e) => e['name'] == 'api_performance',
+      );
       final params = performanceEvent['params'] as Map<String, dynamic>;
-      
+
       expect(params['method'], equals('GET'));
       expect(params['path'], equals('/users/:id/posts/:id'));
       expect(params['statusCode'], equals(200));
@@ -562,15 +598,23 @@ void main() {
 
 class _TestAnalytics implements SkyAnalytics {
   _TestAnalytics({required this.onTrack});
+
   final void Function(String name, Map<String, dynamic>? parameters) onTrack;
 
   @override
-  Future<void> trackEvent(String name, {Map<String, dynamic>? parameters}) async {
+  Future<void> trackEvent(
+    String name, {
+    Map<String, dynamic>? parameters,
+  }) async {
     onTrack(name, parameters);
   }
 
   @override
-  Future<void> trackScreen(String name, {String? screenClass, Map<String, dynamic>? parameters}) async {}
+  Future<void> trackScreen(
+    String name, {
+    String? screenClass,
+    Map<String, dynamic>? parameters,
+  }) async {}
 
   @override
   Future<void> setUserId(String userId) async {}

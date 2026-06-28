@@ -3,8 +3,9 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:sky_network/src/options/network_options.dart';
 
-/// Interceptor that dynamically resolves and replaces the base URL of outgoing requests
-/// based on the [NetworkOptions.baseUrlResolver] callback, ignoring absolute paths.
+/// Interceptor that dynamically resolves and replaces the base URL of outgoing
+/// requests based on the [NetworkOptions.baseUrlResolver] callback, ignoring
+/// absolute paths.
 class DynamicUrlInterceptor extends Interceptor {
   /// Creates a [DynamicUrlInterceptor] with the specified [options].
   DynamicUrlInterceptor(this.options);
@@ -26,7 +27,8 @@ class DynamicUrlInterceptor extends Interceptor {
       // 1. Resolver is explicitly bypassed via extra options.
       // 2. The request path is already an absolute URL (e.g. starts with http:// or https://).
       final isBypassed = options.extra['bypassBaseUrlResolver'] == true;
-      final isAbsoluteUrl = path.startsWith('http://') ||
+      final isAbsoluteUrl =
+          path.startsWith('http://') ||
           path.startsWith('https://') ||
           (Uri.tryParse(path)?.isAbsolute ?? false);
 

@@ -45,7 +45,8 @@ class NetworkOptions {
   /// Whether to enable network logging using PrettyDioLogger.
   final bool enableLogging;
 
-  /// The size threshold in bytes above which JSON parsing is delegated to a background Isolate.
+  /// The size threshold in bytes above which JSON parsing is delegated to a
+  /// background Isolate.
   final int jsonBgParserThresholdBytes;
 
   /// The maximum number of retry attempts for transient failures.

@@ -18,10 +18,10 @@ class SkyBackgroundTransformer extends BackgroundTransformer {
   @override
   Future<dynamic> transformResponse(
     RequestOptions options,
-    ResponseBody response,
+    ResponseBody responseBody,
   ) async {
     if (options.responseType == ResponseType.json) {
-      final bytes = await _collectBytes(response.stream);
+      final bytes = await _collectBytes(responseBody.stream);
       final rawString = utf8.decode(bytes);
 
       if (!kIsWeb && bytes.length >= thresholdBytes) {
@@ -31,14 +31,12 @@ class SkyBackgroundTransformer extends BackgroundTransformer {
       }
     }
 
-    return super.transformResponse(options, response);
+    return super.transformResponse(options, responseBody);
   }
 
   static Future<Uint8List> _collectBytes(Stream<Uint8List> stream) async {
     final builder = BytesBuilder(copy: false);
-    await for (final chunk in stream) {
-      builder.add(chunk);
-    }
+    await stream.forEach(builder.add);
     return builder.takeBytes();
   }
 

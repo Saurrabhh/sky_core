@@ -1,9 +1,9 @@
-import 'dart:ui';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:sky_network/src/options/network_options.dart';
 
-/// Interceptor that automatically enriches request headers with client metadata:
+/// Interceptor that automatically enriches request headers with client
+/// metadata:
 /// - User-Agent (detailing platform and version)
 /// - Accept-Language (matching current device locale)
 /// - X-Client-Timezone (specifying device timezone offset)
@@ -39,7 +39,7 @@ class UserAgentEnrichmentInterceptor extends Interceptor {
   String _getLocalLanguage() {
     try {
       return PlatformDispatcher.instance.locale.toLanguageTag();
-    } catch (_) {
+    } on Exception catch (_) {
       return 'en-US';
     }
   }

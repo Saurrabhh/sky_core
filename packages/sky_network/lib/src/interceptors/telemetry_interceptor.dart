@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:sky_network/src/utils/network_time.dart';
 import 'package:sky_telemetry/sky_telemetry.dart';
 
-/// Interceptor that captures HTTP performance metrics and synchronizes server clock drift:
+/// Interceptor that captures HTTP performance metrics and synchronizes server
+/// clock drift:
 /// - Latency (via Stopwatch)
 /// - Request and Response payload sizes
 /// - Status codes and error classification
@@ -19,8 +21,12 @@ class TelemetryInterceptor extends Interceptor {
   }
 
   @override
-  void onResponse(Response<dynamic> response, ResponseInterceptorHandler handler) {
-    final stopwatch = response.requestOptions.extra['_telemetry_stopwatch'] as Stopwatch?;
+  void onResponse(
+    Response<dynamic> response,
+    ResponseInterceptorHandler handler,
+  ) {
+    final stopwatch =
+        response.requestOptions.extra['_telemetry_stopwatch'] as Stopwatch?;
     stopwatch?.stop();
     final durationMs = stopwatch?.elapsedMilliseconds ?? -1;
 
@@ -32,14 +38,17 @@ class TelemetryInterceptor extends Interceptor {
 
     // Track latency and metrics in analytics registry
     unawaited(
-      SkyAnalyticsRegistry.instance.trackEvent('api_performance', parameters: {
-        'method': response.requestOptions.method,
-        'path': path,
-        'statusCode': response.statusCode,
-        'latencyMs': durationMs,
-        'requestSizeBytes': requestSize,
-        'responseSizeBytes': responseSize,
-      }),
+      SkyAnalyticsRegistry.instance.trackEvent(
+        'api_performance',
+        parameters: {
+          'method': response.requestOptions.method,
+          'path': path,
+          'statusCode': response.statusCode,
+          'latencyMs': durationMs,
+          'requestSizeBytes': requestSize,
+          'responseSizeBytes': responseSize,
+        },
+      ),
     );
 
     SkyLogging.instance.info(
@@ -53,7 +62,8 @@ class TelemetryInterceptor extends Interceptor {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
-    final stopwatch = err.requestOptions.extra['_telemetry_stopwatch'] as Stopwatch?;
+    final stopwatch =
+        err.requestOptions.extra['_telemetry_stopwatch'] as Stopwatch?;
     stopwatch?.stop();
     final durationMs = stopwatch?.elapsedMilliseconds ?? -1;
 
@@ -63,20 +73,25 @@ class TelemetryInterceptor extends Interceptor {
     }
 
     final requestSize = _calculateRequestSize(err.requestOptions);
-    final responseSize = response != null ? _calculateResponseSize(response) : 0;
+    final responseSize = response != null
+        ? _calculateResponseSize(response)
+        : 0;
     final path = _normalizePath(err.requestOptions.uri.path);
     final statusCode = response?.statusCode ?? -1;
 
     unawaited(
-      SkyAnalyticsRegistry.instance.trackEvent('api_performance_error', parameters: {
-        'method': err.requestOptions.method,
-        'path': path,
-        'statusCode': statusCode,
-        'errorType': err.type.toString(),
-        'latencyMs': durationMs,
-        'requestSizeBytes': requestSize,
-        'responseSizeBytes': responseSize,
-      }),
+      SkyAnalyticsRegistry.instance.trackEvent(
+        'api_performance_error',
+        parameters: {
+          'method': err.requestOptions.method,
+          'path': path,
+          'statusCode': statusCode,
+          'errorType': err.type.toString(),
+          'latencyMs': durationMs,
+          'requestSizeBytes': requestSize,
+          'responseSizeBytes': responseSize,
+        },
+      ),
     );
 
     SkyLogging.instance.error(
@@ -136,7 +151,7 @@ class TelemetryInterceptor extends Interceptor {
 
   String _normalizePath(String path) {
     if (path.isEmpty) return '/';
-    
+
     // Split and filter empty segments
     final segments = path.split('/').where((s) => s.isNotEmpty).toList();
     if (segments.isEmpty) return '/';
@@ -146,17 +161,18 @@ class TelemetryInterceptor extends Interceptor {
       if (int.tryParse(segment) != null) {
         return ':id';
       }
-      
+
       // 2. Check if UUID
       final uuidRegex = RegExp(
-        r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$',
+        r'''^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$''',
       );
       if (uuidRegex.hasMatch(segment)) {
         return ':uuid';
       }
 
       // 3. Check if typical alphanumeric ID/Hash (length >= 20, e.g. Mongo ObjectId or Firebase uid)
-      if (segment.length >= 20 && RegExp(r'^[0-9a-zA-Z_-]+$').hasMatch(segment)) {
+      if (segment.length >= 20 &&
+          RegExp(r'^[0-9a-zA-Z_-]+$').hasMatch(segment)) {
         return ':id';
       }
 
@@ -175,7 +191,7 @@ class TelemetryInterceptor extends Interceptor {
       final day = int.tryParse(parts[1]);
       final monthStr = parts[2].toLowerCase();
       final year = int.tryParse(parts[3]);
-      
+
       final timeParts = parts[4].split(':');
       if (timeParts.length < 3) return null;
 
@@ -183,13 +199,27 @@ class TelemetryInterceptor extends Interceptor {
       final minute = int.tryParse(timeParts[1]);
       final second = int.tryParse(timeParts[2]);
 
-      if (day == null || year == null || hour == null || minute == null || second == null) {
+      if (day == null ||
+          year == null ||
+          hour == null ||
+          minute == null ||
+          second == null) {
         return null;
       }
 
       const months = {
-        'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4, 'may': 5, 'jun': 6,
-        'jul': 7, 'aug': 8, 'sep': 9, 'oct': 10, 'nov': 11, 'dec': 12
+        'jan': 1,
+        'feb': 2,
+        'mar': 3,
+        'apr': 4,
+        'may': 5,
+        'jun': 6,
+        'jul': 7,
+        'aug': 8,
+        'sep': 9,
+        'oct': 10,
+        'nov': 11,
+        'dec': 12,
       };
 
       final month = months[monthStr];
