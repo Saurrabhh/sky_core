@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:sky_network/src/utils/network_time.dart';
@@ -30,14 +31,16 @@ class TelemetryInterceptor extends Interceptor {
     final path = _normalizePath(response.requestOptions.uri.path);
 
     // Track latency and metrics in analytics registry
-    SkyAnalyticsRegistry.instance.trackEvent('api_performance', parameters: {
-      'method': response.requestOptions.method,
-      'path': path,
-      'statusCode': response.statusCode,
-      'latencyMs': durationMs,
-      'requestSizeBytes': requestSize,
-      'responseSizeBytes': responseSize,
-    });
+    unawaited(
+      SkyAnalyticsRegistry.instance.trackEvent('api_performance', parameters: {
+        'method': response.requestOptions.method,
+        'path': path,
+        'statusCode': response.statusCode,
+        'latencyMs': durationMs,
+        'requestSizeBytes': requestSize,
+        'responseSizeBytes': responseSize,
+      }),
+    );
 
     SkyLogging.instance.info(
       'API Performance: ${response.requestOptions.method} $path | '
@@ -64,15 +67,17 @@ class TelemetryInterceptor extends Interceptor {
     final path = _normalizePath(err.requestOptions.uri.path);
     final statusCode = response?.statusCode ?? -1;
 
-    SkyAnalyticsRegistry.instance.trackEvent('api_performance_error', parameters: {
-      'method': err.requestOptions.method,
-      'path': path,
-      'statusCode': statusCode,
-      'errorType': err.type.toString(),
-      'latencyMs': durationMs,
-      'requestSizeBytes': requestSize,
-      'responseSizeBytes': responseSize,
-    });
+    unawaited(
+      SkyAnalyticsRegistry.instance.trackEvent('api_performance_error', parameters: {
+        'method': err.requestOptions.method,
+        'path': path,
+        'statusCode': statusCode,
+        'errorType': err.type.toString(),
+        'latencyMs': durationMs,
+        'requestSizeBytes': requestSize,
+        'responseSizeBytes': responseSize,
+      }),
+    );
 
     SkyLogging.instance.error(
       'API Failure: ${err.requestOptions.method} $path | '
@@ -102,7 +107,7 @@ class TelemetryInterceptor extends Interceptor {
     if (data is Map) {
       try {
         return utf8.encode(jsonEncode(data)).length;
-      } catch (_) {
+      } on Object catch (_) {
         return 0;
       }
     }
@@ -122,7 +127,7 @@ class TelemetryInterceptor extends Interceptor {
     if (data is Map || data is List) {
       try {
         return utf8.encode(jsonEncode(data)).length;
-      } catch (_) {
+      } on Object catch (_) {
         return 0;
       }
     }
@@ -158,7 +163,7 @@ class TelemetryInterceptor extends Interceptor {
       return segment;
     });
 
-    return '/' + normalizedSegments.join('/');
+    return '/${normalizedSegments.join('/')}';
   }
 
   DateTime? _parseHttpDate(String dateStr) {
@@ -192,7 +197,7 @@ class TelemetryInterceptor extends Interceptor {
 
       // HTTP dates are always in UTC/GMT
       return DateTime.utc(year, month, day, hour, minute, second);
-    } catch (_) {
+    } on Object catch (_) {
       return null;
     }
   }
