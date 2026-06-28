@@ -225,6 +225,223 @@ void main() {
     });
   });
 
+  group('SkyBackgroundTransformer', () {
+    test('parses json correctly and uses background decoding fallback', () async {
+      final transformer = SkyBackgroundTransformer(thresholdBytes: 10);
+      final jsonMap = {'message': 'hello', 'status': 'ok'};
+      final responseBody = ResponseBody.fromString(
+        jsonEncode(jsonMap),
+        200,
+        headers: {
+          Headers.contentTypeHeader: [Headers.jsonContentType],
+        },
+      );
+
+      final result = await transformer.transformResponse(
+        RequestOptions(path: '/test', responseType: ResponseType.json),
+        responseBody,
+      );
+
+      expect(result, equals(jsonMap));
+    });
+
+    test('ignores non-json response type', () async {
+      final transformer = SkyBackgroundTransformer(thresholdBytes: 10);
+      final rawText = 'plain text response';
+      final responseBody = ResponseBody.fromString(
+        rawText,
+        200,
+        headers: {
+          Headers.contentTypeHeader: [Headers.textPlainContentType],
+        },
+      );
+
+      final result = await transformer.transformResponse(
+        RequestOptions(path: '/test', responseType: ResponseType.plain),
+        responseBody,
+      );
+
+      expect(result, equals(rawText));
+    });
+  });
+
+  group('RetryInterceptor', () {
+    test('retries transient 503 error and succeeds on second attempt', () async {
+      final dio = Dio();
+      var attempts = 0;
+      dio.interceptors.add(
+        RetryInterceptor(
+          dio: dio,
+          options: const NetworkOptions(
+            maxRetries: 2,
+            initialRetryDelay: Duration(milliseconds: 5),
+            retryBackoffFactor: 1.5,
+            retryableStatuses: [503],
+          ),
+        ),
+      );
+
+      dio.httpClientAdapter = MockAdapter(
+        handler: (options) async {
+          attempts++;
+          if (attempts == 1) {
+            return ResponseBody.fromString('', 503);
+          } else {
+            return ResponseBody.fromString(jsonEncode({'status': 'ok'}), 200, headers: {
+              Headers.contentTypeHeader: [Headers.jsonContentType],
+            });
+          }
+        },
+      );
+
+      final response = await dio.get<dynamic>('/test');
+      expect(response.statusCode, equals(200));
+      expect(attempts, equals(2));
+    });
+
+    test('gives up after max retries are exhausted', () async {
+      final dio = Dio();
+      var attempts = 0;
+      dio.interceptors.add(
+        RetryInterceptor(
+          dio: dio,
+          options: const NetworkOptions(
+            maxRetries: 2,
+            initialRetryDelay: Duration(milliseconds: 1),
+            retryBackoffFactor: 1.0,
+            retryableStatuses: [503],
+          ),
+        ),
+      );
+
+      dio.httpClientAdapter = MockAdapter(
+        handler: (options) async {
+          attempts++;
+          return ResponseBody.fromString('', 503);
+        },
+      );
+
+      try {
+        await dio.get<dynamic>('/test');
+        fail('Should have failed');
+      } on DioException catch (e) {
+        expect(e.response?.statusCode, equals(503));
+      }
+      expect(attempts, equals(3)); // 1 initial request + 2 retries = 3 total attempts
+    });
+
+    test('respects disableRetry flag and does not retry', () async {
+      final dio = Dio();
+      var attempts = 0;
+      dio.interceptors.add(
+        RetryInterceptor(
+          dio: dio,
+          options: const NetworkOptions(
+            maxRetries: 2,
+            initialRetryDelay: Duration(milliseconds: 1),
+            retryBackoffFactor: 1.0,
+            retryableStatuses: [503],
+          ),
+        ),
+      );
+
+      dio.httpClientAdapter = MockAdapter(
+        handler: (options) async {
+          attempts++;
+          return ResponseBody.fromString('', 503);
+        },
+      );
+
+      try {
+        await dio.get<dynamic>(
+          '/test',
+          options: Options(extra: {'disableRetry': true}),
+        );
+        fail('Should have failed');
+      } on DioException catch (e) {
+        expect(e.response?.statusCode, equals(503));
+      }
+      expect(attempts, equals(1)); // should only be 1 attempt because retries are disabled
+    });
+  });
+
+  group('DynamicUrlInterceptor', () {
+    test('resolves dynamic base URL when resolver is provided', () async {
+      final dio = Dio(BaseOptions(baseUrl: 'https://initial.example.com'));
+      dio.interceptors.add(
+        DynamicUrlInterceptor(
+          NetworkOptions(
+            baseUrl: 'https://initial.example.com',
+            baseUrlResolver: () => 'https://dynamic.example.com',
+          ),
+        ),
+      );
+
+      var resolvedUrl = '';
+      dio.httpClientAdapter = MockAdapter(
+        handler: (options) async {
+          resolvedUrl = options.baseUrl;
+          return ResponseBody.fromString(jsonEncode({'status': 'ok'}), 200);
+        },
+      );
+
+      await dio.get<dynamic>('/data');
+      expect(resolvedUrl, equals('https://dynamic.example.com'));
+    });
+
+    test('ignores resolver if path is an absolute URL', () async {
+      final dio = Dio(BaseOptions(baseUrl: 'https://initial.example.com'));
+      dio.interceptors.add(
+        DynamicUrlInterceptor(
+          NetworkOptions(
+            baseUrl: 'https://initial.example.com',
+            baseUrlResolver: () => 'https://dynamic.example.com',
+          ),
+        ),
+      );
+
+      var resolvedUrl = '';
+      var resolvedPath = '';
+      dio.httpClientAdapter = MockAdapter(
+        handler: (options) async {
+          resolvedUrl = options.baseUrl;
+          resolvedPath = options.path;
+          return ResponseBody.fromString(jsonEncode({'status': 'ok'}), 200);
+        },
+      );
+
+      await dio.get<dynamic>('https://external.example.com/api');
+      expect(resolvedUrl, equals('https://initial.example.com'));
+      expect(resolvedPath, equals('https://external.example.com/api'));
+    });
+
+    test('ignores resolver if bypass flag is present', () async {
+      final dio = Dio(BaseOptions(baseUrl: 'https://initial.example.com'));
+      dio.interceptors.add(
+        DynamicUrlInterceptor(
+          NetworkOptions(
+            baseUrl: 'https://initial.example.com',
+            baseUrlResolver: () => 'https://dynamic.example.com',
+          ),
+        ),
+      );
+
+      var resolvedUrl = '';
+      dio.httpClientAdapter = MockAdapter(
+        handler: (options) async {
+          resolvedUrl = options.baseUrl;
+          return ResponseBody.fromString(jsonEncode({'status': 'ok'}), 200);
+        },
+      );
+
+      await dio.get<dynamic>(
+        '/data',
+        options: Options(extra: {'bypassBaseUrlResolver': true}),
+      );
+      expect(resolvedUrl, equals('https://initial.example.com'));
+    });
+  });
+
   group('ApiCallHandler & ApiCallHandlerImpl Integration', () {
     test('executes successful request and resolves Right data', () async {
       const apiHandler = ApiCallHandlerImpl();

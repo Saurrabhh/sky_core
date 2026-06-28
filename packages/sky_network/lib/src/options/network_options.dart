@@ -1,3 +1,5 @@
+import 'dart:async';
+
 /// Configuration settings for network operations.
 class NetworkOptions {
   /// Creates a [NetworkOptions] instance with the specified settings.
@@ -10,6 +12,12 @@ class NetworkOptions {
     this.queryParameters,
     this.sslFingerprints = const [],
     this.enableLogging = false,
+    this.jsonBgParserThresholdBytes = 50 * 1024,
+    this.maxRetries = 3,
+    this.initialRetryDelay = const Duration(seconds: 1),
+    this.retryBackoffFactor = 2.0,
+    this.retryableStatuses = const [502, 503, 504],
+    this.baseUrlResolver,
   });
 
   /// The base URL for network requests.
@@ -35,4 +43,22 @@ class NetworkOptions {
 
   /// Whether to enable network logging using PrettyDioLogger.
   final bool enableLogging;
+
+  /// The size threshold in bytes above which JSON parsing is delegated to a background Isolate.
+  final int jsonBgParserThresholdBytes;
+
+  /// The maximum number of retry attempts for transient failures.
+  final int maxRetries;
+
+  /// The initial delay duration before the first retry attempt.
+  final Duration initialRetryDelay;
+
+  /// The multiplier factor applied to the retry delay on successive attempts.
+  final double retryBackoffFactor;
+
+  /// The list of HTTP status codes that represent retryable transient failures.
+  final List<int> retryableStatuses;
+
+  /// Callback function used to dynamically resolve the base URL per-request.
+  final FutureOr<String> Function()? baseUrlResolver;
 }
