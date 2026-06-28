@@ -8,6 +8,8 @@ class NetworkOptions {
     this.sendTimeout = const Duration(seconds: 30),
     this.headers,
     this.queryParameters,
+    this.sslFingerprints = const [],
+    this.enableLogging = false,
   });
 
   /// The base URL for network requests.
@@ -27,4 +29,10 @@ class NetworkOptions {
 
   /// Default query parameters to include in requests.
   final Map<String, dynamic>? queryParameters;
+
+  /// SHA-256 fingerprints of allowed SSL certificates (e.g. ['9A:3D:..']).
+  final List<String> sslFingerprints;
+
+  /// Whether to enable network logging using PrettyDioLogger.
+  final bool enableLogging;
 }

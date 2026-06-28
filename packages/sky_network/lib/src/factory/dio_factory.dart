@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:http_certificate_pinning/http_certificate_pinning.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:sky_network/src/options/network_options.dart';
 
@@ -31,7 +32,15 @@ class DioFactoryImpl implements DioFactory {
       ..sendTimeout = options.sendTimeout
       ..headers = options.headers ?? {};
 
-    if (kDebugMode) {
+    if (!kIsWeb && options.sslFingerprints.isNotEmpty) {
+      dio.interceptors.add(
+        CertificatePinningInterceptor(
+          allowedSHAFingerprints: options.sslFingerprints,
+        ),
+      );
+    }
+
+    if (options.enableLogging) {
       dio.interceptors.add(
         PrettyDioLogger(
           requestHeader: true,

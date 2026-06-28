@@ -16,6 +16,8 @@ dependencies:
 
   fpdart: ^1.1.0
 
+  http_certificate_pinning: ^3.0.1
+
   pretty_dio_logger: ^1.4.0
 
   sky_architecture: ^1.6.0

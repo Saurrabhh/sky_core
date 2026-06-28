@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http_certificate_pinning/http_certificate_pinning.dart';
 import 'package:sky_architecture/sky_architecture.dart';
 import 'package:sky_network/sky_network.dart';
 
@@ -175,19 +176,52 @@ void main() {
   });
 
   group('DioFactory Implementation', () {
-    test('creates configured Dio instance with pretty logger', () {
+    test('creates configured Dio instance without pretty logger by default', () {
       const dioFactory = DioFactoryImpl();
       final dio = dioFactory.create(
         options: const NetworkOptions(
           baseUrl: 'https://api.example.com',
           connectTimeout: Duration(seconds: 15),
+          enableLogging: false,
         ),
       );
 
       expect(dio.options.baseUrl, equals('https://api.example.com'));
       expect(dio.options.connectTimeout, equals(const Duration(seconds: 15)));
 
-      expect(dio.interceptors, isNotEmpty);
+      final prettyLogger = dio.interceptors.where((i) => i.runtimeType.toString() == 'PrettyDioLogger');
+      expect(prettyLogger, isEmpty);
+    });
+
+    test('creates configured Dio instance with pretty logger when enableLogging is true', () {
+      const dioFactory = DioFactoryImpl();
+      final dio = dioFactory.create(
+        options: const NetworkOptions(
+          baseUrl: 'https://api.example.com',
+          connectTimeout: Duration(seconds: 15),
+          enableLogging: true,
+        ),
+      );
+
+      expect(dio.options.baseUrl, equals('https://api.example.com'));
+      expect(dio.options.connectTimeout, equals(const Duration(seconds: 15)));
+
+      final prettyLogger = dio.interceptors.where((i) => i.runtimeType.toString() == 'PrettyDioLogger');
+      expect(prettyLogger, isNotEmpty);
+    });
+
+    test('creates configured Dio instance with CertificatePinningInterceptor when sslFingerprints is not empty', () {
+      const dioFactory = DioFactoryImpl();
+      final dio = dioFactory.create(
+        options: const NetworkOptions(
+          baseUrl: 'https://api.example.com',
+          connectTimeout: Duration(seconds: 15),
+          sslFingerprints: ['9A:3D:5F:8B'],
+        ),
+      );
+
+      final pinLogger = dio.interceptors.whereType<CertificatePinningInterceptor>();
+      expect(pinLogger, isNotEmpty);
     });
   });
 
