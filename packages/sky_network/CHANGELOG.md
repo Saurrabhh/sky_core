@@ -1,3 +1,7 @@
+## 1.1.2
+
+ - **FIX**(sky_network): error handling.
+
 ## 1.1.1
 
  - **FIX**(sky_network): warnings fix.

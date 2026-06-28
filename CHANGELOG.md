@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-06-29
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sky_network` - `v1.1.2`](#sky_network---v112)
+
+---
+
+#### `sky_network` - `v1.1.2`
+
+ - **FIX**(sky_network): error handling.
+
+
 ## 2026-06-28
 
 ### Changes
