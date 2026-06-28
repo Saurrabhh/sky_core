@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_network` - `v1.1.1`](#sky_network---v111)
+
+---
+
+#### `sky_network` - `v1.1.1`
+
+ - **FIX**(sky_network): warnings fix.
+
+
+## 2026-06-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_network` - `v1.1.0`](#sky_network---v110)
 
 ---

@@ -1,3 +1,7 @@
+## 1.1.1
+
+ - **FIX**(sky_network): warnings fix.
+
 ## 1.1.0
 
  - **FEAT**(sky_network): implement telemetry tracking, clock drift synchronization, and User-Agent enrichment.
