@@ -7,7 +7,7 @@ environment:
   flutter: '>=3.44.0'
 
 dev_dependencies:
-  melos: ^7.7.0
+  melos: ^8.1.0
 
 workspace:
   - packages/*

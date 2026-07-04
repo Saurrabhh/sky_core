@@ -64,6 +64,18 @@ void main() {
       expect(exception.code, equals('TIMEOUT'));
     });
 
+    test('maps transformTimeout exceptions to NetworkException', () {
+      final dioError = DioException(
+        requestOptions: RequestOptions(path: '/test'),
+        type: DioExceptionType.transformTimeout,
+        message: 'Transform timeout occurred',
+      );
+
+      final exception = dioError.toException();
+      expect(exception, isA<NetworkException>());
+      expect(exception.code, equals('TIMEOUT'));
+    });
+
     test('maps connection exceptions to NetworkException', () {
       final dioError = DioException(
         requestOptions: RequestOptions(path: '/test'),

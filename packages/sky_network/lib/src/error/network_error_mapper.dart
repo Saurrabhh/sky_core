@@ -12,6 +12,7 @@ extension DioExceptionX on DioException {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:
       case DioExceptionType.receiveTimeout:
+      case DioExceptionType.transformTimeout:
         return NetworkException(
           message: 'Connection timeout. Please check your internet connection.',
           code: 'TIMEOUT',
