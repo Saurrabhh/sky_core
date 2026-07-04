@@ -1,3 +1,7 @@
+## 1.1.4
+
+ - **FIX**(sky_network): handle DioExceptionType.transformTimeout in error mapping.
+
 ## 1.1.3
 
  - **FIX**(sky_network): DioFactory refactor.

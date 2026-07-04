@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_network` - `v1.1.4`](#sky_network---v114)
+
+---
+
+#### `sky_network` - `v1.1.4`
+
+ - **FIX**(sky_network): handle DioExceptionType.transformTimeout in error mapping.
+
+
+## 2026-07-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_network` - `v1.1.3`](#sky_network---v113)
 
 ---
