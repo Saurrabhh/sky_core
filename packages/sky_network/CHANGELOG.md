@@ -1,3 +1,7 @@
+## 1.1.3
+
+ - **FIX**(sky_network): DioFactory refactor.
+
 ## 1.1.2
 
  - **FIX**(sky_network): error handling.

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-07-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sky_network` - `v1.1.3`](#sky_network---v113)
+
+---
+
+#### `sky_network` - `v1.1.3`
+
+ - **FIX**(sky_network): DioFactory refactor.
+
+
 ## 2026-06-29
 
 ### Changes
