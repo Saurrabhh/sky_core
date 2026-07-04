@@ -65,9 +65,7 @@ class DioFactoryImpl implements DioFactory {
       );
     }
 
-    if (interceptors.isNotEmpty) {
-      dio.interceptors.addAll(interceptors);
-    }
+    dio.interceptors.addAll(interceptors);
 
     return dio;
   }
