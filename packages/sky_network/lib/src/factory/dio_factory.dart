@@ -55,6 +55,8 @@ class DioFactoryImpl implements DioFactory {
       );
     }
 
+    dio.interceptors.addAll(interceptors);
+
     if (options.enableLogging) {
       dio.interceptors.add(
         PrettyDioLogger(
@@ -64,8 +66,6 @@ class DioFactoryImpl implements DioFactory {
         ),
       );
     }
-
-    dio.interceptors.addAll(interceptors);
 
     return dio;
   }
