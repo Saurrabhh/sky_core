@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_lints` - `v1.1.0`](#sky_lints---v110)
+
+---
+
+#### `sky_lints` - `v1.1.0`
+
+ - **FEAT**(sky_lints): add navigator rule.
+
+
+## 2026-07-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_bloc` - `v2.0.11`](#sky_bloc---v2011)
  - [`sky_network` - `v1.1.7`](#sky_network---v117)
  - [`sky_telemetry` - `v1.1.2`](#sky_telemetry---v112)
