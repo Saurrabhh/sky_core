@@ -1,3 +1,7 @@
+## 1.1.2
+
+ - **FIX**(sky_lints): revert rule.
+
 ## 1.1.1
 
  - **FIX**(sky_lints): rename main.dart to match package name and add dependency constraints.
