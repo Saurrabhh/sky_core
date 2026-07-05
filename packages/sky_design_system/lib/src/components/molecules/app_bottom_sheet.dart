@@ -59,17 +59,19 @@ class AppBottomSheet extends StatelessWidget {
     String? title,
     bool showDragHandle = true,
     bool isDismissible = true,
-    bool enableDrag = true,
   }) {
     return showModalBottomSheet<T>(
       context: context,
       isDismissible: isDismissible,
-      enableDrag: enableDrag,
+      enableDrag: isDismissible,
       isScrollControlled: true,
-      showDragHandle: showDragHandle,
-      builder: (context) => AppBottomSheet(
-        title: title,
-        child: child,
+      showDragHandle: showDragHandle && isDismissible,
+      builder: (context) => PopScope(
+        canPop: isDismissible,
+        child: AppBottomSheet(
+          title: title,
+          child: child,
+        ),
       ),
     );
   }
