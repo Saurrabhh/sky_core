@@ -1,3 +1,7 @@
+## 1.1.1
+
+ - **FIX**(sky_telemetry): remove library.
+
 ## 1.1.0
 
  - **FEAT**(sky_telemetry): refactor logging, analytics, and crash reporting contracts to App prefix.

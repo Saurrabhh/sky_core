@@ -1,3 +1,7 @@
+## 1.1.6
+
+ - Update a dependency to the latest release.
+
 ## 1.1.5
 
  - **FIX**(sky_network): update telemetry interceptor and mock tests to App registries.

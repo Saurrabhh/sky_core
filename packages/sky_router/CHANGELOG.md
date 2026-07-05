@@ -1,3 +1,7 @@
+## 1.1.2
+
+ - **FIX**(sky_router): add LICENSE and README for pub compliance.
+
 ## 1.1.1
 
  - **FIX**(sky_router): update custom navigator observer to AppLogger and remove telemetry exports.
