@@ -1,3 +1,7 @@
+## 1.1.0
+
+ - **FEAT**(sky_telemetry): refactor logging, analytics, and crash reporting contracts to App prefix.
+
 ## 1.0.3
 
  - **DOCS**(sky_telemetry): add pub.dev-compliant dartdoc comments to public API.

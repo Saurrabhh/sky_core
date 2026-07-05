@@ -1,3 +1,7 @@
+## 1.1.5
+
+ - **FIX**(sky_network): update telemetry interceptor and mock tests to App registries.
+
 ## 1.1.4
 
  - **FIX**(sky_network): handle DioExceptionType.transformTimeout in error mapping.

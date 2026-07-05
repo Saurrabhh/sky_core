@@ -1,6 +1,6 @@
 name: sky_telemetry_firebase
 description: Firebase Analytics and Firebase Crashlytics implementation of AppAnalytics and AppCrashReporter.
-version: 1.0.0
+version: 1.1.0
 repository: https://github.com/Saurrabhh/sky_core/tree/master/packages/sky_telemetry_firebase
 resolution: workspace
 
@@ -14,7 +14,7 @@ dependencies:
   firebase_crashlytics: ^3.4.9
   flutter:
     sdk: flutter
-  sky_telemetry: ^1.0.3
+  sky_telemetry: ^1.1.0
 
 dev_dependencies:
   sky_lints:

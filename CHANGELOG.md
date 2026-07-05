@@ -15,6 +15,47 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_bloc` - `v2.0.9`](#sky_bloc---v209)
+ - [`sky_network` - `v1.1.5`](#sky_network---v115)
+ - [`sky_router` - `v1.1.1`](#sky_router---v111)
+ - [`sky_telemetry` - `v1.1.0`](#sky_telemetry---v110)
+ - [`sky_telemetry_firebase` - `v1.1.0`](#sky_telemetry_firebase---v110)
+
+---
+
+#### `sky_bloc` - `v2.0.9`
+
+ - **FIX**(sky_bloc): update Cubit/BLoC observer references to AppLogging.
+
+#### `sky_network` - `v1.1.5`
+
+ - **FIX**(sky_network): update telemetry interceptor and mock tests to App registries.
+
+#### `sky_router` - `v1.1.1`
+
+ - **FIX**(sky_router): update custom navigator observer to AppLogger and remove telemetry exports.
+
+#### `sky_telemetry` - `v1.1.0`
+
+ - **FEAT**(sky_telemetry): refactor logging, analytics, and crash reporting contracts to App prefix.
+
+#### `sky_telemetry_firebase` - `v1.1.0`
+
+ - **FEAT**(sky_telemetry_firebase): implement Firebase Analytics and Crashlytics concrete engines.
+
+
+## 2026-07-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_router` - `v1.1.0`](#sky_router---v110)
 
 ---

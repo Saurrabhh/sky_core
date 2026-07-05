@@ -1,3 +1,7 @@
+## 2.0.9
+
+ - **FIX**(sky_bloc): update Cubit/BLoC observer references to AppLogging.
+
 ## 2.0.8
 
  - Update a dependency to the latest release.

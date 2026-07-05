@@ -1,3 +1,7 @@
+## 1.1.1
+
+ - **FIX**(sky_router): update custom navigator observer to AppLogger and remove telemetry exports.
+
 ## 1.1.0
 
  - **FEAT**: export ConsoleLogger from sky_router.
