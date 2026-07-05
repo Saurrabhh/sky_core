@@ -10,7 +10,7 @@ import 'package:sky_telemetry/sky_telemetry.dart';
 /// - Latency (via Stopwatch)
 /// - Request and Response payload sizes
 /// - Status codes and error classification
-/// - Dispatches metrics via [SkyAnalyticsRegistry]
+/// - Dispatches metrics via [AppAnalyticsRegistry]
 /// - Normalizes URI paths to prevent cardinality explosion in analytics logs
 class TelemetryInterceptor extends Interceptor {
   @override
@@ -38,7 +38,7 @@ class TelemetryInterceptor extends Interceptor {
 
     // Track latency and metrics in analytics registry
     unawaited(
-      SkyAnalyticsRegistry.instance.trackEvent(
+      AppAnalyticsRegistry.instance.trackEvent(
         'api_performance',
         parameters: {
           'method': response.requestOptions.method,
@@ -51,7 +51,7 @@ class TelemetryInterceptor extends Interceptor {
       ),
     );
 
-    SkyLogging.instance.info(
+    AppLogging.instance.info(
       'API Performance: ${response.requestOptions.method} $path | '
       'Status: ${response.statusCode} | Latency: ${durationMs}ms | '
       'Up: ${requestSize}B | Down: ${responseSize}B',
@@ -80,7 +80,7 @@ class TelemetryInterceptor extends Interceptor {
     final statusCode = response?.statusCode ?? -1;
 
     unawaited(
-      SkyAnalyticsRegistry.instance.trackEvent(
+      AppAnalyticsRegistry.instance.trackEvent(
         'api_performance_error',
         parameters: {
           'method': err.requestOptions.method,
@@ -94,7 +94,7 @@ class TelemetryInterceptor extends Interceptor {
       ),
     );
 
-    SkyLogging.instance.error(
+    AppLogging.instance.error(
       'API Failure: ${err.requestOptions.method} $path | '
       'Status: $statusCode | ErrorType: ${err.type} | Latency: ${durationMs}ms',
       error: err.error,

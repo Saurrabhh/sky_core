@@ -513,7 +513,7 @@ void main() {
 
   group('TelemetryInterceptor & NetworkTime Sync', () {
     late List<Map<String, dynamic>> trackedEvents;
-    late SkyAnalytics mockAnalytics;
+    late AppAnalytics mockAnalytics;
 
     setUp(() {
       trackedEvents = [];
@@ -522,11 +522,11 @@ void main() {
           trackedEvents.add({'name': name, 'params': params});
         },
       );
-      SkyAnalyticsRegistry.instance.registerProvider(mockAnalytics);
+      AppAnalyticsRegistry.instance.registerProvider(mockAnalytics);
     });
 
     tearDown(() {
-      SkyAnalyticsRegistry.instance.unregisterProvider(mockAnalytics);
+      AppAnalyticsRegistry.instance.unregisterProvider(mockAnalytics);
     });
 
     test('captures latency and formats HTTP response size correctly', () async {
@@ -608,7 +608,7 @@ void main() {
   });
 }
 
-class _TestAnalytics implements SkyAnalytics {
+class _TestAnalytics implements AppAnalytics {
   _TestAnalytics({required this.onTrack});
 
   final void Function(String name, Map<String, dynamic>? parameters) onTrack;
@@ -636,4 +636,7 @@ class _TestAnalytics implements SkyAnalytics {
 
   @override
   Future<void> clearUser() async {}
+
+  @override
+  Future<void> clearUserProperty(String key) async {}
 }
