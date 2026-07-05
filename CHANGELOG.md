@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_lints` - `v1.1.1`](#sky_lints---v111)
+
+---
+
+#### `sky_lints` - `v1.1.1`
+
+ - **FIX**(sky_lints): rename main.dart to match package name and add dependency constraints.
+
+
+## 2026-07-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_lints` - `v1.1.0`](#sky_lints---v110)
 
 ---

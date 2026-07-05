@@ -1,3 +1,7 @@
+## 1.1.1
+
+ - **FIX**(sky_lints): rename main.dart to match package name and add dependency constraints.
+
 ## 1.1.0
 
  - **FEAT**(sky_lints): add navigator rule.
