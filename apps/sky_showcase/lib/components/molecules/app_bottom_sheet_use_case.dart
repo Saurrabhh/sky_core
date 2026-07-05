@@ -21,10 +21,6 @@ Widget appBottomSheetInteractiveUseCase(BuildContext context) {
     label: 'Is Dismissible',
     initialValue: true,
   );
-  final enableDrag = context.knobs.boolean(
-    label: 'Enable Drag',
-    initialValue: true,
-  );
 
   return Center(
     child: AppButton.primary(
@@ -35,7 +31,6 @@ Widget appBottomSheetInteractiveUseCase(BuildContext context) {
           title: title.isEmpty ? null : title,
           showDragHandle: showDragHandle,
           isDismissible: isDismissible,
-          enableDrag: enableDrag,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
