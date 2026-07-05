@@ -4,10 +4,10 @@ import 'package:sky_telemetry/sky_telemetry.dart';
 /// A [NavigatorObserver] that logs route changes (pushes, pops, replaces, removals)
 /// using a mandatory [SkyLogger] via dependency injection.
 class CustomNavigatorObserver extends NavigatorObserver {
-  /// Creates a [CustomNavigatorObserver] with a required [SkyLogger].
-  CustomNavigatorObserver({required SkyLogger logger}) : _logger = logger;
+  /// Creates a [CustomNavigatorObserver] with a required [AppLogger].
+  CustomNavigatorObserver({required AppLogger logger}) : _logger = logger;
 
-  final SkyLogger _logger;
+  final AppLogger _logger;
 
   String _formatRoute(Route<dynamic>? route) {
     if (route == null) return 'none';

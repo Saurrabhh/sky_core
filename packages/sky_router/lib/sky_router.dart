@@ -10,7 +10,6 @@ export 'package:go_router/go_router.dart'
         StatefulShellBranch,
         GoRouterState,
         CustomTransitionPage;
-export 'package:sky_telemetry/sky_telemetry.dart' show SkyLogger, SkyLogging, ConsoleLogger;
 
 export 'src/custom_navigator_observer.dart';
 export 'src/go_router_refresh_stream.dart';
