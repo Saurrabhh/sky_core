@@ -1,26 +1,26 @@
 import 'package:sky_telemetry/src/analytics/analytics.dart';
 
 /// Registry for analytics providers that multiplexes analytics operations.
-class SkyAnalyticsRegistry implements SkyAnalytics {
-  SkyAnalyticsRegistry._();
+class AppAnalyticsRegistry implements AppAnalytics {
+  AppAnalyticsRegistry._();
 
   /// The shared singleton instance of the registry.
-  static final SkyAnalyticsRegistry instance = SkyAnalyticsRegistry._();
+  static final AppAnalyticsRegistry instance = AppAnalyticsRegistry._();
 
-  final List<SkyAnalytics> _providers = [];
+  final List<AppAnalytics> _providers = [];
 
   /// Returns an unmodifiable list of currently registered analytics providers.
-  List<SkyAnalytics> get providers => List.unmodifiable(_providers);
+  List<AppAnalytics> get providers => List.unmodifiable(_providers);
 
   /// Registers an analytics [provider].
-  void registerProvider(SkyAnalytics provider) {
+  void registerProvider(AppAnalytics provider) {
     if (!_providers.contains(provider)) {
       _providers.add(provider);
     }
   }
 
   /// Unregisters an analytics [provider].
-  void unregisterProvider(SkyAnalytics provider) {
+  void unregisterProvider(AppAnalytics provider) {
     _providers.remove(provider);
   }
 
@@ -79,6 +79,13 @@ class SkyAnalyticsRegistry implements SkyAnalytics {
   Future<void> clearUser() async {
     await Future.wait(
       _providers.map((provider) => provider.clearUser()),
+    );
+  }
+
+  @override
+  Future<void> clearUserProperty(String key) async {
+    await Future.wait(
+      _providers.map((provider) => provider.clearUserProperty(key)),
     );
   }
 }

@@ -1,7 +1,7 @@
 /// Interface for capturing application exceptions, errors, and breadcrumbs.
-abstract interface class SkyCrashReporter {
-  /// Creates a [SkyCrashReporter] instance.
-  const SkyCrashReporter();
+abstract interface class AppCrashReporter {
+  /// Creates a [AppCrashReporter] instance.
+  const AppCrashReporter();
 
   /// Records an [error] with its [stackTrace], [reason], and [context].
   Future<void> recordError(
@@ -19,12 +19,15 @@ abstract interface class SkyCrashReporter {
     Map<String, dynamic>? metadata,
   });
 
-  /// Sets the unique [userId] for crash reports.
-  Future<void> setUserId(String userId);
+  /// Associates future telemetry events with a unique [userId].
+  Future<void> setUserIdentifier(String userId);
 
   /// Sets a custom user property [key] to [value] for crash reports.
-  Future<void> setUserProperty(String key, String value);
+  Future<void> setCustomMetadata(String key, Object value);
 
   /// Clears the associated user identity.
-  Future<void> clearUser();
+  Future<void> clearUserIdentifier();
+
+  /// Removes a custom metadata [key] from crash reports.
+  Future<void> removeCustomMetadata(String key);
 }

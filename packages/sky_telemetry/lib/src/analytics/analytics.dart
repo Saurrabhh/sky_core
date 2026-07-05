@@ -1,7 +1,7 @@
 /// Interface for tracking analytics events, screen views, and user properties.
-abstract interface class SkyAnalytics {
-  /// Creates a [SkyAnalytics] instance.
-  const SkyAnalytics();
+abstract interface class AppAnalytics {
+  /// Creates a [AppAnalytics] instance.
+  const AppAnalytics();
 
   /// Records an event with a [name] and optional [parameters].
   Future<void> trackEvent(
@@ -25,4 +25,7 @@ abstract interface class SkyAnalytics {
 
   /// Clears any associated user identity.
   Future<void> clearUser();
+
+  /// Clears a specific user property [key].
+  Future<void> clearUserProperty(String key);
 }

@@ -1,26 +1,26 @@
 import 'package:sky_telemetry/src/crash_reporting/crash_reporter.dart';
 
 /// Registry for crash reporters that multiplexes error recording operations.
-class SkyCrashReporting implements SkyCrashReporter {
-  SkyCrashReporting._();
+class AppCrashReporting implements AppCrashReporter {
+  AppCrashReporting._();
 
   /// The shared singleton instance of the crash reporting registry.
-  static final SkyCrashReporting instance = SkyCrashReporting._();
+  static final AppCrashReporting instance = AppCrashReporting._();
 
-  final List<SkyCrashReporter> _reporters = [];
+  final List<AppCrashReporter> _reporters = [];
 
   /// Returns an unmodifiable list of currently registered crash reporters.
-  List<SkyCrashReporter> get reporters => List.unmodifiable(_reporters);
+  List<AppCrashReporter> get reporters => List.unmodifiable(_reporters);
 
   /// Registers a crash [reporter].
-  void registerReporter(SkyCrashReporter reporter) {
+  void registerReporter(AppCrashReporter reporter) {
     if (!_reporters.contains(reporter)) {
       _reporters.add(reporter);
     }
   }
 
   /// Unregisters a crash [reporter].
-  void unregisterReporter(SkyCrashReporter reporter) {
+  void unregisterReporter(AppCrashReporter reporter) {
     _reporters.remove(reporter);
   }
 
@@ -68,23 +68,30 @@ class SkyCrashReporting implements SkyCrashReporter {
   }
 
   @override
-  Future<void> setUserId(String userId) async {
+  Future<void> setUserIdentifier(String userId) async {
     await Future.wait(
-      _reporters.map((reporter) => reporter.setUserId(userId)),
+      _reporters.map((reporter) => reporter.setUserIdentifier(userId)),
     );
   }
 
   @override
-  Future<void> setUserProperty(String key, String value) async {
+  Future<void> setCustomMetadata(String key, Object value) async {
     await Future.wait(
-      _reporters.map((reporter) => reporter.setUserProperty(key, value)),
+      _reporters.map((reporter) => reporter.setCustomMetadata(key, value)),
     );
   }
 
   @override
-  Future<void> clearUser() async {
+  Future<void> clearUserIdentifier() async {
     await Future.wait(
-      _reporters.map((reporter) => reporter.clearUser()),
+      _reporters.map((reporter) => reporter.clearUserIdentifier()),
+    );
+  }
+
+  @override
+  Future<void> removeCustomMetadata(String key) async {
+    await Future.wait(
+      _reporters.map((reporter) => reporter.removeCustomMetadata(key)),
     );
   }
 }

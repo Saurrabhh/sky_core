@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:sky_telemetry/src/crash_reporting/crash_reporting_service.dart';
 import 'package:sky_telemetry/src/logger/logger.dart';
 
-/// A [SkyLogger] forwarding messages to the crash reporting service.
-class BreadcrumbLogger extends SkyLogger {
+/// A [AppLogger] forwarding messages to the crash reporting service.
+class BreadcrumbLogger extends AppLogger {
   /// Creates a [BreadcrumbLogger] with an optional [minLevel] filter.
   const BreadcrumbLogger({
     this.minLevel = LogLevel.info,
@@ -31,7 +31,7 @@ class BreadcrumbLogger extends SkyLogger {
       }
 
       unawaited(
-        SkyCrashReporting.instance.logBreadcrumb(
+        AppCrashReporting.instance.logBreadcrumb(
           message,
           category: 'log_${level.name}',
           metadata: metadata.isNotEmpty ? metadata : null,

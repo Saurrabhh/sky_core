@@ -13,6 +13,7 @@ dependencies:
   logger: ^2.4.0
 
 dev_dependencies:
+  mocktail: ^1.0.4
   sky_lints:
     path: ../sky_lints
 

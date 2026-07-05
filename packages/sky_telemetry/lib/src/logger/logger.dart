@@ -17,9 +17,9 @@ enum LogLevel {
 }
 
 /// Abstract base class defining structured logging capabilities.
-abstract class SkyLogger {
-  /// Creates a [SkyLogger] instance.
-  const SkyLogger();
+abstract class AppLogger {
+  /// Creates a [AppLogger] instance.
+  const AppLogger();
 
   /// Writes a log entry with the specified [level] and [message].
   void log(
