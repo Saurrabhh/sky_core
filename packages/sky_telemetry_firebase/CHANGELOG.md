@@ -1,3 +1,7 @@
+## 1.1.2
+
+ - **FIX**(sky_telemetry_firebase): update Firebase crashlytics concrete reporter to implement AppCrashlytics.
+
 ## 1.1.1
 
  - **FIX**(sky_telemetry_firebase): add LICENSE and README for pub compliance.

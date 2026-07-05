@@ -1,3 +1,7 @@
+## 1.1.2
+
+ - **FIX**(sky_telemetry): standardize naming to AppCrashlytics and registry suffix.
+
 ## 1.1.1
 
  - **FIX**(sky_telemetry): remove library.

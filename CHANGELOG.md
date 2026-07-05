@@ -15,6 +15,49 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_bloc` - `v2.0.11`](#sky_bloc---v2011)
+ - [`sky_network` - `v1.1.7`](#sky_network---v117)
+ - [`sky_telemetry` - `v1.1.2`](#sky_telemetry---v112)
+ - [`sky_telemetry_firebase` - `v1.1.2`](#sky_telemetry_firebase---v112)
+ - [`sky_router` - `v1.1.3`](#sky_router---v113)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `sky_router` - `v1.1.3`
+
+---
+
+#### `sky_bloc` - `v2.0.11`
+
+ - **FIX**(sky_bloc): rename AppLogging to AppLoggerRegistry in BLoC observer.
+
+#### `sky_network` - `v1.1.7`
+
+ - **FIX**(sky_network): rename AppLogging to AppLoggerRegistry in telemetry interceptor and mock tests.
+
+#### `sky_telemetry` - `v1.1.2`
+
+ - **FIX**(sky_telemetry): standardize naming to AppCrashlytics and registry suffix.
+
+#### `sky_telemetry_firebase` - `v1.1.2`
+
+ - **FIX**(sky_telemetry_firebase): update Firebase crashlytics concrete reporter to implement AppCrashlytics.
+
+
+## 2026-07-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_router` - `v1.1.2`](#sky_router---v112)
  - [`sky_telemetry` - `v1.1.1`](#sky_telemetry---v111)
  - [`sky_telemetry_firebase` - `v1.1.1`](#sky_telemetry_firebase---v111)

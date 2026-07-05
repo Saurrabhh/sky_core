@@ -1,3 +1,7 @@
+## 2.0.11
+
+ - **FIX**(sky_bloc): rename AppLogging to AppLoggerRegistry in BLoC observer.
+
 ## 2.0.10
 
  - Update a dependency to the latest release.

@@ -1,3 +1,7 @@
+## 1.1.7
+
+ - **FIX**(sky_network): rename AppLogging to AppLoggerRegistry in telemetry interceptor and mock tests.
+
 ## 1.1.6
 
  - Update a dependency to the latest release.
