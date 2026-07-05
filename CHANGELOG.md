@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-07-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sky_router` - `v1.1.0`](#sky_router---v110)
+
+---
+
+#### `sky_router` - `v1.1.0`
+
+ - **FEAT**: export ConsoleLogger from sky_router.
+ - **FEAT**(sky_router): add sky_router package wrapping go_router.
+
+
 ## 2026-07-04
 
 ### Changes
