@@ -10,10 +10,11 @@ environment:
 
 dependencies:
   very_good_analysis: ^10.2.0
-  analysis_server_plugin: any
-  analyzer: any
+  analysis_server_plugin: ^0.3.14
+  analyzer: ^12.1.0
 
 plugin:
   platforms:
     dart:
       pluginClass: SkyLintsPlugin
+      fileName: sky_lints.dart
