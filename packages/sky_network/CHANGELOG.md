@@ -1,3 +1,7 @@
+## 1.1.8
+
+ - **FIX**(sky_network): fix order of interceptors.
+
 ## 1.1.7
 
  - **FIX**(sky_network): rename AppLogging to AppLoggerRegistry in telemetry interceptor and mock tests.

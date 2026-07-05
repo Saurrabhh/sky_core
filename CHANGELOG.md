@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_network` - `v1.1.8`](#sky_network---v118)
+
+---
+
+#### `sky_network` - `v1.1.8`
+
+ - **FIX**(sky_network): fix order of interceptors.
+
+
+## 2026-07-06
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_lints` - `v1.1.2`](#sky_lints---v112)
 
 ---
