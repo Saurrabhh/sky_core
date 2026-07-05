@@ -1,4 +1,3 @@
-## 1.1.0
+## 1.0.0
 
- - **FEAT**(sky_telemetry_firebase): implement Firebase Analytics and Crashlytics concrete engines.
-
+* Initial release implementing segregated Firebase Analytics and Firebase Crashlytics concrete engines.
