@@ -2,19 +2,19 @@ import 'package:mocktail/mocktail.dart';
 import 'package:sky_telemetry/sky_telemetry.dart';
 import 'package:test/test.dart';
 
-class MockCrashReporter extends Mock implements AppCrashReporter {}
+class MockCrashlytics extends Mock implements AppCrashlytics {}
 
 void main() {
-  group('Crash Reporting (AppCrashReporting)', () {
-    late MockCrashReporter mockReporter;
+  group('Crash Reporting (AppCrashlyticsRegistry)', () {
+    late MockCrashlytics mockReporter;
 
     setUp(() {
-      mockReporter = MockCrashReporter();
-      AppCrashReporting.instance.clearReporters();
-      AppCrashReporting.instance.registerReporter(mockReporter);
+      mockReporter = MockCrashlytics();
+      AppCrashlyticsRegistry.instance.clear();
+      AppCrashlyticsRegistry.instance.register(mockReporter);
     });
 
-    tearDown(AppCrashReporting.instance.clearReporters);
+    tearDown(AppCrashlyticsRegistry.instance.clear);
 
     test('multiplexes errors and breadcrumbs correctly', () async {
       when(() => mockReporter.recordError(
@@ -31,14 +31,14 @@ void main() {
             metadata: any(named: 'metadata'),
           )).thenAnswer((_) async {});
 
-      await AppCrashReporting.instance.recordError(
+      await AppCrashlyticsRegistry.instance.recordError(
         'DatabaseCorruptionException',
         StackTrace.empty,
         reason: 'Failed reading cache',
         fatal: true,
       );
 
-      await AppCrashReporting.instance.logBreadcrumb(
+      await AppCrashlyticsRegistry.instance.logBreadcrumb(
         'User entered profile screen',
         category: 'navigation',
       );
@@ -65,38 +65,41 @@ void main() {
       when(() => mockReporter.removeCustomMetadata(any()))
           .thenAnswer((_) async {});
 
-      await AppCrashReporting.instance.setUserIdentifier('user_999');
-      await AppCrashReporting.instance.setCustomMetadata('user_role', 'admin');
+      await AppCrashlyticsRegistry.instance.setUserIdentifier('user_999');
+      await AppCrashlyticsRegistry.instance.setCustomMetadata(
+        'user_role',
+        'admin',
+      );
 
       verify(() => mockReporter.setUserIdentifier('user_999')).called(1);
       verify(() => mockReporter.setCustomMetadata('user_role', 'admin'))
           .called(1);
 
-      await AppCrashReporting.instance.clearUserIdentifier();
+      await AppCrashlyticsRegistry.instance.clearUserIdentifier();
       verify(() => mockReporter.clearUserIdentifier()).called(1);
 
-      await AppCrashReporting.instance.removeCustomMetadata('user_role');
+      await AppCrashlyticsRegistry.instance.removeCustomMetadata('user_role');
       verify(() => mockReporter.removeCustomMetadata('user_role')).called(1);
     });
   });
 
   group('BreadcrumbLogger Decoupled Mediator', () {
-    late MockCrashReporter mockReporter;
+    late MockCrashlytics mockReporter;
     late BreadcrumbLogger breadcrumbLogger;
 
     setUp(() {
-      mockReporter = MockCrashReporter();
-      AppCrashReporting.instance.clearReporters();
-      AppCrashReporting.instance.registerReporter(mockReporter);
+      mockReporter = MockCrashlytics();
+      AppCrashlyticsRegistry.instance.clear();
+      AppCrashlyticsRegistry.instance.register(mockReporter);
 
       breadcrumbLogger = const BreadcrumbLogger();
-      AppLogging.instance.clearLoggers();
-      AppLogging.instance.registerLogger(breadcrumbLogger);
+      AppLoggerRegistry.instance.clear();
+      AppLoggerRegistry.instance.register(breadcrumbLogger);
     });
 
     tearDown(() {
-      AppLogging.instance.clearLoggers();
-      AppCrashReporting.instance.clearReporters();
+      AppLoggerRegistry.instance.clear();
+      AppCrashlyticsRegistry.instance.clear();
     });
 
     test('forwards messages above minLevel to crash breadcrumbs', () {
@@ -106,8 +109,8 @@ void main() {
             metadata: any(named: 'metadata'),
           )).thenAnswer((_) async {});
 
-      AppLogging.instance.debug('Debug is below minLevel info');
-      AppLogging.instance.warning(
+      AppLoggerRegistry.instance.debug('Debug is below minLevel info');
+      AppLoggerRegistry.instance.warning(
         'Warning is above minLevel info',
         context: {
           'code': 500,

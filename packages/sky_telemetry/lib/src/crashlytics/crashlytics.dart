@@ -1,7 +1,7 @@
 /// Interface for capturing application exceptions, errors, and breadcrumbs.
-abstract interface class AppCrashReporter {
-  /// Creates a [AppCrashReporter] instance.
-  const AppCrashReporter();
+abstract interface class AppCrashlytics {
+  /// Creates a [AppCrashlytics] instance.
+  const AppCrashlytics();
 
   /// Records an [error] with its [stackTrace], [reason], and [context].
   Future<void> recordError(

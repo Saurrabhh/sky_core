@@ -1,31 +1,33 @@
-import 'package:sky_telemetry/src/crash_reporting/crash_reporter.dart';
+import 'package:sky_telemetry/src/crashlytics/crashlytics.dart';
 
-/// Registry for crash reporters that multiplexes error recording operations.
-class AppCrashReporting implements AppCrashReporter {
-  AppCrashReporting._();
+/// Registry for crashlytics reporters that multiplexes error recording
+/// operations.
+class AppCrashlyticsRegistry implements AppCrashlytics {
+  AppCrashlyticsRegistry._();
 
-  /// The shared singleton instance of the crash reporting registry.
-  static final AppCrashReporting instance = AppCrashReporting._();
+  /// The shared singleton instance of the crashlytics registry.
+  static final AppCrashlyticsRegistry instance = AppCrashlyticsRegistry._();
 
-  final List<AppCrashReporter> _reporters = [];
+  final List<AppCrashlytics> _reporters = [];
 
-  /// Returns an unmodifiable list of currently registered crash reporters.
-  List<AppCrashReporter> get reporters => List.unmodifiable(_reporters);
+  /// Returns an unmodifiable list of currently registered crashlytics
+  /// reporters.
+  List<AppCrashlytics> get reporters => List.unmodifiable(_reporters);
 
   /// Registers a crash [reporter].
-  void registerReporter(AppCrashReporter reporter) {
+  void register(AppCrashlytics reporter) {
     if (!_reporters.contains(reporter)) {
       _reporters.add(reporter);
     }
   }
 
   /// Unregisters a crash [reporter].
-  void unregisterReporter(AppCrashReporter reporter) {
+  void unregister(AppCrashlytics reporter) {
     _reporters.remove(reporter);
   }
 
-  /// Removes all registered crash reporters.
-  void clearReporters() {
+  /// Removes all registered crashlytics reporters.
+  void clear() {
     _reporters.clear();
   }
 

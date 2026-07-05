@@ -10,11 +10,11 @@ void main() {
 
     setUp(() {
       mockAnalytics = MockAnalytics();
-      AppAnalyticsRegistry.instance.clearProviders();
-      AppAnalyticsRegistry.instance.registerProvider(mockAnalytics);
+      AppAnalyticsRegistry.instance.clear();
+      AppAnalyticsRegistry.instance.register(mockAnalytics);
     });
 
-    tearDown(AppAnalyticsRegistry.instance.clearProviders);
+    tearDown(AppAnalyticsRegistry.instance.clear);
 
     test('routes events and screen tracking correctly', () async {
       when(() => mockAnalytics.trackEvent(

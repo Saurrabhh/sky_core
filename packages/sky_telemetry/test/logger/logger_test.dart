@@ -9,61 +9,64 @@ void main() {
     registerFallbackValue(LogLevel.info);
   });
 
-  group('Diagnostic Logging (AppLogging)', () {
+  group('Diagnostic Logging (AppLoggerRegistry)', () {
     late MockLogger mockLogger;
 
     setUp(() {
       mockLogger = MockLogger();
-      AppLogging.instance.clearLoggers();
-      AppLogging.instance.registerLogger(mockLogger);
+      AppLoggerRegistry.instance.clear();
+      AppLoggerRegistry.instance.register(mockLogger);
     });
 
-    tearDown(AppLogging.instance.clearLoggers);
+    tearDown(AppLoggerRegistry.instance.clear);
 
     test('multiplexes logs correctly to registered adapters', () {
       when(() => mockLogger.log(
-        any(),
-        any(),
-        error: any(named: 'error'),
-        stackTrace: any(named: 'stackTrace'),
-        context: any(named: 'context'),
-      )).thenAnswer((_) {});
+            any(),
+            any(),
+            error: any(named: 'error'),
+            stackTrace: any(named: 'stackTrace'),
+            context: any(named: 'context'),
+          )).thenAnswer((_) {});
 
-      AppLogging.instance.info('System Booted', context: {'env': 'prod'});
-
-      verify(() => mockLogger.log(
-        LogLevel.info,
+      AppLoggerRegistry.instance.info(
         'System Booted',
         context: {'env': 'prod'},
-      )).called(1);
+      );
+
+      verify(() => mockLogger.log(
+            LogLevel.info,
+            'System Booted',
+            context: {'env': 'prod'},
+          )).called(1);
     });
 
     test('supports unregistering logger adapters', () {
-      AppLogging.instance.unregisterLogger(mockLogger);
-      AppLogging.instance.info('Unregistered');
+      AppLoggerRegistry.instance.unregister(mockLogger);
+      AppLoggerRegistry.instance.info('Unregistered');
 
       verifyNever(() => mockLogger.log(
-        any(),
-        any(),
-        error: any(named: 'error'),
-        stackTrace: any(named: 'stackTrace'),
-        context: any(named: 'context'),
-      ));
+            any(),
+            any(),
+            error: any(named: 'error'),
+            stackTrace: any(named: 'stackTrace'),
+            context: any(named: 'context'),
+          ));
     });
 
     test('supports standard logging levels', () {
       when(() => mockLogger.log(
-        any(),
-        any(),
-        error: any(named: 'error'),
-        stackTrace: any(named: 'stackTrace'),
-        context: any(named: 'context'),
-      )).thenAnswer((_) {});
+            any(),
+            any(),
+            error: any(named: 'error'),
+            stackTrace: any(named: 'stackTrace'),
+            context: any(named: 'context'),
+          )).thenAnswer((_) {});
 
-      AppLogging.instance.debug('debug log');
-      AppLogging.instance.warning('warning log');
-      AppLogging.instance.error('error log');
-      AppLogging.instance.fatal('fatal log');
+      AppLoggerRegistry.instance.debug('debug log');
+      AppLoggerRegistry.instance.warning('warning log');
+      AppLoggerRegistry.instance.error('error log');
+      AppLoggerRegistry.instance.fatal('fatal log');
 
       verify(() => mockLogger.log(LogLevel.debug, 'debug log')).called(1);
       verify(() => mockLogger.log(LogLevel.warning, 'warning log')).called(1);

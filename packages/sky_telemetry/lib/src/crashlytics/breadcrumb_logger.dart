@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:sky_telemetry/src/crash_reporting/crash_reporting_service.dart';
+import 'package:sky_telemetry/src/crashlytics/crashlytics_registry.dart';
 import 'package:sky_telemetry/src/logger/logger.dart';
 
-/// A [AppLogger] forwarding messages to the crash reporting service.
+/// A [AppLogger] forwarding messages to the crashlytics registry.
 class BreadcrumbLogger extends AppLogger {
   /// Creates a [BreadcrumbLogger] with an optional [minLevel] filter.
   const BreadcrumbLogger({
@@ -31,7 +31,7 @@ class BreadcrumbLogger extends AppLogger {
       }
 
       unawaited(
-        AppCrashReporting.instance.logBreadcrumb(
+        AppCrashlyticsRegistry.instance.logBreadcrumb(
           message,
           category: 'log_${level.name}',
           metadata: metadata.isNotEmpty ? metadata : null,

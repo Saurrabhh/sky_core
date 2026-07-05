@@ -13,19 +13,19 @@ class AppAnalyticsRegistry implements AppAnalytics {
   List<AppAnalytics> get providers => List.unmodifiable(_providers);
 
   /// Registers an analytics [provider].
-  void registerProvider(AppAnalytics provider) {
+  void register(AppAnalytics provider) {
     if (!_providers.contains(provider)) {
       _providers.add(provider);
     }
   }
 
   /// Unregisters an analytics [provider].
-  void unregisterProvider(AppAnalytics provider) {
+  void unregister(AppAnalytics provider) {
     _providers.remove(provider);
   }
 
   /// Removes all registered analytics providers.
-  void clearProviders() {
+  void clear() {
     _providers.clear();
   }
 

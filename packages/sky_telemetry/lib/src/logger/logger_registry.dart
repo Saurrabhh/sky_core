@@ -1,11 +1,11 @@
 import 'package:sky_telemetry/src/logger/logger.dart';
 
 /// Registry for loggers that multiplexes log operations across outputs.
-class AppLogging extends AppLogger {
-  AppLogging._();
+class AppLoggerRegistry extends AppLogger {
+  AppLoggerRegistry._();
 
   /// The shared singleton instance of the logging registry.
-  static final AppLogging instance = AppLogging._();
+  static final AppLoggerRegistry instance = AppLoggerRegistry._();
 
   final List<AppLogger> _loggers = [];
 
@@ -13,19 +13,19 @@ class AppLogging extends AppLogger {
   List<AppLogger> get loggers => List.unmodifiable(_loggers);
 
   /// Registers a [logger] implementation.
-  void registerLogger(AppLogger logger) {
+  void register(AppLogger logger) {
     if (!_loggers.contains(logger)) {
       _loggers.add(logger);
     }
   }
 
   /// Unregisters a [logger] implementation.
-  void unregisterLogger(AppLogger logger) {
+  void unregister(AppLogger logger) {
     _loggers.remove(logger);
   }
 
   /// Removes all registered loggers.
-  void clearLoggers() {
+  void clear() {
     _loggers.clear();
   }
 
