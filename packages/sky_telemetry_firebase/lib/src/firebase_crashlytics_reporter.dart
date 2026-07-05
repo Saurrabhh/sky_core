@@ -1,8 +1,8 @@
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:sky_telemetry/sky_telemetry.dart';
 
-/// Concrete implementation of [AppCrashReporter] using [FirebaseCrashlytics].
-class FirebaseCrashlyticsReporter implements AppCrashReporter {
+/// Concrete implementation of [AppCrashlytics] using [FirebaseCrashlytics].
+class FirebaseCrashlyticsReporter implements AppCrashlytics {
   /// Creates a [FirebaseCrashlyticsReporter] with a required `crashlytics`
   /// instance.
   const FirebaseCrashlyticsReporter({
