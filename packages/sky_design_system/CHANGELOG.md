@@ -1,3 +1,7 @@
+## 1.7.2
+
+ - **FIX**(sky_design_system): isDismissable logic.
+
 ## 1.7.1
 
  - **FIX**(sky_design_system): format app_raster_web and app_svg_image_io.

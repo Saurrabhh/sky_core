@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_design_system` - `v1.7.2`](#sky_design_system---v172)
+
+---
+
+#### `sky_design_system` - `v1.7.2`
+
+ - **FIX**(sky_design_system): isDismissable logic.
+
+
+## 2026-07-06
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_network` - `v1.1.8`](#sky_network---v118)
 
 ---
