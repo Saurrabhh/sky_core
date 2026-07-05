@@ -6,21 +6,21 @@ import 'package:sky_telemetry/sky_telemetry.dart';
 /// Sends logs for creation, state updates, errors, and closure events to the
 /// registered telemetry service.
 class TelemetryBlocObserver extends BlocObserver {
-  /// Creates a [TelemetryBlocObserver] that logs to the provided [_appLogging] instance.
-  const TelemetryBlocObserver(this._appLogging);
+  /// Creates a [TelemetryBlocObserver] that logs to the provided [_appLoggerRegistry] instance.
+  const TelemetryBlocObserver(this._appLoggerRegistry);
 
-  final AppLogging _appLogging;
+  final AppLoggerRegistry _appLoggerRegistry;
 
   @override
   void onCreate(BlocBase<dynamic> bloc) {
     super.onCreate(bloc);
-    _appLogging.debug('BLoC Created: ${bloc.runtimeType}');
+    _appLoggerRegistry.debug('BLoC Created: ${bloc.runtimeType}');
   }
 
   @override
   void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
     super.onChange(bloc, change);
-    _appLogging.debug(
+    _appLoggerRegistry.debug(
       'BLoC Change (${bloc.runtimeType}): '
       '${change.currentState.runtimeType} -> ${change.nextState.runtimeType}',
     );
@@ -29,7 +29,7 @@ class TelemetryBlocObserver extends BlocObserver {
   @override
   void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
     super.onError(bloc, error, stackTrace);
-    _appLogging.warning(
+    _appLoggerRegistry.warning(
       'BLoC Error (${bloc.runtimeType}): $error',
       error: error,
       stackTrace: stackTrace,
@@ -39,6 +39,6 @@ class TelemetryBlocObserver extends BlocObserver {
   @override
   void onClose(BlocBase<dynamic> bloc) {
     super.onClose(bloc);
-    _appLogging.debug('BLoC Closed: ${bloc.runtimeType}');
+    _appLoggerRegistry.debug('BLoC Closed: ${bloc.runtimeType}');
   }
 }
