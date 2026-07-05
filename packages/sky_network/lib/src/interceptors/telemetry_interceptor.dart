@@ -51,7 +51,7 @@ class TelemetryInterceptor extends Interceptor {
       ),
     );
 
-    AppLogging.instance.info(
+    AppLoggerRegistry.instance.info(
       'API Performance: ${response.requestOptions.method} $path | '
       'Status: ${response.statusCode} | Latency: ${durationMs}ms | '
       'Up: ${requestSize}B | Down: ${responseSize}B',
@@ -94,7 +94,7 @@ class TelemetryInterceptor extends Interceptor {
       ),
     );
 
-    AppLogging.instance.error(
+    AppLoggerRegistry.instance.error(
       'API Failure: ${err.requestOptions.method} $path | '
       'Status: $statusCode | ErrorType: ${err.type} | Latency: ${durationMs}ms',
       error: err.error,

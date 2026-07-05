@@ -522,11 +522,11 @@ void main() {
           trackedEvents.add({'name': name, 'params': params});
         },
       );
-      AppAnalyticsRegistry.instance.registerProvider(mockAnalytics);
+      AppAnalyticsRegistry.instance.register(mockAnalytics);
     });
 
     tearDown(() {
-      AppAnalyticsRegistry.instance.unregisterProvider(mockAnalytics);
+      AppAnalyticsRegistry.instance.unregister(mockAnalytics);
     });
 
     test('captures latency and formats HTTP response size correctly', () async {
