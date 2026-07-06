@@ -1,6 +1,6 @@
 name: sky_devtools
 description: Draggable Picture-in-Picture DevTools menu for inspecting logs and managing runtime environments.
-version: 1.0.0
+version: 1.1.0
 repository: https://github.com/Saurrabhh/sky_core/tree/master/packages/sky_devtools
 resolution: workspace
 

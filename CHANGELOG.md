@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-07-07
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sky_devtools` - `v1.1.0`](#sky_devtools---v110)
+
+---
+
+#### `sky_devtools` - `v1.1.0`
+
+ - **FEAT**(sky_devtools): add interactive DevTools overlay with network inspector, crash logging, and resizable panel.
+
+
 ## 2026-07-06
 
 ### Changes
