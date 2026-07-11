@@ -1,6 +1,6 @@
 import 'package:analysis_server_plugin/plugin.dart';
 import 'package:analysis_server_plugin/registry.dart';
-import 'src/rules/avoid_navigator_rule.dart';
+import 'package:sky_router_lints/src/rules/avoid_navigator_rule.dart';
 
 /// The entry point instance of the [SkyRouterLintsPlugin].
 final plugin = SkyRouterLintsPlugin();
