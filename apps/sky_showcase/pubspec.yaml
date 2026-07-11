@@ -1,4 +1,4 @@
-name: sky_showcase
+﻿name: sky_showcase
 description: A Widgetbook-based showcase application for the Sky Design System.
 publish_to: none
 version: 1.0.0+1
@@ -26,8 +26,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  sky_lints:
-    path: ../../packages/sky_lints
 
   widgetbook_generator: ^3.24.0
 
