@@ -1,4 +1,4 @@
-name: sky_router
+﻿name: sky_router
 description: Reusable, high-performance routing library for Sky Core wrapping go_router.
 version: 1.1.4
 repository: https://github.com/Saurrabhh/sky_core/tree/master/packages/sky_router
@@ -20,5 +20,3 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  sky_lints:
-    path: ../sky_lints
