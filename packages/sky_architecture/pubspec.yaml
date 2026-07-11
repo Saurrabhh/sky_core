@@ -1,4 +1,4 @@
-name: sky_architecture
+﻿name: sky_architecture
 description: Pure Dart domain layer clean architecture core contracts and utilities.
 version: 1.7.1
 repository: https://github.com/Saurrabhh/sky_core/tree/master/packages/sky_architecture
@@ -12,6 +12,4 @@ dependencies:
   fpdart: ^1.1.0
 
 dev_dependencies:
-  sky_lints:
-    path: ../sky_lints
   test: ^1.24.0
