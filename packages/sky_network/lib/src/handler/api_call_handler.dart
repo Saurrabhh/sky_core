@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:fpdart/fpdart.dart';
 import 'package:sky_architecture/sky_architecture.dart';
 import 'package:sky_network/src/error/network_error_mapper.dart';
 

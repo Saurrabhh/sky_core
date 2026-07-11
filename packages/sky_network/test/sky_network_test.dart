@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http_certificate_pinning/http_certificate_pinning.dart';
 import 'package:sky_architecture/sky_architecture.dart';
