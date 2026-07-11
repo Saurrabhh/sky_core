@@ -1,3 +1,7 @@
+## 2.2.0
+
+ - **FEAT**(sky_bloc): add utils.
+
 ## 2.1.0
 
  - **FEAT**(sky_bloc): add utils.
