@@ -9,7 +9,3 @@ environment:
 
 dependencies:
   meta: ^1.10.0
-
-dev_dependencies:
-  sky_lints:
-    path: ../sky_lints
