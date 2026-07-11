@@ -1,6 +1,9 @@
 /// Core network clients, error mapping, and authentication interceptors.
 library;
 
+export 'package:dio/dio.dart';
+export 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
 export 'src/error/network_error_mapper.dart';
 export 'src/factory/background_transformer.dart';
 export 'src/factory/dio_factory.dart';
