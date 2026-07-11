@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:sky_architecture/sky_architecture.dart';
 
 /// Represents a Domain-Driven Design Value Object.
