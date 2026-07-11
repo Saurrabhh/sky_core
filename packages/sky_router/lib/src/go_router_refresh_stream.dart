@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 
-/// A [Listenable] that triggers [GoRouter] to check redirects when a stream emits.
+/// A [Listenable] that triggers [GoRouter] to check redirects when a stream
+/// emits.
 class GoRouterRefreshStream extends ChangeNotifier {
   /// Creates a [GoRouterRefreshStream] that listens to the given [stream].
   GoRouterRefreshStream(Stream<dynamic> stream) {
@@ -15,7 +17,7 @@ class GoRouterRefreshStream extends ChangeNotifier {
 
   @override
   void dispose() {
-    _subscription.cancel();
+    unawaited(_subscription.cancel());
     super.dispose();
   }
 }

@@ -1,15 +1,13 @@
-library sky_router;
-
 export 'package:go_router/go_router.dart'
     show
-        GoRouter,
+        CustomTransitionPage,
         GoRoute,
+        GoRouter,
+        GoRouterState,
         RouteBase,
         ShellRoute,
-        StatefulShellRoute,
         StatefulShellBranch,
-        GoRouterState,
-        CustomTransitionPage;
+        StatefulShellRoute;
 
 export 'src/custom_navigator_observer.dart';
 export 'src/go_router_refresh_stream.dart';

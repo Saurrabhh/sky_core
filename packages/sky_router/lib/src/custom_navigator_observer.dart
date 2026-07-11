@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart';
 import 'package:sky_telemetry/sky_telemetry.dart';
 
-/// A [NavigatorObserver] that logs route changes (pushes, pops, replaces, removals)
-/// using a mandatory [SkyLogger] via dependency injection.
+/// A [NavigatorObserver] that logs route changes (pushes, pops, replaces)
+/// using a mandatory [AppLogger] via dependency injection.
 class CustomNavigatorObserver extends NavigatorObserver {
   /// Creates a [CustomNavigatorObserver] with a required [AppLogger].
-  CustomNavigatorObserver({required AppLogger logger}) : _logger = logger;
+  CustomNavigatorObserver({required this._logger});
 
   final AppLogger _logger;
 
@@ -24,28 +24,28 @@ class CustomNavigatorObserver extends NavigatorObserver {
   @override
   void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
     _log(
-      '👈 [Navigation] Popped: ${_formatRoute(route)} (returned to: ${_formatRoute(previousRoute)})',
+      '''👈 [Navigation] Popped: ${_formatRoute(route)} (returned to: ${_formatRoute(previousRoute)})''',
     );
   }
 
   @override
   void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
     _log(
-      '🚀 [Navigation] Pushed to: ${_formatRoute(route)} (from: ${_formatRoute(previousRoute)})',
+      '''🚀 [Navigation] Pushed to: ${_formatRoute(route)} (from: ${_formatRoute(previousRoute)})''',
     );
   }
 
   @override
   void didRemove(Route<dynamic> route, Route<dynamic>? previousRoute) {
     _log(
-      '❌ [Navigation] Removed: ${_formatRoute(route)} (previous: ${_formatRoute(previousRoute)})',
+      '''❌ [Navigation] Removed: ${_formatRoute(route)} (previous: ${_formatRoute(previousRoute)})''',
     );
   }
 
   @override
   void didReplace({Route<dynamic>? newRoute, Route<dynamic>? oldRoute}) {
     _log(
-      '🔄 [Navigation] Replaced: ${_formatRoute(oldRoute)} with ${_formatRoute(newRoute)}',
+      '''🔄 [Navigation] Replaced: ${_formatRoute(oldRoute)} with ${_formatRoute(newRoute)}''',
     );
   }
 }

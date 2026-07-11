@@ -13,8 +13,8 @@ dependencies:
     sdk: flutter
 
   go_router: ^17.3.0
-  sky_utils: ^1.0.2
   sky_telemetry: ^1.1.2
+  sky_utils: ^1.0.2
 
 dev_dependencies:
   flutter_test:

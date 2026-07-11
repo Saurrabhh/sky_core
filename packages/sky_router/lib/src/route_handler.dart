@@ -32,7 +32,8 @@ final class RouteHandler {
     context.pushReplacement(location, extra: extra);
   }
 
-  /// Navigates to a location and clears the navigation history (simulating pushAndRemoveUntil).
+  /// Navigates to a location and clears the navigation history
+  /// (simulating pushAndRemoveUntil).
   static void pushAndRemoveUntil(
     BuildContext context,
     String location, {
