@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_bloc` - `v2.1.0`](#sky_bloc---v210)
+
+---
+
+#### `sky_bloc` - `v2.1.0`
+
+ - **FEAT**(sky_bloc): add utils.
+
+
+## 2026-07-12
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_architecture` - `v1.7.0`](#sky_architecture---v170)
  - [`sky_bloc` - `v2.0.13`](#sky_bloc---v2013)
  - [`sky_network` - `v1.1.10`](#sky_network---v1110)

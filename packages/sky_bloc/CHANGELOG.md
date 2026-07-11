@@ -1,3 +1,7 @@
+## 2.1.0
+
+ - **FEAT**(sky_bloc): add utils.
+
 ## 2.0.13
 
  - Update a dependency to the latest release.
