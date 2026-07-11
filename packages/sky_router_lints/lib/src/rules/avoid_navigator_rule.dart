@@ -13,7 +13,8 @@ class AvoidNavigatorRule extends AnalysisRule {
   static const LintCode code = LintCode(
     'avoid_navigator',
     "Avoid using Flutter's 'Navigator' directly.",
-    correctionMessage: "Use 'RouteHandler' instead for routing in the sky_router ecosystem.",
+    correctionMessage: "Use 'RouteHandler' instead",
+    severity: .WARNING,
   );
 
   /// Instantiates [AvoidNavigatorRule] with the registered lint code and details.
@@ -28,11 +29,17 @@ class AvoidNavigatorRule extends AnalysisRule {
 
   @override
   void registerNodeProcessors(RuleVisitorRegistry registry, RuleContext context) {
-    registry.addSimpleIdentifier(this, _Visitor(this));
+    // NamedType fires only on type-position identifiers (e.g. `Navigator.of(…)`
+    // type references), skipping every plain identifier in the file.
+    registry.addNamedType(this, _Visitor(this));
   }
 }
 
-/// AST Visitor that finds references to [Navigator] class elements.
+/// AST Visitor that finds [Navigator] type references from Flutter.
+///
+/// Uses [NamedType] (not [SimpleIdentifier]) to reduce the visit surface to
+/// type-position nodes only — import/export directives never contain
+/// [NamedType] nodes, so no additional parent-walk is needed.
 class _Visitor extends SimpleAstVisitor<void> {
   /// The rule triggering this visitor.
   final AnalysisRule rule;
@@ -41,30 +48,16 @@ class _Visitor extends SimpleAstVisitor<void> {
   _Visitor(this.rule);
 
   @override
-  void visitSimpleIdentifier(SimpleIdentifier node) {
-    if (node.name == 'Navigator') {
-      final element = node.element;
-      
-      if (element is ClassElement && element.name == 'Navigator') {
-        final LibraryElement? library = element.library;
-        final uri = library?.uri;
-        if (uri != null && uri.scheme == 'package' && uri.pathSegments.firstOrNull == 'flutter') {
-          if (!_isInImportOrExport(node)) {
-            rule.reportAtNode(node);
-          }
-        }
-      }
-    }
-  }
+  void visitNamedType(NamedType node) {
+    // Fast name check before any element resolution.
+    if (node.name.lexeme != 'Navigator') return;
 
-  bool _isInImportOrExport(SimpleIdentifier node) {
-    AstNode? parent = node.parent;
-    while (parent != null) {
-      if (parent is ImportDirective || parent is ExportDirective) {
-        return true;
-      }
-      parent = parent.parent;
+    final element = node.element;
+    if (element is! ClassElement) return;
+
+    final uri = element.library.uri;
+    if (uri.scheme == 'package' && uri.pathSegments.firstOrNull == 'flutter') {
+      rule.reportAtNode(node);
     }
-    return false;
   }
 }
