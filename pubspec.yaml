@@ -9,6 +9,9 @@ environment:
 dev_dependencies:
   melos: ^8.1.0
 
+  sky_lints:
+    path: packages/sky_lints
+
 workspace:
   - packages/*
   - apps/*
