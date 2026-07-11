@@ -15,6 +15,49 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_architecture` - `v1.7.1`](#sky_architecture---v171)
+ - [`sky_network` - `v1.1.11`](#sky_network---v1111)
+ - [`sky_router` - `v1.1.4`](#sky_router---v114)
+ - [`sky_router_lints` - `v1.1.7`](#sky_router_lints---v117)
+ - [`sky_bloc` - `v2.2.1`](#sky_bloc---v221)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `sky_bloc` - `v2.2.1`
+
+---
+
+#### `sky_architecture` - `v1.7.1`
+
+ - **FIX**(sky_architecture): warnings.
+
+#### `sky_network` - `v1.1.11`
+
+ - **FIX**(sky_network): warnings.
+
+#### `sky_router` - `v1.1.4`
+
+ - **FIX**(sky_router): warnings.
+
+#### `sky_router_lints` - `v1.1.7`
+
+ - **FIX**(sky_router_lints): warnings.
+
+
+## 2026-07-12
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_bloc` - `v2.2.0`](#sky_bloc---v220)
 
 ---

@@ -1,3 +1,7 @@
+## 1.1.7
+
+ - **FIX**(sky_router_lints): warnings.
+
 ## 1.1.6
 
  - **FIX**(sky_router_lints): avoid_navigator rule.

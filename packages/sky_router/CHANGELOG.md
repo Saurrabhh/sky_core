@@ -1,3 +1,7 @@
+## 1.1.4
+
+ - **FIX**(sky_router): warnings.
+
 ## 1.1.3
 
  - Update a dependency to the latest release.

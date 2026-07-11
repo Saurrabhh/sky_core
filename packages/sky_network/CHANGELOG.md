@@ -1,3 +1,7 @@
+## 1.1.11
+
+ - **FIX**(sky_network): warnings.
+
 ## 1.1.10
 
  - Update a dependency to the latest release.
