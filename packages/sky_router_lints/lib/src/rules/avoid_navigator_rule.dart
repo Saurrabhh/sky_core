@@ -18,16 +18,20 @@ class AvoidNavigatorRule extends AnalysisRule {
 
   /// Instantiates [AvoidNavigatorRule] with the registered lint code and details.
   AvoidNavigatorRule()
-      : super(
-          name: code.lowerCaseName,
-          description: 'Warns developers to use RouteHandler instead of Navigator.',
-        );
+    : super(
+        name: code.lowerCaseName,
+        description:
+            'Warns developers to use RouteHandler instead of Navigator.',
+      );
 
   @override
   LintCode get diagnosticCode => code;
 
   @override
-  void registerNodeProcessors(RuleVisitorRegistry registry, RuleContext context) {
+  void registerNodeProcessors(
+    RuleVisitorRegistry registry,
+    RuleContext context,
+  ) {
     // NamedType fires only on type-position identifiers (e.g. `Navigator.of(…)`
     // type references), skipping every plain identifier in the file.
     registry.addSimpleIdentifier(this, _Visitor(this));
@@ -51,6 +55,9 @@ class _Visitor extends SimpleAstVisitor<void> {
 
     final element = node.element;
     if (element == null) return;
+
+    rule.reportAtNode(node);
+    return;
 
     // Access the source URI through the fragment API.
     final libraryUri = element.library?.firstFragment.source.uri.toString();
