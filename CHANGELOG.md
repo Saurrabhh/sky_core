@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-07-11
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sky_router_lints` - `v1.1.0`](#sky_router_lints---v110)
+
+---
+
+#### `sky_router_lints` - `v1.1.0`
+
+ - **FEAT**(sky_router_lints): implement AvoidNavigatorRule and plugin entry point.
+ - **FEAT**(sky_router_lints): scaffold package with metadata and pub.dev compliance.
+
+
 ## 2026-07-07
 
 ### Changes

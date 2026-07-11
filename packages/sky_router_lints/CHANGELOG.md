@@ -1,3 +1,8 @@
+## 1.1.0
+
+ - **FEAT**(sky_router_lints): implement AvoidNavigatorRule and plugin entry point.
+ - **FEAT**(sky_router_lints): scaffold package with metadata and pub.dev compliance.
+
 ## 1.0.0
 
 - Initial release of custom lints for `sky_router`.
