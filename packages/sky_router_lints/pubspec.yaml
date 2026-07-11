@@ -11,9 +11,3 @@ environment:
 dependencies:
   analysis_server_plugin:
   analyzer:
-
-plugin:
-  platforms:
-    dart:
-      pluginClass: SkyRouterLintsPlugin
-      fileName: sky_router_lints.dart
