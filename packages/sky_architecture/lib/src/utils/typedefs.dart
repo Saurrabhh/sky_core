@@ -60,6 +60,11 @@ typedef StreamEitherFailure<T> = Stream<Either<Failure, T>>;
 /// [Unit].
 ///
 /// Use this for streams of operations that yield success signals with no data.
+///
+/// Example:
+/// ```dart
+/// StreamEitherFailureUnit watchSyncStatus();
+/// ```
 typedef StreamEitherFailureUnit = StreamEitherFailure<Unit>;
 
 /// Represents a lazy, asynchronous computation that can fail with a [Failure]
@@ -79,4 +84,20 @@ typedef TaskEitherFailure<T> = TaskEither<Failure, T>;
 /// [Unit].
 ///
 /// Use this for lazy asynchronous side effects that yield no data on success.
+///
+/// Example:
+/// ```dart
+/// TaskEitherFailureUnit saveUserTask(User user);
+/// ```
 typedef TaskEitherFailureUnit = TaskEitherFailure<Unit>;
+
+/// Represents a stream of [Option] values.
+///
+/// This is useful for observing data that may or may not be present over time,
+/// such as a reactive database query or an authentication state.
+///
+/// Example:
+/// ```dart
+/// StreamOption<User> watchUser(String id);
+/// ```
+typedef StreamOption<T> = Stream<Option<T>>;

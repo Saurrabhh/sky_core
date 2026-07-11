@@ -34,3 +34,15 @@ abstract interface class StreamUseCase<T, Params> {
   /// Runs the use case logic, returning a stream of results.
   StreamEitherFailure<T> call(Params params);
 }
+
+/// Represents a streaming use case that returns an [Option].
+///
+/// Takes [Params] and returns a [Stream] containing an [Option] of type [T].
+/// Useful for observing data that may or may not exist.
+abstract interface class StreamOptionUseCase<T, Params> {
+  /// Creates a [StreamOptionUseCase].
+  const StreamOptionUseCase();
+
+  /// Runs the use case logic, returning a stream of options.
+  StreamOption<T> call(Params params);
+}
