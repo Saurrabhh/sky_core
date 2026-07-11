@@ -1,3 +1,7 @@
+## 1.1.3
+
+ - **REFACTOR**(sky_telemetry): remove sky_lints, now inherited from root.
+
 ## 1.1.2
 
  - **FIX**(sky_telemetry): standardize naming to AppCrashlytics and registry suffix.

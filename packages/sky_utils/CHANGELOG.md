@@ -1,3 +1,7 @@
+## 1.0.4
+
+ - **REFACTOR**(sky_utils): remove sky_lints, now inherited from root.
+
 ## 1.0.3
 
  - **DOCS**(sky_utils): add pub.dev-compliant dartdoc comments to public API.

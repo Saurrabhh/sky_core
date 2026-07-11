@@ -1,3 +1,7 @@
+## 1.1.12
+
+ - **REFACTOR**(sky_network): remove sky_lints, now inherited from root.
+
 ## 1.1.11
 
  - **FIX**(sky_network): warnings.

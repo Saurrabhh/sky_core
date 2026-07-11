@@ -1,3 +1,7 @@
+## 1.1.5
+
+ - **REFACTOR**(sky_router): remove sky_lints, now inherited from root.
+
 ## 1.1.4
 
  - **FIX**(sky_router): warnings.

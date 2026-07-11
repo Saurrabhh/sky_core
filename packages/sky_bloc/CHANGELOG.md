@@ -1,3 +1,7 @@
+## 2.2.2
+
+ - **REFACTOR**(sky_bloc): remove sky_lints, now inherited from root.
+
 ## 2.2.1
 
  - Update a dependency to the latest release.

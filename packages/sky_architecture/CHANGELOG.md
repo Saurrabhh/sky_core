@@ -1,3 +1,7 @@
+## 1.7.2
+
+ - **REFACTOR**(sky_architecture): remove sky_lints, now inherited from root.
+
 ## 1.7.1
 
  - **FIX**(sky_architecture): warnings.

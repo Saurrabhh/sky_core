@@ -15,6 +15,82 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_architecture` - `v1.7.2`](#sky_architecture---v172)
+ - [`sky_bloc` - `v2.2.2`](#sky_bloc---v222)
+ - [`sky_design_system` - `v1.7.3`](#sky_design_system---v173)
+ - [`sky_devtools` - `v1.1.1`](#sky_devtools---v111)
+ - [`sky_network` - `v1.1.12`](#sky_network---v1112)
+ - [`sky_router` - `v1.1.5`](#sky_router---v115)
+ - [`sky_storage` - `v1.0.4`](#sky_storage---v104)
+ - [`sky_storage_hive` - `v1.0.4`](#sky_storage_hive---v104)
+ - [`sky_storage_isar` - `v1.0.4`](#sky_storage_isar---v104)
+ - [`sky_telemetry` - `v1.1.3`](#sky_telemetry---v113)
+ - [`sky_telemetry_firebase` - `v1.1.3`](#sky_telemetry_firebase---v113)
+ - [`sky_utils` - `v1.0.4`](#sky_utils---v104)
+
+---
+
+#### `sky_architecture` - `v1.7.2`
+
+ - **REFACTOR**(sky_architecture): remove sky_lints, now inherited from root.
+
+#### `sky_bloc` - `v2.2.2`
+
+ - **REFACTOR**(sky_bloc): remove sky_lints, now inherited from root.
+
+#### `sky_design_system` - `v1.7.3`
+
+ - **REFACTOR**(sky_design_system): remove sky_lints, now inherited from root.
+
+#### `sky_devtools` - `v1.1.1`
+
+ - **REFACTOR**(sky_devtools): remove sky_lints, now inherited from root.
+
+#### `sky_network` - `v1.1.12`
+
+ - **REFACTOR**(sky_network): remove sky_lints, now inherited from root.
+
+#### `sky_router` - `v1.1.5`
+
+ - **REFACTOR**(sky_router): remove sky_lints, now inherited from root.
+
+#### `sky_storage` - `v1.0.4`
+
+ - **REFACTOR**(sky_storage): remove sky_lints, now inherited from root.
+
+#### `sky_storage_hive` - `v1.0.4`
+
+ - **REFACTOR**(sky_storage_hive): remove sky_lints, now inherited from root.
+
+#### `sky_storage_isar` - `v1.0.4`
+
+ - **REFACTOR**(sky_storage_isar): remove sky_lints, now inherited from root.
+
+#### `sky_telemetry` - `v1.1.3`
+
+ - **REFACTOR**(sky_telemetry): remove sky_lints, now inherited from root.
+
+#### `sky_telemetry_firebase` - `v1.1.3`
+
+ - **REFACTOR**(sky_telemetry_firebase): remove sky_lints, now inherited from root.
+
+#### `sky_utils` - `v1.0.4`
+
+ - **REFACTOR**(sky_utils): remove sky_lints, now inherited from root.
+
+
+## 2026-07-12
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_architecture` - `v1.7.1`](#sky_architecture---v171)
  - [`sky_network` - `v1.1.11`](#sky_network---v1111)
  - [`sky_router` - `v1.1.4`](#sky_router---v114)

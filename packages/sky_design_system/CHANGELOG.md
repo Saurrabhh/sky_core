@@ -1,3 +1,7 @@
+## 1.7.3
+
+ - **REFACTOR**(sky_design_system): remove sky_lints, now inherited from root.
+
 ## 1.7.2
 
  - **FIX**(sky_design_system): isDismissable logic.
