@@ -9,8 +9,8 @@ environment:
   flutter: '>=3.44.0'
 
 dependencies:
-  analysis_server_plugin: ^0.3.14
-  analyzer: '>=6.0.0 <13.0.0'
+  analysis_server_plugin:
+  analyzer:
 
 plugin:
   platforms:

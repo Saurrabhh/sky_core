@@ -17,7 +17,7 @@ dependencies:
   sky_design_system:
     path: ../../packages/sky_design_system
 
-  widgetbook: ^3.23.0
+  widgetbook: ^3.25.0
   widgetbook_annotation: ^3.11.0
 
 dev_dependencies:
@@ -29,7 +29,10 @@ dev_dependencies:
   sky_lints:
     path: ../../packages/sky_lints
 
-  widgetbook_generator: ^3.23.0
+  widgetbook_generator: ^3.24.0
+
+dependency_overrides:
+  analyzer: ^13.0.0
 
 flutter:
   uses-material-design: true
