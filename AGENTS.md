@@ -212,10 +212,8 @@ description: <one-line description of this package's purpose>
 * Run `dart analyze` (or `flutter analyze`) before considering any task complete.
 * Zero errors and zero warnings are required. Infos may be acceptable if justified.
 * Use `dart fix --apply` to resolve mechanical lint issues first.
-* The project uses `sky_lints` — all packages must include:
-  ```yaml
-  include: package:sky_lints/analysis_options.yaml
-  ```
+* The project uses `sky_lints` — the root `analysis_options.yaml` includes it globally.
+  Individual packages **must not** add their own `analysis_options.yaml` or `sky_lints` dev_dependency; they inherit from the root automatically.
 * Never add `// ignore:` suppressions without a comment explaining *why* the suppression is justified.
 
 ### 6.2 Testing
@@ -256,18 +254,20 @@ All commits **must** follow Melos conventional commits with the package scope:
 [optional footer]
 ```
 
-| Type | When to use |
-|---|---|
-| `feat` | New feature or capability |
-| `fix` | Bug fix |
-| `perf` | Performance improvement |
-| `refactor` | Code restructure (no behavior change) |
-| `test` | Adding or fixing tests |
-| `chore` | Build scripts, CI, dependency bumps, non-code maintenance |
-| `style` | Formatting only (no logic change) |
-| `revert` | Reverting a prior commit |
+| Type | When to use | Melos tracked? |
+|---|---|:---:|
+| `feat` | New feature or capability | ✅ |
+| `fix` | Bug fix | ✅ |
+| `perf` | Performance improvement | ✅ |
+| `refactor` | Code restructure (no behavior change) | ✅ |
+| `revert` | Reverting a prior commit | ✅ |
+| `test` | Adding or fixing tests | ❌ |
+| `chore` | Root/CI/build-only maintenance (never for packages) | ❌ |
+| `style` | Formatting only (no logic change) | ❌ |
 
-> ⚠️ **Never use `docs` as the commit type.** Melos excludes `docs` commits from versioning and changelog generation. Use `chore` for documentation-only changes instead.
+> ⚠️ **Both `docs` and `chore` are excluded from Melos versioning and changelog generation.**
+> - For **package** commits (anything under `packages/` or `apps/`), always use a Melos-tracked type: `feat`, `fix`, `perf`, `refactor`, or `revert`.
+> - `chore` is only acceptable for root-level changes (CI, workspace config, `.github/`) that do not belong to any package.
 
 **Scope** = the package name (e.g., `sky_router`, `sky_lints`, `sky_showcase`).
 
@@ -275,7 +275,7 @@ Examples:
 ```
 feat(sky_router): add named route redirect support
 fix(sky_network): handle 429 rate-limit errors gracefully
-chore(sky_architecture): update README with Either usage examples
+refactor(sky_architecture): update README with Either usage examples
 test(sky_storage): add unit tests for HiveStorageAdapter
 refactor(sky_bloc): extract base state mixin into separate file
 ```
@@ -370,7 +370,7 @@ Read each package's own `SKILL.md` for detailed contracts. Summary:
 | `sky_architecture` | Use `UseCase<T, P>` + `FutureEitherFailure<T>` for all business logic |
 | `sky_bloc` | State management layer; use BLoC/Cubit from this package |
 | `sky_design_system` | All UI components must come from here; never ad-hoc style |
-| `sky_lints` | All `analysis_options.yaml` must include this |
+| `sky_lints` | Provides lint rules globally via root `analysis_options.yaml`; individual packages must not re-declare it |
 | `sky_network` | All HTTP calls routed through this package |
 | `sky_router` | All navigation via `RouteHandler`; no direct `Navigator` calls |
 | `sky_router_lints` | Enforces router usage at lint time |
@@ -397,7 +397,8 @@ Read each package's own `SKILL.md` for detailed contracts. Summary:
 * ❌ Leave `SKILL.md` stale after adding a new pattern, class, or usage contract
 * ❌ Create a new package without a `LICENSE` file, `README.md`, and `SKILL.md`
 * ❌ Delete or truncate a `LICENSE` file
-* ❌ Commit with `docs` type (Melos excludes it; use `chore` instead)
+* ❌ Commit with `docs` type — Melos excludes it
+* ❌ Commit with `chore` type for package-scoped changes — Melos excludes it; use `refactor` for structural/maintenance changes to packages
 
 **Architecture**
 * ❌ Create circular package dependencies
