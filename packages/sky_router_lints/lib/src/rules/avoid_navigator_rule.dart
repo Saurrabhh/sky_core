@@ -3,7 +3,6 @@ import 'package:analyzer/analysis_rule/rule_context.dart';
 import 'package:analyzer/analysis_rule/rule_visitor_registry.dart';
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
-import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/error/error.dart';
 
 /// A lint rule that discourages using Flutter's native [Navigator] class
@@ -31,7 +30,7 @@ class AvoidNavigatorRule extends AnalysisRule {
   void registerNodeProcessors(RuleVisitorRegistry registry, RuleContext context) {
     // NamedType fires only on type-position identifiers (e.g. `Navigator.of(…)`
     // type references), skipping every plain identifier in the file.
-    registry.addNamedType(this, _Visitor(this));
+    registry.addSimpleIdentifier(this, _Visitor(this));
   }
 }
 
@@ -41,22 +40,23 @@ class AvoidNavigatorRule extends AnalysisRule {
 /// type-position nodes only — import/export directives never contain
 /// [NamedType] nodes, so no additional parent-walk is needed.
 class _Visitor extends SimpleAstVisitor<void> {
-  /// The rule triggering this visitor.
-  final AnalysisRule rule;
+  final AvoidNavigatorRule rule;
 
-  /// Instantiates the visitor associated with the given [rule].
   _Visitor(this.rule);
 
   @override
-  void visitNamedType(NamedType node) {
-    // Fast name check before any element resolution.
-    if (node.name.lexeme != 'Navigator') return;
+  void visitSimpleIdentifier(SimpleIdentifier node) {
+    // Fast string check.
+    if (node.name != 'Navigator') return;
 
     final element = node.element;
-    if (element is! ClassElement) return;
+    if (element == null) return;
 
-    final uri = element.library.uri;
-    if (uri.scheme == 'package' && uri.pathSegments.firstOrNull == 'flutter') {
+    // Access the source URI through the fragment API.
+    final libraryUri = element.library?.firstFragment.source.uri.toString();
+
+    // Verify it is the Flutter Navigator class.
+    if (libraryUri == 'package:flutter/src/widgets/navigator.dart') {
       rule.reportAtNode(node);
     }
   }
