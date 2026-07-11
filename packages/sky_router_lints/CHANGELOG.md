@@ -1,3 +1,7 @@
+## 1.1.4
+
+ - **FIX**(sky_router_lints): avoid_navigator rule.
+
 ## 1.1.3
 
  - **FIX**(sky_router_lints): avoid_navigator rule.
