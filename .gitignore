@@ -31,3 +31,9 @@ pubspec_overrides.yaml
 .fvm/
 .fvmrc
 /.antigravitycli/
+/docs/superpowers/
+.superpowers/
+.superpowers
+
+
+
