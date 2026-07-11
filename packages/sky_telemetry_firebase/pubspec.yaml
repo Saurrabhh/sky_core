@@ -15,7 +15,3 @@ dependencies:
   flutter:
     sdk: flutter
   sky_telemetry: ^1.1.2
-
-dev_dependencies:
-  sky_lints:
-    path: ../sky_lints
