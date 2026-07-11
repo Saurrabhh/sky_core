@@ -1,3 +1,7 @@
+## 1.1.3
+
+ - **FIX**(sky_router_lints): avoid_navigator rule.
+
 ## 1.1.2
 
  - **FIX**(sky_router_lints): fix file name.

@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_router_lints` - `v1.1.3`](#sky_router_lints---v113)
+
+---
+
+#### `sky_router_lints` - `v1.1.3`
+
+ - **FIX**(sky_router_lints): avoid_navigator rule.
+
+
+## 2026-07-11
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_router_lints` - `v1.1.2`](#sky_router_lints---v112)
 
 ---
