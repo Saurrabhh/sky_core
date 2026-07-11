@@ -1,3 +1,7 @@
+## 1.7.0
+
+ - **FEAT**(sky_architecture): add new typedefs and usecase for option.
+
 ## 1.6.1
 
  - **FIX**(sky_architecture): add helper exports.

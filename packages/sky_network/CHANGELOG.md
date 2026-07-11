@@ -1,3 +1,7 @@
+## 1.1.10
+
+ - Update a dependency to the latest release.
+
 ## 1.1.9
 
  - **FIX**(sky_network): add helper exports.

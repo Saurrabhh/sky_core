@@ -15,6 +15,36 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_architecture` - `v1.7.0`](#sky_architecture---v170)
+ - [`sky_bloc` - `v2.0.13`](#sky_bloc---v2013)
+ - [`sky_network` - `v1.1.10`](#sky_network---v1110)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `sky_bloc` - `v2.0.13`
+ - `sky_network` - `v1.1.10`
+
+---
+
+#### `sky_architecture` - `v1.7.0`
+
+ - **FEAT**(sky_architecture): add new typedefs and usecase for option.
+
+
+## 2026-07-12
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_architecture` - `v1.6.1`](#sky_architecture---v161)
  - [`sky_bloc` - `v2.0.12`](#sky_bloc---v2012)
  - [`sky_network` - `v1.1.9`](#sky_network---v119)

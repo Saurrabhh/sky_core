@@ -1,3 +1,7 @@
+## 2.0.13
+
+ - Update a dependency to the latest release.
+
 ## 2.0.12
 
  - **FIX**(sky_bloc): add helper exports.
