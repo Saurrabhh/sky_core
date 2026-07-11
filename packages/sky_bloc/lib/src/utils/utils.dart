@@ -1,0 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:sky_bloc/sky_bloc.dart';
+
+B getBloc<B extends BaseBloc>(BuildContext context) =>
+    BlocProvider.of<B>(context);
