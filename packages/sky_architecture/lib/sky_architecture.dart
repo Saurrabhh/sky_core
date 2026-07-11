@@ -1,6 +1,9 @@
 /// Core architectural contracts, use cases, domain patterns, and exceptions.
 library;
 
+export 'package:equatable/equatable.dart';
+export 'package:fpdart/fpdart.dart';
+
 export 'src/data/exceptions/exception.dart';
 export 'src/data/exceptions/exception_mapper.dart';
 export 'src/data/exceptions/exceptions.dart';
