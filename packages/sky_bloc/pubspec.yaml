@@ -1,4 +1,4 @@
-name: sky_bloc
+﻿name: sky_bloc
 description: Standardized BLoC state management core for the Sky monorepo.
 version: 2.2.1
 repository: https://github.com/Saurrabhh/sky_core/tree/master/packages/sky_bloc
@@ -24,5 +24,3 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  sky_lints:
-    path: ../sky_lints
