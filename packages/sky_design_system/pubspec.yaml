@@ -1,4 +1,4 @@
-name: sky_design_system
+﻿name: sky_design_system
 description: Atomic design system for Sky Core applications.
 version: 1.7.2
 repository: https://github.com/Saurrabhh/sky_core/tree/master/packages/sky_design_system
@@ -21,8 +21,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  sky_lints:
-    path: ../sky_lints
 
 flutter:
   uses-material-design: true
