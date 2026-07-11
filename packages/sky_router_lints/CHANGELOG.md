@@ -1,3 +1,7 @@
+## 1.1.2
+
+ - **FIX**(sky_router_lints): fix file name.
+
 ## 1.1.1
 
  - **FIX**(sky_router_lints): fix analyzer version.

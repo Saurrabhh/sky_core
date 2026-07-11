@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_router_lints` - `v1.1.2`](#sky_router_lints---v112)
+
+---
+
+#### `sky_router_lints` - `v1.1.2`
+
+ - **FIX**(sky_router_lints): fix file name.
+
+
+## 2026-07-11
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_router_lints` - `v1.1.1`](#sky_router_lints---v111)
 
 ---
