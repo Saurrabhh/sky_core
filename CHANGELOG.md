@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-07-12
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sky_architecture` - `v1.6.1`](#sky_architecture---v161)
+ - [`sky_bloc` - `v2.0.12`](#sky_bloc---v2012)
+ - [`sky_network` - `v1.1.9`](#sky_network---v119)
+
+---
+
+#### `sky_architecture` - `v1.6.1`
+
+ - **FIX**(sky_architecture): add helper exports.
+
+#### `sky_bloc` - `v2.0.12`
+
+ - **FIX**(sky_bloc): add helper exports.
+
+#### `sky_network` - `v1.1.9`
+
+ - **FIX**(sky_network): add helper exports.
+
+
 ## 2026-07-11
 
 ### Changes

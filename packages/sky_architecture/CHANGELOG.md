@@ -1,3 +1,7 @@
+## 1.6.1
+
+ - **FIX**(sky_architecture): add helper exports.
+
 ## 1.6.0
 
  - **FEAT**(sky_architecture): add functional error handling typedefs.

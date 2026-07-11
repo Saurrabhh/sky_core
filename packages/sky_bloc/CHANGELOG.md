@@ -1,3 +1,7 @@
+## 2.0.12
+
+ - **FIX**(sky_bloc): add helper exports.
+
 ## 2.0.11
 
  - **FIX**(sky_bloc): rename AppLogging to AppLoggerRegistry in BLoC observer.

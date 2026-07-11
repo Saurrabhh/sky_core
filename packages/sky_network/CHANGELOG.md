@@ -1,3 +1,7 @@
+## 1.1.9
+
+ - **FIX**(sky_network): add helper exports.
+
 ## 1.1.8
 
  - **FIX**(sky_network): fix order of interceptors.
