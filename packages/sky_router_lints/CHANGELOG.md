@@ -1,3 +1,7 @@
+## 1.1.1
+
+ - **FIX**(sky_router_lints): fix analyzer version.
+
 ## 1.1.0
 
  - **FEAT**(sky_router_lints): implement AvoidNavigatorRule and plugin entry point.
