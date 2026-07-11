@@ -21,6 +21,3 @@ dependencies:
   talker_dio_logger: ^4.6.0
   talker_flutter: ^4.6.0
 
-dev_dependencies:
-  sky_lints:
-    path: ../sky_lints
