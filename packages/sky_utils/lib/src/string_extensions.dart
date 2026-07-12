@@ -31,4 +31,7 @@ extension SkyUtilsStringExtension on String {
 
   /// Converts the string to Sentence case format.
   String get sentenceCase => ReCase(this).sentenceCase;
+
+  /// Converts the string to CONSTANT_CASE format.
+  String get constantCase => ReCase(this).constantCase;
 }

@@ -30,6 +30,7 @@ void main() {
       expect(input.titleCase, equals('Hello World Text'));
       expect(input.paramCase, equals('hello-world-text'));
       expect(input.sentenceCase, equals('Hello world text'));
+      expect(input.constantCase, equals('HELLO_WORLD_TEXT'));
     });
   });
 
