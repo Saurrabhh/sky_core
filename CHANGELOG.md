@@ -15,6 +15,37 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_utils` - `v1.2.0`](#sky_utils---v120)
+ - [`sky_router` - `v1.1.7`](#sky_router---v117)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `sky_router` - `v1.1.7`
+
+---
+
+#### `sky_utils` - `v1.2.0`
+
+ - **FEAT**(sky_utils): add constantCase to String extension.
+ - **FEAT**(sky_utils): add AppCurrencySymbols unicode constants.
+ - **FEAT**(sky_utils): implement num amount formatting extension and update docs.
+ - **FEAT**(sky_utils): scaffold num amount formatting extension.
+
+
+## 2026-07-12
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_utils` - `v1.1.0`](#sky_utils---v110)
  - [`sky_router` - `v1.1.6`](#sky_router---v116)
 

@@ -1,3 +1,10 @@
+## 1.2.0
+
+ - **FEAT**(sky_utils): add constantCase to String extension.
+ - **FEAT**(sky_utils): add AppCurrencySymbols unicode constants.
+ - **FEAT**(sky_utils): implement num amount formatting extension and update docs.
+ - **FEAT**(sky_utils): scaffold num amount formatting extension.
+
 ## 1.1.0
 
  - **FEAT**(sky_utils): add constantCase.
