@@ -1,6 +1,6 @@
-# Design Spec: `num` Amount Formatting Extension in `sky_utils`
+# Design Spec: `num` Amount Formatting Extension and Currency Constants in `sky_utils`
 
-This design specification details the addition of a custom number extension method `toAmountFormat()` on the Dart `num` type in the `sky_utils` package.
+This design specification details the addition of a custom number extension method `toAmountFormat()` on the Dart `num` type and reusable unicode currency symbol constants in the `sky_utils` package.
 
 ## 1. Problem Statement & Objectives
 Currently, there is no standardized, lightweight utility in the `sky_core` repository to format numbers as formatted currency or amount strings. 
@@ -12,6 +12,7 @@ The requirements for the formatting are:
 * Allow placing the currency symbol on the left (prefix) or right (suffix), with optional spacing between the symbol and the number.
 * Keep the implementation inside `sky_utils` dependency-free (avoiding adding `intl`).
 * Optimize string creation using `StringBuffer` for memory efficiency and speed.
+* Provide a reusable class `AppCurrencySymbols` containing unicode hex escape constants for common currency symbols (e.g., Rupee, Dollar, Euro, Pound, Yen) to avoid encoding issues and improve reusability.
 
 ---
 
@@ -29,6 +30,27 @@ enum DigitGroupingSystem {
   /// Indian grouping system (lakhs, crores), grouping by last 3 digits, then by 2 digits.
   /// Example: 12,34,567.89
   lakhs,
+}
+```
+
+### `AppCurrencySymbols` Class
+```dart
+/// Standard currency unicode symbol constants.
+abstract final class AppCurrencySymbols {
+  /// Indian Rupee symbol (₹)
+  static const String rupee = '\u20B9';
+
+  /// US Dollar symbol ($)
+  static const String dollar = '\u0024';
+
+  /// Euro symbol (€)
+  static const String euro = '\u20AC';
+
+  /// British Pound symbol (£)
+  static const String pound = '\u00A3';
+
+  /// Japanese Yen / Chinese Yuan symbol (¥)
+  static const String yen = '\u00A5';
 }
 ```
 
@@ -90,3 +112,4 @@ We will add comprehensive unit tests in `packages/sky_utils/test/src/num_extensi
 * Western formatting (millions) with and without decimals.
 * Indian formatting (lakhs) with and without decimals, specifically verifying Lakhs/Crores transition points (e.g. `1234567.89` -> `12,34,567.89`).
 * Currency symbol placements, with/without space, prefix/suffix.
+* Verification that `AppCurrencySymbols` values match correct unicode symbols.

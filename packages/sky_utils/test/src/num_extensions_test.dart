@@ -116,5 +116,32 @@ void main() {
         );
       });
     });
+
+    group('AppCurrencySymbols Tests', () {
+      test('Unicode constants match their respective symbols', () {
+        expect(AppCurrencySymbols.rupee, '₹');
+        expect(AppCurrencySymbols.dollar, r'$');
+        expect(AppCurrencySymbols.euro, '€');
+        expect(AppCurrencySymbols.pound, '£');
+        expect(AppCurrencySymbols.yen, '¥');
+      });
+
+      test('Format amounts using AppCurrencySymbols constants', () {
+        expect(
+          12345.6.toAmountFormat(
+            currencySymbol: AppCurrencySymbols.rupee,
+            groupingSystem: DigitGroupingSystem.lakhs,
+          ),
+          '₹12,345.60',
+        );
+        expect(
+          1234567.89.toAmountFormat(
+            currencySymbol: AppCurrencySymbols.dollar,
+            spaceBetween: true,
+          ),
+          r'$ 1,234,567.89',
+        );
+      });
+    });
   });
 }
