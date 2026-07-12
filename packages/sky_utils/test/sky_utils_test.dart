@@ -50,6 +50,7 @@ void main() {
       expect(TestEnum.userRole.snakeCase, equals('user_role'));
       expect(TestEnum.userRole.pascalCase, equals('UserRole'));
       expect(TestEnum.userRole.camelCase, equals('userRole'));
+      expect(TestEnum.userRole.constantCase, equals('USER_ROLE'));
     });
 
     test('lookup from string with various casing styles', () {
