@@ -20,6 +20,9 @@ extension SkyUtilsEnumExtension on Enum {
 
   /// Converts the enum name to pascal case.
   String get pascalCase => ReCase(name).pascalCase;
+
+  /// Converts the enum name to constant case.
+  String get constantCase => ReCase(name).constantCase;
 }
 
 /// Lookup utilities on enum iterables.
