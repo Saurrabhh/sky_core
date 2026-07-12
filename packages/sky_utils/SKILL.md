@@ -45,3 +45,16 @@ Common helper classes and extension methods for everyday Dart/Flutter tasks.
 
 ### 5. Enum Extensions
 * Use `EnumExtensions` to convert enum values to display labels.
+
+### 6. Number Extensions
+* Use `toAmountFormat` to format currency/amounts with proper decimal and digit groupings (millions vs lakhs):
+  ```dart
+  // ❌ Avoid manual decimal splitting and comma formatting
+  final amount = val.toStringAsFixed(2);
+  
+  //  Use num extensions
+  final amount = price.toAmountFormat(
+    currencySymbol: '₹',
+    groupingSystem: DigitGroupingSystem.lakhs,
+  );
+  ```

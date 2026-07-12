@@ -4,7 +4,7 @@ A rich suite of reusable, high-performance Dart and Flutter utility extensions, 
 
 ## Features
 
-* **Expressive Extensions:** Type-safe extensions on `BuildContext`, `String`, `DateTime`, and collections to eliminate boilerplate code.
+* **Expressive Extensions:** Type-safe extensions on `BuildContext`, `String`, `num`, `DateTime`, and collections to eliminate boilerplate code.
 * **Concurrency Controls:** Simple, reliable `Mutex` and `Semaphore` locks to coordinate async operations and avoid race conditions.
 * **Case Helpers:** Fast string case converters wrapping `recase` to format text into camelCase, snake_case, PascalCase, and more.
 
@@ -29,7 +29,14 @@ void main() async {
   final label = "sky core framework".toPascalCase(); // SkyCoreFramework
   print(label);
 
-  // 2. Protect critical sections with Mutex
+  // 2. Format amounts beautifully
+  final amount = 1234567.89.toAmountFormat(
+    currencySymbol: '₹',
+    groupingSystem: DigitGroupingSystem.lakhs,
+  ); // ₹12,34,567.89
+  print(amount);
+
+  // 3. Protect critical sections with Mutex
   final mutex = Mutex();
   
   await mutex.protect(() async {
