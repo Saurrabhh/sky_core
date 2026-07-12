@@ -1,3 +1,7 @@
+## 1.1.0
+
+ - **FEAT**(sky_utils): add constantCase.
+
 ## 1.0.4
 
  - **REFACTOR**(sky_utils): remove sky_lints, now inherited from root.

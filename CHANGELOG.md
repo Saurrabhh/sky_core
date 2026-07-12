@@ -15,6 +15,34 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_utils` - `v1.1.0`](#sky_utils---v110)
+ - [`sky_router` - `v1.1.6`](#sky_router---v116)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `sky_router` - `v1.1.6`
+
+---
+
+#### `sky_utils` - `v1.1.0`
+
+ - **FEAT**(sky_utils): add constantCase.
+
+
+## 2026-07-12
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_architecture` - `v1.7.2`](#sky_architecture---v172)
  - [`sky_bloc` - `v2.2.2`](#sky_bloc---v222)
  - [`sky_design_system` - `v1.7.3`](#sky_design_system---v173)
