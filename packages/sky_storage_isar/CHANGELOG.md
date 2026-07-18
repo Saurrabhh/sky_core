@@ -1,3 +1,8 @@
+## 1.1.0
+
+ - **FEAT**(sky_storage_isar): add unit tests for IsarDaoSync.
+ - **FEAT**(sky_storage_isar): implement IsarDaoSync and fix outdated docs.
+
 ## 1.0.4
 
  - **REFACTOR**(sky_storage_isar): remove sky_lints, now inherited from root.

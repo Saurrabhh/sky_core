@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-07-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sky_storage` - `v1.1.0`](#sky_storage---v110)
+ - [`sky_storage_hive` - `v1.0.5`](#sky_storage_hive---v105)
+ - [`sky_storage_isar` - `v1.1.0`](#sky_storage_isar---v110)
+
+---
+
+#### `sky_storage` - `v1.1.0`
+
+ - **FEAT**(sky_storage): add DaoSync and clean up outdated documentation.
+
+#### `sky_storage_hive` - `v1.0.5`
+
+ - **REFACTOR**(sky_storage_hive): update outdated documentation to match codebase.
+
+#### `sky_storage_isar` - `v1.1.0`
+
+ - **FEAT**(sky_storage_isar): add unit tests for IsarDaoSync.
+ - **FEAT**(sky_storage_isar): implement IsarDaoSync and fix outdated docs.
+
+
 ## 2026-07-12
 
 ### Changes

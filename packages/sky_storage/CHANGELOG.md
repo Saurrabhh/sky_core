@@ -1,3 +1,7 @@
+## 1.1.0
+
+ - **FEAT**(sky_storage): add DaoSync and clean up outdated documentation.
+
 ## 1.0.4
 
  - **REFACTOR**(sky_storage): remove sky_lints, now inherited from root.

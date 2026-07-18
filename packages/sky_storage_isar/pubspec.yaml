@@ -1,6 +1,6 @@
 name: sky_storage_isar
 description: Local persistence implementation wrapping Isar and providing IsarDao.
-version: 1.0.4
+version: 1.1.0
 repository: https://github.com/Saurrabhh/sky_core/tree/master/packages/sky_storage_isar
 resolution: workspace
 
@@ -15,7 +15,7 @@ dependencies:
   isar_community: ^3.3.2
   isar_community_flutter_libs: ^3.3.2
 
-  sky_storage: ^1.0.4
+  sky_storage: ^1.1.0
 
 dev_dependencies:
   flutter_test:

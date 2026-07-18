@@ -1,3 +1,7 @@
+## 1.0.5
+
+ - **REFACTOR**(sky_storage_hive): update outdated documentation to match codebase.
+
 ## 1.0.4
 
  - **REFACTOR**(sky_storage_hive): remove sky_lints, now inherited from root.
