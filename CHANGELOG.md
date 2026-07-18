@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_bloc` - `v2.3.0`](#sky_bloc---v230)
+
+---
+
+#### `sky_bloc` - `v2.3.0`
+
+ - **FEAT**(sky_bloc): update params.
+
+
+## 2026-07-19
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_design_system` - `v1.7.4`](#sky_design_system---v174)
  - [`sky_router` - `v1.2.0`](#sky_router---v120)
  - [`sky_devtools` - `v1.1.2`](#sky_devtools---v112)

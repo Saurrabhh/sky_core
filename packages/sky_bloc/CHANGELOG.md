@@ -1,3 +1,7 @@
+## 2.3.0
+
+ - **FEAT**(sky_bloc): update params.
+
 ## 2.2.2
 
  - **REFACTOR**(sky_bloc): remove sky_lints, now inherited from root.
