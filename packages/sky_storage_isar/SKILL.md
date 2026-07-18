@@ -9,9 +9,9 @@ Isar database integration rules for relational and indexed local storage.
 
 ## Guidelines & Checklists
 
-### 1. IsarDao Usage
-* Extend `IsarDao<T>` when complex relational mapping, full-text search, or composite indexing is needed.
-* Use Isar's built-in query builder for type-safe queries:
+### 1. IsarDao / IsarDaoSync Usage
+* Use `IsarDao<T>` (async) or `IsarDaoSync<T>` (sync) to perform key-value operations on Isar collections.
+* Use Isar's built-in query builder for type-safe custom queries:
   ```dart
   final results = await isar.myModels
       .filter()
@@ -25,4 +25,4 @@ Isar database integration rules for relational and indexed local storage.
 * Run code generation via `build_runner` after any schema changes.
 
 ### 3. Initialization
-* Open the Isar instance during app startup via `DatabaseInitializer` before any DAO is accessed.
+* Open the Isar instance during app startup via `IsarDatabaseInitializer` before any DAO is accessed.

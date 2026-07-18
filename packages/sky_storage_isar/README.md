@@ -4,7 +4,7 @@ A premium local storage implementation for Flutter, wrapping `isar_community` an
 
 ## Features
 
-* **Isar Engines:** Direct realization of `ObjectDao` matching standard contracts.
+* **Isar Engines:** Direct realization of `Dao` and `DaoSync` interfaces using Isar collections.
 * **Type-Safe Queries:** Leveraging Isar's query compiler to perform advanced filters, sorts, and limits.
 * **Watchers:** Native reactive watchers to automatically update Flutter components when database tables change.
 
@@ -14,26 +14,28 @@ Add the package to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  sky_storage_isar: ^1.0.0
+  sky_storage_isar: ^1.0.4
 ```
 
 ## Usage
 
-Initialize Isar and register schemas:
+Initialize Isar and use `IsarDao` or `IsarDaoSync` to interact with collections:
 
 ```dart
+import 'package:sky_storage/sky_storage.dart';
 import 'package:sky_storage_isar/sky_storage_isar.dart';
 
-void main() async {
-  // 1. Initialize Isar DB with your schemas
-  final isarInstance = await SkyIsarInitializer.initialize(
-    schemas: [TaskSchema],
-    directory: '/path/to/documents',
-  );
+// 1. Initialize Isar DB during app startup
+final initializer = IsarDatabaseInitializer(
+  providers: [MySchemaProvider()],
+  directory: '/path/to/documents',
+);
+await initializer.initialize();
 
-  // 2. Query collections reactively
-  isarInstance.tasks.where().watch().listen((updatedTasks) {
-    print('Tasks database modified: ${updatedTasks.length} total tasks');
-  });
-}
+// 2. Instantiate and use the DAO (async or sync)
+final taskDao = IsarDao<Task>(collection: initializer.isar.tasks);
+await taskDao.put(1, Task(id: 1, name: 'Learn Isar'));
+
+final taskDaoSync = IsarDaoSync<Task>(collection: initializer.isar.tasks);
+taskDaoSync.put(2, Task(id: 2, name: 'Use Isar sync'));
 ```

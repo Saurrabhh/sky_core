@@ -1,5 +1,4 @@
 import 'package:isar_community/isar.dart';
-
 import 'package:sky_storage/sky_storage.dart';
 
 /// A [Dao] implementation that uses Isar for persistence.

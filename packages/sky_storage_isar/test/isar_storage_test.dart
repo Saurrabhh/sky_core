@@ -1,6 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:isar_community/isar.dart';
-
 import 'package:mocktail/mocktail.dart';
 import 'package:sky_storage_isar/sky_storage_isar.dart';
 
