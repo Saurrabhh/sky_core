@@ -24,3 +24,6 @@ Hive CE integration rules for key-value local storage.
 
 ### 3. Box Naming
 * Use feature-namespaced constants for box names to avoid key collisions (e.g., `auth_local_box`, `settings_box`).
+
+### 4. Initialization
+* Open and initialize the Hive database during app startup via `HiveDatabaseInitializer` before any DAO is accessed.
