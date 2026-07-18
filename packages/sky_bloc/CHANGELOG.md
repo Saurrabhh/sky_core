@@ -1,3 +1,7 @@
+## 2.3.1
+
+ - **FIX**(sky_bloc): docs.
+
 ## 2.3.0
 
  - **FEAT**(sky_bloc): update params.
