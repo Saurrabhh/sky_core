@@ -9,7 +9,7 @@ void main() {
     testWidgets('renders slivers inside layout', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: const Scaffold(
             body: AppSliverScrollView(
               sliverAppBar: SliverAppBar(title: Text('Sliver Bar')),
@@ -31,7 +31,7 @@ void main() {
     ) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: const Scaffold(
             body: AppSliverScrollView(
               footer: Text('Sliver Footer'),
@@ -53,7 +53,7 @@ void main() {
     ) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: const Scaffold(
             body: AppSliverScrollView(
               footer: Text('Sliver Footer'),

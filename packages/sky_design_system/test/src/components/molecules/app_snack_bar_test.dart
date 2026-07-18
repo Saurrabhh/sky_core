@@ -11,7 +11,7 @@ void main() {
     ) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: Builder(
               builder: (context) {
@@ -44,7 +44,7 @@ void main() {
       (tester) async {
         await tester.pumpWidget(
           MaterialApp(
-            theme: AppTheme.light(useGoogleFonts: false),
+            theme: AppTheme.light(),
             home: Scaffold(
               body: Builder(
                 builder: (context) {
@@ -82,7 +82,7 @@ void main() {
 
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: Builder(
               builder: (context) {

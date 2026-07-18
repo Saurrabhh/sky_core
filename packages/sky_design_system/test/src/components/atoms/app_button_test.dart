@@ -10,7 +10,7 @@ void main() {
       var tapped = false;
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppButton.primary(
               text: 'Primary Button',
@@ -33,7 +33,7 @@ void main() {
     testWidgets('AppButton.primary with icon renders icon', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: const Scaffold(
             body: AppButton.primary(
               text: 'Primary Icon',
@@ -51,7 +51,7 @@ void main() {
     testWidgets('AppButton.secondary renders correctly', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppButton.secondary(
               text: 'Secondary Button',
@@ -73,7 +73,7 @@ void main() {
     testWidgets('AppButton.outlined renders correctly', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppButton.outlined(
               text: 'Outlined Button',
@@ -90,7 +90,7 @@ void main() {
     testWidgets('AppButton.inverse renders correctly', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppButton.inverse(
               text: 'Inverse Button',
@@ -107,7 +107,7 @@ void main() {
     testWidgets('AppButton.text renders correctly', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppButton.text(
               text: 'Text Button',
@@ -125,7 +125,7 @@ void main() {
       var tapped = false;
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppButton.fab(
               icon: Icons.add,

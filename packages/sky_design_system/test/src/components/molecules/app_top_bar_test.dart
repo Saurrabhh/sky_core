@@ -9,7 +9,7 @@ void main() {
     testWidgets('renders AppBar with parameters', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             appBar: AppTopBar(
               title: 'Dashboard',

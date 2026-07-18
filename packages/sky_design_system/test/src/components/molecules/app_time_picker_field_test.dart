@@ -13,7 +13,7 @@ void main() {
 
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: const Scaffold(
             body: AppTimePickerField(
               initialTime: initialTime,
@@ -34,7 +34,7 @@ void main() {
 
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppTimePickerField(
               initialTime: initialTime,
@@ -55,7 +55,7 @@ void main() {
 
         await tester.pumpWidget(
           MaterialApp(
-            theme: AppTheme.light(useGoogleFonts: false),
+            theme: AppTheme.light(),
             home: Scaffold(
               body: AppTimePickerField(
                 initialTime: initialTime,
@@ -85,7 +85,7 @@ void main() {
     testWidgets('respects enabled=false flag', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: const Scaffold(
             body: AppTimePickerField(
               enabled: false,
@@ -106,7 +106,7 @@ void main() {
 
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppTimePickerField(
               key: key,
@@ -122,7 +122,7 @@ void main() {
       // Rebuild with new initialTime
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppTimePickerField(
               key: key,

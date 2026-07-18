@@ -13,7 +13,7 @@ void main() {
 
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppDatePickerField(
               initialDate: initialDate,
@@ -34,7 +34,7 @@ void main() {
 
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppDatePickerField(
               initialDate: initialDate,
@@ -57,7 +57,7 @@ void main() {
 
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppDatePickerField(
               initialDate: initialDate,
@@ -93,7 +93,7 @@ void main() {
     testWidgets('respects enabled=false flag', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: const Scaffold(
             body: AppDatePickerField(
               enabled: false,
@@ -117,7 +117,7 @@ void main() {
 
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppDatePickerField(
               key: key,
@@ -133,7 +133,7 @@ void main() {
       // Rebuild with a new initialDate
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppDatePickerField(
               key: key,

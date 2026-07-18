@@ -14,7 +14,7 @@ void main() {
 
         await tester.pumpWidget(
           MaterialApp(
-            theme: AppTheme.light(useGoogleFonts: false),
+            theme: AppTheme.light(),
             home: Scaffold(
               body: AppSearchBar(
                 hintText: 'Search packages...',
@@ -60,7 +60,7 @@ void main() {
 
         await tester.pumpWidget(
           MaterialApp(
-            theme: AppTheme.light(useGoogleFonts: false),
+            theme: AppTheme.light(),
             home: Scaffold(
               body: AppSearchBar(
                 key: key,
@@ -75,7 +75,7 @@ void main() {
         // Rebuild with new controller
         await tester.pumpWidget(
           MaterialApp(
-            theme: AppTheme.light(useGoogleFonts: false),
+            theme: AppTheme.light(),
             home: Scaffold(
               body: AppSearchBar(
                 key: key,

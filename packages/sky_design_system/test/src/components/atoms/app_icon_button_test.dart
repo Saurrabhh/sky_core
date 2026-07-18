@@ -10,7 +10,7 @@ void main() {
       var pressed = false;
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppIconButton(
               icon: Icons.add,
@@ -36,7 +36,7 @@ void main() {
     testWidgets('primary variant applies correct style', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppIconButton.primary(
               icon: Icons.home,
@@ -56,7 +56,7 @@ void main() {
     testWidgets('secondary variant applies correct style', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppIconButton.secondary(
               icon: Icons.settings,
@@ -73,7 +73,7 @@ void main() {
     testWidgets('outlined variant applies correct style', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppIconButton.outlined(
               icon: Icons.edit,
@@ -90,7 +90,7 @@ void main() {
     testWidgets('inverse variant applies correct style', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppIconButton.inverse(
               icon: Icons.delete,
@@ -158,7 +158,7 @@ void main() {
         final customRadius = BorderRadius.circular(8);
         await tester.pumpWidget(
           MaterialApp(
-            theme: AppTheme.light(useGoogleFonts: false),
+            theme: AppTheme.light(),
             home: Scaffold(
               body: AppIconButton.primary(
                 icon: Icons.star,

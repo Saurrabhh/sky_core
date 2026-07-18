@@ -6,38 +6,21 @@ class AppTheme {
   const AppTheme._();
 
   /// Returns light mode [ThemeData] using an optional [customColorScheme].
-  static ThemeData light({
-    AppColorScheme? customColorScheme,
-    bool useGoogleFonts = true,
-  }) {
+  static ThemeData light({AppColorScheme? customColorScheme}) {
     final activeScheme = AppColors.light.merge(customColorScheme);
-    return _buildTheme(
-      activeScheme.toColorScheme(Brightness.light),
-      useGoogleFonts: useGoogleFonts,
-    );
+
+    return _buildTheme(activeScheme.toColorScheme(Brightness.light));
   }
 
   /// Returns dark mode [ThemeData] using an optional [customColorScheme].
-  static ThemeData dark({
-    AppColorScheme? customColorScheme,
-    bool useGoogleFonts = true,
-  }) {
+  static ThemeData dark({AppColorScheme? customColorScheme}) {
     final activeScheme = AppColors.dark.merge(customColorScheme);
-    return _buildTheme(
-      activeScheme.toColorScheme(Brightness.dark),
-      useGoogleFonts: useGoogleFonts,
-    );
+
+    return _buildTheme(activeScheme.toColorScheme(Brightness.dark));
   }
 
-  static ThemeData _buildTheme(
-    ColorScheme colorScheme, {
-    required bool useGoogleFonts,
-  }) {
-    final textTheme = useGoogleFonts
-        ? AppTypography.textTheme
-        : (colorScheme.brightness == Brightness.dark
-              ? ThemeData.dark().textTheme
-              : ThemeData.light().textTheme);
+  static ThemeData _buildTheme(ColorScheme colorScheme) {
+    final textTheme = AppTypography.textTheme;
 
     return ThemeData(
       useMaterial3: true,

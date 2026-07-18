@@ -11,7 +11,7 @@ void main() {
 
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppListTile(
               title: 'Main Title',
@@ -38,7 +38,7 @@ void main() {
     testWidgets('supports custom trailingWidget', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: const Scaffold(
             body: AppListTile(
               title: 'Main Title',

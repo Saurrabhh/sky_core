@@ -11,7 +11,7 @@ void main() {
       (tester) async {
         await tester.pumpWidget(
           MaterialApp(
-            theme: AppTheme.light(useGoogleFonts: false),
+            theme: AppTheme.light(),
             home: const DefaultTabController(
               length: 2,
               child: Scaffold(

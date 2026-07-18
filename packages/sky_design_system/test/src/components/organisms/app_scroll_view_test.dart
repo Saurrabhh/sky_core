@@ -9,7 +9,7 @@ void main() {
     testWidgets('renders children layout', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: const Scaffold(
             body: AppScrollView(
               children: [
@@ -31,7 +31,7 @@ void main() {
     ) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: const Scaffold(
             body: AppScrollView(
               footer: Text('Test Footer'),
@@ -50,7 +50,7 @@ void main() {
     ) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: const Scaffold(
             body: AppScrollView(
               footer: Text('Test Footer'),
@@ -71,7 +71,7 @@ void main() {
       final focusNode = FocusNode();
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppScrollView(
               children: [

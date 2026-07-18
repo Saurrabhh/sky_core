@@ -14,7 +14,7 @@ void main() {
 
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: AppTextField(
               controller: controller,
@@ -41,7 +41,7 @@ void main() {
     testWidgets('supports initialValue constructor parameter', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: const Scaffold(
             body: AppTextField(
               initialValue: 'Pre-filled text',
@@ -61,7 +61,7 @@ void main() {
 
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: Scaffold(
             body: Form(
               key: formKey,
@@ -104,7 +104,7 @@ void main() {
 
         await tester.pumpWidget(
           MaterialApp(
-            theme: AppTheme.light(useGoogleFonts: false),
+            theme: AppTheme.light(),
             home: Scaffold(
               body: AppTextField(
                 prefixIcon: const Icon(Icons.lock),
@@ -136,7 +136,7 @@ void main() {
     testWidgets('displays static errorText', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: const Scaffold(
             body: AppTextField(
               errorText: 'Static error message',

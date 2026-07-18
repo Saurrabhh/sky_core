@@ -9,7 +9,7 @@ void main() {
     testWidgets('AppCard.outlined renders outlined Card', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: const Scaffold(
             body: AppCard.outlined(
               padding: EdgeInsets.all(16),
@@ -43,7 +43,7 @@ void main() {
     ) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light(useGoogleFonts: false),
+          theme: AppTheme.light(),
           home: const Scaffold(
             body: AppCard.filled(
               child: Text('Card Content'),
