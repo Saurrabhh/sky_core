@@ -115,4 +115,71 @@ void main() {
       );
     });
   });
+
+  group('IsarDaoSync Tests', () {
+    late MockIsar mockIsar;
+    late MockIsarCollection<TestModel> mockCollection;
+    late IsarDaoSync<TestModel> dao;
+
+    setUp(() {
+      mockIsar = MockIsar();
+      mockCollection = MockIsarCollection<TestModel>();
+
+      // Stub the 'isar' getter on mockCollection
+      when(() => mockCollection.isar).thenReturn(mockIsar);
+
+      // Stub writeTxnSync on mockIsar to immediately execute the callback
+      when(() => mockIsar.writeTxnSync<Null>(any())).thenAnswer((invocation) {
+        final callback =
+            invocation.positionalArguments[0] as Null Function();
+        return callback();
+      });
+
+      when(() => mockIsar.writeTxnSync<void>(any())).thenAnswer((invocation) {
+        final callback =
+            invocation.positionalArguments[0] as void Function();
+        return callback();
+      });
+
+      dao = IsarDaoSync<TestModel>(collection: mockCollection);
+    });
+
+    test('put executes writeTxnSync and puts value synchronously', () {
+      final model = TestModel(id: 1, name: 'Test');
+      when(() => mockCollection.putSync(model)).thenReturn(1);
+
+      dao.put(1, model);
+
+      verify(() => mockIsar.writeTxnSync<Null>(any())).called(1);
+      verify(() => mockCollection.putSync(model)).called(1);
+    });
+
+    test('get retrieves value synchronously by ID', () {
+      final model = TestModel(id: 1, name: 'Test');
+      when(() => mockCollection.getSync(1)).thenReturn(model);
+
+      final result = dao.get(1);
+
+      expect(result, equals(model));
+      verify(() => mockCollection.getSync(1)).called(1);
+    });
+
+    test('delete executes writeTxnSync and deletes synchronously by ID', () {
+      when(() => mockCollection.deleteSync(1)).thenReturn(true);
+
+      dao.delete(1);
+
+      verify(() => mockIsar.writeTxnSync<Null>(any())).called(1);
+      verify(() => mockCollection.deleteSync(1)).called(1);
+    });
+
+    test('clear executes writeTxnSync and clears collection synchronously', () {
+      when(() => mockCollection.clearSync()).thenReturn(null);
+
+      dao.clear();
+
+      verify(() => mockIsar.writeTxnSync<void>(any())).called(1);
+      verify(() => mockCollection.clearSync()).called(1);
+    });
+  });
 }
