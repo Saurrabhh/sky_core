@@ -6,18 +6,18 @@ import 'package:sky_bloc/src/base/bloc/base_state.dart';
 ///
 /// Provides basic hooks for checking loading state, starting actions, and
 /// emitting standard loading and failure states.
-abstract class BaseCubit<State extends BaseState> extends Cubit<State> {
+abstract class BaseCubit<State extends BaseState, Params> extends Cubit<State> {
   /// Creates a [BaseCubit] with the given [initialState].
   BaseCubit(super.initialState);
 
-  /// Indicates if the Cubit is currently processing an operation.
-  bool get isLoading;
-
-  /// Starts the Cubit operations with optional configuration arguments [args].
-  void started({Map<String, dynamic>? args});
+  /// Starts the Cubit operations with parameters [params].
+  void started(Params params);
 
   /// Emits a state update indicating changes to the loading status.
-  void setLoading({required Emitter<BaseState> emit, required bool loading}) {
+  void changeLoadingState({
+    required Emitter<BaseState> emit,
+    required bool loading,
+  }) {
     emit(state.getLoadingState(loading: loading));
   }
 

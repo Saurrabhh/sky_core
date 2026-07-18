@@ -7,7 +7,7 @@ import 'package:sky_bloc/src/base/bloc/base_state.dart';
 ///
 /// Provides built-in support for loading indicators and failure propagation
 /// using standard state transitions.
-abstract class BaseBloc<Event extends BaseEvent, State extends BaseState>
+abstract class BaseBloc<Event extends BaseEvent, State extends BaseState, Params>
     extends Bloc<Event, State> {
   /// Creates a [BaseBloc] with the given [initialState] and sets up event handling.
   BaseBloc(super.initialState) {
@@ -19,8 +19,8 @@ abstract class BaseBloc<Event extends BaseEvent, State extends BaseState>
   /// Automatically called during initialization.
   void handleEvents();
 
-  /// Starts the BLoC operations with optional configuration arguments [args].
-  void started({Map<String, dynamic>? args});
+  /// Starts the BLoC operations with parameters [params].
+  void started(Params params);
 
   /// Emits a state update indicating changes to the loading status.
   void changeLoadingState({
