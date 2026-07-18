@@ -19,53 +19,61 @@ dependencies:
 
 ## Usage
 
-Extend the standard components to build highly observable business logic flows:
+Extend the standard components to build highly observable business logic flows.
+
+`BaseBloc` and `BaseCubit` each take a typed `Params` parameter that is passed into `started()`. This replaces the old untyped `Map<String, dynamic>? args` pattern and gives you compile-time safety.
 
 ```dart
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sky_bloc/sky_bloc.dart';
 
-// Define standard states
-sealed class UserState extends Equatable {
-  const UserState();
+// 1. Define a typed Params object
+class FetchUserParams {
+  const FetchUserParams({required this.userId});
+  final String userId;
 }
 
-class UserInitial extends UserState {
+// 2. Define your state (extends BaseState)
+sealed class UserState extends BaseState {
+  const UserState({required this.store});
+  final UserStateStore store;
+}
+
+// 3. Extend BaseBloc with all three type parameters
+class UserBloc extends BaseBloc<UserEvent, UserState, FetchUserParams> {
+  UserBloc(this._getUser) : super(UserState.initial(...));
+
+  final GetUser _getUser;
+
   @override
-  List<Object?> get props => [];
-}
-
-class UserLoading extends UserState {
-  @override
-  List<Object?> get props => [];
-}
-
-class UserLoaded extends UserState {
-  const UserLoaded(this.userName);
-  final String userName;
-
-  @override
-  List<Object?> get props => [userName];
-}
-
-// Create your BLoC extending standard conventions
-class UserBloc extends Bloc<UserEvent, UserState> {
-  UserBloc(this._getUser) : super(UserInitial()) {
+  void handleEvents() {
     on<FetchUserRequested>(_onFetchUser);
   }
 
-  final GetUser _getUser;
+  @override
+  void started(FetchUserParams params) {
+    add(FetchUserRequested(userId: params.userId));
+  }
 
   Future<void> _onFetchUser(
     FetchUserRequested event,
     Emitter<UserState> emit,
   ) async {
-    emit(UserLoading());
-    final result = await _getUser(event.id);
+    changeLoadingState(emit: emit, loading: true);
+    final result = await _getUser(event.userId);
     result.fold(
-      (failure) => emit(UserError(failure.message)),
-      (user) => emit(UserLoaded(user.name)),
+      (failure) => handleFailure(emit: emit, failure: failure),
+      (user) => emit(UserState.loaded(...)),
     );
+  }
+}
+
+// 4. For Cubits, extend BaseCubit<State, Params>
+class ProfileCubit extends BaseCubit<ProfileState, ProfileParams> {
+  ProfileCubit() : super(ProfileState.initial(...));
+
+  @override
+  void started(ProfileParams params) {
+    // kick off logic with typed params
   }
 }
 ```

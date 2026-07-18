@@ -10,7 +10,7 @@ This package provides BloC, State, and Page base classes.
 ## Guidelines & Checklists
 
 ### 1. BloC Definition
-* Implement BloCs by extending `BaseBloc<Event, State>`.
+* Implement BloCs by extending `BaseBloc<Event, State, Params>`.
 * Construct state using a Freezed sealed class that extends `BaseState`.
 * Define a single `store` property containing a Freezed class `StateStore` to manage all data fields.
 * Register event handlers in `handleEvents()` using `on<Event>(_handler)`.
@@ -32,9 +32,15 @@ This package provides BloC, State, and Page base classes.
 
 ### 4. BasePage UI
 * UI pages must extend `BasePage<Bloc, State>`.
-* Implement `createBloc()` to inject the bloc using `getIt<MyBloc>()..started(args: args)`.
+* Implement `createBloc()` to inject the bloc using `getIt<MyBloc>()..started(params)`, where `params` is a typed object matched to the BLoC/Cubit's `Params` type parameter.
 * Implement `buildPage(BuildContext context)` to define the page content.
 * Optionally override `showLoading()` and `handleStateChange()` to handle loading bars and side-effects.
+
+### 5. BaseCubit Definition
+* Implement Cubits by extending `BaseCubit<State, Params>` (two type parameters, same as `BaseBloc`).
+* `started(Params params)` is the single entry point — do not call it without a well-typed `Params` object.
+* Use `changeLoadingState(emit: emit, loading: true/false)` to toggle loading (previously `setLoading`; `setLoading` has been removed).
+* There is no `isLoading` getter on `BaseCubit` — derive loading status from `state.store.loading`.
 
 ### Code Examples
 
@@ -108,12 +114,12 @@ import 'package:sky_design_system/sky_design_system.dart';
 import 'package:splittr/di/injection.dart';
 
 class LoginPage extends BasePage<LoginBloc, LoginState> {
-  const LoginPage({required this.args, super.key});
+  const LoginPage({required this.params, super.key});
 
-  final Map<String, dynamic>? args;
+  final LoginParams params;
 
   @override
-  LoginBloc createBloc() => getIt<LoginBloc>()..started(args: args);
+  LoginBloc createBloc() => getIt<LoginBloc>()..started(params);
 
   @override
   bool showLoading(LoginState state) => state.store.loading;
