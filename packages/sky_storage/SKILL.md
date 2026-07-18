@@ -10,11 +10,11 @@ Enforces decoupling of database backends from business logic repositories.
 ## Guidelines & Checklists
 
 ### 1. Use Dao Abstractions
-* Code all database caching actions against the standard `Dao<T>` interface. Implementations provide `put`, `get`, `getAll`, and `delete` operations.
+* Code all database caching actions against the standard `Dao<ID, T>` or `DaoSync<ID, T>` interfaces.
 * Do **not** import raw database engines (Hive, Isar) directly inside repositories or use cases.
 
 ### 2. DatabaseInitializer
-* Call `DatabaseInitializer.init()` (or the appropriate implementation) during app startup to set up the database environment before any DAOs are accessed.
+* Call `DatabaseInitializer.initialize()` (or the appropriate implementation) during app startup to set up the database environment before any DAOs are accessed.
 
 ### 3. Implementation Selection
 * Choose `sky_storage_hive` for simple key-value or small object caching.
