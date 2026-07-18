@@ -1,3 +1,7 @@
+## 1.2.0
+
+ - **FEAT**(sky_router): update exports.
+
 ## 1.1.7
 
  - Update a dependency to the latest release.
