@@ -69,6 +69,27 @@ AppScrollView(
 );
 ```
 
+#### Navigation Bar
+`AppNavigationBar` supports two variants: the default full-width bar and a floating pill-shaped bar. Use `.floating()` when the design calls for the nav bar to float above content with margin and rounded corners.
+
+```dart
+// Full-width (default)
+AppNavigationBar(
+  selectedIndex: index,
+  onDestinationSelected: onTap,
+  destinations: [...],
+)
+
+// Floating pill shape
+AppNavigationBar.floating(
+  selectedIndex: index,
+  onDestinationSelected: onTap,
+  destinations: [...],
+)
+```
+
+Visual properties (`elevation`, `backgroundColor`, `shadowColor`) are passed directly to `NavigationBar` — use them for floating variant customization.
+
 ---
 
 ## 2. Spacing Tokens (`AppSpacing`)
