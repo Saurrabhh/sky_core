@@ -1,3 +1,7 @@
+## 1.8.1
+
+ - **FIX**(sky_design_system): updated nav bar.
+
 ## 1.8.0
 
  - **REFACTOR**(sky_design_system): add floating navigation bar guideline to SKILL.md.

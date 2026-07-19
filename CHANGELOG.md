@@ -15,6 +15,34 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_design_system` - `v1.8.1`](#sky_design_system---v181)
+ - [`sky_devtools` - `v1.1.4`](#sky_devtools---v114)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `sky_devtools` - `v1.1.4`
+
+---
+
+#### `sky_design_system` - `v1.8.1`
+
+ - **FIX**(sky_design_system): updated nav bar.
+
+
+## 2026-07-19
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_design_system` - `v1.8.0`](#sky_design_system---v180)
  - [`sky_router` - `v1.2.1`](#sky_router---v121)
  - [`sky_devtools` - `v1.1.3`](#sky_devtools---v113)
