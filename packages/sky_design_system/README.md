@@ -8,6 +8,7 @@ A production-grade, highly customizable atomic design system and theme package f
 * **Curated Typography:** Integrated Google Fonts Outfit and Inter scales directly into standard text styles.
 * **Premium Theme Palettes:** Highly tailored, cohesive Light and Dark Theme configurations to wow users at first glance.
 * **Fluid Hover & Micro-Animations:** Standard interactive components come packaged with smooth feedback and touch indicators.
+* **Floating Pill Navigation:** Optional floating, pill-shaped bottom navigation bar variant with configurable margin and border radius.
 
 ## Getting Started
 
@@ -67,4 +68,28 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+```
+
+### Navigation Bar Variants
+
+```dart
+// Standard full-width bottom navigation
+AppNavigationBar(
+  selectedIndex: index,
+  onDestinationSelected: onTap,
+  destinations: [
+    NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+    NavigationDestination(icon: Icon(Icons.search), label: 'Search'),
+  ],
+)
+
+// Floating pill-shaped navigation
+AppNavigationBar.floating(
+  selectedIndex: index,
+  onDestinationSelected: onTap,
+  destinations: [
+    NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+    NavigationDestination(icon: Icon(Icons.search), label: 'Search'),
+  ],
+)
 ```

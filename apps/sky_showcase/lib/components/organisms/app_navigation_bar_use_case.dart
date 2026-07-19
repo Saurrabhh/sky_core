@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sky_design_system/sky_design_system.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
+import 'package:widgetbook_annotation/widgetbook_annotation.dart'
+    as widgetbook;
 
 @widgetbook.UseCase(name: 'Interactive', type: AppNavigationBar)
 Widget appNavigationBarInteractiveUseCase(BuildContext context) {
@@ -10,17 +11,45 @@ Widget appNavigationBarInteractiveUseCase(BuildContext context) {
     options: [3, 4, 5],
   );
 
+  final selectedIndex = context.knobs.object.dropdown<int>(
+    label: 'Selected Index',
+    options: List.generate(destinationCount, (i) => i),
+  );
+
+  final labelBehaviorName = context.knobs.object.dropdown<String>(
+    label: 'Label Behavior',
+    options: [
+      'alwaysShow',
+      'alwaysHide',
+      'onlyShowSelected',
+    ],
+  );
+
+  final labelBehavior = switch (labelBehaviorName) {
+    'alwaysHide' =>
+      NavigationDestinationLabelBehavior.alwaysHide,
+    'onlyShowSelected' =>
+      NavigationDestinationLabelBehavior.onlyShowSelected,
+    _ => NavigationDestinationLabelBehavior.alwaysShow,
+  };
+
   return _InteractiveNavigationBarWrapper(
     destinationCount: destinationCount,
+    initialSelectedIndex: selectedIndex,
+    labelBehavior: labelBehavior,
   );
 }
 
 class _InteractiveNavigationBarWrapper extends StatefulWidget {
   const _InteractiveNavigationBarWrapper({
     required this.destinationCount,
+    required this.initialSelectedIndex,
+    required this.labelBehavior,
   });
 
   final int destinationCount;
+  final int initialSelectedIndex;
+  final NavigationDestinationLabelBehavior labelBehavior;
 
   @override
   State<_InteractiveNavigationBarWrapper> createState() =>
@@ -29,10 +58,18 @@ class _InteractiveNavigationBarWrapper extends StatefulWidget {
 
 class _InteractiveNavigationBarWrapperState
     extends State<_InteractiveNavigationBarWrapper> {
-  int _selectedIndex = 0;
+  late int _selectedIndex;
 
   @override
-  void didUpdateWidget(_InteractiveNavigationBarWrapper oldWidget) {
+  void initState() {
+    super.initState();
+    _selectedIndex = widget.initialSelectedIndex;
+  }
+
+  @override
+  void didUpdateWidget(
+    _InteractiveNavigationBarWrapper oldWidget,
+  ) {
     super.didUpdateWidget(oldWidget);
     if (_selectedIndex >= widget.destinationCount) {
       _selectedIndex = 0;
@@ -74,6 +111,7 @@ class _InteractiveNavigationBarWrapperState
           });
         },
         destinations: destinations,
+        labelBehavior: widget.labelBehavior,
       ),
     );
   }
@@ -145,33 +183,191 @@ Widget appNavigationBarVariantsUseCase(BuildContext context) {
   );
 }
 
-@widgetbook.UseCase(name: 'Floating Interactive', type: AppNavigationBar)
-Widget appNavigationBarFloatingInteractiveUseCase(BuildContext context) {
+@widgetbook.UseCase(
+  name: 'Floating Interactive',
+  type: AppNavigationBar,
+)
+Widget appNavigationBarFloatingInteractiveUseCase(
+  BuildContext context,
+) {
   final destinationCount = context.knobs.object.dropdown<int>(
     label: 'Destination Count',
     options: [3, 4, 5],
   );
 
+  final selectedIndex = context.knobs.object.dropdown<int>(
+    label: 'Selected Index',
+    options: List.generate(destinationCount, (i) => i),
+  );
+
+  final labelBehaviorName = context.knobs.object.dropdown<String>(
+    label: 'Label Behavior',
+    options: [
+      'alwaysShow',
+      'alwaysHide',
+      'onlyShowSelected',
+    ],
+  );
+
+  final labelBehavior = switch (labelBehaviorName) {
+    'alwaysHide' =>
+      NavigationDestinationLabelBehavior.alwaysHide,
+    'onlyShowSelected' =>
+      NavigationDestinationLabelBehavior.onlyShowSelected,
+    _ => NavigationDestinationLabelBehavior.alwaysShow,
+  };
+
+  final margin = context.knobs.object.dropdown<double>(
+    label: 'Margin',
+    options: [8, 12, 16, 20, 24],
+  );
+
+  final borderRadiusName = context.knobs.object.dropdown<String>(
+    label: 'Border Radius',
+    options: [
+      'xs (4dp)',
+      'sm (8dp)',
+      'md (8dp)',
+      'lg (16dp)',
+      'xl (28dp)',
+      'full',
+    ],
+  );
+
+  final borderRadius = switch (borderRadiusName) {
+    'xs (4dp)' => AppBorderRadius.xs,
+    'sm (8dp)' => AppBorderRadius.sm,
+    'md (8dp)' => AppBorderRadius.md,
+    'lg (16dp)' => AppBorderRadius.lg,
+    'full' => AppBorderRadius.full,
+    _ => AppBorderRadius.xl,
+  };
+
+  final elevation = context.knobs.double.slider(
+    label: 'Elevation',
+    initialValue: 6,
+    max: 24,
+  );
+
+  final backgroundColorName = context.knobs.object.dropdown<String>(
+    label: 'Background Color',
+    options: [
+      'Transparent',
+      'White',
+      'Black',
+      'Blue',
+      'Red',
+      'Green',
+    ],
+  );
+
+  final backgroundColor = switch (backgroundColorName) {
+    'White' => Colors.white,
+    'Black' => Colors.black,
+    'Blue' => Colors.blue,
+    'Red' => Colors.red,
+    'Green' => Colors.green,
+    _ => Colors.transparent,
+  };
+
+  final shadowColorName = context.knobs.object.dropdown<String>(
+    label: 'Shadow Color',
+    options: ['Default', 'Black', 'Grey', 'Blue'],
+  );
+
+  final shadowColor = switch (shadowColorName) {
+    'Black' => Colors.black,
+    'Grey' => Colors.grey,
+    'Blue' => Colors.blue,
+    _ => null,
+  };
+
+  final surfaceTintColorName = context.knobs.object.dropdown<String>(
+    label: 'Surface Tint Color',
+    options: ['None', 'Blue', 'Purple', 'Teal'],
+  );
+
+  final surfaceTintColor = switch (surfaceTintColorName) {
+    'Blue' => Colors.blue,
+    'Purple' => Colors.purple,
+    'Teal' => Colors.teal,
+    _ => null,
+  };
+
+  final indicatorColorName = context.knobs.object.dropdown<String>(
+    label: 'Indicator Color',
+    options: [
+      'Default',
+      'Blue',
+      'Purple',
+      'Teal',
+      'Orange',
+    ],
+  );
+
+  final indicatorColor = switch (indicatorColorName) {
+    'Blue' => Colors.blue,
+    'Purple' => Colors.purple,
+    'Teal' => Colors.teal,
+    'Orange' => Colors.orange,
+    _ => null,
+  };
+
   return _InteractiveFloatingNavigationBarWrapper(
     destinationCount: destinationCount,
+    initialSelectedIndex: selectedIndex,
+    labelBehavior: labelBehavior,
+    margin: margin,
+    borderRadius: borderRadius,
+    elevation: elevation,
+    backgroundColor: backgroundColor,
+    shadowColor: shadowColor,
+    surfaceTintColor: surfaceTintColor,
+    indicatorColor: indicatorColor,
   );
 }
 
-class _InteractiveFloatingNavigationBarWrapper extends StatefulWidget {
+class _InteractiveFloatingNavigationBarWrapper
+    extends StatefulWidget {
   const _InteractiveFloatingNavigationBarWrapper({
     required this.destinationCount,
+    required this.initialSelectedIndex,
+    required this.labelBehavior,
+    required this.margin,
+    required this.borderRadius,
+    required this.elevation,
+    required this.backgroundColor,
+    required this.shadowColor,
+    required this.surfaceTintColor,
+    required this.indicatorColor,
   });
 
   final int destinationCount;
+  final int initialSelectedIndex;
+  final NavigationDestinationLabelBehavior labelBehavior;
+  final double margin;
+  final BorderRadius borderRadius;
+  final double elevation;
+  final Color backgroundColor;
+  final Color? shadowColor;
+  final Color? surfaceTintColor;
+  final Color? indicatorColor;
 
   @override
-  State<_InteractiveFloatingNavigationBarWrapper> createState() =>
-      _InteractiveFloatingNavigationBarWrapperState();
+  State<_InteractiveFloatingNavigationBarWrapper>
+      createState() =>
+          _InteractiveFloatingNavigationBarWrapperState();
 }
 
 class _InteractiveFloatingNavigationBarWrapperState
     extends State<_InteractiveFloatingNavigationBarWrapper> {
-  int _selectedIndex = 0;
+  late int _selectedIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = widget.initialSelectedIndex;
+  }
 
   @override
   void didUpdateWidget(
@@ -218,13 +414,26 @@ class _InteractiveFloatingNavigationBarWrapperState
           });
         },
         destinations: destinations,
+        labelBehavior: widget.labelBehavior,
+        margin: widget.margin,
+        borderRadius: widget.borderRadius,
+        elevation: widget.elevation,
+        backgroundColor: widget.backgroundColor,
+        shadowColor: widget.shadowColor,
+        surfaceTintColor: widget.surfaceTintColor,
+        indicatorColor: widget.indicatorColor,
       ),
     );
   }
 }
 
-@widgetbook.UseCase(name: 'Floating Variants', type: AppNavigationBar)
-Widget appNavigationBarFloatingVariantsUseCase(BuildContext context) {
+@widgetbook.UseCase(
+  name: 'Floating Variants',
+  type: AppNavigationBar,
+)
+Widget appNavigationBarFloatingVariantsUseCase(
+  BuildContext context,
+) {
   return Align(
     alignment: Alignment.bottomCenter,
     child: SingleChildScrollView(
