@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sky_design_system/sky_design_system.dart';
 import 'package:sky_devtools/src/dev_tools_options.dart';
 import 'package:sky_devtools/src/structured_log.dart';
 import 'package:sky_devtools/src/talker_app_logger.dart';
@@ -40,9 +41,8 @@ enum _OverlayState {
 
 class _DevToolsOverlayState extends State<DevToolsOverlay> {
   Offset _position = const Offset(20, 100);
-  _OverlayState _state = _OverlayState.pip;
+  _OverlayState _state = _OverlayState.bubble;
   String _logFilter = '';
-  final TextEditingController _filterController = TextEditingController();
 
   String _activeTab = 'ALL';
   talker_ui.TalkerData? _selectedLog;
@@ -52,7 +52,6 @@ class _DevToolsOverlayState extends State<DevToolsOverlay> {
 
   @override
   void dispose() {
-    _filterController.dispose();
     super.dispose();
   }
 
@@ -114,88 +113,54 @@ class _DevToolsOverlayState extends State<DevToolsOverlay> {
   }
 
   Widget _buildOverlayContent(Size size) {
-    switch (_state) {
-      case _OverlayState.bubble:
-        return _buildBubble();
-      case _OverlayState.pip:
-        return _buildPiP();
-      case _OverlayState.expanded:
-        return _buildExpandedPanel(size);
-    }
-  }
-
-  Widget _buildBubble() {
-    return Container(
-      width: 50,
-      height: 50,
-      decoration: BoxDecoration(
-        color: Colors.blueAccent,
-        shape: BoxShape.circle,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.3),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: IconButton(
-        icon: const Icon(Icons.bug_report, color: Colors.white),
+    return switch (_state) {
+      _OverlayState.bubble => AppIconButton.primary(
+        icon: Icons.bug_report,
+        borderRadius: AppBorderRadius.full,
         onPressed: () => setState(() => _state = _OverlayState.expanded),
       ),
-    );
+      _OverlayState.pip => _buildPiP(size),
+      _OverlayState.expanded => _buildExpandedPanel(size),
+    };
   }
 
-  Widget _buildPiP() {
-    return Container(
-      width: 260,
-      height: 54,
-      decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.85),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: Colors.blueAccent.withValues(alpha: 0.6),
-          width: 1.5,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.4),
-            blurRadius: 10,
-          ),
-        ],
+  Widget _buildPiP(Size size) {
+    return AppCard.outlined(
+      padding: const .symmetric(
+        horizontal: AppSpacing.sm,
+        vertical: AppSpacing.xs,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      child: Row(
-        children: [
-          const Icon(Icons.bug_report, color: Colors.blueAccent, size: 18),
-          const SizedBox(width: 8),
-          Expanded(
-            child: StreamBuilder<talker_ui.TalkerData>(
-              stream: widget.talkerLogger.talker.stream,
-              builder: (context, snapshot) {
-                final latestLog =
-                    snapshot.data?.message ?? 'Monitoring app logs...';
-                return Text(
-                  latestLog,
-                  style: const TextStyle(
-                    color: Colors.white70,
-                    fontSize: 10,
-                    fontFamily: 'monospace',
-                  ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                );
-              },
+      child: SizedBox(
+        width: size.width * 0.7,
+        height: 56,
+        child: Row(
+          children: [
+            AppIcon.lg(
+              Icons.bug_report,
+              color: context.colorScheme.primary,
             ),
-          ),
-          const SizedBox(width: 4),
-          IconButton(
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(),
-            icon: const Icon(Icons.open_in_full, color: Colors.white, size: 16),
-            onPressed: () => setState(() => _state = _OverlayState.expanded),
-          ),
-        ],
+            const SizedBox(width: 8),
+            Expanded(
+              child: StreamBuilder<talker_ui.TalkerData>(
+                stream: widget.talkerLogger.talker.stream,
+                builder: (context, snapshot) {
+                  final latestLog =
+                      snapshot.data?.message ?? 'Monitoring app logs...';
+                  return AppText.bodySmall(
+                    latestLog,
+                    maxLines: 2,
+                    overflow: .ellipsis,
+                  );
+                },
+              ),
+            ),
+            const SizedBox(width: 4),
+            AppIconButton(
+              icon: Icons.open_in_full,
+              onPressed: () => setState(() => _state = _OverlayState.expanded),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -218,7 +183,9 @@ class _DevToolsOverlayState extends State<DevToolsOverlay> {
         borderRadius: _isFullScreen
             ? BorderRadius.zero
             : BorderRadius.circular(16),
-        border: _isFullScreen ? null : Border.all(color: Colors.white10),
+        border: _isFullScreen
+            ? null
+            : Border.all(color: context.colorScheme.surfaceContainerLow),
         boxShadow: const [
           BoxShadow(
             color: Colors.black54,
@@ -232,7 +199,7 @@ class _DevToolsOverlayState extends State<DevToolsOverlay> {
             ? BorderRadius.zero
             : BorderRadius.circular(16),
         child: Material(
-          color: const Color(0xFF151515),
+          color: context.colorScheme.surfaceContainerLowest,
           child: GestureDetector(
             behavior: HitTestBehavior.translucent,
             onTap: () {
@@ -637,61 +604,28 @@ class _DevToolsOverlayState extends State<DevToolsOverlay> {
         Padding(
           padding: const EdgeInsets.all(8),
           child: Row(
+            spacing: 8,
             children: [
               Expanded(
                 child: SizedBox(
-                  height: 32,
-                  child: TextField(
-                    controller: _filterController,
-                    onChanged: (val) =>
-                        setState(() => _logFilter = val.toLowerCase()),
-                    style: const TextStyle(color: Colors.white, fontSize: 11),
-                    decoration: InputDecoration(
-                      hintText: 'Search logs...',
-                      hintStyle: const TextStyle(
-                        color: Colors.white38,
-                        fontSize: 11,
-                      ),
-                      prefixIcon: const Icon(
-                        Icons.search,
-                        size: 14,
-                        color: Colors.white38,
-                      ),
-                      suffixIcon: _logFilter.isNotEmpty
-                          ? IconButton(
-                              icon: const Icon(
-                                Icons.clear,
-                                size: 14,
-                                color: Colors.white38,
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  _filterController.clear();
-                                  _logFilter = '';
-                                });
-                              },
-                            )
-                          : null,
-                      filled: true,
-                      fillColor: Colors.white.withValues(alpha: 0.05),
-                      contentPadding: EdgeInsets.zero,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
+                  height: 36,
+                  child: AppSearchBar(
+                    onChanged: (val) {
+                      setState(() {
+                        _logFilter = val.toLowerCase();
+                      });
+                    },
+                    hintText: 'Search logs...',
                   ),
                 ),
               ),
-              const SizedBox(width: 8),
-              IconButton(
-                visualDensity: VisualDensity.compact,
-                icon: const Icon(
-                  Icons.delete_sweep,
-                  color: Colors.redAccent,
-                  size: 18,
-                ),
-                onPressed: () => widget.talkerLogger.clearLogs(),
+              AppIconButton(
+                icon: Icons.delete_sweep,
+                color: context.colorScheme.error,
+                onPressed: () async {
+                  await widget.talkerLogger.clearLogs();
+                  setState(() {});
+                },
               ),
             ],
           ),
@@ -710,17 +644,20 @@ class _DevToolsOverlayState extends State<DevToolsOverlay> {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4),
                 child: ChoiceChip(
-                  label: Text(
+                  label: AppText.labelSmall(
                     tab,
-                    style: TextStyle(
-                      color: isSelected ? Colors.black : Colors.white70,
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    color: isSelected
+                        ? context.colorScheme.onPrimaryContainer
+                        : context.colorScheme.onSurface,
                   ),
                   selected: isSelected,
-                  selectedColor: Colors.blueAccent,
-                  backgroundColor: Colors.white10,
+                  selectedColor: context.colorScheme.primaryContainer,
+                  backgroundColor: context.colorScheme.surfaceContainerLowest,
+                  side: BorderSide(
+                    color: isSelected
+                        ? context.colorScheme.primaryContainer
+                        : context.colorScheme.outlineVariant,
+                  ),
                   onSelected: (_) {
                     setState(() {
                       _activeTab = tab;
