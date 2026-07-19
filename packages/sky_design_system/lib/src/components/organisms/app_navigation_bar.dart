@@ -12,33 +12,19 @@ class AppNavigationBar extends StatelessWidget {
     required this.onDestinationSelected,
     required this.destinations,
     super.key,
-    this.elevation,
-    this.backgroundColor,
-    this.surfaceTintColor,
-    this.shadowColor,
-    this.indicatorColor,
     this.labelBehavior = NavigationDestinationLabelBehavior.alwaysShow,
-  })  : _isFloating = false,
-        margin = 0,
-        borderRadius = BorderRadius.zero;
+  }) : _isFloating = false;
 
   /// Creates a pill-shaped floating [AppNavigationBar].
   ///
-  /// The bar floats above the bottom of the screen with [margin] from
-  /// screen edges and [borderRadius] curvature. All visual properties
+  /// The bar floats above the bottom of the screen with horizontal margin
+  /// from screen edges and rounded corners. All visual properties
   /// (elevation, color, shadow) are passed through to [NavigationBar].
   const AppNavigationBar.floating({
     required this.selectedIndex,
     required this.onDestinationSelected,
     required this.destinations,
     super.key,
-    this.margin = AppSpacing.marginMobile,
-    this.borderRadius = AppBorderRadius.xl,
-    this.elevation,
-    this.backgroundColor,
-    this.surfaceTintColor,
-    this.shadowColor,
-    this.indicatorColor,
     this.labelBehavior = NavigationDestinationLabelBehavior.alwaysShow,
   }) : _isFloating = true;
 
@@ -51,78 +37,35 @@ class AppNavigationBar extends StatelessWidget {
   /// The list of navigation destinations to display.
   final List<NavigationDestination> destinations;
 
-  /// The elevation of the navigation bar.
-  ///
-  /// Passed directly to [NavigationBar]. Only effective for the floating
-  /// variant when it provides visual depth.
-  final double? elevation;
-
-  /// The background color of the navigation bar.
-  ///
-  /// Passed directly to [NavigationBar].
-  final Color? backgroundColor;
-
-  /// The surface tint color of the navigation bar.
-  ///
-  /// Passed directly to [NavigationBar].
-  final Color? surfaceTintColor;
-
-  /// The shadow color of the navigation bar.
-  ///
-  /// Passed directly to [NavigationBar].
-  final Color? shadowColor;
-
-  /// The indicator color for the selected destination.
-  ///
-  /// Passed directly to [NavigationBar].
-  final Color? indicatorColor;
-
   /// The label display behavior for destinations.
   ///
   /// Defaults to [NavigationDestinationLabelBehavior.alwaysShow].
   final NavigationDestinationLabelBehavior labelBehavior;
 
-  /// Horizontal and bottom margin from screen edges (floating variant only).
-  ///
-  /// Defaults to [AppSpacing.marginMobile] (16dp).
-  final double margin;
-
-  /// Border radius for the pill shape (floating variant only).
-  ///
-  /// Defaults to [AppBorderRadius.xl] (28dp).
-  final BorderRadius borderRadius;
-
   final bool _isFloating;
 
-  Widget _buildNavigationBar(BuildContext context) {
-    return NavigationBar(
+  @override
+  Widget build(BuildContext context) {
+    final child = NavigationBar(
       selectedIndex: selectedIndex,
       onDestinationSelected: onDestinationSelected,
       destinations: destinations,
       labelBehavior: labelBehavior,
-      elevation: elevation,
-      backgroundColor: backgroundColor,
-      surfaceTintColor: surfaceTintColor,
-      shadowColor: shadowColor,
-      indicatorColor: indicatorColor,
     );
-  }
 
-  @override
-  Widget build(BuildContext context) {
     if (!_isFloating) {
-      return _buildNavigationBar(context);
+      return child;
     }
 
     return Padding(
-      padding: EdgeInsets.only(
-        left: margin,
-        right: margin,
-        bottom: margin,
+      padding: const EdgeInsets.only(
+        left: AppSpacing.xxl,
+        right: AppSpacing.xxl,
+        bottom: AppSpacing.lg,
       ),
       child: ClipRRect(
-        borderRadius: borderRadius,
-        child: _buildNavigationBar(context),
+        borderRadius: AppBorderRadius.full,
+        child: child,
       ),
     );
   }

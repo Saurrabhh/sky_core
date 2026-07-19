@@ -78,6 +78,7 @@ AppNavigationBar(
   selectedIndex: index,
   onDestinationSelected: onTap,
   destinations: [...],
+  labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
 )
 
 // Floating pill shape
@@ -85,10 +86,11 @@ AppNavigationBar.floating(
   selectedIndex: index,
   onDestinationSelected: onTap,
   destinations: [...],
+  labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
 )
 ```
 
-Visual properties (`elevation`, `backgroundColor`, `shadowColor`) are passed directly to `NavigationBar` — use them for floating variant customization.
+The `labelBehavior` parameter controls label visibility (defaults to `alwaysShow`). The floating variant uses `AppSpacing.gutter` for horizontal margin and `AppBorderRadius.full` for pill-shaped corners.
 
 ---
 

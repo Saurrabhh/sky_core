@@ -87,7 +87,7 @@ void main() {
       final clipRRect = tester.widget<ClipRRect>(
         find.byType(ClipRRect),
       );
-      expect(clipRRect.borderRadius, equals(AppBorderRadius.xl));
+      expect(clipRRect.borderRadius, equals(AppBorderRadius.full));
     });
 
     testWidgets('floating variant applies margin via Padding', (
@@ -121,11 +121,7 @@ void main() {
       expect(
         padding.padding,
         equals(
-          const EdgeInsets.only(
-            left: AppSpacing.marginMobile,
-            right: AppSpacing.marginMobile,
-            bottom: AppSpacing.marginMobile,
-          ),
+          const EdgeInsets.symmetric(horizontal: AppSpacing.gutter),
         ),
       );
     });

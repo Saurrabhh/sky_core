@@ -81,6 +81,7 @@ AppNavigationBar(
     NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
     NavigationDestination(icon: Icon(Icons.search), label: 'Search'),
   ],
+  labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
 )
 
 // Floating pill-shaped navigation
@@ -91,5 +92,6 @@ AppNavigationBar.floating(
     NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
     NavigationDestination(icon: Icon(Icons.search), label: 'Search'),
   ],
+  labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
 )
 ```
