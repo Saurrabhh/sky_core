@@ -29,8 +29,5 @@ dev_dependencies:
 
   widgetbook_generator: ^3.24.0
 
-dependency_overrides:
-  analyzer: ^13.0.0
-
 flutter:
   uses-material-design: true

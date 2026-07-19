@@ -1,6 +1,6 @@
 name: sky_router
 description: Reusable, high-performance routing library for Sky Core wrapping go_router.
-version: 1.2.0
+version: 1.2.1
 repository: https://github.com/Saurrabhh/sky_core/tree/master/packages/sky_router
 resolution: workspace
 

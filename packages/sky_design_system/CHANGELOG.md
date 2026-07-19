@@ -1,3 +1,9 @@
+## 1.8.0
+
+ - **REFACTOR**(sky_design_system): add floating navigation bar guideline to SKILL.md.
+ - **FEAT**(sky_showcase): add floating navigation bar widgetbook use cases with all knobs.
+ - **FEAT**(sky_design_system): add AppNavigationBar.floating constructor.
+
 ## 1.7.4
 
  - **FIX**(sky_design_system): test cases update.

@@ -1,3 +1,7 @@
+## 1.2.1
+
+ - **FIX**(sky_router): updated exports.
+
 ## 1.2.0
 
  - **FEAT**(sky_router): update exports.
