@@ -5,10 +5,10 @@ packages:
     dependency: transitive
     description:
       name: _fe_analyzer_shared
-      sha256: cd6add6f846f35fb79f3c315296703c1a24f3cfd7f4739d91a74961c1c7e9f1b
+      sha256: a49d6cf99e8d8e7a8e93668d09ced0bbdb954d0b4fccc2f5f9241c6b87fad95c
       url: "https://pub.dev"
     source: hosted
-    version: "100.0.0"
+    version: "99.0.0"
   _flutterfire_internals:
     dependency: transitive
     description:
@@ -34,13 +34,13 @@ packages:
     source: hosted
     version: "0.3.14"
   analyzer:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: analyzer
-      sha256: "6ba98576948803398b69e3a444df24eacdbe12ed699c7014e120ea38552debbf"
+      sha256: "663efa951fb8a45e06f491223a604c93820598f20e6a99c25617a1576065e8b7"
       url: "https://pub.dev"
     source: hosted
-    version: "13.0.0"
+    version: "12.1.0"
   analyzer_plugin:
     dependency: transitive
     description:
@@ -93,10 +93,10 @@ packages:
     dependency: transitive
     description:
       name: bloc_lint
-      sha256: "1259e2a4c44afaa5cb69115a4773be4868751735ecdfe65c146f07ff9120f4d5"
+      sha256: "5bf965e3be5346fd6133e7f2eb4c845de3f2ae09eeae4d6622f400848b4aba71"
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.2"
+    version: "0.4.1"
   boolean_selector:
     dependency: transitive
     description:
