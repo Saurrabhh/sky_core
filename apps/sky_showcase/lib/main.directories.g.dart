@@ -510,6 +510,18 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'AppNavigationBar',
             useCases: [
               _widgetbook.WidgetbookUseCase(
+                name: 'Floating Interactive',
+                builder:
+                    _sky_showcase_components_organisms_app_navigation_bar_use_case
+                        .appNavigationBarFloatingInteractiveUseCase,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Floating Variants',
+                builder:
+                    _sky_showcase_components_organisms_app_navigation_bar_use_case
+                        .appNavigationBarFloatingVariantsUseCase,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'Interactive',
                 builder:
                     _sky_showcase_components_organisms_app_navigation_bar_use_case
