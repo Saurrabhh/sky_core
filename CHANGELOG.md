@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-07-20
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sky_devtools` - `v1.1.5`](#sky_devtools---v115)
+
+---
+
+#### `sky_devtools` - `v1.1.5`
+
+ - **FIX**(sky_devtools): ui and logic.
+
+
 ## 2026-07-19
 
 ### Changes
