@@ -19,6 +19,7 @@ void main() {
                   onPressed: () async {
                     await AppBottomSheet.show<void>(
                       context: context,
+                      title: 'My Custom Sheet Title',
                       child: const Text('Sheet Content'),
                     );
                   },

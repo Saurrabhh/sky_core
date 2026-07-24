@@ -28,7 +28,7 @@ Widget appBottomSheetInteractiveUseCase(BuildContext context) {
       onPressed: () async {
         await AppBottomSheet.show<void>(
           context: context,
-          title: title.isEmpty ? null : title,
+          title: title,
           showDragHandle: showDragHandle,
           isDismissible: isDismissible,
           child: Column(
