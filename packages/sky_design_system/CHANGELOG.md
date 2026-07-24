@@ -1,3 +1,7 @@
+## 1.10.0
+
+ - **FEAT**(sky_design_system): enhanced AppBottomSheet and AppDialog.
+
 ## 1.9.0
 
  - **FEAT**(sky_design_system): add color property to text button.
