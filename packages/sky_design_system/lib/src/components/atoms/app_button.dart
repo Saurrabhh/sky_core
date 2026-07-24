@@ -12,7 +12,8 @@ class AppButton extends StatelessWidget {
     super.key,
     this._icon,
     this.textAlign,
-  }) : _variant = _AppButtonVariant.primary;
+  }) : _variant = _AppButtonVariant.primary,
+       color = null;
 
   /// Creates an [AppButton] in the secondary style.
   const AppButton.secondary({
@@ -21,7 +22,8 @@ class AppButton extends StatelessWidget {
     super.key,
     this._icon,
     this.textAlign,
-  }) : _variant = _AppButtonVariant.secondary;
+  }) : _variant = _AppButtonVariant.secondary,
+       color = null;
 
   /// Creates an [AppButton] in the outlined style.
   const AppButton.outlined({
@@ -30,7 +32,8 @@ class AppButton extends StatelessWidget {
     super.key,
     this._icon,
     this.textAlign,
-  }) : _variant = _AppButtonVariant.outlined;
+  }) : _variant = _AppButtonVariant.outlined,
+       color = null;
 
   /// Creates an [AppButton] in the inverse style.
   const AppButton.inverse({
@@ -39,7 +42,8 @@ class AppButton extends StatelessWidget {
     super.key,
     this._icon,
     this.textAlign,
-  }) : _variant = _AppButtonVariant.inverse;
+  }) : _variant = _AppButtonVariant.inverse,
+       color = null;
 
   /// Creates an [AppButton] in the text style.
   const AppButton.text({
@@ -48,6 +52,7 @@ class AppButton extends StatelessWidget {
     super.key,
     this._icon,
     this.textAlign,
+    this.color,
   }) : _variant = _AppButtonVariant.text;
 
   /// Creates an [AppButton] in the fab style.
@@ -57,7 +62,8 @@ class AppButton extends StatelessWidget {
     super.key,
   }) : _variant = _AppButtonVariant.fab,
        text = '',
-       textAlign = null;
+       textAlign = null,
+       color = null;
 
   /// The text of this widget.
   final String text;
@@ -66,6 +72,7 @@ class AppButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final IconData? _icon;
   final TextAlign? textAlign;
+  final Color? color;
   final _AppButtonVariant _variant;
 
   @override
@@ -86,10 +93,7 @@ class AppButton extends StatelessWidget {
           AppIcon.sm(_icon),
         ],
         Flexible(
-          child: Text(
-            text,
-            textAlign: textAlign,
-          ),
+          child: Text(text, textAlign: textAlign),
         ),
       ],
     );
@@ -121,6 +125,7 @@ class AppButton extends StatelessWidget {
       ),
       _AppButtonVariant.text => TextButton(
         onPressed: onPressed,
+        style: TextButton.styleFrom(foregroundColor: color),
         child: label,
       ),
       _AppButtonVariant.fab => throw UnimplementedError(), // Handled above
