@@ -1,3 +1,7 @@
+## 1.2.0
+
+ - **FEAT**(sky_storage_isar): add IsarCacheable mixin for TTL tracking.
+
 ## 1.1.0
 
  - **FEAT**(sky_storage_isar): add unit tests for IsarDaoSync.

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-07-24
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sky_storage_isar` - `v1.2.0`](#sky_storage_isar---v120)
+
+---
+
+#### `sky_storage_isar` - `v1.2.0`
+
+ - **FEAT**(sky_storage_isar): add IsarCacheable mixin for TTL tracking.
+
+
 ## 2026-07-20
 
 ### Changes
