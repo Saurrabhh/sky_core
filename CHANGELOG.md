@@ -15,6 +15,34 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sky_design_system` - `v1.9.0`](#sky_design_system---v190)
+ - [`sky_devtools` - `v1.1.6`](#sky_devtools---v116)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `sky_devtools` - `v1.1.6`
+
+---
+
+#### `sky_design_system` - `v1.9.0`
+
+ - **FEAT**(sky_design_system): add color property to text button.
+
+
+## 2026-07-24
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sky_storage_isar` - `v1.2.0`](#sky_storage_isar---v120)
 
 ---

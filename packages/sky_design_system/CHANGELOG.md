@@ -1,3 +1,7 @@
+## 1.9.0
+
+ - **FEAT**(sky_design_system): add color property to text button.
+
 ## 1.8.1
 
  - **FIX**(sky_design_system): updated nav bar.
