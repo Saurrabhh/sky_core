@@ -20,9 +20,18 @@ Isar database integration rules for relational and indexed local storage.
       .findAll();
   ```
 
-### 2. Schema Annotations
+### 2. IsarCacheable Mixin
+* Apply `with IsarCacheable` to Isar `@collection` models to track `lastSyncedAt` timestamps and evaluate cache TTL expiration via `isExpired(Duration ttl)`.
+  ```dart
+  @collection
+  class MyModel with IsarCacheable {
+    Id id = Isar.autoIncrement;
+  }
+  ```
+
+### 3. Schema Annotations
 * Declare `@collection` on database model classes (separate from domain entities) with appropriate `@Index` annotations.
 * Run code generation via `build_runner` after any schema changes.
 
-### 3. Initialization
+### 4. Initialization
 * Open the Isar instance during app startup via `IsarDatabaseInitializer` before any DAO is accessed.
