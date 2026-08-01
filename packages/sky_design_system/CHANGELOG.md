@@ -1,3 +1,7 @@
+## 1.11.0
+
+ - **FEAT**(sky_design_system): add AppRefreshIndicator component.
+
 ## 1.10.0
 
  - **FEAT**(sky_design_system): enhanced AppBottomSheet and AppDialog.
