@@ -4,7 +4,8 @@ A production-grade, highly customizable atomic design system and theme package f
 
 ## Features
 
-* **Atomic Component Design:** Organized clean UI abstractions into Atoms (buttons, inputs), Molecules (cards, list tiles), and Organisms (headers, views).
+* **Atomic Component Design:** Organized clean UI abstractions into Atoms (buttons, inputs, progress & refresh indicators), Molecules (cards, list tiles), and Organisms (headers, views).
+* **Theme-Aware Refresh Indicator:** Built-in `AppRefreshIndicator` for smooth pull-to-refresh UX aligned with design tokens.
 * **Curated Typography:** Integrated Google Fonts Outfit and Inter scales directly into standard text styles.
 * **Premium Theme Palettes:** Highly tailored, cohesive Light and Dark Theme configurations to wow users at first glance.
 * **Fluid Hover & Micro-Animations:** Standard interactive components come packaged with smooth feedback and touch indicators.

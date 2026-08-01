@@ -20,6 +20,7 @@ Before writing a generic Flutter component, check if `sky_design_system` provide
 | `TextField`, `TextFormField` | `AppTextField` | Encapsulates input themes, validator support, and focus behavior. |
 | `Icon` | `AppIcon` | Enforces standard icon sizes. Use `AppIcon.sm()`, `AppIcon.md()`, or `AppIcon.lg()`. |
 | `SingleChildScrollView` | `AppScrollView` | Enforces responsive margins, keyboard dismissal on tap, safe area handling, and sticky/scrolling footers. |
+| `RefreshIndicator` | `AppRefreshIndicator` | Theme-aware pull-to-refresh indicator with standard color tokens. |
 | `showModalBottomSheet` | `AppBottomSheet.show(...)` | Enforces uniform modal layouts, header/title close buttons, and drag handles. |
 | `ScaffoldMessenger.of(context).showSnackBar(...)` | `AppSnackBar.show(...)` | Enforces consistent background colors, padding, actions, and custom error styling. |
 

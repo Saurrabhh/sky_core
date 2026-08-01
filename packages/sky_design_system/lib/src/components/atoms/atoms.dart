@@ -12,6 +12,7 @@ export 'app_image.dart';
 export 'app_progress_indicator.dart';
 export 'app_radio_button.dart';
 export 'app_radio_group.dart';
+export 'app_refresh_indicator.dart';
 export 'app_rich_text.dart';
 export 'app_shimmer.dart';
 export 'app_slider.dart';
