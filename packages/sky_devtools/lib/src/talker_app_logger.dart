@@ -100,9 +100,11 @@ class TalkerAppLogger extends AppLogger {
       if (file.existsSync()) {
         final bytes = file.lengthSync();
         if (bytes > 0) {
-          await Share.shareXFiles(
-            [XFile(file.path, mimeType: 'text/plain')],
-            text: 'Splittr App Debug Logs',
+          await SharePlus.instance.share(
+            ShareParams(
+              text: 'Splittr App Debug Logs',
+              files: [XFile(file.path, mimeType: 'text/plain')],
+            ),
           );
           return;
         }
