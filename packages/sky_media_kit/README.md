@@ -7,7 +7,7 @@ A robust media and file system toolkit for Sky Core applications. This package p
 * **File Selection:** Pick single or multiple files with extension filters and byte size limits.
 * **Image & Photo Picking:** Capture photos via camera or pick from gallery with quality, dimension, and size limits.
 * **File System Persistence:** Helpers to write, read, and delete files in temporary or document folders.
-* **Domain Failure Hierarchy:** Specific failure types (`MediaPickerCancelledFailure`, `FileSizeExceededFailure`, `InvalidFileTypeFailure`, `MediaPermissionDeniedFailure`, `FileStorageFailure`, `CameraCaptureFailure`).
+* **Domain Failure Hierarchy:** Exhaustive sealed failure hierarchies (`FilePickerFailure` and `FileStorageFailure`) for compile-time safe pattern matching.
 
 ## Getting Started / Installation
 

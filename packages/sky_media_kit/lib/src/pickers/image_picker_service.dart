@@ -12,7 +12,7 @@ abstract interface class ImagePickerService {
   ///
   /// Defaults to [ImageSource.camera].
   /// Optionally restricts the maximum file size with [maxSizeBytes].
-  /// Returns an [XFile] on success, or a [MediaKitFailure] if the selection
+  /// Returns an [XFile] on success, or a [FilePickerFailure] if the selection
   /// was cancelled or an error occurred.
   FutureEitherFailure<XFile> pickImage({
     ImageSource source = ImageSource.camera,
@@ -93,17 +93,13 @@ class ImagePickerServiceImpl implements ImagePickerService {
       }
 
       return Left(
-        UnknownMediaFailure(
+        UnknownFilePickerFailure(
           message: e.message ?? 'An error occurred while picking image.',
           code: e.code,
         ),
       );
     } on Exception catch (e) {
-      return Left(UnknownMediaFailure(message: e.toString()));
-    } on Object catch (e) {
-      return Left(
-        UnknownMediaFailure(message: 'An unknown error occurred: $e'),
-      );
+      return Left(UnknownFilePickerFailure(message: e.toString()));
     }
   }
 }

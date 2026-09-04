@@ -13,7 +13,7 @@ abstract interface class FilePickerService {
   ///
   /// Optionally filters by [allowedFileTypes] and restricts the maximum size
   /// with [maxSizeBytes].
-  /// Returns an [XFile] on success, or a [MediaKitFailure] if the selection
+  /// Returns an [XFile] on success, or a [FilePickerFailure] if the selection
   /// was cancelled or an error occurred.
   FutureEitherFailure<XFile> pickFile({
     List<MimeType>? allowedFileTypes,
@@ -24,7 +24,7 @@ abstract interface class FilePickerService {
   ///
   /// Optionally filters by [allowedFileTypes] and restricts the maximum size
   /// per file with [maxSizeBytes].
-  /// Returns a list of [XFile]s on success, or a [MediaKitFailure] if the
+  /// Returns a list of [XFile]s on success, or a [FilePickerFailure] if the
   /// selection was cancelled or an error occurred.
   FutureEitherFailure<List<XFile>> pickMultipleFiles({
     List<MimeType>? allowedFileTypes,
@@ -59,22 +59,15 @@ class FilePickerServiceImpl implements FilePickerService {
         );
       }
 
-      final failure = await _validateFile(
+      return _validateFile(
         file,
         allowedTypes: allowedFileTypes?.toSet(),
         maxSizeBytes: maxSizeBytes,
       );
-      if (failure != null) return Left(failure);
-
-      return Right(file.xFile);
     } on PlatformException catch (e) {
       return _handlePlatformException(e, 'picking file');
     } on Exception catch (e) {
-      return Left(UnknownMediaFailure(message: e.toString()));
-    } on Object catch (e) {
-      return Left(
-        UnknownMediaFailure(message: 'An unknown error occurred: $e'),
-      );
+      return Left(UnknownFilePickerFailure(message: e.toString()));
     }
   }
 
@@ -102,28 +95,29 @@ class FilePickerServiceImpl implements FilePickerService {
       final resultFiles = <XFile>[];
 
       for (final file in files) {
-        final failure = await _validateFile(
+        final validationResult = await _validateFile(
           file,
           allowedTypes: allowedTypesSet,
           maxSizeBytes: maxSizeBytes,
         );
-        if (failure != null) return Left(failure);
-        resultFiles.add(file.xFile);
+
+        switch (validationResult) {
+          case Left(:final value):
+            return Left(value);
+          case Right(:final value):
+            resultFiles.add(value);
+        }
       }
 
       return Right(resultFiles);
     } on PlatformException catch (e) {
       return _handlePlatformException(e, 'picking files');
     } on Exception catch (e) {
-      return Left(UnknownMediaFailure(message: e.toString()));
-    } on Object catch (e) {
-      return Left(
-        UnknownMediaFailure(message: 'An unknown error occurred: $e'),
-      );
+      return Left(UnknownFilePickerFailure(message: e.toString()));
     }
   }
 
-  Future<MediaKitFailure?> _validateFile(
+  FutureEitherFailure<XFile> _validateFile(
     PlatformFile file, {
     Set<MimeType>? allowedTypes,
     int? maxSizeBytes,
@@ -134,15 +128,17 @@ class FilePickerServiceImpl implements FilePickerService {
           MimeType.fromExtension(file.extension);
 
       if (actualMimeType == null || !allowedTypes.contains(actualMimeType)) {
-        return InvalidFileTypeFailure(
-          message:
-              'Picked file "${file.name}" has an unsupported file type '
-              '(${actualMimeType?.mime ?? "unknown"}). '
-              'Allowed types: '
-              '${allowedTypes.map((m) => m.fileType).join(", ")}',
-          actualExtension: file.extension ?? file.name.split('.').lastOrNull,
-          allowedFileTypes: allowedTypes.toList(),
-          actualMimeType: actualMimeType,
+        return Left(
+          InvalidFileTypeFailure(
+            message:
+                'Picked file "${file.name}" has an unsupported file type '
+                '(${actualMimeType?.mime ?? "unknown"}). '
+                'Allowed types: '
+                '${allowedTypes.map((m) => m.fileType).join(", ")}',
+            actualExtension: file.extension ?? file.name.split('.').lastOrNull,
+            allowedFileTypes: allowedTypes.toList(),
+            actualMimeType: actualMimeType,
+          ),
         );
       }
     }
@@ -150,17 +146,19 @@ class FilePickerServiceImpl implements FilePickerService {
     if (maxSizeBytes != null) {
       final length = await file.xFile.length();
       if (length > maxSizeBytes) {
-        return FileSizeExceededFailure(
-          message:
-              'Selected file "${file.name}" ($length bytes) exceeds the '
-              'maximum allowed size of $maxSizeBytes bytes.',
-          actualSizeBytes: length,
-          maxSizeBytes: maxSizeBytes,
+        return Left(
+          FileSizeExceededFailure(
+            message:
+                'Selected file "${file.name}" ($length bytes) exceeds the '
+                'maximum allowed size of $maxSizeBytes bytes.',
+            actualSizeBytes: length,
+            maxSizeBytes: maxSizeBytes,
+          ),
         );
       }
     }
 
-    return null;
+    return Right(file.xFile);
   }
 
   Left<MediaKitFailure, T> _handlePlatformException<T>(
@@ -178,7 +176,7 @@ class FilePickerServiceImpl implements FilePickerService {
       );
     }
     return Left(
-      UnknownMediaFailure(
+      UnknownFilePickerFailure(
         message: e.message ?? 'An error occurred while $operation.',
         code: e.code,
       ),

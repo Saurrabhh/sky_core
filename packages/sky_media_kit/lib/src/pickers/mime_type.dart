@@ -51,26 +51,22 @@ enum MimeType {
   /// The full MIME type string.
   final String mime;
 
-  /// Resolves a [MimeType] from a file type or extension string (e.g. 'png',
-  /// '.jpg', 'pdf').
+  /// Resolves a [MimeType] from a file extension string (e.g. 'png', '.jpg',
+  /// 'pdf').
   ///
-  /// Returns `null` if the type is unknown or unsupported.
-  static MimeType? fromType(String? type) {
-    if (type == null || type.trim().isEmpty) return null;
-    final cleanType = type.trim().toLowerCase().replaceFirst(
+  /// Returns `null` if the extension is unknown or unsupported.
+  static MimeType? fromExtension(String? extension) {
+    if (extension == null || extension.trim().isEmpty) return null;
+    final cleanExt = extension.trim().toLowerCase().replaceFirst(
       RegExp(r'^\.'),
       '',
     );
-    if (cleanType == 'jpg') return MimeType.jpeg;
+    if (cleanExt == 'jpg') return MimeType.jpeg;
     for (final mimeType in MimeType.values) {
-      if (mimeType.fileType == cleanType) return mimeType;
+      if (mimeType.fileType == cleanExt) return mimeType;
     }
     return null;
   }
-
-  /// Resolves a [MimeType] from a file extension string (e.g. 'png', '.jpg',
-  /// 'pdf'). Alias for [fromType].
-  static MimeType? fromExtension(String? extension) => fromType(extension);
 
   /// Resolves a [MimeType] from a file name or path (e.g. 'document.pdf',
   /// '/path/image.JPG').
@@ -83,7 +79,7 @@ enum MimeType {
     final dotIndex = cleanPath.lastIndexOf('.');
     if (dotIndex == -1 || dotIndex == cleanPath.length - 1) return null;
     final ext = cleanPath.substring(dotIndex + 1);
-    return fromType(ext);
+    return fromExtension(ext);
   }
 
   /// Resolves a [MimeType] from a MIME type string (e.g. 'image/png',

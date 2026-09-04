@@ -16,7 +16,7 @@ abstract interface class FileStorageService {
   ///
   /// Takes [fileName], [bytes], optional [dialogTitle], [initialDirectory],
   /// and [allowedFileTypes].
-  /// Returns the saved file path on success, or a [MediaKitFailure] on error
+  /// Returns the saved file path on success, or a [FileStorageFailure] on error
   /// or cancellation.
   FutureEitherFailure<String> saveFile({
     required String fileName,
@@ -28,12 +28,12 @@ abstract interface class FileStorageService {
 
   /// Deletes the file at the specified [filePath] if it exists.
   ///
-  /// Returns a [MediaKitFailure] if an error occurs.
-  FutureEitherFailure<void> deleteFile(String filePath);
+  /// Returns a [FileStorageFailure] if an error occurs.
+  FutureEitherFailureUnit deleteFile(String filePath);
 
   /// Resolves the application's temporary directory.
   ///
-  /// Returns a [Directory] on success, or a [MediaKitFailure] on error.
+  /// Returns a [Directory] on success, or a [FileStorageFailure] on error.
   FutureEitherFailure<Directory> getTemporaryDirectory();
 
 }
@@ -68,9 +68,7 @@ class FileStorageServiceImpl implements FileStorageService {
       );
 
       if (savedUri == null) {
-        return const Left(
-          MediaPickerCancelledFailure(message: 'File save was cancelled.'),
-        );
+        return const Left(FileStorageCancelledFailure());
       }
 
       return Right(
@@ -80,7 +78,7 @@ class FileStorageServiceImpl implements FileStorageService {
       final code = e.code.toLowerCase();
       if (code.contains('permission') || code.contains('denied')) {
         return Left(
-          MediaPermissionDeniedFailure(
+          FileStoragePermissionDeniedFailure(
             message: e.message ?? 'Permission to save file was denied.',
             permission: 'storage',
             code: e.code,
@@ -88,33 +86,27 @@ class FileStorageServiceImpl implements FileStorageService {
         );
       }
       return Left(
-        FileStorageFailure(
+        FileStorageIOFailure(
           message: e.message ?? 'Failed to save file.',
           code: e.code,
         ),
       );
     } on Exception catch (e) {
-      return Left(FileStorageFailure(message: e.toString()));
-    } on Object catch (e) {
-      return Left(
-        UnknownMediaFailure(
-          message: 'An unknown error occurred while saving the file: $e',
-        ),
-      );
+      return Left(FileStorageIOFailure(message: e.toString()));
     }
   }
 
   @override
-  FutureEitherFailure<void> deleteFile(String filePath) async {
+  FutureEitherFailureUnit deleteFile(String filePath) async {
     try {
       final file = File(filePath);
       if (file.existsSync()) {
         await file.delete();
       }
-      return const Right(null);
+      return const Right(unit);
     } on FileSystemException catch (e) {
       return Left(
-        FileStorageFailure(
+        FileStorageIOFailure(
           message: e.message,
           filePath: filePath,
           code: e.osError?.errorCode.toString(),
@@ -122,15 +114,9 @@ class FileStorageServiceImpl implements FileStorageService {
       );
     } on Exception catch (e) {
       return Left(
-        FileStorageFailure(
+        FileStorageIOFailure(
           message: e.toString(),
           filePath: filePath,
-        ),
-      );
-    } on Object catch (e) {
-      return Left(
-        UnknownMediaFailure(
-          message: 'An unknown error occurred while deleting the file: $e',
         ),
       );
     }
@@ -142,15 +128,7 @@ class FileStorageServiceImpl implements FileStorageService {
       final directory = await path_provider.getTemporaryDirectory();
       return Right(directory);
     } on Exception catch (e) {
-      return Left(FileStorageFailure(message: e.toString()));
-    } on Object catch (e) {
-      return Left(
-        UnknownMediaFailure(
-          message:
-              'An unknown error occurred while retrieving the '
-              'temporary directory: $e',
-        ),
-      );
+      return Left(FileStorageIOFailure(message: e.toString()));
     }
   }
 }

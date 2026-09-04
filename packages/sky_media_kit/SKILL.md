@@ -18,14 +18,19 @@ This package provides interfaces and wrappers for device media operations (camer
 * Services must have an abstract interface class (e.g., `ImagePickerService`) and a concrete implementation class prefixed with the same name and postfixed with `Impl` (e.g., `ImagePickerServiceImpl`).
 
 ### 3. Domain Failures & Error Handling
-* All services return `FutureEitherFailure<T>` using specific `MediaKitFailure` subclasses defined in `src/failures/media_failures.dart`:
-  - `MediaPickerCancelledFailure`: Returned when a user dismisses a picker or does not select a file/image.
-  - `FileSizeExceededFailure`: Returned when a selected file exceeds `maxSizeBytes`.
-  - `InvalidFileTypeFailure`: Returned when a selected file's type is not in `allowedFileTypes`.
-  - `MediaPermissionDeniedFailure`: Returned when camera, gallery, or storage permissions are denied.
-  - `CameraCaptureFailure`: Returned on camera device or capture initialization errors.
-  - `FileStorageFailure`: Returned on filesystem write/read/directory errors.
-  - `UnknownMediaFailure`: Returned on generic or unhandled exceptions.
+* All services return `FutureEitherFailure<T>` using exhaustive `sealed class` hierarchies defined in `src/failures/media_failures.dart`:
+  - `FilePickerFailure` (sealed):
+    - `MediaPickerCancelledFailure`: Returned when a user dismisses a picker or does not select a file/image.
+    - `FileSizeExceededFailure`: Returned when a selected file exceeds `maxSizeBytes`.
+    - `InvalidFileTypeFailure`: Returned when a selected file's type is not in `allowedFileTypes`.
+    - `MediaPermissionDeniedFailure`: Returned when camera, gallery, or storage permissions are denied.
+    - `CameraCaptureFailure`: Returned on camera device or capture initialization errors.
+    - `UnknownFilePickerFailure`: Returned on unexpected picker errors.
+  - `FileStorageFailure` (sealed):
+    - `FileStorageCancelledFailure`: Returned when a save dialog is cancelled.
+    - `FileStoragePermissionDeniedFailure`: Returned when storage permission is denied.
+    - `FileStorageIOFailure`: Returned on filesystem write/read/directory errors.
+    - `UnknownFileStorageFailure`: Returned on unexpected storage errors.
 
 ### 4. File Storage Service
 * Use `FileStorageService.saveFile` to prompt the system save dialog and save binary data using `FilePicker.saveFile`, returning `FutureEitherFailure<String>`.
@@ -37,6 +42,6 @@ This package provides interfaces and wrappers for device media operations (camer
 
 ### 6. File Filtering & Size Validation
 * Always filter file picking options using the `MimeType` enum instead of raw strings.
-* Convert input file names/paths to `MimeType` using `MimeType.fromFileNameOrPath()` or `MimeType.fromType()`.
+* Convert input file names/paths to `MimeType` using `MimeType.fromFileNameOrPath()` or `MimeType.fromExtension()`.
 * Compare against `Set<MimeType>` directly via `allowedFileTypes` rather than raw string sets. Return `InvalidFileTypeFailure` if a mismatch is detected.
 * Support `maxSizeBytes` filtering on pickers, returning `FileSizeExceededFailure` if a file is too large.
