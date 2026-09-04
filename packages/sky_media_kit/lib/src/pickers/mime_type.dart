@@ -48,9 +48,6 @@ enum MimeType {
   /// this MIME type.
   final String fileType;
 
-  /// The file extension associated with this MIME type (alias for [fileType]).
-  String get extension => fileType;
-
   /// The full MIME type string.
   final String mime;
 

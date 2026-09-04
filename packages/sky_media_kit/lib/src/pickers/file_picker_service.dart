@@ -59,63 +59,16 @@ class FilePickerServiceImpl implements FilePickerService {
         );
       }
 
-      if (allowedFileTypes != null && allowedFileTypes.isNotEmpty) {
-        final allowedTypesSet = allowedFileTypes.toSet();
-        final actualMimeType =
-            MimeType.fromFileNameOrPath(file.name) ??
-            MimeType.fromExtension(file.extension);
-
-        if (actualMimeType == null ||
-            !allowedTypesSet.contains(actualMimeType)) {
-          return Left(
-            InvalidFileTypeFailure(
-              message:
-                  'Picked file "${file.name}" has an unsupported file type '
-                  '(${actualMimeType?.mime ?? "unknown"}). '
-                  'Allowed types: '
-                  '${allowedTypesSet.map((m) => m.fileType).join(", ")}',
-              actualExtension:
-                  file.extension ?? file.name.split('.').lastOrNull,
-              allowedFileTypes: allowedTypesSet.toList(),
-              actualMimeType: actualMimeType,
-            ),
-          );
-        }
-      }
-
-      if (maxSizeBytes != null) {
-        final length = await file.xFile.length();
-        if (length > maxSizeBytes) {
-          return Left(
-            FileSizeExceededFailure(
-              message:
-                  'Selected file "${file.name}" ($length bytes) exceeds the '
-                  'maximum allowed size of $maxSizeBytes bytes.',
-              actualSizeBytes: length,
-              maxSizeBytes: maxSizeBytes,
-            ),
-          );
-        }
-      }
+      final failure = await _validateFile(
+        file,
+        allowedTypes: allowedFileTypes?.toSet(),
+        maxSizeBytes: maxSizeBytes,
+      );
+      if (failure != null) return Left(failure);
 
       return Right(file.xFile);
     } on PlatformException catch (e) {
-      final code = e.code.toLowerCase();
-      if (code.contains('permission') || code.contains('denied')) {
-        return Left(
-          MediaPermissionDeniedFailure(
-            message: e.message ?? 'Permission to access files was denied.',
-            permission: 'storage',
-            code: e.code,
-          ),
-        );
-      }
-      return Left(
-        UnknownMediaFailure(
-          message: e.message ?? 'An error occurred while picking file.',
-          code: e.code,
-        ),
-      );
+      return _handlePlatformException(e, 'picking file');
     } on Exception catch (e) {
       return Left(UnknownMediaFailure(message: e.toString()));
     } on Object catch (e) {
@@ -145,73 +98,22 @@ class FilePickerServiceImpl implements FilePickerService {
         );
       }
 
-      final allowedTypesSet =
-          allowedFileTypes != null && allowedFileTypes.isNotEmpty
-          ? allowedFileTypes.toSet()
-          : null;
-
+      final allowedTypesSet = allowedFileTypes?.toSet();
       final resultFiles = <XFile>[];
 
       for (final file in files) {
-        if (allowedTypesSet != null) {
-          final actualMimeType =
-              MimeType.fromFileNameOrPath(file.name) ??
-              MimeType.fromExtension(file.extension);
-
-          if (actualMimeType == null ||
-              !allowedTypesSet.contains(actualMimeType)) {
-            return Left(
-              InvalidFileTypeFailure(
-                message:
-                    'Picked file "${file.name}" has an unsupported file type '
-                    '(${actualMimeType?.mime ?? "unknown"}). '
-                    'Allowed types: '
-                    '${allowedTypesSet.map((m) => m.fileType).join(", ")}',
-                actualExtension:
-                    file.extension ?? file.name.split('.').lastOrNull,
-                allowedFileTypes: allowedTypesSet.toList(),
-                actualMimeType: actualMimeType,
-              ),
-            );
-          }
-        }
-
-        if (maxSizeBytes != null) {
-          final length = await file.xFile.length();
-          if (length > maxSizeBytes) {
-            return Left(
-              FileSizeExceededFailure(
-                message:
-                    'Selected file "${file.name}" ($length bytes) exceeds the '
-                    'maximum allowed size of $maxSizeBytes bytes.',
-                actualSizeBytes: length,
-                maxSizeBytes: maxSizeBytes,
-              ),
-            );
-          }
-        }
-
+        final failure = await _validateFile(
+          file,
+          allowedTypes: allowedTypesSet,
+          maxSizeBytes: maxSizeBytes,
+        );
+        if (failure != null) return Left(failure);
         resultFiles.add(file.xFile);
       }
 
       return Right(resultFiles);
     } on PlatformException catch (e) {
-      final code = e.code.toLowerCase();
-      if (code.contains('permission') || code.contains('denied')) {
-        return Left(
-          MediaPermissionDeniedFailure(
-            message: e.message ?? 'Permission to access files was denied.',
-            permission: 'storage',
-            code: e.code,
-          ),
-        );
-      }
-      return Left(
-        UnknownMediaFailure(
-          message: e.message ?? 'An error occurred while picking files.',
-          code: e.code,
-        ),
-      );
+      return _handlePlatformException(e, 'picking files');
     } on Exception catch (e) {
       return Left(UnknownMediaFailure(message: e.toString()));
     } on Object catch (e) {
@@ -219,5 +121,67 @@ class FilePickerServiceImpl implements FilePickerService {
         UnknownMediaFailure(message: 'An unknown error occurred: $e'),
       );
     }
+  }
+
+  Future<MediaKitFailure?> _validateFile(
+    PlatformFile file, {
+    Set<MimeType>? allowedTypes,
+    int? maxSizeBytes,
+  }) async {
+    if (allowedTypes != null && allowedTypes.isNotEmpty) {
+      final actualMimeType =
+          MimeType.fromFileNameOrPath(file.name) ??
+          MimeType.fromExtension(file.extension);
+
+      if (actualMimeType == null || !allowedTypes.contains(actualMimeType)) {
+        return InvalidFileTypeFailure(
+          message:
+              'Picked file "${file.name}" has an unsupported file type '
+              '(${actualMimeType?.mime ?? "unknown"}). '
+              'Allowed types: '
+              '${allowedTypes.map((m) => m.fileType).join(", ")}',
+          actualExtension: file.extension ?? file.name.split('.').lastOrNull,
+          allowedFileTypes: allowedTypes.toList(),
+          actualMimeType: actualMimeType,
+        );
+      }
+    }
+
+    if (maxSizeBytes != null) {
+      final length = await file.xFile.length();
+      if (length > maxSizeBytes) {
+        return FileSizeExceededFailure(
+          message:
+              'Selected file "${file.name}" ($length bytes) exceeds the '
+              'maximum allowed size of $maxSizeBytes bytes.',
+          actualSizeBytes: length,
+          maxSizeBytes: maxSizeBytes,
+        );
+      }
+    }
+
+    return null;
+  }
+
+  Left<MediaKitFailure, T> _handlePlatformException<T>(
+    PlatformException e,
+    String operation,
+  ) {
+    final code = e.code.toLowerCase();
+    if (code.contains('permission') || code.contains('denied')) {
+      return Left(
+        MediaPermissionDeniedFailure(
+          message: e.message ?? 'Permission to access files was denied.',
+          permission: 'storage',
+          code: e.code,
+        ),
+      );
+    }
+    return Left(
+      UnknownMediaFailure(
+        message: e.message ?? 'An error occurred while $operation.',
+        code: e.code,
+      ),
+    );
   }
 }
