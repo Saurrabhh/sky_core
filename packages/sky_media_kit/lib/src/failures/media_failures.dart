@@ -15,6 +15,49 @@ sealed class MediaPickerFailure extends Failure {
     required super.message,
     super.code,
   });
+
+  /// {@macro media_picker_cancelled_failure}
+  const factory MediaPickerFailure.cancelled({
+    required String message,
+    String? code,
+  }) = MediaPickerCancelledFailure._;
+
+  /// {@macro file_size_exceeded_failure}
+  const factory MediaPickerFailure.sizeExceeded({
+    required String message,
+    int? actualSizeBytes,
+    int? maxSizeBytes,
+    String? code,
+  }) = FileSizeExceededFailure._;
+
+  /// {@macro invalid_file_type_failure}
+  const factory MediaPickerFailure.invalidType({
+    required String message,
+    String? actualExtension,
+    List<MimeType>? allowedFileTypes,
+    List<String>? allowedExtensions,
+    MimeType? actualMimeType,
+    String? code,
+  }) = InvalidFileTypeFailure._;
+
+  /// {@macro media_permission_denied_failure}
+  const factory MediaPickerFailure.permissionDenied({
+    required String message,
+    String? permission,
+    String? code,
+  }) = MediaPermissionDeniedFailure._;
+
+  /// {@macro camera_capture_failure}
+  const factory MediaPickerFailure.cameraCapture({
+    required String message,
+    String? code,
+  }) = CameraCaptureFailure._;
+
+  /// {@macro unknown_media_failure}
+  const factory MediaPickerFailure.unknown({
+    required String message,
+    String? code,
+  }) = UnknownMediaFailure._;
 }
 
 /// {@template media_picker_cancelled_failure}
@@ -23,7 +66,7 @@ sealed class MediaPickerFailure extends Failure {
 /// {@endtemplate}
 class MediaPickerCancelledFailure extends MediaPickerFailure {
   /// {@macro media_picker_cancelled_failure}
-  const MediaPickerCancelledFailure({
+  const MediaPickerCancelledFailure._({
     super.message = 'Media selection was cancelled.',
     super.code,
   });
@@ -35,7 +78,7 @@ class MediaPickerCancelledFailure extends MediaPickerFailure {
 /// {@endtemplate}
 class FileSizeExceededFailure extends MediaPickerFailure {
   /// {@macro file_size_exceeded_failure}
-  const FileSizeExceededFailure({
+  const FileSizeExceededFailure._({
     required super.message,
     this.actualSizeBytes,
     this.maxSizeBytes,
@@ -58,7 +101,7 @@ class FileSizeExceededFailure extends MediaPickerFailure {
 /// {@endtemplate}
 class InvalidFileTypeFailure extends MediaPickerFailure {
   /// {@macro invalid_file_type_failure}
-  const InvalidFileTypeFailure({
+  const InvalidFileTypeFailure._({
     required super.message,
     this.actualExtension,
     this.allowedFileTypes,
@@ -96,7 +139,7 @@ class InvalidFileTypeFailure extends MediaPickerFailure {
 /// {@endtemplate}
 class MediaPermissionDeniedFailure extends MediaPickerFailure {
   /// {@macro media_permission_denied_failure}
-  const MediaPermissionDeniedFailure({
+  const MediaPermissionDeniedFailure._({
     required super.message,
     this.permission,
     super.code,
@@ -115,7 +158,7 @@ class MediaPermissionDeniedFailure extends MediaPickerFailure {
 /// {@endtemplate}
 class CameraCaptureFailure extends MediaPickerFailure {
   /// {@macro camera_capture_failure}
-  const CameraCaptureFailure({
+  const CameraCaptureFailure._({
     required super.message,
     super.code,
   });
@@ -127,7 +170,7 @@ class CameraCaptureFailure extends MediaPickerFailure {
 /// {@endtemplate}
 class UnknownMediaFailure extends MediaPickerFailure {
   /// {@macro unknown_media_failure}
-  const UnknownMediaFailure({
+  const UnknownMediaFailure._({
     required super.message,
     super.code,
   });
@@ -149,6 +192,34 @@ sealed class FileStorageFailure extends Failure {
     super.code,
   });
 
+  /// {@macro file_storage_cancelled_failure}
+  const factory FileStorageFailure.cancelled({
+    required String message,
+    String? filePath,
+    String? code,
+  }) = FileStorageCancelledFailure._;
+
+  /// {@macro file_storage_permission_denied_failure}
+  const factory FileStorageFailure.permissionDenied({
+    required String message,
+    String? filePath,
+    String? code,
+  }) = FileStoragePermissionDeniedFailure._;
+
+  /// {@macro file_storage_io_failure}
+  const factory FileStorageFailure.io({
+    required String message,
+    String? filePath,
+    String? code,
+  }) = FileStorageIOFailure._;
+
+  /// {@macro unknown_file_storage_failure}
+  const factory FileStorageFailure.unknown({
+    required String message,
+    String? filePath,
+    String? code,
+  }) = UnknownFileStorageFailure._;
+
   /// The path to the file that caused the storage error, if applicable.
   final String? filePath;
 
@@ -161,7 +232,7 @@ sealed class FileStorageFailure extends Failure {
 /// {@endtemplate}
 class FileStorageCancelledFailure extends FileStorageFailure {
   /// {@macro file_storage_cancelled_failure}
-  const FileStorageCancelledFailure({
+  const FileStorageCancelledFailure._({
     super.message = 'File save was cancelled.',
     super.filePath,
     super.code,
@@ -173,7 +244,7 @@ class FileStorageCancelledFailure extends FileStorageFailure {
 /// {@endtemplate}
 class FileStoragePermissionDeniedFailure extends FileStorageFailure {
   /// {@macro file_storage_permission_denied_failure}
-  const FileStoragePermissionDeniedFailure({
+  const FileStoragePermissionDeniedFailure._({
     required super.message,
     super.filePath,
     super.code,
@@ -186,7 +257,7 @@ class FileStoragePermissionDeniedFailure extends FileStorageFailure {
 /// {@endtemplate}
 class FileStorageIOFailure extends FileStorageFailure {
   /// {@macro file_storage_io_failure}
-  const FileStorageIOFailure({
+  const FileStorageIOFailure._({
     required super.message,
     super.filePath,
     super.code,
@@ -199,7 +270,7 @@ class FileStorageIOFailure extends FileStorageFailure {
 /// {@endtemplate}
 class UnknownFileStorageFailure extends FileStorageFailure {
   /// {@macro unknown_file_storage_failure}
-  const UnknownFileStorageFailure({
+  const UnknownFileStorageFailure._({
     required super.message,
     super.filePath,
     super.code,

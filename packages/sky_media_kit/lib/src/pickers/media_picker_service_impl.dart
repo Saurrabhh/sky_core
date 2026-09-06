@@ -20,7 +20,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
   final ImagePicker _picker;
 
   @override
-  FutureEitherFailure<XFile> pickImage({
+  Future<Either<MediaPickerFailure, XFile>> pickImage({
     ImageSource source = ImageSource.camera,
     double? maxWidth,
     double? maxHeight,
@@ -37,7 +37,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
 
       if (file == null) {
         return const Left(
-          MediaPickerCancelledFailure(message: 'No image was selected.'),
+          MediaPickerFailure.cancelled(message: 'No image was selected.'),
         );
       }
 
@@ -46,10 +46,11 @@ class MediaPickerServiceImpl implements MediaPickerService {
           final length = await file.length();
           if (length > maxSizeBytes) {
             return Left(
-              FileSizeExceededFailure(
+              MediaPickerFailure.sizeExceeded(
                 message:
-                    'Selected image ($length bytes) exceeds the maximum '
-                    'allowed size of $maxSizeBytes bytes.',
+                    'Selected image (${_formatBytesToMb(length)} MB) '
+                    'exceeds the maximum allowed size of '
+                    '${_formatBytesToMb(maxSizeBytes)} MB.',
                 actualSizeBytes: length,
                 maxSizeBytes: maxSizeBytes,
               ),
@@ -57,7 +58,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
           }
         } on FileSystemException catch (e) {
           return Left(
-            UnknownMediaFailure(
+            MediaPickerFailure.unknown(
               message: _sanitizeErrorMessage(
                 e,
                 fallback: 'Failed to read image file size.',
@@ -77,7 +78,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
       );
     } on FileSystemException catch (e) {
       return Left(
-        UnknownMediaFailure(
+        MediaPickerFailure.unknown(
           message: _sanitizeErrorMessage(
             e,
             fallback: 'File system error occurred while picking image.',
@@ -87,7 +88,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
       );
     } on Object catch (e) {
       return Left(
-        UnknownMediaFailure(
+        MediaPickerFailure.unknown(
           message: _sanitizeErrorMessage(
             e,
             fallback: 'An error occurred while picking image.',
@@ -98,7 +99,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
   }
 
   @override
-  FutureEitherFailure<XFile> pickFile({
+  Future<Either<MediaPickerFailure, XFile>> pickFile({
     List<MimeType>? allowedFileTypes,
     int? maxSizeBytes,
   }) async {
@@ -113,7 +114,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
 
       if (file == null) {
         return const Left(
-          MediaPickerCancelledFailure(message: 'No file was selected.'),
+          MediaPickerFailure.cancelled(message: 'No file was selected.'),
         );
       }
 
@@ -130,7 +131,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
       );
     } on FileSystemException catch (e) {
       return Left(
-        UnknownMediaFailure(
+        MediaPickerFailure.unknown(
           message: _sanitizeErrorMessage(
             e,
             fallback: 'File system error occurred while picking file.',
@@ -140,7 +141,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
       );
     } on Object catch (e) {
       return Left(
-        UnknownMediaFailure(
+        MediaPickerFailure.unknown(
           message: _sanitizeErrorMessage(
             e,
             fallback: 'An error occurred while picking file.',
@@ -151,7 +152,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
   }
 
   @override
-  FutureEitherFailure<List<XFile>> pickMultipleFiles({
+  Future<Either<MediaPickerFailure, List<XFile>>> pickMultipleFiles({
     List<MimeType>? allowedFileTypes,
     int? maxSizeBytes,
   }) async {
@@ -166,7 +167,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
 
       if (files.isEmpty) {
         return const Left(
-          MediaPickerCancelledFailure(message: 'No files were selected.'),
+          MediaPickerFailure.cancelled(message: 'No files were selected.'),
         );
       }
 
@@ -197,7 +198,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
       );
     } on FileSystemException catch (e) {
       return Left(
-        UnknownMediaFailure(
+        MediaPickerFailure.unknown(
           message: _sanitizeErrorMessage(
             e,
             fallback: 'File system error occurred while picking files.',
@@ -207,7 +208,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
       );
     } on Object catch (e) {
       return Left(
-        UnknownMediaFailure(
+        MediaPickerFailure.unknown(
           message: _sanitizeErrorMessage(
             e,
             fallback: 'An error occurred while picking files.',
@@ -217,7 +218,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
     }
   }
 
-  FutureEitherFailure<XFile> _validateFile(
+  Future<Either<MediaPickerFailure, XFile>> _validateFile(
     PlatformFile file, {
     Set<MimeType>? allowedTypes,
     int? maxSizeBytes,
@@ -229,7 +230,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
 
       if (actualMimeType == null || !allowedTypes.contains(actualMimeType)) {
         return Left(
-          InvalidFileTypeFailure(
+          MediaPickerFailure.invalidType(
             message:
                 'Picked file "${file.name}" has an unsupported file type '
                 '(${actualMimeType?.mime ?? "unknown"}). '
@@ -251,10 +252,12 @@ class MediaPickerServiceImpl implements MediaPickerService {
         final length = await xFile.length();
         if (length > maxSizeBytes) {
           return Left(
-            FileSizeExceededFailure(
+            MediaPickerFailure.sizeExceeded(
               message:
-                  'Selected file "${file.name}" ($length bytes) exceeds the '
-                  'maximum allowed size of $maxSizeBytes bytes.',
+                  'Selected file "${file.name}" '
+                  '(${_formatBytesToMb(length)} MB) exceeds the '
+                  'maximum allowed size of '
+                  '${_formatBytesToMb(maxSizeBytes)} MB.',
               actualSizeBytes: length,
               maxSizeBytes: maxSizeBytes,
             ),
@@ -262,7 +265,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
         }
       } on FileSystemException catch (e) {
         return Left(
-          UnknownMediaFailure(
+          MediaPickerFailure.unknown(
             message: _sanitizeErrorMessage(
               e,
               fallback: 'Failed to read file length for "${file.name}".',
@@ -272,7 +275,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
         );
       } on Object catch (e) {
         return Left(
-          UnknownMediaFailure(
+          MediaPickerFailure.unknown(
             message: _sanitizeErrorMessage(
               e,
               fallback: 'Failed to validate file size for "${file.name}".',
@@ -299,7 +302,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
 
     if (code.contains('cancel')) {
       return Left(
-        MediaPickerCancelledFailure(
+        MediaPickerFailure.cancelled(
           message: message,
           code: e.code,
         ),
@@ -312,12 +315,14 @@ class MediaPickerServiceImpl implements MediaPickerService {
         code.contains('unauthorized')) {
       final resolvedPermission =
           permission ??
-          (source == ImageSource.camera
-              ? 'camera'
-              : (source == ImageSource.gallery ? 'gallery' : 'storage'));
+          switch (source) {
+            ImageSource.camera => 'camera',
+            ImageSource.gallery => 'gallery',
+            null => 'storage',
+          };
 
       return Left(
-        MediaPermissionDeniedFailure(
+        MediaPickerFailure.permissionDenied(
           message: message,
           permission: resolvedPermission,
           code: e.code,
@@ -327,7 +332,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
 
     if (source == ImageSource.camera || code.contains('camera')) {
       return Left(
-        CameraCaptureFailure(
+        MediaPickerFailure.cameraCapture(
           message: message,
           code: e.code,
         ),
@@ -335,7 +340,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
     }
 
     return Left(
-      UnknownMediaFailure(
+      MediaPickerFailure.unknown(
         message: message,
         code: e.code,
       ),
@@ -346,31 +351,28 @@ class MediaPickerServiceImpl implements MediaPickerService {
     Object error, {
     required String fallback,
   }) {
-    if (error is PlatformException) {
-      final msg = error.message?.trim();
-      if (msg != null && msg.isNotEmpty) {
-        return msg;
-      }
-      return 'Platform error occurred: ${error.code}';
-    }
+    return switch (error) {
+      PlatformException(:final message?) when message.trim().isNotEmpty =>
+        message.trim(),
+      PlatformException(:final code) => 'Platform error occurred: $code',
+      FileSystemException(:final message) when message.trim().isNotEmpty =>
+        message.trim(),
+      FileSystemException() => 'File system error occurred.',
+      _ => () {
+        final raw = error.toString().trim();
+        final clean = raw.startsWith('Exception: ')
+            ? raw.substring('Exception: '.length).trim()
+            : raw;
+        return clean.isNotEmpty && clean != 'null' ? clean : fallback;
+      }(),
+    };
+  }
 
-    if (error is FileSystemException) {
-      final msg = error.message.trim();
-      if (msg.isNotEmpty) {
-        return msg;
-      }
-      return 'File system error occurred.';
-    }
-
-    final rawString = error.toString().trim();
-    final cleanString = rawString.startsWith('Exception: ')
-        ? rawString.substring('Exception: '.length).trim()
-        : rawString;
-
-    if (cleanString.isNotEmpty && cleanString != 'null') {
-      return cleanString;
-    }
-
-    return fallback;
+  String _formatBytesToMb(int bytes) {
+    final mb = bytes / (1024 * 1024);
+    final formatted = mb.toStringAsFixed(2);
+    return formatted.endsWith('.00')
+        ? formatted.substring(0, formatted.length - 3)
+        : formatted;
   }
 }

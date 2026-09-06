@@ -3,6 +3,10 @@ import 'package:sky_architecture/sky_architecture.dart';
 import 'package:sky_media_kit/src/failures/media_failures.dart';
 import 'package:sky_media_kit/src/pickers/mime_type.dart';
 
+/// Convenient type alias for asynchronous operations that return either a
+/// [MediaPickerFailure] on the left or a value of type [T] on the right.
+typedef FutureEitherMediaPicker<T> = Future<Either<MediaPickerFailure, T>>;
+
 /// {@template media_picker_service}
 /// Service interface for selecting images from the gallery, capturing photos
 /// using the device camera, and selecting single or multiple files from the
@@ -18,7 +22,7 @@ abstract interface class MediaPickerService {
   ///
   /// Returns an [XFile] on success, or a [MediaPickerFailure] if the selection
   /// was cancelled or an error occurred.
-  FutureEitherFailure<XFile> pickImage({
+  Future<Either<MediaPickerFailure, XFile>> pickImage({
     ImageSource source = ImageSource.camera,
     double? maxWidth,
     double? maxHeight,
@@ -33,7 +37,7 @@ abstract interface class MediaPickerService {
   ///
   /// Returns an [XFile] on success, or a [MediaPickerFailure] if the selection
   /// was cancelled or an error occurred.
-  FutureEitherFailure<XFile> pickFile({
+  Future<Either<MediaPickerFailure, XFile>> pickFile({
     List<MimeType>? allowedFileTypes,
     int? maxSizeBytes,
   });
@@ -45,7 +49,7 @@ abstract interface class MediaPickerService {
   ///
   /// Returns a list of [XFile]s on success, or a [MediaPickerFailure] if the
   /// selection was cancelled or an error occurred.
-  FutureEitherFailure<List<XFile>> pickMultipleFiles({
+  Future<Either<MediaPickerFailure, List<XFile>>> pickMultipleFiles({
     List<MimeType>? allowedFileTypes,
     int? maxSizeBytes,
   });

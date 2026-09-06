@@ -7,6 +7,15 @@ import 'package:sky_architecture/sky_architecture.dart';
 import 'package:sky_media_kit/src/failures/media_failures.dart';
 import 'package:sky_media_kit/src/pickers/mime_type.dart';
 
+/// Convenient type alias for asynchronous file storage operations that return
+/// either a [FileStorageFailure] on the left or a value of type [T] on the
+/// right.
+typedef FutureEitherFileStorage<T> = Future<Either<FileStorageFailure, T>>;
+
+/// Specialized version of [FutureEitherFileStorage] where the success type is
+/// [Unit].
+typedef FutureEitherFileStorageUnit = FutureEitherFileStorage<Unit>;
+
 /// {@template file_storage_service}
 /// Service interface for saving files, deleting files, and resolving device
 /// directories.
@@ -18,7 +27,7 @@ abstract interface class FileStorageService {
   /// and [allowedFileTypes].
   /// Returns the saved file path on success, or a [FileStorageFailure] on error
   /// or cancellation.
-  FutureEitherFailure<String> saveFile({
+  Future<Either<FileStorageFailure, String>> saveFile({
     required String fileName,
     required Uint8List bytes,
     String? dialogTitle,
@@ -29,12 +38,12 @@ abstract interface class FileStorageService {
   /// Deletes the file at the specified [filePath] if it exists.
   ///
   /// Returns a [FileStorageFailure] if an error occurs.
-  FutureEitherFailureUnit deleteFile(String filePath);
+  Future<Either<FileStorageFailure, Unit>> deleteFile(String filePath);
 
   /// Resolves the application's temporary directory.
   ///
   /// Returns a [Directory] on success, or a [FileStorageFailure] on error.
-  FutureEitherFailure<Directory> getTemporaryDirectory();
+  Future<Either<FileStorageFailure, Directory>> getTemporaryDirectory();
 }
 
 /// {@template file_storage_service_impl}
@@ -46,7 +55,7 @@ class FileStorageServiceImpl implements FileStorageService {
   const FileStorageServiceImpl();
 
   @override
-  FutureEitherFailure<String> saveFile({
+  Future<Either<FileStorageFailure, String>> saveFile({
     required String fileName,
     required Uint8List bytes,
     String? dialogTitle,
@@ -67,7 +76,7 @@ class FileStorageServiceImpl implements FileStorageService {
       );
 
       if (savedUri == null) {
-        return const Left(FileStorageCancelledFailure());
+        return const Left(FileStorageFailure.cancelled(message: 'URI is null'));
       }
 
       return Right(
@@ -75,7 +84,7 @@ class FileStorageServiceImpl implements FileStorageService {
       );
     } on FileSystemException catch (e) {
       return Left(
-        FileStorageIOFailure(
+        FileStorageFailure.io(
           message: e.message,
           code: e.osError?.errorCode.toString(),
         ),
@@ -84,25 +93,25 @@ class FileStorageServiceImpl implements FileStorageService {
       final code = e.code.toLowerCase();
       if (code.contains('permission') || code.contains('denied')) {
         return Left(
-          FileStoragePermissionDeniedFailure(
+          FileStorageFailure.permissionDenied(
             message: e.message ?? 'Permission to save file was denied.',
             code: e.code,
           ),
         );
       }
       return Left(
-        UnknownFileStorageFailure(
+        FileStorageFailure.unknown(
           message: e.message ?? 'Failed to save file.',
           code: e.code,
         ),
       );
     } on Exception catch (e) {
-      return Left(UnknownFileStorageFailure(message: e.toString()));
+      return Left(FileStorageFailure.unknown(message: e.toString()));
     }
   }
 
   @override
-  FutureEitherFailureUnit deleteFile(String filePath) async {
+  Future<Either<FileStorageFailure, Unit>> deleteFile(String filePath) async {
     try {
       final file = File(filePath);
       if (file.existsSync()) {
@@ -111,7 +120,7 @@ class FileStorageServiceImpl implements FileStorageService {
       return const Right(unit);
     } on FileSystemException catch (e) {
       return Left(
-        FileStorageIOFailure(
+        FileStorageFailure.io(
           message: e.message,
           filePath: filePath,
           code: e.osError?.errorCode.toString(),
@@ -119,7 +128,7 @@ class FileStorageServiceImpl implements FileStorageService {
       );
     } on Exception catch (e) {
       return Left(
-        UnknownFileStorageFailure(
+        FileStorageFailure.unknown(
           message: e.toString(),
           filePath: filePath,
         ),
@@ -128,19 +137,19 @@ class FileStorageServiceImpl implements FileStorageService {
   }
 
   @override
-  FutureEitherFailure<Directory> getTemporaryDirectory() async {
+  Future<Either<FileStorageFailure, Directory>> getTemporaryDirectory() async {
     try {
       final directory = await path_provider.getTemporaryDirectory();
       return Right(directory);
     } on FileSystemException catch (e) {
       return Left(
-        FileStorageIOFailure(
+        FileStorageFailure.io(
           message: e.message,
           code: e.osError?.errorCode.toString(),
         ),
       );
     } on Exception catch (e) {
-      return Left(UnknownFileStorageFailure(message: e.toString()));
+      return Left(FileStorageFailure.unknown(message: e.toString()));
     }
   }
 }

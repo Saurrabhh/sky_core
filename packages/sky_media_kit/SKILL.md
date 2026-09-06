@@ -12,30 +12,30 @@ This package provides interfaces and wrappers for device media operations (camer
 ### 1. Unified Cross-Platform File Abstraction & Non-Nullable Returns
 * Use `XFile` (from `package:cross_file/cross_file.dart`) as the unified file abstraction for all media and file selection returns, as it is highly robust across multiple platforms (mobile, web, and desktop).
 * Export `package:cross_file/cross_file.dart` from the main barrel file so clients can access the `XFile` type without manual external imports.
-* Selection APIs return non-nullable `FutureEitherFailure<XFile>` or `FutureEitherFailure<List<XFile>>`.
+* Selection APIs return non-nullable `Future<Either<MediaPickerFailure, XFile>>` or `Future<Either<MediaPickerFailure, List<XFile>>>` (or `FutureEitherMediaPicker<T>`).
 
 ### 2. Service Implementation Naming
 * Services must have an abstract interface class (e.g., `MediaPickerService`) and a concrete implementation class prefixed with the same name and postfixed with `Impl` (e.g., `MediaPickerServiceImpl`).
 
 ### 3. Domain Failures & Error Handling
-* All services return `FutureEitherFailure<T>` using exhaustive `sealed class` hierarchies defined in `src/failures/media_failures.dart`:
+* Services return specific sealed failure hierarchies defined in `src/failures/media_failures.dart`. Instantiate failures using the base sealed class's named factory constructors (subclass constructors are private):
   - `MediaPickerFailure` (sealed):
-    - `MediaPickerCancelledFailure`: Returned when a user dismisses a picker or does not select a file/image.
-    - `FileSizeExceededFailure`: Returned when a selected file exceeds `maxSizeBytes`.
-    - `InvalidFileTypeFailure`: Returned when a selected file's type is not in `allowedFileTypes`.
-    - `MediaPermissionDeniedFailure`: Returned when camera, gallery, or storage permissions are denied.
-    - `CameraCaptureFailure`: Returned on camera device or capture initialization errors.
-    - `UnknownMediaFailure`: Returned on unexpected picker errors.
+    - `MediaPickerFailure.cancelled()` (`MediaPickerCancelledFailure`): Returned when a user dismisses a picker or does not select a file/image.
+    - `MediaPickerFailure.sizeExceeded()` (`FileSizeExceededFailure`): Returned when a selected file exceeds `maxSizeBytes`.
+    - `MediaPickerFailure.invalidType()` (`InvalidFileTypeFailure`): Returned when a selected file's type is not in `allowedFileTypes`.
+    - `MediaPickerFailure.permissionDenied()` (`MediaPermissionDeniedFailure`): Returned when camera, gallery, or storage permissions are denied.
+    - `MediaPickerFailure.cameraCapture()` (`CameraCaptureFailure`): Returned on camera device or capture initialization errors.
+    - `MediaPickerFailure.unknown()` (`UnknownMediaFailure`): Returned on unexpected picker errors.
   - `FileStorageFailure` (sealed):
-    - `FileStorageCancelledFailure`: Returned when a save dialog is cancelled.
-    - `FileStoragePermissionDeniedFailure`: Returned when storage permission is denied.
-    - `FileStorageIOFailure`: Returned on filesystem write/read/directory errors.
-    - `UnknownFileStorageFailure`: Returned on unexpected storage errors.
+    - `FileStorageFailure.cancelled()` (`FileStorageCancelledFailure`): Returned when a save dialog is cancelled.
+    - `FileStorageFailure.permissionDenied()` (`FileStoragePermissionDeniedFailure`): Returned when storage permission is denied.
+    - `FileStorageFailure.io()` (`FileStorageIOFailure`): Returned on filesystem write/read/directory errors.
+    - `FileStorageFailure.unknown()` (`UnknownFileStorageFailure`): Returned on unexpected storage errors.
 
 ### 4. File Storage Service
-* Use `FileStorageService.saveFile` to prompt the system save dialog and save binary data using `FilePicker.saveFile`, returning `FutureEitherFailure<String>`.
-* Use `FileStorageService.deleteFile(filePath)` for filesystem cleanup.
-* Use `FileStorageService.getTemporaryDirectory()` to resolve device temporary directory for local storage paths.
+* Use `FileStorageService.saveFile` to prompt the system save dialog and save binary data using `FilePicker.saveFile`, returning `Future<Either<FileStorageFailure, String>>` (or `FutureEitherFileStorage<String>`).
+* Use `FileStorageService.deleteFile(filePath)` for filesystem cleanup, returning `Future<Either<FileStorageFailure, Unit>>`.
+* Use `FileStorageService.getTemporaryDirectory()` to resolve device temporary directory for local storage paths, returning `Future<Either<FileStorageFailure, Directory>>`.
 
 ### 5. Custom Camera (Future Expansion)
 * The placeholder directory `lib/src/camera` is reserved for camera-feed custom views (e.g. viewfinder widget overlays). Do not mix camera view widgets with the standard image-picking logic.

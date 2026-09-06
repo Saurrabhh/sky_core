@@ -15,9 +15,4 @@ dependencies:
     sdk: flutter
   image_picker: ^1.2.3
   path_provider: ^2.1.6
-  sky_architecture:
-    workspace: true
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  sky_architecture: ^1.7.2
