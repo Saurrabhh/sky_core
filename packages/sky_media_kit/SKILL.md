@@ -15,17 +15,17 @@ This package provides interfaces and wrappers for device media operations (camer
 * Selection APIs return non-nullable `FutureEitherFailure<XFile>` or `FutureEitherFailure<List<XFile>>`.
 
 ### 2. Service Implementation Naming
-* Services must have an abstract interface class (e.g., `ImagePickerService`) and a concrete implementation class prefixed with the same name and postfixed with `Impl` (e.g., `ImagePickerServiceImpl`).
+* Services must have an abstract interface class (e.g., `MediaPickerService`) and a concrete implementation class prefixed with the same name and postfixed with `Impl` (e.g., `MediaPickerServiceImpl`).
 
 ### 3. Domain Failures & Error Handling
 * All services return `FutureEitherFailure<T>` using exhaustive `sealed class` hierarchies defined in `src/failures/media_failures.dart`:
-  - `FilePickerFailure` (sealed):
+  - `MediaPickerFailure` (sealed):
     - `MediaPickerCancelledFailure`: Returned when a user dismisses a picker or does not select a file/image.
     - `FileSizeExceededFailure`: Returned when a selected file exceeds `maxSizeBytes`.
     - `InvalidFileTypeFailure`: Returned when a selected file's type is not in `allowedFileTypes`.
     - `MediaPermissionDeniedFailure`: Returned when camera, gallery, or storage permissions are denied.
     - `CameraCaptureFailure`: Returned on camera device or capture initialization errors.
-    - `UnknownFilePickerFailure`: Returned on unexpected picker errors.
+    - `UnknownMediaFailure`: Returned on unexpected picker errors.
   - `FileStorageFailure` (sealed):
     - `FileStorageCancelledFailure`: Returned when a save dialog is cancelled.
     - `FileStoragePermissionDeniedFailure`: Returned when storage permission is denied.
@@ -35,7 +35,7 @@ This package provides interfaces and wrappers for device media operations (camer
 ### 4. File Storage Service
 * Use `FileStorageService.saveFile` to prompt the system save dialog and save binary data using `FilePicker.saveFile`, returning `FutureEitherFailure<String>`.
 * Use `FileStorageService.deleteFile(filePath)` for filesystem cleanup.
-* Use `FileStorageService.getTemporaryDirectory()` and `FileStorageService.getDocumentsDirectory()` to resolve device directories for local storage paths.
+* Use `FileStorageService.getTemporaryDirectory()` to resolve device temporary directory for local storage paths.
 
 ### 5. Custom Camera (Future Expansion)
 * The placeholder directory `lib/src/camera` is reserved for camera-feed custom views (e.g. viewfinder widget overlays). Do not mix camera view widgets with the standard image-picking logic.

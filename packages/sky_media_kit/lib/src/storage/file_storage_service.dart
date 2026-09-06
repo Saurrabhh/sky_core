@@ -35,7 +35,6 @@ abstract interface class FileStorageService {
   ///
   /// Returns a [Directory] on success, or a [FileStorageFailure] on error.
   FutureEitherFailure<Directory> getTemporaryDirectory();
-
 }
 
 /// {@template file_storage_service_impl}
@@ -74,25 +73,31 @@ class FileStorageServiceImpl implements FileStorageService {
       return Right(
         savedUri.path.isNotEmpty ? savedUri.path : savedUri.toString(),
       );
+    } on FileSystemException catch (e) {
+      return Left(
+        FileStorageIOFailure(
+          message: e.message,
+          code: e.osError?.errorCode.toString(),
+        ),
+      );
     } on PlatformException catch (e) {
       final code = e.code.toLowerCase();
       if (code.contains('permission') || code.contains('denied')) {
         return Left(
           FileStoragePermissionDeniedFailure(
             message: e.message ?? 'Permission to save file was denied.',
-            permission: 'storage',
             code: e.code,
           ),
         );
       }
       return Left(
-        FileStorageIOFailure(
+        UnknownFileStorageFailure(
           message: e.message ?? 'Failed to save file.',
           code: e.code,
         ),
       );
     } on Exception catch (e) {
-      return Left(FileStorageIOFailure(message: e.toString()));
+      return Left(UnknownFileStorageFailure(message: e.toString()));
     }
   }
 
@@ -114,7 +119,7 @@ class FileStorageServiceImpl implements FileStorageService {
       );
     } on Exception catch (e) {
       return Left(
-        FileStorageIOFailure(
+        UnknownFileStorageFailure(
           message: e.toString(),
           filePath: filePath,
         ),
@@ -127,8 +132,15 @@ class FileStorageServiceImpl implements FileStorageService {
     try {
       final directory = await path_provider.getTemporaryDirectory();
       return Right(directory);
+    } on FileSystemException catch (e) {
+      return Left(
+        FileStorageIOFailure(
+          message: e.message,
+          code: e.osError?.errorCode.toString(),
+        ),
+      );
     } on Exception catch (e) {
-      return Left(FileStorageIOFailure(message: e.toString()));
+      return Left(UnknownFileStorageFailure(message: e.toString()));
     }
   }
 }

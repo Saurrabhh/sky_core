@@ -1,29 +1,17 @@
 import 'package:sky_architecture/sky_architecture.dart';
 import 'package:sky_media_kit/src/pickers/mime_type.dart';
 
-/// {@template media_kit_failure}
-/// Base failure class for all errors originating within the `sky_media_kit`
-/// package.
-/// {@endtemplate}
-abstract class MediaKitFailure extends Failure {
-  /// {@macro media_kit_failure}
-  const MediaKitFailure({
-    required super.message,
-    super.code,
-  });
-}
-
 // =============================================================================
 // File / Media Picker Failures
 // =============================================================================
 
-/// {@template file_picker_failure}
-/// Base sealed failure class for all errors occurring during file or media
+/// {@template media_picker_failure}
+/// Base sealed failure class for all errors occurring during media or file
 /// selection.
 /// {@endtemplate}
-sealed class FilePickerFailure extends MediaKitFailure {
-  /// {@macro file_picker_failure}
-  const FilePickerFailure({
+sealed class MediaPickerFailure extends Failure {
+  /// {@macro media_picker_failure}
+  const MediaPickerFailure({
     required super.message,
     super.code,
   });
@@ -33,7 +21,7 @@ sealed class FilePickerFailure extends MediaKitFailure {
 /// Failure returned when the user cancels media/file selection or does not
 /// pick any file.
 /// {@endtemplate}
-class MediaPickerCancelledFailure extends FilePickerFailure {
+class MediaPickerCancelledFailure extends MediaPickerFailure {
   /// {@macro media_picker_cancelled_failure}
   const MediaPickerCancelledFailure({
     super.message = 'Media selection was cancelled.',
@@ -45,7 +33,7 @@ class MediaPickerCancelledFailure extends FilePickerFailure {
 /// Failure returned when a selected or processed file exceeds the maximum
 /// allowed byte size limit.
 /// {@endtemplate}
-class FileSizeExceededFailure extends FilePickerFailure {
+class FileSizeExceededFailure extends MediaPickerFailure {
   /// {@macro file_size_exceeded_failure}
   const FileSizeExceededFailure({
     required super.message,
@@ -68,7 +56,7 @@ class FileSizeExceededFailure extends FilePickerFailure {
 /// Failure returned when a selected file has an unsupported extension or
 /// MIME type.
 /// {@endtemplate}
-class InvalidFileTypeFailure extends FilePickerFailure {
+class InvalidFileTypeFailure extends MediaPickerFailure {
   /// {@macro invalid_file_type_failure}
   const InvalidFileTypeFailure({
     required super.message,
@@ -106,7 +94,7 @@ class InvalidFileTypeFailure extends FilePickerFailure {
 /// Failure returned when the app is denied permission to access the camera,
 /// photo gallery, or device storage.
 /// {@endtemplate}
-class MediaPermissionDeniedFailure extends FilePickerFailure {
+class MediaPermissionDeniedFailure extends MediaPickerFailure {
   /// {@macro media_permission_denied_failure}
   const MediaPermissionDeniedFailure({
     required super.message,
@@ -125,7 +113,7 @@ class MediaPermissionDeniedFailure extends FilePickerFailure {
 /// Failure returned when camera initialization, configuration, or photo/video
 /// capture fails.
 /// {@endtemplate}
-class CameraCaptureFailure extends FilePickerFailure {
+class CameraCaptureFailure extends MediaPickerFailure {
   /// {@macro camera_capture_failure}
   const CameraCaptureFailure({
     required super.message,
@@ -133,13 +121,13 @@ class CameraCaptureFailure extends FilePickerFailure {
   });
 }
 
-/// {@template unknown_file_picker_failure}
-/// Failure returned when an unhandled or unexpected error occurs during file or
-/// media selection.
+/// {@template unknown_media_failure}
+/// Failure returned when an unhandled or unexpected error occurs during media
+/// or file selection.
 /// {@endtemplate}
-class UnknownFilePickerFailure extends FilePickerFailure {
-  /// {@macro unknown_file_picker_failure}
-  const UnknownFilePickerFailure({
+class UnknownMediaFailure extends MediaPickerFailure {
+  /// {@macro unknown_media_failure}
+  const UnknownMediaFailure({
     required super.message,
     super.code,
   });
@@ -153,7 +141,7 @@ class UnknownFilePickerFailure extends FilePickerFailure {
 /// Base sealed failure class for all errors occurring during file system
 /// storage operations.
 /// {@endtemplate}
-sealed class FileStorageFailure extends MediaKitFailure {
+sealed class FileStorageFailure extends Failure {
   /// {@macro file_storage_failure}
   const FileStorageFailure({
     required super.message,
@@ -187,16 +175,9 @@ class FileStoragePermissionDeniedFailure extends FileStorageFailure {
   /// {@macro file_storage_permission_denied_failure}
   const FileStoragePermissionDeniedFailure({
     required super.message,
-    this.permission,
     super.filePath,
     super.code,
   });
-
-  /// The name of the denied permission (e.g., 'storage').
-  final String? permission;
-
-  @override
-  List<Object?> get props => [...super.props, permission];
 }
 
 /// {@template file_storage_io_failure}

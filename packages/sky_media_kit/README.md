@@ -4,10 +4,9 @@ A robust media and file system toolkit for Sky Core applications. This package p
 
 ## Features
 
-* **File Selection:** Pick single or multiple files with extension filters and byte size limits.
-* **Image & Photo Picking:** Capture photos via camera or pick from gallery with quality, dimension, and size limits.
-* **File System Persistence:** Helpers to write, read, and delete files in temporary or document folders.
-* **Domain Failure Hierarchy:** Exhaustive sealed failure hierarchies (`FilePickerFailure` and `FileStorageFailure`) for compile-time safe pattern matching.
+* **Unified Media & File Selection:** Capture photos via camera, select images from gallery, and pick single or multiple files with extension filters and byte size limits via `MediaPickerService`.
+* **File System Persistence:** Helpers to write, read, and delete files in temporary or document folders via `FileStorageService`.
+* **Domain Failure Hierarchy:** Exhaustive sealed failure hierarchies (`MediaPickerFailure` and `FileStorageFailure`) for compile-time safe pattern matching.
 
 ## Getting Started / Installation
 
@@ -26,10 +25,10 @@ The `sky_media_kit` package interacts with device camera hardware, photo librari
 
 | Service & Method | Target / Operation | Android Permission | iOS Info.plist Key | macOS Entitlement | Denied Failure Returned |
 |---|---|---|---|---|---|
-| `ImagePickerService.pickImage(source: ImageSource.camera)` | Capture a photo using the device camera | `android.permission.CAMERA` | `NSCameraUsageDescription` | N/A | `MediaPermissionDeniedFailure(permission: 'camera')` |
-| `ImagePickerService.pickImage(source: ImageSource.gallery)` | Pick photo/image from device photo library | `android.permission.READ_MEDIA_IMAGES` (API 33+)<br>`android.permission.READ_EXTERNAL_STORAGE` (API ≤ 32) | `NSPhotoLibraryUsageDescription` | N/A | `MediaPermissionDeniedFailure(permission: 'gallery')` |
-| `FilePickerService.pickFile()` / `pickMultipleFiles()` | Select single or multiple files/documents | `android.permission.READ_MEDIA_IMAGES` / `VIDEO` / `AUDIO` (API 33+)<br>`android.permission.READ_EXTERNAL_STORAGE` (API ≤ 32) | `NSPhotoLibraryUsageDescription` (if picking media from gallery) | `com.apple.security.files.user-selected.read-write` | `MediaPermissionDeniedFailure(permission: 'storage')` |
-| `FileStorageService.saveFile()` | Save binary data to storage via system save dialog | `android.permission.WRITE_EXTERNAL_STORAGE` (API ≤ 28) | `NSPhotoLibraryAddUsageDescription` (if saving to photo library) | `com.apple.security.files.user-selected.read-write` | `FileStoragePermissionDeniedFailure(permission: 'storage')` |
+| `MediaPickerService.pickImage(source: ImageSource.camera)` | Capture a photo using the device camera | `android.permission.CAMERA` | `NSCameraUsageDescription` | N/A | `MediaPermissionDeniedFailure(permission: 'camera')` |
+| `MediaPickerService.pickImage(source: ImageSource.gallery)` | Pick photo/image from device photo library | `android.permission.READ_MEDIA_IMAGES` (API 33+)<br>`android.permission.READ_EXTERNAL_STORAGE` (API ≤ 32) | `NSPhotoLibraryUsageDescription` | N/A | `MediaPermissionDeniedFailure(permission: 'gallery')` |
+| `MediaPickerService.pickFile()` / `pickMultipleFiles()` | Select single or multiple files/documents | `android.permission.READ_MEDIA_IMAGES` / `VIDEO` / `AUDIO` (API 33+)<br>`android.permission.READ_EXTERNAL_STORAGE` (API ≤ 32) | `NSPhotoLibraryUsageDescription` (if picking media from gallery) | `com.apple.security.files.user-selected.read-write` | `MediaPermissionDeniedFailure(permission: 'storage')` |
+| `FileStorageService.saveFile()` | Save binary data to storage via system save dialog | `android.permission.WRITE_EXTERNAL_STORAGE` (API ≤ 28) | `NSPhotoLibraryAddUsageDescription` (if saving to photo library) | `com.apple.security.files.user-selected.read-write` | `FileStoragePermissionDeniedFailure()` |
 
 ---
 
@@ -40,10 +39,10 @@ Add the required permissions to your application's `android/app/src/main/Android
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Camera: Required when using ImagePickerService with ImageSource.camera -->
+    <!-- Camera: Required when using MediaPickerService with ImageSource.camera -->
     <uses-permission android:name="android.permission.CAMERA" />
 
-    <!-- Storage (Android 13+ / API 33+): Granular media permissions for ImagePickerService & FilePickerService -->
+    <!-- Storage (Android 13+ / API 33+): Granular media permissions for MediaPickerService -->
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
     <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
@@ -62,9 +61,9 @@ Add the required permissions to your application's `android/app/src/main/Android
 ```
 
 ##### Where Permissions Are Used on Android
-* **Camera (`android.permission.CAMERA`):** Checked when launching `ImagePickerService.pickImage(source: ImageSource.camera)`. If camera hardware permission is denied by the user, the service returns a `Left(MediaPermissionDeniedFailure(permission: 'camera'))`.
-* **Media & Images (`android.permission.READ_MEDIA_IMAGES` & `READ_EXTERNAL_STORAGE`):** Checked when accessing the gallery via `ImagePickerService.pickImage(source: ImageSource.gallery)` or picking files via `FilePickerService.pickFile()`. If denied, returns `Left(MediaPermissionDeniedFailure(permission: 'gallery'))` or `Left(MediaPermissionDeniedFailure(permission: 'storage'))`.
-* **File Saving (`android.permission.WRITE_EXTERNAL_STORAGE`):** Required on older Android releases when `FileStorageService.saveFile()` writes to shared storage paths. If denied, returns `Left(FileStoragePermissionDeniedFailure(permission: 'storage'))`.
+* **Camera (`android.permission.CAMERA`):** Checked when launching `MediaPickerService.pickImage(source: ImageSource.camera)`. If camera hardware permission is denied by the user, the service returns a `Left(MediaPermissionDeniedFailure(permission: 'camera'))`.
+* **Media & Images (`android.permission.READ_MEDIA_IMAGES` & `READ_EXTERNAL_STORAGE`):** Checked when accessing the gallery via `MediaPickerService.pickImage(source: ImageSource.gallery)` or picking files via `MediaPickerService.pickFile()`. If denied, returns `Left(MediaPermissionDeniedFailure(permission: 'gallery'))` or `Left(MediaPermissionDeniedFailure(permission: 'storage'))`.
+* **File Saving (`android.permission.WRITE_EXTERNAL_STORAGE`):** Required on older Android releases when `FileStorageService.saveFile()` writes to shared storage paths. If denied, returns `Left(FileStoragePermissionDeniedFailure())`.
 
 ---
 
@@ -74,11 +73,11 @@ Add the following usage description keys to your application's `ios/Runner/Info.
 
 ```xml
 <dict>
-    <!-- Camera: Required when taking photos using ImagePickerService (ImageSource.camera) -->
+    <!-- Camera: Required when taking photos using MediaPickerService (ImageSource.camera) -->
     <key>NSCameraUsageDescription</key>
     <string>This app requires camera access to take photos.</string>
 
-    <!-- Photo Library: Required when picking images/media using ImagePickerService or FilePickerService -->
+    <!-- Photo Library: Required when picking images/media using MediaPickerService -->
     <key>NSPhotoLibraryUsageDescription</key>
     <string>This app requires access to the photo library to select photos and media.</string>
 
@@ -89,8 +88,8 @@ Add the following usage description keys to your application's `ios/Runner/Info.
 ```
 
 ##### Where Permissions Are Used on iOS
-* **`NSCameraUsageDescription`:** Triggered when `ImagePickerService.pickImage(source: ImageSource.camera)` displays the system camera view.
-* **`NSPhotoLibraryUsageDescription`:** Triggered when `ImagePickerService.pickImage(source: ImageSource.gallery)` presents the iOS photo picker sheet or when media files are accessed via `FilePickerService`.
+* **`NSCameraUsageDescription`:** Triggered when `MediaPickerService.pickImage(source: ImageSource.camera)` displays the system camera view.
+* **`NSPhotoLibraryUsageDescription`:** Triggered when `MediaPickerService.pickImage(source: ImageSource.gallery)` presents the iOS photo picker sheet or when media files are accessed via `MediaPickerService.pickFile()`.
 * **`NSPhotoLibraryAddUsageDescription`:** Triggered when saving photos or files to the user's camera roll/photo album.
 
 ---
@@ -101,7 +100,7 @@ If your Flutter macOS application uses the App Sandbox, add file access entitlem
 
 ```xml
 <dict>
-    <!-- Allows user-selected file open/save dialogs via FilePickerService and FileStorageService -->
+    <!-- Allows user-selected file open/save dialogs via MediaPickerService and FileStorageService -->
     <key>com.apple.security.files.user-selected.read-write</key>
     <true/>
 </dict>
@@ -114,10 +113,10 @@ If your Flutter macOS application uses the App Sandbox, add file access entitlem
 ```dart
 import 'package:sky_media_kit/sky_media_kit.dart';
 
-final imagePickerService = ImagePickerServiceImpl();
+final mediaPickerService = MediaPickerServiceImpl();
 
 // Capture an image using the camera with 5MB maximum size limit
-final EitherFailure<XFile> result = await imagePickerService.pickImage(
+final EitherFailure<XFile> result = await mediaPickerService.pickImage(
   source: ImageSource.camera,
   maxSizeBytes: 5 * 1024 * 1024,
 );
@@ -143,11 +142,11 @@ result.fold(
 ```dart
 import 'package:sky_media_kit/sky_media_kit.dart';
 
-final filePickerService = const FilePickerServiceImpl();
+final mediaPickerService = MediaPickerServiceImpl();
 
 // Pick PDF or Word documents
-final EitherFailure<XFile> result = await filePickerService.pickFile(
-  allowedFileTypes: [MimeType.pdf, MimeType.docx, MimeType.doc],
+final EitherFailure<XFile> result = await mediaPickerService.pickFile(
+  allowedFileTypes: [MimeType.pdf, MimeType.doc],
   maxSizeBytes: 10 * 1024 * 1024, // 10 MB limit
 );
 
@@ -181,8 +180,8 @@ final saveResult = await fileStorageService.saveFile(
 
 saveResult.fold(
   (failure) => switch (failure) {
-    FileStoragePermissionDeniedFailure(:final permission) =>
-      print('Permission denied to save file: $permission.'),
+    FileStoragePermissionDeniedFailure() =>
+      print('Permission denied to save file.'),
     FileStorageCancelledFailure() =>
       print('Save dialog was cancelled by user.'),
     FileStorageIOFailure(:final filePath, :final message) =>
