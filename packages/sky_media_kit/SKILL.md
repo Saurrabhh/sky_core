@@ -12,7 +12,7 @@ This package provides interfaces and wrappers for device media operations (camer
 ### 1. Unified Cross-Platform File Abstraction & Non-Nullable Returns
 * Use `XFile` (from `package:cross_file/cross_file.dart`) as the unified file abstraction for all media and file selection returns, as it is highly robust across multiple platforms (mobile, web, and desktop).
 * Export `package:cross_file/cross_file.dart` from the main barrel file so clients can access the `XFile` type without manual external imports.
-* Selection APIs return non-nullable `Future<Either<MediaPickerFailure, XFile>>` or `Future<Either<MediaPickerFailure, List<XFile>>>` (or `FutureEitherMediaPicker<T>`).
+* Selection APIs return non-nullable `FutureEitherMediaPicker<XFile>` or `FutureEitherMediaPicker<List<XFile>>`.
 
 ### 2. Service Implementation Naming
 * Services must have an abstract interface class (e.g., `MediaPickerService`) and a concrete implementation class prefixed with the same name and postfixed with `Impl` (e.g., `MediaPickerServiceImpl`).

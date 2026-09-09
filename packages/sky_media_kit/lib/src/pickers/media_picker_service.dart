@@ -22,7 +22,7 @@ abstract interface class MediaPickerService {
   ///
   /// Returns an [XFile] on success, or a [MediaPickerFailure] if the selection
   /// was cancelled or an error occurred.
-  Future<Either<MediaPickerFailure, XFile>> pickImage({
+  FutureEitherMediaPicker<XFile> pickImage({
     ImageSource source = ImageSource.camera,
     double? maxWidth,
     double? maxHeight,
@@ -37,7 +37,7 @@ abstract interface class MediaPickerService {
   ///
   /// Returns an [XFile] on success, or a [MediaPickerFailure] if the selection
   /// was cancelled or an error occurred.
-  Future<Either<MediaPickerFailure, XFile>> pickFile({
+  FutureEitherMediaPicker<XFile> pickFile({
     List<MimeType>? allowedFileTypes,
     int? maxSizeBytes,
   });
@@ -49,7 +49,7 @@ abstract interface class MediaPickerService {
   ///
   /// Returns a list of [XFile]s on success, or a [MediaPickerFailure] if the
   /// selection was cancelled or an error occurred.
-  Future<Either<MediaPickerFailure, List<XFile>>> pickMultipleFiles({
+  FutureEitherMediaPicker<List<XFile>> pickMultipleFiles({
     List<MimeType>? allowedFileTypes,
     int? maxSizeBytes,
   });

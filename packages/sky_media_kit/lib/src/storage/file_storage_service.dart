@@ -27,7 +27,7 @@ abstract interface class FileStorageService {
   /// and [allowedFileTypes].
   /// Returns the saved file path on success, or a [FileStorageFailure] on error
   /// or cancellation.
-  Future<Either<FileStorageFailure, String>> saveFile({
+  FutureEitherFileStorage<String> saveFile({
     required String fileName,
     required Uint8List bytes,
     String? dialogTitle,
@@ -38,12 +38,12 @@ abstract interface class FileStorageService {
   /// Deletes the file at the specified [filePath] if it exists.
   ///
   /// Returns a [FileStorageFailure] if an error occurs.
-  Future<Either<FileStorageFailure, Unit>> deleteFile(String filePath);
+  FutureEitherFileStorageUnit deleteFile(String filePath);
 
   /// Resolves the application's temporary directory.
   ///
   /// Returns a [Directory] on success, or a [FileStorageFailure] on error.
-  Future<Either<FileStorageFailure, Directory>> getTemporaryDirectory();
+  FutureEitherFileStorage<Directory> getTemporaryDirectory();
 }
 
 /// {@template file_storage_service_impl}
@@ -55,7 +55,7 @@ class FileStorageServiceImpl implements FileStorageService {
   const FileStorageServiceImpl();
 
   @override
-  Future<Either<FileStorageFailure, String>> saveFile({
+  FutureEitherFileStorage<String> saveFile({
     required String fileName,
     required Uint8List bytes,
     String? dialogTitle,
@@ -111,7 +111,7 @@ class FileStorageServiceImpl implements FileStorageService {
   }
 
   @override
-  Future<Either<FileStorageFailure, Unit>> deleteFile(String filePath) async {
+  FutureEitherFileStorageUnit deleteFile(String filePath) async {
     try {
       final file = File(filePath);
       if (file.existsSync()) {
@@ -137,7 +137,7 @@ class FileStorageServiceImpl implements FileStorageService {
   }
 
   @override
-  Future<Either<FileStorageFailure, Directory>> getTemporaryDirectory() async {
+  FutureEitherFileStorage<Directory> getTemporaryDirectory() async {
     try {
       final directory = await path_provider.getTemporaryDirectory();
       return Right(directory);

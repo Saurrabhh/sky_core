@@ -20,7 +20,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
   final ImagePicker _picker;
 
   @override
-  Future<Either<MediaPickerFailure, XFile>> pickImage({
+  FutureEitherMediaPicker<XFile> pickImage({
     ImageSource source = ImageSource.camera,
     double? maxWidth,
     double? maxHeight,
@@ -99,7 +99,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
   }
 
   @override
-  Future<Either<MediaPickerFailure, XFile>> pickFile({
+  FutureEitherMediaPicker<XFile> pickFile({
     List<MimeType>? allowedFileTypes,
     int? maxSizeBytes,
   }) async {
@@ -152,7 +152,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
   }
 
   @override
-  Future<Either<MediaPickerFailure, List<XFile>>> pickMultipleFiles({
+  FutureEitherMediaPicker<List<XFile>> pickMultipleFiles({
     List<MimeType>? allowedFileTypes,
     int? maxSizeBytes,
   }) async {
@@ -218,7 +218,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
     }
   }
 
-  Future<Either<MediaPickerFailure, XFile>> _validateFile(
+  FutureEitherMediaPicker<XFile> _validateFile(
     PlatformFile file, {
     Set<MimeType>? allowedTypes,
     int? maxSizeBytes,
