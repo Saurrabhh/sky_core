@@ -86,7 +86,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
           code: e.osError?.errorCode.toString(),
         ),
       );
-    } on Object catch (e) {
+    } on Exception catch (e) {
       return Left(
         MediaPickerFailure.unknown(
           message: _sanitizeErrorMessage(
@@ -139,7 +139,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
           code: e.osError?.errorCode.toString(),
         ),
       );
-    } on Object catch (e) {
+    } on Exception catch (e) {
       return Left(
         MediaPickerFailure.unknown(
           message: _sanitizeErrorMessage(
@@ -206,7 +206,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
           code: e.osError?.errorCode.toString(),
         ),
       );
-    } on Object catch (e) {
+    } on Exception catch (e) {
       return Left(
         MediaPickerFailure.unknown(
           message: _sanitizeErrorMessage(
@@ -273,7 +273,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
             code: e.osError?.errorCode.toString(),
           ),
         );
-      } on Object catch (e) {
+      } on Exception catch (e) {
         return Left(
           MediaPickerFailure.unknown(
             message: _sanitizeErrorMessage(
@@ -348,7 +348,7 @@ class MediaPickerServiceImpl implements MediaPickerService {
   }
 
   String _sanitizeErrorMessage(
-    Object error, {
+    Exception error, {
     required String fallback,
   }) {
     return switch (error) {
