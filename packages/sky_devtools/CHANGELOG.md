@@ -1,3 +1,7 @@
+## 1.2.0
+
+ - **FEAT**(sky_devtools): upgrade talker dependencies  (#2).
+
 ## 1.1.8
 
  - Update a dependency to the latest release.
