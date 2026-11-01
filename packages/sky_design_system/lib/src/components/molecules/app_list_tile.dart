@@ -10,7 +10,10 @@ class AppListTile extends StatelessWidget {
     this._subtitle,
     this._leadingIcon,
     this._trailingIcon,
-    this.trailingWidget,
+    this._leadingWidget,
+    this._trailingWidget,
+    this._titleColor,
+    this._leadingIconColor,
     this.onTap,
   });
 
@@ -19,9 +22,10 @@ class AppListTile extends StatelessWidget {
   final String? _subtitle;
   final IconData? _leadingIcon;
   final IconData? _trailingIcon;
-
-  /// The trailingWidget of this widget.
-  final Widget? trailingWidget;
+  final Widget? _leadingWidget;
+  final Widget? _trailingWidget;
+  final Color? _titleColor;
+  final Color? _leadingIconColor;
 
   /// The onTap of this widget.
   final VoidCallback? onTap;
@@ -29,11 +33,23 @@ class AppListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(title),
-      subtitle: _subtitle != null ? Text(_subtitle) : null,
-      leading: _leadingIcon != null ? AppIcon.md(_leadingIcon) : null,
+      title: AppText.bodyLarge(
+        title,
+        color: _titleColor,
+      ),
+      subtitle: _subtitle != null
+          ? AppText.bodyMedium(
+              _subtitle,
+              color: context.colorScheme.onSurfaceVariant,
+            )
+          : null,
+      leading:
+          _leadingWidget ??
+          (_leadingIcon != null
+              ? AppIcon.md(_leadingIcon, color: _leadingIconColor)
+              : null),
       trailing:
-          trailingWidget ??
+          _trailingWidget ??
           (_trailingIcon != null ? AppIcon.md(_trailingIcon) : null),
       onTap: onTap,
     );
