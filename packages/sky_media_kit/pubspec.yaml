@@ -1,6 +1,6 @@
 name: sky_media_kit
 description: A robust media kit package providing wrappers for file selection, media picking, and local filesystem storage management.
-version: 0.1.0
+version: 0.1.1
 repository: https://github.com/Saurrabhh/sky_core/tree/master/packages/sky_media_kit
 resolution: workspace
 

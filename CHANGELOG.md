@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-09-12
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sky_devtools` - `v1.2.0`](#sky_devtools---v120)
+ - [`sky_media_kit` - `v0.1.1`](#sky_media_kit---v011)
+
+---
+
+#### `sky_devtools` - `v1.2.0`
+
+ - **FEAT**(sky_devtools): upgrade talker dependencies  (#2).
+
+#### `sky_media_kit` - `v0.1.1`
+
+ - **FEAT**(sky_media_kit): add sky_media_kit package (#3).
+
+
 ## 2026-08-01
 
 ### Changes
