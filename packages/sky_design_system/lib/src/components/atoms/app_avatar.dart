@@ -8,6 +8,9 @@ class AppAvatar extends StatelessWidget {
     super.key,
     this.initials,
     this.backgroundImage,
+    this.onBackgroundImageError,
+    this.child,
+    this.backgroundColor,
     this.radius = AppRadius.lgIncreased,
   });
 
@@ -17,6 +20,15 @@ class AppAvatar extends StatelessWidget {
   /// The backgroundImage of this widget.
   final ImageProvider? backgroundImage;
 
+  /// The onBackgroundImageError of this widget.
+  final ImageErrorListener? onBackgroundImageError;
+
+  /// The child widget of this avatar.
+  final Widget? child;
+
+  /// The background color of this avatar.
+  final Color? backgroundColor;
+
   /// The radius of this widget.
   final double radius;
 
@@ -24,10 +36,13 @@ class AppAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: radius,
+      backgroundColor: backgroundColor,
       backgroundImage: backgroundImage,
-      child: backgroundImage == null && initials != null
-          ? FittedBox(child: Text(initials ?? ''))
-          : null,
+      onBackgroundImageError: onBackgroundImageError,
+      child: child ??
+          (backgroundImage == null && initials != null
+              ? FittedBox(child: Text(initials ?? ''))
+              : null),
     );
   }
 }

@@ -7,21 +7,39 @@ class AppListTile extends StatelessWidget {
   const AppListTile({
     required this.title,
     super.key,
-    this._subtitle,
-    this._leadingIcon,
-    this._trailingIcon,
+    this.subtitle,
+    this.leadingIcon,
+    this.trailingIcon,
+    this.leadingWidget,
     this.trailingWidget,
+    this.titleColor,
+    this.leadingIconColor,
     this.onTap,
   });
 
   /// The title of this widget.
   final String title;
-  final String? _subtitle;
-  final IconData? _leadingIcon;
-  final IconData? _trailingIcon;
 
-  /// The trailingWidget of this widget.
+  /// The subtitle of this widget.
+  final String? subtitle;
+
+  /// The leading icon of this widget.
+  final IconData? leadingIcon;
+
+  /// The trailing icon of this widget.
+  final IconData? trailingIcon;
+
+  /// The leading widget of this widget (takes precedence over [leadingIcon]).
+  final Widget? leadingWidget;
+
+  /// The trailing widget of this widget.
   final Widget? trailingWidget;
+
+  /// The title color of this widget.
+  final Color? titleColor;
+
+  /// The leading icon color of this widget.
+  final Color? leadingIconColor;
 
   /// The onTap of this widget.
   final VoidCallback? onTap;
@@ -29,12 +47,22 @@ class AppListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(title),
-      subtitle: _subtitle != null ? Text(_subtitle) : null,
-      leading: _leadingIcon != null ? AppIcon.md(_leadingIcon) : null,
-      trailing:
-          trailingWidget ??
-          (_trailingIcon != null ? AppIcon.md(_trailingIcon) : null),
+      title: AppText.bodyLarge(
+        title,
+        color: titleColor,
+      ),
+      subtitle: subtitle != null
+          ? AppText.bodyMedium(
+              subtitle!,
+              color: context.colorScheme.onSurfaceVariant,
+            )
+          : null,
+      leading: leadingWidget ??
+          (leadingIcon != null
+              ? AppIcon.md(leadingIcon!, color: leadingIconColor)
+              : null),
+      trailing: trailingWidget ??
+          (trailingIcon != null ? AppIcon.md(trailingIcon!) : null),
       onTap: onTap,
     );
   }
