@@ -84,7 +84,7 @@ void main() {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
-            body: AppAvatar(initials: 'AB'),
+            body: AppAvatar.initials(initials: 'AB'),
           ),
         ),
       );
@@ -105,7 +105,7 @@ void main() {
         await tester.pumpWidget(
           MaterialApp(
             home: Scaffold(
-              body: AppAvatar(
+              body: AppAvatar.initials(
                 initials: 'XY',
                 backgroundImage: mockImage,
                 radius: 40,
@@ -126,20 +126,41 @@ void main() {
       },
     );
 
-    testWidgets('renders empty avatar when both image and initials are null', (
+    testWidgets('renders icon when no background image is provided', (
       tester,
     ) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
-            body: AppAvatar(),
+            body: AppAvatar.icon(icon: Icons.person),
           ),
         ),
       );
 
       expect(find.byType(CircleAvatar), findsOneWidget);
-      final avatar = tester.widget<CircleAvatar>(find.byType(CircleAvatar));
-      expect(avatar.child, isNull);
+      expect(find.byIcon(Icons.person), findsOneWidget);
     });
+
+    testWidgets(
+      'renders background image and does not show icon when both are provided',
+      (tester) async {
+        final mockImage = MemoryImage(transparentPng);
+        await tester.pumpWidget(
+          MaterialApp(
+            home: Scaffold(
+              body: AppAvatar.icon(
+                icon: Icons.person,
+                backgroundImage: mockImage,
+              ),
+            ),
+          ),
+        );
+
+        expect(find.byType(CircleAvatar), findsOneWidget);
+        expect(find.byIcon(Icons.person), findsNothing);
+        final avatar = tester.widget<CircleAvatar>(find.byType(CircleAvatar));
+        expect(avatar.backgroundImage, mockImage);
+      },
+    );
   });
 }

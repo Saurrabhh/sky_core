@@ -20,7 +20,7 @@ Widget appAvatarInteractiveUseCase(BuildContext context) {
   );
 
   return Center(
-    child: AppAvatar(
+    child: AppAvatar.initials(
       initials: initials.isEmpty ? null : initials,
       radius: radius,
       backgroundImage: hasImage
@@ -37,9 +37,9 @@ Widget appAvatarInitialsUseCase(BuildContext context) {
       spacing: AppSpacing.md,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
-        AppAvatar(initials: 'A'),
-        AppAvatar(initials: 'JD'),
-        AppAvatar(initials: 'XYZ'),
+        AppAvatar.initials(initials: 'A'),
+        AppAvatar.initials(initials: 'JD'),
+        AppAvatar.initials(initials: 'XYZ'),
       ],
     ),
   );
@@ -52,15 +52,15 @@ Widget appAvatarSizesUseCase(BuildContext context) {
       spacing: AppSpacing.md,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
-        AppAvatar(
+        AppAvatar.initials(
           initials: 'SM',
           radius: AppRadius.md,
         ),
-        AppAvatar(
+        AppAvatar.initials(
           initials: 'MD',
           radius: AppRadius.lg,
         ),
-        AppAvatar(
+        AppAvatar.initials(
           initials: 'LG',
           radius: AppRadius.xl,
         ),

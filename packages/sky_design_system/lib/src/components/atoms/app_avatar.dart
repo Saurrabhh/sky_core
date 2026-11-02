@@ -3,15 +3,6 @@ import 'package:sky_design_system/sky_design_system.dart';
 
 /// An avatar widget displaying initials, an icon, or a background image.
 class AppAvatar extends StatelessWidget {
-  /// Creates an [AppAvatar] instance.
-  const AppAvatar({
-    super.key,
-    this.initials,
-    this.backgroundImage,
-    this.onBackgroundImageError,
-    this.radius = AppRadius.lgIncreased,
-  }) : icon = null;
-
   /// Creates an [AppAvatar] displaying initials.
   const AppAvatar.initials({
     required this.initials,
@@ -45,24 +36,27 @@ class AppAvatar extends StatelessWidget {
   /// The radius of this widget.
   final double radius;
 
-  @override
-  Widget build(BuildContext context) {
-    Widget? child;
-    if (backgroundImage == null) {
-      if (initials != null && initials!.isNotEmpty) {
-        child = FittedBox(child: Text(initials!));
-      } else if (icon != null) {
-        child = radius >= AppRadius.xl
-            ? AppIcon.lg(icon!)
-            : AppIcon.md(icon!);
-      }
+  Widget? _buildChild() {
+    if (backgroundImage != null) return null;
+
+    if (initials case final i? when i.isNotEmpty) {
+      return FittedBox(child: Text(i));
     }
 
+    if (icon case final ic?) {
+      return radius >= AppRadius.xl ? AppIcon.lg(ic) : AppIcon.md(ic);
+    }
+
+    return null;
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return CircleAvatar(
       radius: radius,
       backgroundImage: backgroundImage,
       onBackgroundImageError: onBackgroundImageError,
-      child: child,
+      child: _buildChild(),
     );
   }
 }

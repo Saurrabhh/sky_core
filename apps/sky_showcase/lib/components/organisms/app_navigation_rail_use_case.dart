@@ -75,7 +75,7 @@ class _InteractiveNavigationRailWrapperState
                       alignment: Alignment.bottomCenter,
                       child: Padding(
                         padding: EdgeInsets.only(bottom: AppSpacing.md),
-                        child: AppAvatar(
+                        child: AppAvatar.initials(
                           initials: 'JD',
                         ),
                       ),
