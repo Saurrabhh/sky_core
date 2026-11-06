@@ -1,3 +1,7 @@
+## 1.12.0
+
+ - **FEAT**(sky_design_system): add named constructors to AppAvatar and expand AppListTile (#6).
+
 ## 1.11.0
 
  - **FEAT**(sky_design_system): add AppRefreshIndicator component.
